@@ -6,14 +6,215 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F77DA128176A8E8300518BC3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA127176A8E8300518BC3 /* Cocoa.framework */; };
+		F77DA132176A8E8300518BC3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F77DA130176A8E8300518BC3 /* InfoPlist.strings */; };
+		F77DA134176A8E8300518BC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA133176A8E8300518BC3 /* main.m */; };
+		F77DA138176A8E8300518BC3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F77DA136176A8E8300518BC3 /* Credits.rtf */; };
+		F77DA13B176A8E8300518BC3 /* GLGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA13A176A8E8300518BC3 /* GLGAppDelegate.m */; };
+		F77DA13E176A8E8400518BC3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F77DA13C176A8E8400518BC3 /* MainMenu.xib */; };
+		F77DA141176A8E8400518BC3 /* SpaceExampleOpenGL.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F77DA13F176A8E8400518BC3 /* SpaceExampleOpenGL.xcdatamodeld */; };
+		F77DA149176A8E8400518BC3 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA148176A8E8400518BC3 /* SenTestingKit.framework */; };
+		F77DA14A176A8E8400518BC3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA127176A8E8300518BC3 /* Cocoa.framework */; };
+		F77DA152176A8E8400518BC3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F77DA150176A8E8400518BC3 /* InfoPlist.strings */; };
+		F77DA155176A8E8400518BC3 /* SpaceExampleOpenGLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA154176A8E8400518BC3 /* SpaceExampleOpenGLTests.m */; };
+		F77DA15D176A8EA400518BC3 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA15C176A8EA400518BC3 /* GLKit.framework */; };
+		F77DA15F176A8EAD00518BC3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA15E176A8EAD00518BC3 /* QuartzCore.framework */; };
+		F77DA161176A8EB700518BC3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA160176A8EB700518BC3 /* OpenGL.framework */; };
+		F77DA164176A931D00518BC3 /* BasicOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA163176A931D00518BC3 /* BasicOpenGLView.m */; };
+		F77DA165176B895800518BC3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA160176A8EB700518BC3 /* OpenGL.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F77DA14B176A8E8400518BC3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F77DA11A176A8D3D00518BC3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F77DA123176A8E8300518BC3;
+			remoteInfo = SpaceExampleOpenGL;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F77DA124176A8E8300518BC3 /* SpaceExampleOpenGL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceExampleOpenGL.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F77DA127176A8E8300518BC3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F77DA12A176A8E8300518BC3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		F77DA12B176A8E8300518BC3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F77DA12C176A8E8300518BC3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F77DA12F176A8E8300518BC3 /* SpaceExampleOpenGL-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpaceExampleOpenGL-Info.plist"; sourceTree = "<group>"; };
+		F77DA131176A8E8300518BC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F77DA133176A8E8300518BC3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F77DA135176A8E8300518BC3 /* SpaceExampleOpenGL-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpaceExampleOpenGL-Prefix.pch"; sourceTree = "<group>"; };
+		F77DA137176A8E8300518BC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		F77DA139176A8E8300518BC3 /* GLGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLGAppDelegate.h; sourceTree = "<group>"; };
+		F77DA13A176A8E8300518BC3 /* GLGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLGAppDelegate.m; sourceTree = "<group>"; };
+		F77DA13D176A8E8400518BC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		F77DA140176A8E8400518BC3 /* SpaceExampleOpenGL.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpaceExampleOpenGL.xcdatamodel; sourceTree = "<group>"; };
+		F77DA147176A8E8400518BC3 /* SpaceExampleOpenGLTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceExampleOpenGLTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F77DA148176A8E8400518BC3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		F77DA14F176A8E8400518BC3 /* SpaceExampleOpenGLTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpaceExampleOpenGLTests-Info.plist"; sourceTree = "<group>"; };
+		F77DA151176A8E8400518BC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F77DA153176A8E8400518BC3 /* SpaceExampleOpenGLTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpaceExampleOpenGLTests.h; sourceTree = "<group>"; };
+		F77DA154176A8E8400518BC3 /* SpaceExampleOpenGLTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpaceExampleOpenGLTests.m; sourceTree = "<group>"; };
+		F77DA15C176A8EA400518BC3 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/GLKit.framework; sourceTree = DEVELOPER_DIR; };
+		F77DA15E176A8EAD00518BC3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		F77DA160176A8EB700518BC3 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/OpenGL.framework; sourceTree = DEVELOPER_DIR; };
+		F77DA162176A931D00518BC3 /* BasicOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicOpenGLView.h; sourceTree = "<group>"; };
+		F77DA163176A931D00518BC3 /* BasicOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicOpenGLView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F77DA121176A8E8300518BC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F77DA165176B895800518BC3 /* OpenGL.framework in Frameworks */,
+				F77DA128176A8E8300518BC3 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F77DA143176A8E8400518BC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F77DA161176A8EB700518BC3 /* OpenGL.framework in Frameworks */,
+				F77DA15F176A8EAD00518BC3 /* QuartzCore.framework in Frameworks */,
+				F77DA15D176A8EA400518BC3 /* GLKit.framework in Frameworks */,
+				F77DA149176A8E8400518BC3 /* SenTestingKit.framework in Frameworks */,
+				F77DA14A176A8E8400518BC3 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
 		F77DA119176A8D3D00518BC3 = {
 			isa = PBXGroup;
 			children = (
+				F77DA160176A8EB700518BC3 /* OpenGL.framework */,
+				F77DA15E176A8EAD00518BC3 /* QuartzCore.framework */,
+				F77DA15C176A8EA400518BC3 /* GLKit.framework */,
+				F77DA12D176A8E8300518BC3 /* SpaceExampleOpenGL */,
+				F77DA14D176A8E8400518BC3 /* SpaceExampleOpenGLTests */,
+				F77DA126176A8E8300518BC3 /* Frameworks */,
+				F77DA125176A8E8300518BC3 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
+		F77DA125176A8E8300518BC3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F77DA124176A8E8300518BC3 /* SpaceExampleOpenGL.app */,
+				F77DA147176A8E8400518BC3 /* SpaceExampleOpenGLTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F77DA126176A8E8300518BC3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F77DA127176A8E8300518BC3 /* Cocoa.framework */,
+				F77DA148176A8E8400518BC3 /* SenTestingKit.framework */,
+				F77DA129176A8E8300518BC3 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F77DA129176A8E8300518BC3 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F77DA12A176A8E8300518BC3 /* AppKit.framework */,
+				F77DA12B176A8E8300518BC3 /* CoreData.framework */,
+				F77DA12C176A8E8300518BC3 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		F77DA12D176A8E8300518BC3 /* SpaceExampleOpenGL */ = {
+			isa = PBXGroup;
+			children = (
+				F77DA139176A8E8300518BC3 /* GLGAppDelegate.h */,
+				F77DA13A176A8E8300518BC3 /* GLGAppDelegate.m */,
+				F77DA13C176A8E8400518BC3 /* MainMenu.xib */,
+				F77DA13F176A8E8400518BC3 /* SpaceExampleOpenGL.xcdatamodeld */,
+				F77DA12E176A8E8300518BC3 /* Supporting Files */,
+				F77DA162176A931D00518BC3 /* BasicOpenGLView.h */,
+				F77DA163176A931D00518BC3 /* BasicOpenGLView.m */,
+			);
+			path = SpaceExampleOpenGL;
+			sourceTree = "<group>";
+		};
+		F77DA12E176A8E8300518BC3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F77DA12F176A8E8300518BC3 /* SpaceExampleOpenGL-Info.plist */,
+				F77DA130176A8E8300518BC3 /* InfoPlist.strings */,
+				F77DA133176A8E8300518BC3 /* main.m */,
+				F77DA135176A8E8300518BC3 /* SpaceExampleOpenGL-Prefix.pch */,
+				F77DA136176A8E8300518BC3 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F77DA14D176A8E8400518BC3 /* SpaceExampleOpenGLTests */ = {
+			isa = PBXGroup;
+			children = (
+				F77DA153176A8E8400518BC3 /* SpaceExampleOpenGLTests.h */,
+				F77DA154176A8E8400518BC3 /* SpaceExampleOpenGLTests.m */,
+				F77DA14E176A8E8400518BC3 /* Supporting Files */,
+			);
+			path = SpaceExampleOpenGLTests;
+			sourceTree = "<group>";
+		};
+		F77DA14E176A8E8400518BC3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F77DA14F176A8E8400518BC3 /* SpaceExampleOpenGLTests-Info.plist */,
+				F77DA150176A8E8400518BC3 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F77DA123176A8E8300518BC3 /* SpaceExampleOpenGL */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F77DA156176A8E8400518BC3 /* Build configuration list for PBXNativeTarget "SpaceExampleOpenGL" */;
+			buildPhases = (
+				F77DA120176A8E8300518BC3 /* Sources */,
+				F77DA121176A8E8300518BC3 /* Frameworks */,
+				F77DA122176A8E8300518BC3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpaceExampleOpenGL;
+			productName = SpaceExampleOpenGL;
+			productReference = F77DA124176A8E8300518BC3 /* SpaceExampleOpenGL.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F77DA146176A8E8400518BC3 /* SpaceExampleOpenGLTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F77DA159176A8E8400518BC3 /* Build configuration list for PBXNativeTarget "SpaceExampleOpenGLTests" */;
+			buildPhases = (
+				F77DA142176A8E8400518BC3 /* Sources */,
+				F77DA143176A8E8400518BC3 /* Frameworks */,
+				F77DA144176A8E8400518BC3 /* Resources */,
+				F77DA145176A8E8400518BC3 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F77DA14C176A8E8400518BC3 /* PBXTargetDependency */,
+			);
+			name = SpaceExampleOpenGLTests;
+			productName = SpaceExampleOpenGLTests;
+			productReference = F77DA147176A8E8400518BC3 /* SpaceExampleOpenGLTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		F77DA11A176A8D3D00518BC3 /* Project object */ = {
@@ -29,12 +230,117 @@
 				en,
 			);
 			mainGroup = F77DA119176A8D3D00518BC3;
+			productRefGroup = F77DA125176A8E8300518BC3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				F77DA123176A8E8300518BC3 /* SpaceExampleOpenGL */,
+				F77DA146176A8E8400518BC3 /* SpaceExampleOpenGLTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F77DA122176A8E8300518BC3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F77DA132176A8E8300518BC3 /* InfoPlist.strings in Resources */,
+				F77DA138176A8E8300518BC3 /* Credits.rtf in Resources */,
+				F77DA13E176A8E8400518BC3 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F77DA144176A8E8400518BC3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F77DA152176A8E8400518BC3 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F77DA145176A8E8400518BC3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F77DA120176A8E8300518BC3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F77DA134176A8E8300518BC3 /* main.m in Sources */,
+				F77DA13B176A8E8300518BC3 /* GLGAppDelegate.m in Sources */,
+				F77DA141176A8E8400518BC3 /* SpaceExampleOpenGL.xcdatamodeld in Sources */,
+				F77DA164176A931D00518BC3 /* BasicOpenGLView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F77DA142176A8E8400518BC3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F77DA155176A8E8400518BC3 /* SpaceExampleOpenGLTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F77DA14C176A8E8400518BC3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F77DA123176A8E8300518BC3 /* SpaceExampleOpenGL */;
+			targetProxy = F77DA14B176A8E8400518BC3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F77DA130176A8E8300518BC3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F77DA131176A8E8300518BC3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F77DA136176A8E8300518BC3 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F77DA137176A8E8300518BC3 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		F77DA13C176A8E8400518BC3 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F77DA13D176A8E8400518BC3 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		F77DA150176A8E8400518BC3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F77DA151176A8E8400518BC3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F77DA11E176A8D3D00518BC3 /* Debug */ = {
@@ -46,6 +352,150 @@
 		F77DA11F176A8D3D00518BC3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+			};
+			name = Release;
+		};
+		F77DA157176A8E8400518BC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpaceExampleOpenGL/SpaceExampleOpenGL-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "SpaceExampleOpenGL/SpaceExampleOpenGL-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F77DA158176A8E8400518BC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpaceExampleOpenGL/SpaceExampleOpenGL-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "SpaceExampleOpenGL/SpaceExampleOpenGL-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F77DA15A176A8E8400518BC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpaceExampleOpenGL.app/Contents/MacOS/SpaceExampleOpenGL";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpaceExampleOpenGL/SpaceExampleOpenGL-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "SpaceExampleOpenGLTests/SpaceExampleOpenGLTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		F77DA15B176A8E8400518BC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpaceExampleOpenGL.app/Contents/MacOS/SpaceExampleOpenGL";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpaceExampleOpenGL/SpaceExampleOpenGL-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "SpaceExampleOpenGLTests/SpaceExampleOpenGLTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -61,7 +511,36 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		F77DA156176A8E8400518BC3 /* Build configuration list for PBXNativeTarget "SpaceExampleOpenGL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F77DA157176A8E8400518BC3 /* Debug */,
+				F77DA158176A8E8400518BC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F77DA159176A8E8400518BC3 /* Build configuration list for PBXNativeTarget "SpaceExampleOpenGLTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F77DA15A176A8E8400518BC3 /* Debug */,
+				F77DA15B176A8E8400518BC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F77DA13F176A8E8400518BC3 /* SpaceExampleOpenGL.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F77DA140176A8E8400518BC3 /* SpaceExampleOpenGL.xcdatamodel */,
+			);
+			currentVersion = F77DA140176A8E8400518BC3 /* SpaceExampleOpenGL.xcdatamodel */;
+			path = SpaceExampleOpenGL.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F77DA11A176A8D3D00518BC3 /* Project object */;
 }

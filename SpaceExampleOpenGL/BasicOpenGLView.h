@@ -6,8 +6,12 @@
 //
 //
 
+#import <OpenGL/OpenGL.h>
 #import <Cocoa/Cocoa.h>
 
-@interface BasicOpenGLView : NSOpenGLView
+@interface BasicOpenGLView : NSOpenGLView {
+    
+}
 
+- (void) drawRect: (NSRect) dirtyRect;
 @end

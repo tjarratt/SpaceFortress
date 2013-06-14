@@ -10,6 +10,10 @@
 
 @implementation GLGAppDelegate
 
+@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize managedObjectModel = _managedObjectModel;
+@synthesize managedObjectContext = _managedObjectContext;
+
 - (void)dealloc
 {
     [_persistentStoreCoordinator release];
@@ -18,13 +22,11 @@
     [super dealloc];
 }
 
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-@synthesize managedObjectModel = _managedObjectModel;
-@synthesize managedObjectContext = _managedObjectContext;
-
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    NSWindow * window= [self window];
+    BasicOpenGLView *view = [[BasicOpenGLView alloc] initWithFrame: NSMakeRect(0, 0, 1000, 600)];
+    [[window contentView] addSubview:view];
 }
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "GLG.SpaceExampleOpenGL" in the user's Application Support directory.

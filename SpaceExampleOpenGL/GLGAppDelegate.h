@@ -6,7 +6,10 @@
 //
 //
 
+#import <OpenGL/OpenGL.h>
 #import <Cocoa/Cocoa.h>
+
+#include "BasicOpenGLView.h"
 
 @interface GLGAppDelegate : NSObject <NSApplicationDelegate>
 
