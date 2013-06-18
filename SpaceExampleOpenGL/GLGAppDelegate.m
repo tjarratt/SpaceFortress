@@ -14,6 +14,7 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize managedObjectContext = _managedObjectContext;
 
+#pragma mark - Application Lifecycle
 - (void)dealloc
 {
     [_persistentStoreCoordinator release];
@@ -24,11 +25,21 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    NSWindow * window= [self window];
-    BasicOpenGLView *view = [[BasicOpenGLView alloc] initWithFrame: NSMakeRect(0, 0, 1000, 600)];
-    [[window contentView] addSubview:view];
+    controller = [[BasicOpenGLController alloc] initWithWindow: [self window]];
+    
+    NSTimer *timer = [NSTimer timerWithTimeInterval: (1.0 / 30.0)
+                                             target: controller
+                                           selector: @selector(update)
+                                           userInfo: nil
+                                            repeats: YES];
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
+    return YES;
+}
+
+#pragma mark - CoreData
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "GLG.SpaceExampleOpenGL" in the user's Application Support directory.
 - (NSURL *)applicationFilesDirectory
 {

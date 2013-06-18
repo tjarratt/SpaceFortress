@@ -23,6 +23,8 @@
 		F77DA161176A8EB700518BC3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA160176A8EB700518BC3 /* OpenGL.framework */; };
 		F77DA164176A931D00518BC3 /* BasicOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA163176A931D00518BC3 /* BasicOpenGLView.m */; };
 		F77DA165176B895800518BC3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA160176A8EB700518BC3 /* OpenGL.framework */; };
+		F77DA166176FD2DC00518BC3 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA15C176A8EA400518BC3 /* GLKit.framework */; };
+		F77DA169176FD3B300518BC3 /* BasicOpenGLController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA168176FD3B300518BC3 /* BasicOpenGLController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		F77DA160176A8EB700518BC3 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/OpenGL.framework; sourceTree = DEVELOPER_DIR; };
 		F77DA162176A931D00518BC3 /* BasicOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicOpenGLView.h; sourceTree = "<group>"; };
 		F77DA163176A931D00518BC3 /* BasicOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicOpenGLView.m; sourceTree = "<group>"; };
+		F77DA167176FD3B300518BC3 /* BasicOpenGLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicOpenGLController.h; sourceTree = "<group>"; };
+		F77DA168176FD3B300518BC3 /* BasicOpenGLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicOpenGLController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F77DA166176FD2DC00518BC3 /* GLKit.framework in Frameworks */,
 				F77DA165176B895800518BC3 /* OpenGL.framework in Frameworks */,
 				F77DA128176A8E8300518BC3 /* Cocoa.framework in Frameworks */,
 			);
@@ -140,6 +145,8 @@
 				F77DA12E176A8E8300518BC3 /* Supporting Files */,
 				F77DA162176A931D00518BC3 /* BasicOpenGLView.h */,
 				F77DA163176A931D00518BC3 /* BasicOpenGLView.m */,
+				F77DA167176FD3B300518BC3 /* BasicOpenGLController.h */,
+				F77DA168176FD3B300518BC3 /* BasicOpenGLController.m */,
 			);
 			path = SpaceExampleOpenGL;
 			sourceTree = "<group>";
@@ -286,6 +293,7 @@
 				F77DA13B176A8E8300518BC3 /* GLGAppDelegate.m in Sources */,
 				F77DA141176A8E8400518BC3 /* SpaceExampleOpenGL.xcdatamodeld in Sources */,
 				F77DA164176A931D00518BC3 /* BasicOpenGLView.m in Sources */,
+				F77DA169176FD3B300518BC3 /* BasicOpenGLController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

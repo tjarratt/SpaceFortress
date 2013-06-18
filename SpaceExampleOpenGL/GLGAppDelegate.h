@@ -6,12 +6,12 @@
 //
 //
 
-#import <OpenGL/OpenGL.h>
 #import <Cocoa/Cocoa.h>
+#include "BasicOpenGLController.h"
 
-#include "BasicOpenGLView.h"
-
-@interface GLGAppDelegate : NSObject <NSApplicationDelegate>
+@interface GLGAppDelegate : NSObject <NSApplicationDelegate> {
+    BasicOpenGLController *controller;
+}
 
 @property (assign) IBOutlet NSWindow *window;
 
