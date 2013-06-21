@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F70C6BFC1773A67800AFBFDE /* RangeProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = F70C6BFB1773A67800AFBFDE /* RangeProperty.m */; };
 		F77DA128176A8E8300518BC3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA127176A8E8300518BC3 /* Cocoa.framework */; };
 		F77DA132176A8E8300518BC3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F77DA130176A8E8300518BC3 /* InfoPlist.strings */; };
 		F77DA134176A8E8300518BC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA133176A8E8300518BC3 /* main.m */; };
@@ -21,10 +22,12 @@
 		F77DA15D176A8EA400518BC3 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA15C176A8EA400518BC3 /* GLKit.framework */; };
 		F77DA15F176A8EAD00518BC3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA15E176A8EAD00518BC3 /* QuartzCore.framework */; };
 		F77DA161176A8EB700518BC3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA160176A8EB700518BC3 /* OpenGL.framework */; };
-		F77DA164176A931D00518BC3 /* BasicOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA163176A931D00518BC3 /* BasicOpenGLView.m */; };
 		F77DA165176B895800518BC3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA160176A8EB700518BC3 /* OpenGL.framework */; };
-		F77DA166176FD2DC00518BC3 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA15C176A8EA400518BC3 /* GLKit.framework */; };
 		F77DA169176FD3B300518BC3 /* BasicOpenGLController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA168176FD3B300518BC3 /* BasicOpenGLController.m */; };
+		F77DA1CA17711AF700518BC3 /* GLGView.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA1C917711AF700518BC3 /* GLGView.m */; };
+		F77DA1CE177132DA00518BC3 /* GLGSolarStar.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA1CD177132DA00518BC3 /* GLGSolarStar.m */; };
+		F77DA1D1177132E600518BC3 /* GLGSolarSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA1D0177132E600518BC3 /* GLGSolarSystem.m */; };
+		F77DA1D41771330C00518BC3 /* GLGPlanetoid.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA1D31771330C00518BC3 /* GLGPlanetoid.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F70C6BFA1773A67800AFBFDE /* RangeProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangeProperty.h; sourceTree = "<group>"; };
+		F70C6BFB1773A67800AFBFDE /* RangeProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RangeProperty.m; sourceTree = "<group>"; };
 		F77DA124176A8E8300518BC3 /* SpaceExampleOpenGL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceExampleOpenGL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F77DA127176A8E8300518BC3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F77DA12A176A8E8300518BC3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -61,10 +66,16 @@
 		F77DA15C176A8EA400518BC3 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/GLKit.framework; sourceTree = DEVELOPER_DIR; };
 		F77DA15E176A8EAD00518BC3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		F77DA160176A8EB700518BC3 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/OpenGL.framework; sourceTree = DEVELOPER_DIR; };
-		F77DA162176A931D00518BC3 /* BasicOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicOpenGLView.h; sourceTree = "<group>"; };
-		F77DA163176A931D00518BC3 /* BasicOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicOpenGLView.m; sourceTree = "<group>"; };
 		F77DA167176FD3B300518BC3 /* BasicOpenGLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicOpenGLController.h; sourceTree = "<group>"; };
 		F77DA168176FD3B300518BC3 /* BasicOpenGLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicOpenGLController.m; sourceTree = "<group>"; };
+		F77DA1C817711AF700518BC3 /* GLGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGView.h; sourceTree = "<group>"; };
+		F77DA1C917711AF700518BC3 /* GLGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGView.m; sourceTree = "<group>"; };
+		F77DA1CC177132DA00518BC3 /* GLGSolarStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGSolarStar.h; sourceTree = "<group>"; };
+		F77DA1CD177132DA00518BC3 /* GLGSolarStar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGSolarStar.m; sourceTree = "<group>"; };
+		F77DA1CF177132E600518BC3 /* GLGSolarSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGSolarSystem.h; sourceTree = "<group>"; };
+		F77DA1D0177132E600518BC3 /* GLGSolarSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGSolarSystem.m; sourceTree = "<group>"; };
+		F77DA1D21771330C00518BC3 /* GLGPlanetoid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGPlanetoid.h; sourceTree = "<group>"; };
+		F77DA1D31771330C00518BC3 /* GLGPlanetoid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGPlanetoid.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +83,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F77DA166176FD2DC00518BC3 /* GLKit.framework in Frameworks */,
 				F77DA165176B895800518BC3 /* OpenGL.framework in Frameworks */,
 				F77DA128176A8E8300518BC3 /* Cocoa.framework in Frameworks */,
 			);
@@ -93,6 +103,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F70C6BF91773A66800AFBFDE /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				F70C6BFA1773A67800AFBFDE /* RangeProperty.h */,
+				F70C6BFB1773A67800AFBFDE /* RangeProperty.m */,
+			);
+			name = Properties;
+			sourceTree = "<group>";
+		};
 		F77DA119176A8D3D00518BC3 = {
 			isa = PBXGroup;
 			children = (
@@ -138,15 +157,14 @@
 		F77DA12D176A8E8300518BC3 /* SpaceExampleOpenGL */ = {
 			isa = PBXGroup;
 			children = (
+				F77DA1CB1771325300518BC3 /* Models */,
 				F77DA139176A8E8300518BC3 /* GLGAppDelegate.h */,
 				F77DA13A176A8E8300518BC3 /* GLGAppDelegate.m */,
-				F77DA13C176A8E8400518BC3 /* MainMenu.xib */,
-				F77DA13F176A8E8400518BC3 /* SpaceExampleOpenGL.xcdatamodeld */,
-				F77DA12E176A8E8300518BC3 /* Supporting Files */,
-				F77DA162176A931D00518BC3 /* BasicOpenGLView.h */,
-				F77DA163176A931D00518BC3 /* BasicOpenGLView.m */,
 				F77DA167176FD3B300518BC3 /* BasicOpenGLController.h */,
 				F77DA168176FD3B300518BC3 /* BasicOpenGLController.m */,
+				F77DA12E176A8E8300518BC3 /* Supporting Files */,
+				F77DA1C817711AF700518BC3 /* GLGView.h */,
+				F77DA1C917711AF700518BC3 /* GLGView.m */,
 			);
 			path = SpaceExampleOpenGL;
 			sourceTree = "<group>";
@@ -159,6 +177,8 @@
 				F77DA133176A8E8300518BC3 /* main.m */,
 				F77DA135176A8E8300518BC3 /* SpaceExampleOpenGL-Prefix.pch */,
 				F77DA136176A8E8300518BC3 /* Credits.rtf */,
+				F77DA13C176A8E8400518BC3 /* MainMenu.xib */,
+				F77DA13F176A8E8400518BC3 /* SpaceExampleOpenGL.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -180,6 +200,20 @@
 				F77DA150176A8E8400518BC3 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F77DA1CB1771325300518BC3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F70C6BF91773A66800AFBFDE /* Properties */,
+				F77DA1CC177132DA00518BC3 /* GLGSolarStar.h */,
+				F77DA1CD177132DA00518BC3 /* GLGSolarStar.m */,
+				F77DA1CF177132E600518BC3 /* GLGSolarSystem.h */,
+				F77DA1D0177132E600518BC3 /* GLGSolarSystem.m */,
+				F77DA1D21771330C00518BC3 /* GLGPlanetoid.h */,
+				F77DA1D31771330C00518BC3 /* GLGPlanetoid.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,8 +326,12 @@
 				F77DA134176A8E8300518BC3 /* main.m in Sources */,
 				F77DA13B176A8E8300518BC3 /* GLGAppDelegate.m in Sources */,
 				F77DA141176A8E8400518BC3 /* SpaceExampleOpenGL.xcdatamodeld in Sources */,
-				F77DA164176A931D00518BC3 /* BasicOpenGLView.m in Sources */,
 				F77DA169176FD3B300518BC3 /* BasicOpenGLController.m in Sources */,
+				F77DA1CA17711AF700518BC3 /* GLGView.m in Sources */,
+				F77DA1CE177132DA00518BC3 /* GLGSolarStar.m in Sources */,
+				F77DA1D1177132E600518BC3 /* GLGSolarSystem.m in Sources */,
+				F77DA1D41771330C00518BC3 /* GLGPlanetoid.m in Sources */,
+				F70C6BFC1773A67800AFBFDE /* RangeProperty.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +564,7 @@
 				F77DA158176A8E8400518BC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F77DA159176A8E8400518BC3 /* Build configuration list for PBXNativeTarget "SpaceExampleOpenGLTests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +573,7 @@
 				F77DA15B176A8E8400518BC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
