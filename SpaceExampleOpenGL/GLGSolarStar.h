@@ -5,9 +5,8 @@
 //  Created by Tim Jarratt on 6/18/13.
 //
 //
-
 #import <Foundation/Foundation.h>
-
+#import "RangeProperty.h"
 
 /*
 facts:

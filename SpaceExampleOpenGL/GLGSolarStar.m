@@ -17,29 +17,30 @@ const CGFloat chandrasekhar_limit = 2.864e30;
     // values for SOL in comments
     if (self = [super init]) {
         // age : 4.57 billion years (averages between 1 and 10 billion years)
-        age = (random() / RAND_MAX) * 12;
+        age = [RangeProperty randomValueWithMinimum:0 maximum:12];
 
         // (max: 265 * sol, min: 1.76 * 10^29)
         CGFloat solar_mass = 1.989e30;
-        mass = (random() / RAND_MAX) * 264 * solar_mass;
+        CGFloat minimum_mass = 0;
+        mass = [RangeProperty randomValueWithMinimum:minimum_mass maximum:(264 * solar_mass)];
         
         // radius: 6.96×10^5 km
         CGFloat solar_radius = 6.96e8;
-        radius = (random() / RAND_MAX) * 18 + 0.13 * solar_radius;
+        radius = [RangeProperty randomValueWithMinimum:(0.13 * solar_radius) maximum:18];
         
         // surface_temperature: 5778k
         CGFloat solar_photosphere_temp = 5887;
-        surface_temperature = (random() / RAND_MAX) * 10 * solar_photosphere_temp;
+        surface_temperature = [RangeProperty randomValueWithMinimum:1000 maximum:(13 * solar_photosphere_temp)];
         
         // sun rotates every 25-30 days or ~2592000 seconds
         CGFloat solar_rotation_rate = 2592000;
-        rotation_rate_in_seconds = (random() / RAND_MAX) * 150 * solar_rotation_rate;;
+        rotation_rate_in_seconds = [RangeProperty randomValueWithMinimum:1e-5 maximum:(150 * solar_rotation_rate)];
         
         // metallicity: 0.0122 ( or 1.2 %)
         // this represents the actual percentage of non H, He in the sun, but
         // this value is common represented as log10(Fe / H) for the star - log10(Fe / H) for our sun
         // a range of -2, 2 is fairly common for "habitable star systems"
-        metallicity = (random() / RAND_MAX) * 4 - 2;
+        metallicity = [RangeProperty randomValueWithMinimum: -2 maximum: 2];
     }
 
     return self;

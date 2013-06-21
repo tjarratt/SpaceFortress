@@ -7,6 +7,7 @@
 //
 
 #import "GLGSolarStar.h"
+#import "RangeProperty.h"
 #import <Foundation/Foundation.h>
 
 @interface GLGPlanetoid : NSObject {

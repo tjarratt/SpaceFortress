@@ -12,14 +12,16 @@
 
 @synthesize planetoids, star;
 
+#pragma mark - lifecycle
 - (id) init {
     if (self = [super init]) {
         int i;
         int num_planetoids = arc4random() % 7;
+        planetoids = [[NSMutableArray alloc] initWithCapacity:num_planetoids];
         
         star = [[GLGSolarStar alloc] init];
         for (i = 0; i < num_planetoids; ++i) {
-            GLGPlanetoid *planet = [[GLGPlanetoid alloc] initWithAge:[star age]];
+            GLGPlanetoid *planet = [[GLGPlanetoid alloc] initWithStar: star];
             [planetoids addObject:planet];
             [planet release];
         }

@@ -10,4 +10,6 @@
 
 @interface RangeProperty : NSObject
 
++ (CGFloat) randomValueWithMinimum: (CGFloat)min maximum: (CGFloat)max;
++ (CGFloat) randomValueWithMinimum: (CGFloat)min maximum:(CGFloat)max scaling:(CGFloat) factor;
 @end
