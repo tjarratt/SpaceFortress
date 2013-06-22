@@ -149,4 +149,8 @@ const CGFloat chandrasekhar_limit = 2.864e30;
     return pow(2 * gravitation_constant * mass / radius, 0.5f);
 }
 
+- (void) describe {
+    NSLog(@"I am just a simple star");
+}
+
 @end

@@ -69,12 +69,26 @@ const CGFloat astronomical_unit = 1.49e11; // mean earth-sun distance
     return self;
 }
 
-- (NSString *)ageInBillionsOfYears {
-    return [NSString stringWithFormat:@"%f billions of years old", age];
+- (NSString *)friendlyMass {
+    return [[NSString stringWithFormat:@"%e kilograms", mass] stringByReplacingOccurrencesOfString:@"e+" withString:@" * 10^"];
 }
 
+- (NSString *)ageInBillionsOfYears {
+    return [[NSString stringWithFormat:@"%e billions of years old", age] stringByReplacingOccurrencesOfString:@"e+" withString:@" * 10^"];
+}
+
+- (NSString *)friendlyRadius {
+    return [[NSString stringWithFormat:@"%e meters", radius] stringByReplacingOccurrencesOfString:@"e+" withString:@" * 10^"];
+}
+
+// xxx implement me correctly using radius + distance from body + luminosity + all those things
 - (float) wattsSolarEnergyPerSquareMeter {
     return (float)0;
+}
+
+- (void) describe {
+    NSLog(@"I am just a simple planetoid. I am %@", [self ageInBillionsOfYears]);
+    NSLog(@"My mass is %@, my radius is %@", [self friendlyMass], [self friendlyRadius]);
 }
 
 @end

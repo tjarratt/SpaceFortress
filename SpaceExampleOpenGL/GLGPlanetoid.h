@@ -35,5 +35,8 @@
 
 - (id) initWithStar: (GLGSolarStar *) star;
 - (float) wattsSolarEnergyPerSquareMeter;
+- (NSString *) friendlyMass;
+- (NSString *) ageInBillionsOfYears;
+- (void) describe;
 
 @end

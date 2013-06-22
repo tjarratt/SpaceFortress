@@ -10,8 +10,10 @@
 #import <Foundation/Foundation.h>
 
 #import "GLGView.h"
+#import "GLGSolarSystem.h"
 
 @interface BasicOpenGLController : NSViewController <GLGOpenGLViewDelegate> {
+    GLGSolarSystem *system;
     NSWindow *window;
     GLGView *scene;
 }

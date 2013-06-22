@@ -36,6 +36,9 @@
         glEnable(GL_DEPTH_TEST);
         
         [[window contentView] addSubview:scene];
+        
+        system = [[GLGSolarSystem alloc] init];
+        [system describe_self];
     }
     
     return self;
@@ -61,7 +64,7 @@
 }
 
 - (void) BasicOpenGLView:(NSOpenGLView *)view drawInRect:(NSRect)rect {
-    NSLog(@"draw rect from controller delegate");
+    // NSLog(@"draw rect from controller delegate");
 }
 
 

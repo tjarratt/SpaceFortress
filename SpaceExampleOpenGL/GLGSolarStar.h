@@ -32,5 +32,6 @@ facts:
 - (NSString *) spectralClassification;
 - (CGFloat) luminosity;
 - (CGFloat) escapeVelocity;
+- (void) describe;
 
 @end
