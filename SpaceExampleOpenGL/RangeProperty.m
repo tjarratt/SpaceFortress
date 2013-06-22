@@ -11,7 +11,8 @@
 @implementation RangeProperty
 
 +(CGFloat) randomValueWithMinimum:(CGFloat)min maximum:(CGFloat)max {
-    return (random() / RAND_MAX) * (max - min) + min;
+    CGFloat scale = ((CGFloat) random()) / RAND_MAX;
+    return scale * (max - min) + min;
 }
 
 +(CGFloat) randomValueWithMinimum:(CGFloat)min maximum:(CGFloat)max scaling:(CGFloat) factor {
