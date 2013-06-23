@@ -12,13 +12,13 @@
 @protocol GLGOpenGLViewDelegate;
 
 @interface GLGView : NSOpenGLView {
-    // glVertex3f clearColor;
     id delegate;
 }
 
 - (void) setDelegate: (id) delegate;
 @end
 
+#pragma mark - delegate interface
 @protocol GLGOpenGLViewDelegate <NSObject>
 
 @required

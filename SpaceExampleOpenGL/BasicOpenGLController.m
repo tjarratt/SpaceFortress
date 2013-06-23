@@ -56,11 +56,16 @@
 }
 
 - (void) BasicOpenGLViewDidReshape:(NSOpenGLView *)view {
-    const GLfloat    width = [view bounds].size.width;
-    const GLfloat    height = [view bounds].size.height;
+    const GLfloat width = [view bounds].size.width;
+    const GLfloat height = [view bounds].size.height;
+    
     NSParameterAssert(0 < height);
     
-    glViewport(0, 0, width, height);
+    glMatrixMode (GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(0, width, 0, height, -1, 1);
+    
+    NSLog(@"resized to %f, %f", width, height);
 }
 
 - (void) BasicOpenGLView:(NSOpenGLView *)view drawInRect:(NSRect)rect {
