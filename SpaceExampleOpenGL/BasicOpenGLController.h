@@ -18,6 +18,8 @@
     GLGView *scene;
 }
 
+@property NSUInteger frame_number;
+
 - (id) initWithWindow: (NSWindow *) window;
 
 - (void) update;
