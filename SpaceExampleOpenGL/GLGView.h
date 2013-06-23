@@ -16,6 +16,8 @@
 }
 
 - (void) setDelegate: (id) delegate;
+- (void) drawCircleWithRadius: (CGFloat)radius centerX:(CGFloat)cx centerY:(CGFloat)cy;
+
 @end
 
 #pragma mark - delegate interface

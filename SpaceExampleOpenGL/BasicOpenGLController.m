@@ -43,9 +43,9 @@
         [[window contentView] addSubview:scene];
         
         NSRect sidebar_frame = NSMakeRect(800, 0, 200, 600);
-        NSView *sidebar = [[NSView alloc] initWithFrame:sidebar_frame];
+        sidebar = [[NSView alloc] initWithFrame:sidebar_frame];
 
-        NSTextField *label = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 200, 30)];
+        label = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 200, 30)];
         [label setEditable:NO];
         [label bind:@"value" toObject:self withKeyPath:@"frame_number" options:nil];
 
@@ -59,6 +59,13 @@
     }
     
     return self;
+}
+
+- (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
+    NSLog(@"frame is resizing to %f, %f", frameSize.width, frameSize.height);
+    NSRect new_frame = NSMakeRect(0, 0, frameSize.width - 200, frameSize.height);
+    [scene setFrame:new_frame];
+    return frameSize;
 }
 
 - (void) update {
@@ -85,8 +92,20 @@
     NSLog(@"resized to %f, %f", width, height);
 }
 
-- (void) BasicOpenGLView:(NSOpenGLView *)view drawInRect:(NSRect)rect {
+- (void) BasicOpenGLView:(GLGView *)view drawInRect:(NSRect)rect {
     [self setFrame_number:(frame_number + 1)];
+    
+    glColor3f(1.0f, 0.85f, 0.35f);
+    CGFloat x = view.bounds.size.width / 2;
+    CGFloat y = view.bounds.size.height / 2;
+    [view drawCircleWithRadius: 50 centerX: x centerY: y];
+    
+    glColor3f(0.5f, 0.85f, 0.35f);
+    CGFloat scale = (frame_number) * 2 * M_PI / (float) 100;
+    CGFloat planet_x = x + 300 * cos(scale);
+    CGFloat planet_y = y + 200 * sin(scale);
+    
+    [view drawCircleWithRadius: 25 centerX:planet_x centerY:planet_y];
 }
 
 

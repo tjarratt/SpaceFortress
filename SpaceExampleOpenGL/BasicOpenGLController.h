@@ -12,10 +12,14 @@
 #import "GLGView.h"
 #import "GLGSolarSystem.h"
 
-@interface BasicOpenGLController : NSViewController <GLGOpenGLViewDelegate> {
+@interface BasicOpenGLController : NSViewController <GLGOpenGLViewDelegate, NSWindowDelegate> {
     GLGSolarSystem *system;
     NSWindow *window;
     GLGView *scene;
+    
+    // sidebar
+    NSView *sidebar;
+    NSTextField *label;
 }
 
 @property NSUInteger frame_number;
@@ -24,7 +28,8 @@
 
 - (void) update;
 - (void) prepareOpenGL;
-- (void) BasicOpenGLView:(NSOpenGLView *)view drawInRect:(NSRect)rect;
-- (void) BasicOpenGLViewDidReshape:(NSOpenGLView *)view;
+- (void) BasicOpenGLView:(GLGView *)view drawInRect:(NSRect)rect;
+- (void) BasicOpenGLViewDidReshape:(GLGView *)view;
+- (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize;
 
 @end
