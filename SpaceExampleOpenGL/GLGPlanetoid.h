@@ -33,6 +33,9 @@
     CGFloat average_emissivity;
 }
 
+@property CGFloat apogee_meters;
+@property CGFloat perogee_meters;
+
 - (id) initWithStar: (GLGSolarStar *) star;
 - (float) wattsSolarEnergyPerSquareMeter;
 - (NSString *) friendlyMass;

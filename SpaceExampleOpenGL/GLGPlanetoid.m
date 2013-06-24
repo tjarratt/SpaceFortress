@@ -10,6 +10,8 @@
 
 @implementation GLGPlanetoid
 
+@synthesize perogee_meters, apogee_meters;
+
 const CGFloat maximum_mass_before_nuclear_fusion = 9.9945e28;
 const CGFloat astronomical_unit = 1.49e11; // mean earth-sun distance
 
@@ -43,9 +45,9 @@ const CGFloat astronomical_unit = 1.49e11; // mean earth-sun distance
         CGFloat maximum_distance_from_star = 1.49e13;
         average_distance_from_star = [RangeProperty randomValueWithMinimum:minimum_distance_from_star maximum:maximum_distance_from_star];
         
-        CGFloat perogee_max = average_distance_from_star * 1.5 * (random() / RAND_MAX);
+        CGFloat perogee_max = average_distance_from_star * (random() / RAND_MAX);
         CGFloat apogee_max = average_distance_from_star * 0.9 * (random() / RAND_MAX);
-        CGFloat perogee_min = average_distance_from_star * 1.1 * (random() / RAND_MAX);
+        CGFloat perogee_min = average_distance_from_star * (random() / RAND_MAX);
         CGFloat apogee_min = average_distance_from_star * 0.5 * (random() / RAND_MAX);
         
         perogee_meters = [RangeProperty randomValueWithMinimum:perogee_min maximum:perogee_max];
