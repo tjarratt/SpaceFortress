@@ -36,4 +36,10 @@ facts:
 - (CGFloat) escapeVelocity;
 - (void) describe;
 
+// UI methods
+- (CGFloat) radius_comparison;
+- (CGFloat) mass_comparison;
+- (CGFloat) surface_temperature_comparison;
+- (CGFloat) metallicity_comparison;
+
 @end

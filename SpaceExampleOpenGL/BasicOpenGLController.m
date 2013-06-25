@@ -14,6 +14,9 @@
 
 - (id) initWithWindow: (NSWindow *) theWindow {
     if (self = [super init]) {
+        system = [[GLGSolarSystem alloc] init];
+        [system describe_self];
+
         window = theWindow;
         
         frame_number = 0;
@@ -48,15 +51,56 @@
         label = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 100, 30)];
         [label setEditable:NO];
         [label bind:@"value" toObject:self withKeyPath:@"frame_number" options:nil];
-
         [sidebar addSubview:label];
+        
+        NSTextField *radius_label = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 100, 100, 30)];
+        [radius_label setEditable:NO];
+        [radius_label setStringValue:@"Percentage Solar Radius"];
+        [sidebar addSubview:radius_label];
+        
+        NSTextField *radius_value = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 70, 100, 30)];
+        [radius_value setEditable:NO];
+        NSString *radius_string = [NSString stringWithFormat:@"%f", system.star.radius_comparison];
+        [radius_value setStringValue: radius_string];
+        [sidebar addSubview:radius_value];
+        
+        NSTextField *mass_label = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 200, 100, 30)];
+        [mass_label setEditable:NO];
+        [mass_label setStringValue:@"Percentage Solar Mass"];
+        [sidebar addSubview:mass_label];
+        
+        NSString *mass_string = [NSString stringWithFormat:@"%f", system.star.mass_comparison];
+        NSTextField *mass_value = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 170, 100, 30)];
+        [mass_value setEditable:NO];
+        [mass_value setStringValue:mass_string];
+        [sidebar addSubview:mass_value];
+        
+        NSTextField *surface_temperature_label = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 300, 100, 30)];
+        [surface_temperature_label setEditable:NO];
+        [surface_temperature_label setStringValue:@"Percentage Solar Surface Temperature"];
+        [sidebar addSubview:surface_temperature_label];
+        
+        NSString *surface_temperature_string = [NSString stringWithFormat:@"%f", system.star.surface_temperature_comparison];
+        NSTextField *surface_temperature_value = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 270, 100, 30)];
+        [surface_temperature_value setEditable:NO];
+        [surface_temperature_value setStringValue:surface_temperature_string];
+        [sidebar addSubview:surface_temperature_value];
+        
+        NSTextField *metallicity_label = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 400, 100, 30)];
+        [metallicity_label setEditable:NO];
+        [metallicity_label setStringValue:@"Percentage Solar Metallicity"];
+        [sidebar addSubview:metallicity_label];
+        
+        NSString *metallicity_string = [NSString stringWithFormat:@"%f", system.star.metallicity_comparison];
+        NSTextField *metallicity_value = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 370, 100, 30)];
+        [metallicity_value setEditable:NO];
+        [metallicity_value setStringValue:metallicity_string];
+        [sidebar addSubview:metallicity_value];
+
         [[window contentView] addSubview:sidebar];
         
         [window setMinSize:NSMakeSize(rect_width, rect_height)];
-  
-        system = [[GLGSolarSystem alloc] init];
-        [system describe_self];
-    }
+      }
     
     return self;
 }

@@ -25,6 +25,7 @@ const CGFloat solar_metallicity = 0; // or 1.2% by ratio of H + He to remaining
 
 - (id) init {
     if (self = [super init]) {
+        classification = @"";
         age = [RangeProperty randomValueWithMinimum:1 maximum:11];
         mass = [RangeProperty randomValueWithMinimum:1.76e29 maximum:(264 * solar_mass)];
         radius = [RangeProperty randomValueWithMinimum:(0.13 * solar_radius) maximum:18];
@@ -36,8 +37,6 @@ const CGFloat solar_metallicity = 0; // or 1.2% by ratio of H + He to remaining
         // this value is common represented as log10(Fe / H) for the star - log10(Fe / H) for our sun
         // a range of -2, 2 is fairly common for "habitable star systems"
         metallicity = [RangeProperty randomValueWithMinimum: -2 maximum: 2];
-        
-        classification = @"";
     }
 
     return self;
@@ -153,6 +152,23 @@ const CGFloat solar_metallicity = 0; // or 1.2% by ratio of H + He to remaining
 
 - (void) describe {
     NSLog(@"I am just a simple star");
+}
+
+#pragma mark - percentage comparison to SOL
+- (CGFloat) radius_comparison {
+    return radius * 100 / solar_radius;
+}
+
+- (CGFloat) mass_comparison {
+    return mass * 100 / solar_mass;
+}
+
+- (CGFloat) surface_temperature_comparison {
+    return surface_temperature * 100 / solar_surface_temperature;
+}
+
+- (CGFloat) metallicity_comparison {
+    return metallicity;
 }
 
 @end
