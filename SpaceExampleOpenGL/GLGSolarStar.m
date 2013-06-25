@@ -11,29 +11,24 @@
 @implementation GLGSolarStar
 
 @synthesize age;
+
+// constants
 const CGFloat chandrasekhar_limit = 2.864e30;
 
-- (id) init {
-    // values for SOL in comments
-    if (self = [super init]) {
-        // age : 4.57 billion years (averages between 1 and 10 billion years)
-        age = [RangeProperty randomValueWithMinimum:0 maximum:12];
+// constants for SOL
+const CGFloat solar_age = 4.57e9;
+const CGFloat solar_mass = 1.989e30;
+const CGFloat solar_radius = 6.96e5;
+const CGFloat solar_surface_temperature = 5887;
+const CGFloat solar_rotation_rate = 2592000; // 25-30 earth days
+const CGFloat solar_metallicity = 0; // or 1.2% by ratio of H + He to remaining
 
-        // (max: 265 * sol, min: 1.76 * 10^29)
-        CGFloat solar_mass = 1.989e30;
-        CGFloat minimum_mass = 0;
-        mass = [RangeProperty randomValueWithMinimum:minimum_mass maximum:(264 * solar_mass)];
-        
-        // radius: 6.96×10^5 km
-        CGFloat solar_radius = 6.96e8;
+- (id) init {
+    if (self = [super init]) {
+        age = [RangeProperty randomValueWithMinimum:1 maximum:11];
+        mass = [RangeProperty randomValueWithMinimum:1.76e29 maximum:(264 * solar_mass)];
         radius = [RangeProperty randomValueWithMinimum:(0.13 * solar_radius) maximum:18];
-        
-        // surface_temperature: 5778k
-        CGFloat solar_photosphere_temp = 5887;
-        surface_temperature = [RangeProperty randomValueWithMinimum:1000 maximum:(13 * solar_photosphere_temp)];
-        
-        // sun rotates every 25-30 days or ~2592000 seconds
-        CGFloat solar_rotation_rate = 2592000;
+        surface_temperature = [RangeProperty randomValueWithMinimum:1000 maximum:(13 * solar_surface_temperature)];
         rotation_rate_in_seconds = [RangeProperty randomValueWithMinimum:1e-5 maximum:(150 * solar_rotation_rate)];
         
         // metallicity: 0.0122 ( or 1.2 %)
