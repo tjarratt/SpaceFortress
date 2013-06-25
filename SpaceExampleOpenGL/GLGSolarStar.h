@@ -23,6 +23,8 @@ facts:
     // percentage of its mass not derived from hydrogen, helium
     // http://en.wikipedia.org/wiki/Metallicity
     CGFloat metallicity;
+    
+    NSString *classification;
 }
 
 @property CGFloat age;

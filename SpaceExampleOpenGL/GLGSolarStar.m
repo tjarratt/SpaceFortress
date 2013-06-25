@@ -36,6 +36,8 @@ const CGFloat solar_metallicity = 0; // or 1.2% by ratio of H + He to remaining
         // this value is common represented as log10(Fe / H) for the star - log10(Fe / H) for our sun
         // a range of -2, 2 is fairly common for "habitable star systems"
         metallicity = [RangeProperty randomValueWithMinimum: -2 maximum: 2];
+        
+        classification = @"";
     }
 
     return self;
@@ -46,6 +48,10 @@ const CGFloat solar_metallicity = 0; // or 1.2% by ratio of H + He to remaining
 }
 
 - (NSString *) spectralClassification {
+    if ([classification length] > 0) {
+        return classification;
+    }
+    
     int range_between;
     NSString *primary_class, *spectrum_range, *luminosity_class;
     
@@ -129,7 +135,8 @@ const CGFloat solar_metallicity = 0; // or 1.2% by ratio of H + He to remaining
     }
     
     spectrum_range = [NSString stringWithFormat:@"%d", range_between];
-    return [NSString stringWithFormat:@"%@%@%@", primary_class, spectrum_range, luminosity_class];
+    classification = [NSString stringWithFormat:@"%@%@%@", primary_class, spectrum_range, luminosity_class];
+    return classification;
 }
 
 // units are in Watts (Joules / second)
