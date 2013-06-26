@@ -8,6 +8,7 @@
 
 #import <OpenGL/gl.h>
 #import <Cocoa/Cocoa.h>
+#import "GLGPlanetoid.h"
 
 @protocol GLGOpenGLViewDelegate;
 
@@ -17,6 +18,7 @@
 
 - (void) setDelegate: (id) delegate;
 - (void) drawCircleWithRadius: (CGFloat)radius centerX:(CGFloat)cx centerY:(CGFloat)cy;
+- (void) drawOrbitForPlanet:(GLGPlanetoid *) planet atPointX:(CGFloat) px pointY:(CGFloat) py;
 
 @end
 

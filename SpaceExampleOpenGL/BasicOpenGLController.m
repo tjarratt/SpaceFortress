@@ -11,12 +11,13 @@
 @implementation BasicOpenGLController
 
 @synthesize frame_number, framerate;
+@synthesize paused;
 
 - (id) initWithWindow: (NSWindow *) theWindow {
     if (self = [super init]) {
         system = [[GLGSolarSystem alloc] init];
         [system describe_self];
-
+        
         window = theWindow;
         frame_number = 0;
         framerate = 0.0f;
@@ -35,6 +36,7 @@
         scene = [[GLGView alloc] initWithFrame: view_rect];
         [scene setWantsBestResolutionOpenGLSurface:YES];
         [scene setDelegate: self];
+        [window makeFirstResponder:scene];
 
         [[scene openGLContext] makeCurrentContext];
         GLint swapInt = 1;
@@ -111,7 +113,9 @@
 // for the purposes of FUN, we'll need to scale up planet's size?
 // suggest we scale up planets to 5-25 pixels
 - (void) BasicOpenGLView:(GLGView *)view drawInRect:(NSRect)rect {
-    [self setFrame_number:(frame_number + 1)];
+    if (![self paused]) {
+        [self setFrame_number:(frame_number + 1)];
+    }
     
     CGFloat __block x, y, px, py;
     CGFloat __block meters_to_pixels_scale = 3.543e-9 / 100;
@@ -130,10 +134,22 @@
         px = x + planet.apogee_meters * meters_to_pixels_scale * cos(scale * 4.2 * planet.rotation_angle_around_star);
         py = y + planet.perogee_meters * meters_to_pixels_scale * sin(scale * 4.2 * planet.rotation_angle_around_star);
         [view drawCircleWithRadius:radius centerX:px centerY:py];
+        [view drawOrbitForPlanet:planet atPointX:px pointY:py];
     }];
     
     return;
 }
 
+- (void) keyWasPressed:(NSEvent *)event {
+    switch ([event keyCode]) {
+        case 49:
+            [self pause];
+            break;
+    }
+}
+
+- (void) pause {
+    [self setPaused:![self paused]];
+}
 
 @end

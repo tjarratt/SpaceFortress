@@ -29,6 +29,7 @@
 
 @property CGFloat framerate;
 @property NSUInteger frame_number;
+@property BOOL paused;
 
 - (id) initWithWindow: (NSWindow *) window;
 

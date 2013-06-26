@@ -14,6 +14,10 @@
     delegate = _delegate;
 }
 
+- (void) keyDown:(NSEvent *)theEvent {
+    [delegate keyWasPressed:theEvent];
+}
+
 - (void) update {
     
 }
@@ -51,6 +55,11 @@
     
     glEnd();
     
+}
+
+- (void) drawOrbitForPlanet:(GLGPlanetoid *)planet atPointX:(CGFloat) px pointY:(CGFloat) py {
+    // basically, walk the entire orbit from -2pi to 2pi and draw a line
+    // figure out how to dash this later, probably with modulo 10 ? <5 ?? >5 
 }
 
 @end
