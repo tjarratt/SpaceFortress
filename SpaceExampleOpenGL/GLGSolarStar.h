@@ -20,7 +20,7 @@ facts:
     NSUInteger rotation_rate_in_seconds;
     NSString *name;
     
-    // percentage of its mass not derived from hydrogen, helium
+    // percentage of its mass not derived from H, HE
     // http://en.wikipedia.org/wiki/Metallicity
     CGFloat metallicity;
     
