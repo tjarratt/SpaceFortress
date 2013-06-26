@@ -119,7 +119,8 @@
     CGFloat x, y, px, py;
     
     // draw the sun first
-    glColor3f(1.0f, 0.85f, 0.35f);
+    NSColor *solar_color = [[system star] color];
+    glColor3f(solar_color.redComponent, solar_color.greenComponent, solar_color.blueComponent);
     x = view.bounds.size.width / 2;
     y = view.bounds.size.height / 2;
     [view drawCircleWithRadius:30 centerX:x centerY:y];

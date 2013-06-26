@@ -28,6 +28,7 @@ facts:
 }
 
 @property CGFloat age;
+@property (retain) NSColor *color;
 
 // classification (O B A B G K M)
 // http://en.wikipedia.org/wiki/Spectral_classification
