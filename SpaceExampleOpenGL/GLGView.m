@@ -15,7 +15,9 @@
 }
 
 - (void) keyDown:(NSEvent *)theEvent {
-    [delegate keyWasPressed:theEvent];
+    if (delegate && [delegate respondsToSelector:@selector(keyWasPressed)]) {
+        [delegate keyWasPressed:theEvent];
+    }
 }
 
 - (void) update {

@@ -29,8 +29,8 @@
 - (void)prepareOpenGL;
 
 @optional
-- (void)GLGOpenGLView:(NSOpenGLView *)view drawInRect:(NSRect)rect;
-- (void)GLGOpenGLViewDidReshape:(NSOpenGLView *)view;
-
+- (void)GLGOpenGLView:(NSOpenGLView *) view drawInRect:(NSRect) rect;
+- (void)GLGOpenGLViewDidReshape:(NSOpenGLView *) view;
+- (void)keyWasPressed:(NSEvent *) event;
 
 @end
