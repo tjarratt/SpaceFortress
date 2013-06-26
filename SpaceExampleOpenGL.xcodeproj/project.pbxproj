@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F70C6BFC1773A67800AFBFDE /* RangeProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = F70C6BFB1773A67800AFBFDE /* RangeProperty.m */; };
+		F70C6BFE177A632800AFBFDE /* greek_alphabet.txt in Resources */ = {isa = PBXBuildFile; fileRef = F70C6BFD177A632800AFBFDE /* greek_alphabet.txt */; };
+		F70C6C00177A65AB00AFBFDE /* latin.txt in Resources */ = {isa = PBXBuildFile; fileRef = F70C6BFF177A65AB00AFBFDE /* latin.txt */; };
 		F77DA128176A8E8300518BC3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA127176A8E8300518BC3 /* Cocoa.framework */; };
 		F77DA132176A8E8300518BC3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F77DA130176A8E8300518BC3 /* InfoPlist.strings */; };
 		F77DA134176A8E8300518BC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA133176A8E8300518BC3 /* main.m */; };
@@ -43,6 +45,8 @@
 /* Begin PBXFileReference section */
 		F70C6BFA1773A67800AFBFDE /* RangeProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangeProperty.h; sourceTree = "<group>"; };
 		F70C6BFB1773A67800AFBFDE /* RangeProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RangeProperty.m; sourceTree = "<group>"; };
+		F70C6BFD177A632800AFBFDE /* greek_alphabet.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = greek_alphabet.txt; sourceTree = "<group>"; };
+		F70C6BFF177A65AB00AFBFDE /* latin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = latin.txt; sourceTree = "<group>"; };
 		F77DA124176A8E8300518BC3 /* SpaceExampleOpenGL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceExampleOpenGL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F77DA127176A8E8300518BC3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F77DA12A176A8E8300518BC3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -179,6 +183,8 @@
 				F77DA136176A8E8300518BC3 /* Credits.rtf */,
 				F77DA13C176A8E8400518BC3 /* MainMenu.xib */,
 				F77DA13F176A8E8400518BC3 /* SpaceExampleOpenGL.xcdatamodeld */,
+				F70C6BFD177A632800AFBFDE /* greek_alphabet.txt */,
+				F70C6BFF177A65AB00AFBFDE /* latin.txt */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -289,6 +295,8 @@
 				F77DA132176A8E8300518BC3 /* InfoPlist.strings in Resources */,
 				F77DA138176A8E8300518BC3 /* Credits.rtf in Resources */,
 				F77DA13E176A8E8400518BC3 /* MainMenu.xib in Resources */,
+				F70C6BFE177A632800AFBFDE /* greek_alphabet.txt in Resources */,
+				F70C6C00177A65AB00AFBFDE /* latin.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
