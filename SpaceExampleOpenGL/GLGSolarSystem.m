@@ -16,7 +16,7 @@
 - (id) init {
     if (self = [super init]) {
         int i;
-        int num_planetoids = arc4random() % 7 + 1;
+        int num_planetoids = arc4random() % 4 + 1;
         planetoids = [[NSMutableArray alloc] initWithCapacity:num_planetoids];
         
         star = [[GLGSolarStar alloc] init];
