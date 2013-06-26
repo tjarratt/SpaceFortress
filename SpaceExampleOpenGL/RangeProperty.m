@@ -13,7 +13,7 @@
 @implementation RangeProperty
 
 +(CGFloat) randomValueWithMinimum:(CGFloat)min maximum:(CGFloat)max {
-    CGFloat scale = floorf(((double) arc4random() / ARC4RANDOM_MAX) * 100.0f);
+    CGFloat scale = (double) arc4random() / ARC4RANDOM_MAX;
     return scale * (max - min) + min;
 }
 
