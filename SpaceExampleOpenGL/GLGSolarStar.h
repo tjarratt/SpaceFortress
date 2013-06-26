@@ -14,7 +14,6 @@ facts:
 */
 
 @interface GLGSolarStar : NSObject {
-    CGFloat radius;
     CGFloat mass;
     CGFloat surface_temperature;
     NSUInteger rotation_rate_in_seconds;
@@ -28,6 +27,7 @@ facts:
 }
 
 @property CGFloat age;
+@property CGFloat radius;
 @property (retain) NSColor *color;
 
 // classification (O B A B G K M)

@@ -10,7 +10,7 @@
 
 @implementation GLGSolarStar
 
-@synthesize age, color;
+@synthesize age, color, radius;
 
 // constants
 const CGFloat chandrasekhar_limit = 2.864e30;
@@ -28,7 +28,7 @@ const CGFloat solar_metallicity = 0; // or 1.2% by ratio of H + He to remaining
         classification = @"";
         age = [RangeProperty randomValueWithMinimum:1 maximum:11];
         mass = [RangeProperty randomValueWithMinimum:1.76e29 maximum:(264 * solar_mass)];
-        radius = [RangeProperty randomValueWithMinimum:(0.13 * solar_radius) maximum:18];
+        radius = [RangeProperty randomValueWithMinimum:(0.13 * solar_radius) maximum:18 * solar_radius];
         surface_temperature = [RangeProperty randomValueWithMinimum:1000 maximum:(50000)];
         rotation_rate_in_seconds = [RangeProperty randomValueWithMinimum:1e-5 maximum:(150 * solar_rotation_rate)];
         
@@ -169,6 +169,10 @@ const CGFloat solar_metallicity = 0; // or 1.2% by ratio of H + He to remaining
     NSLog(@"My solar mass is %f", mass);
     NSLog(@"My age is %@", [self ageInYears]);
     NSLog(@"My solar radius is %f", radius);
+}
+
+- (NSString *) radius_as_meters {
+    return [NSString stringWithFormat:@"%f meters", radius];
 }
 
 #pragma mark - percentage comparison to SOL

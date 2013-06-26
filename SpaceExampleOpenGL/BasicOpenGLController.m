@@ -121,11 +121,13 @@
     CGFloat __block meters_to_pixels_scale = 3.543e-9 / 100;
     CGFloat __block scale = frame_number * 2 * M_PI / (float) 600;
     
-    NSColor *solar_color = [[system star] color];
+    GLGSolarStar *star = [system star];
+    NSColor *solar_color = [star color];
     glColor3f(solar_color.redComponent, solar_color.greenComponent, solar_color.blueComponent);
     x = view.bounds.size.width / 2;
     y = view.bounds.size.height / 2;
-    [view drawCircleWithRadius:30 centerX:x centerY:y];
+    CGFloat solar_radius = MAX(5, [star radius] / 278400.0f);
+    [view drawCircleWithRadius:solar_radius centerX:x centerY:y];
     
     [[system planetoids] enumerateObjectsUsingBlock:^(GLGPlanetoid *planet, NSUInteger index, BOOL *stop) {
         glColor3f(0.85f, 0.35f, 0.35f);
