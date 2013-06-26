@@ -34,6 +34,7 @@
         [radius_label setSelectable:NO];
         [radius_label setBackgroundColor:[NSColor clearColor]];
         [self addSubview:radius_label];
+        [radius_label release];
         
         NSTextField *radius_value = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 75, 100, 30)];
         [radius_value setEditable:NO];
