@@ -11,17 +11,21 @@
 
 #import "GLGView.h"
 #import "GLGSolarSystem.h"
+#import "RangeProperty.h"
 
 @interface BasicOpenGLController : NSViewController <GLGOpenGLViewDelegate, NSWindowDelegate> {
     GLGSolarSystem *system;
     NSWindow *window;
     GLGView *scene;
     
-    // sidebar
     NSView *sidebar;
-    NSTextField *label;
+    
+    // framerate helpers
+    NSUInteger last_frame;
+    double last_timestamp;
 }
 
+@property CGFloat framerate;
 @property NSUInteger frame_number;
 
 - (id) initWithWindow: (NSWindow *) window;

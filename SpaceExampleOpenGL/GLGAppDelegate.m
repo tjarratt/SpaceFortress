@@ -27,12 +27,19 @@
 {
     controller = [[BasicOpenGLController alloc] initWithWindow: [self window]];
     
-    NSTimer *timer = [NSTimer timerWithTimeInterval: (1.0 / 30.0)
+    NSTimer *main_timer = [NSTimer timerWithTimeInterval: (1.0 / 30.0)
                                              target: controller
-                                           selector: @selector(update)
-                                           userInfo: nil
-                                            repeats: YES];
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+                                             selector: @selector(update)
+                                             userInfo: nil
+                                             repeats: YES];
+    NSTimer *framerate_timer = [NSTimer timerWithTimeInterval: (0.5)
+                                             target: controller
+                                             selector: @selector(update_framerate)
+                                             userInfo:nil
+                                             repeats:YES];
+    
+    [[NSRunLoop mainRunLoop] addTimer:main_timer forMode:NSRunLoopCommonModes];
+    [[NSRunLoop mainRunLoop] addTimer:framerate_timer forMode:NSRunLoopCommonModes];
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {

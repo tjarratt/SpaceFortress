@@ -10,7 +10,7 @@
 
 @implementation BasicOpenGLController
 
-@synthesize frame_number;
+@synthesize frame_number, framerate;
 
 - (id) initWithWindow: (NSWindow *) theWindow {
     if (self = [super init]) {
@@ -18,8 +18,8 @@
         [system describe_self];
 
         window = theWindow;
-        
         frame_number = 0;
+        framerate = 0.0f;
         
         int width = [[NSScreen mainScreen] frame].size.width;
         int height = [[NSScreen mainScreen] frame].size.height;
@@ -100,6 +100,10 @@
         [[window contentView] addSubview:sidebar];
         
         [window setMinSize:NSMakeSize(rect_width, rect_height)];
+        
+        // leave this till the very end so we don't skew our initial framerate
+        // nothing is animated until we end this init and return to the runloop
+        last_timestamp = CFAbsoluteTimeGetCurrent();
       }
     
     return self;
@@ -110,6 +114,20 @@
     NSRect new_frame = NSMakeRect(0, 0, frameSize.width - 200, frameSize.height);
     [scene setFrame:new_frame];
     return frameSize;
+}
+
+- (void) update_framerate {
+    if (frame_number == last_frame) {
+        return;
+    }
+    
+    double current_time = CFAbsoluteTimeGetCurrent();
+    double diff = current_time - last_timestamp;
+    double rate = (frame_number - last_frame) / diff;
+    [self setFramerate: round(rate * 100) / 100.0f];
+    
+    last_frame = frame_number;
+    last_timestamp = current_time;
 }
 
 - (void) update {
