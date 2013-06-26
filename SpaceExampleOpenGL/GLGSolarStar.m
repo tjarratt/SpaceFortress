@@ -152,6 +152,9 @@ const CGFloat solar_metallicity = 0; // or 1.2% by ratio of H + He to remaining
 
 - (void) describe {
     NSLog(@"I am just a simple star");
+    NSLog(@"My solar mass is %f", mass);
+    NSLog(@"My age is %@", [self ageInYears]);
+    NSLog(@"My solar radius is %f", radius);
 }
 
 #pragma mark - percentage comparison to SOL
