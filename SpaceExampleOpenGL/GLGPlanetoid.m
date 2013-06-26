@@ -39,7 +39,7 @@ const CGFloat astronomical_unit = 1.49e11; // mean earth-sun distance
         rotation_around_solar_body_seconds = [RangeProperty randomValueWithMinimum:min_body_rotation maximum:max_body_rotation];
 
         // completely random for now -> but this should be ~ delta a standard value for the system, right?
-        rotation_angle_around_star = [RangeProperty randomValueWithMinimum:0 maximum:(2 * M_PI)];
+        rotation_angle_around_star = [RangeProperty randomValueWithMinimum:-1 * M_PI_4 maximum:(M_PI_4)];
         
         CGFloat minimum_distance_from_star = 4.619e10;
         CGFloat maximum_distance_from_star = 1.49e13;
