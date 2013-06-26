@@ -10,8 +10,10 @@
 #import <Foundation/Foundation.h>
 
 #import "GLGView.h"
-#import "GLGSolarSystem.h"
+#import "GLGSidebarView.h"
+
 #import "RangeProperty.h"
+#import "GLGSolarSystem.h"
 
 @interface BasicOpenGLController : NSViewController <GLGOpenGLViewDelegate, NSWindowDelegate> {
     GLGSolarSystem *system;

@@ -10,6 +10,7 @@
 		F70C6BFC1773A67800AFBFDE /* RangeProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = F70C6BFB1773A67800AFBFDE /* RangeProperty.m */; };
 		F70C6BFE177A632800AFBFDE /* greek_alphabet.txt in Resources */ = {isa = PBXBuildFile; fileRef = F70C6BFD177A632800AFBFDE /* greek_alphabet.txt */; };
 		F70C6C00177A65AB00AFBFDE /* latin.txt in Resources */ = {isa = PBXBuildFile; fileRef = F70C6BFF177A65AB00AFBFDE /* latin.txt */; };
+		F70C6C06177A89F800AFBFDE /* GLGSidebarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F70C6C05177A89F800AFBFDE /* GLGSidebarView.m */; };
 		F77DA128176A8E8300518BC3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA127176A8E8300518BC3 /* Cocoa.framework */; };
 		F77DA132176A8E8300518BC3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F77DA130176A8E8300518BC3 /* InfoPlist.strings */; };
 		F77DA134176A8E8300518BC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA133176A8E8300518BC3 /* main.m */; };
@@ -47,6 +48,8 @@
 		F70C6BFB1773A67800AFBFDE /* RangeProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RangeProperty.m; sourceTree = "<group>"; };
 		F70C6BFD177A632800AFBFDE /* greek_alphabet.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = greek_alphabet.txt; sourceTree = "<group>"; };
 		F70C6BFF177A65AB00AFBFDE /* latin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = latin.txt; sourceTree = "<group>"; };
+		F70C6C04177A89F800AFBFDE /* GLGSidebarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGSidebarView.h; sourceTree = "<group>"; };
+		F70C6C05177A89F800AFBFDE /* GLGSidebarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGSidebarView.m; sourceTree = "<group>"; };
 		F77DA124176A8E8300518BC3 /* SpaceExampleOpenGL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceExampleOpenGL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F77DA127176A8E8300518BC3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F77DA12A176A8E8300518BC3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -168,6 +171,8 @@
 				F77DA168176FD3B300518BC3 /* BasicOpenGLController.m */,
 				F77DA1C817711AF700518BC3 /* GLGView.h */,
 				F77DA1C917711AF700518BC3 /* GLGView.m */,
+				F70C6C04177A89F800AFBFDE /* GLGSidebarView.h */,
+				F70C6C05177A89F800AFBFDE /* GLGSidebarView.m */,
 				F77DA12E176A8E8300518BC3 /* Supporting Files */,
 			);
 			path = SpaceExampleOpenGL;
@@ -340,6 +345,7 @@
 				F77DA1D1177132E600518BC3 /* GLGSolarSystem.m in Sources */,
 				F77DA1D41771330C00518BC3 /* GLGPlanetoid.m in Sources */,
 				F70C6BFC1773A67800AFBFDE /* RangeProperty.m in Sources */,
+				F70C6C06177A89F800AFBFDE /* GLGSidebarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
