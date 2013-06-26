@@ -8,10 +8,12 @@
 
 #import "RangeProperty.h"
 
+#define ARC4RANDOM_MAX      0x100000000
+
 @implementation RangeProperty
 
 +(CGFloat) randomValueWithMinimum:(CGFloat)min maximum:(CGFloat)max {
-    CGFloat scale = ((CGFloat) random()) / RAND_MAX;
+    CGFloat scale = floorf(((double) arc4random() / ARC4RANDOM_MAX) * 100.0f);
     return scale * (max - min) + min;
 }
 
