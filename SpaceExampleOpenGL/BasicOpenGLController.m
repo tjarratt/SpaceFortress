@@ -151,6 +151,13 @@
 - (void) reset_system {
     [system release];
     system = [[GLGSolarSystem alloc] init];
+
+    [sidebar removeFromSuperview];
+    [sidebar release];
+    
+    NSRect sidebar_frame = NSMakeRect(1280, 0, 100, 800);
+    sidebar = [[GLGSidebarView alloc] initWithFrame:sidebar_frame system:system andDelegate:self];
+    [[window contentView] addSubview: sidebar];
 }
 
 - (void) pause {
