@@ -23,12 +23,12 @@
     NSView *sidebar;
     
     // framerate helpers
-    NSUInteger last_frame;
-    double last_timestamp;
+    NSUInteger lastFrame;
+    double lastTimestamp;
 }
 
 @property CGFloat framerate;
-@property NSUInteger frame_number;
+@property NSUInteger frameNumber;
 @property BOOL paused;
 
 - (id) initWithWindow: (NSWindow *) window;

@@ -15,8 +15,8 @@ facts:
 
 @interface GLGSolarStar : NSObject {
     CGFloat mass;
-    CGFloat surface_temperature;
-    NSUInteger rotation_rate_in_seconds;
+    CGFloat surfaceTemperature;
+    NSUInteger rotationRateSeconds;
     NSString *name;
     
     // percentage of its mass not derived from H, HE
@@ -29,6 +29,8 @@ facts:
 @property CGFloat age;
 @property CGFloat radius;
 @property (retain) NSColor *color;
+@property CGFloat habitableZoneInnerRadius;
+@property CGFloat habitableZoneOuterRadius;
 
 // classification (O B A B G K M)
 // http://en.wikipedia.org/wiki/Spectral_classification
@@ -38,9 +40,9 @@ facts:
 - (void) describe;
 
 // UI methods
-- (CGFloat) radius_comparison;
-- (CGFloat) mass_comparison;
-- (CGFloat) surface_temperature_comparison;
-- (CGFloat) metallicity_comparison;
+- (CGFloat) radiusComparison;
+- (CGFloat) massComparison;
+- (CGFloat) surfaceTemperatureComparison;
+- (CGFloat) metallicityComparison;
 
 @end

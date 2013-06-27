@@ -43,7 +43,7 @@
         }
     }
     
-    [self describe_self];
+    [self describeSelf];
     
     return self;
 }
@@ -55,7 +55,7 @@
 }
 
 #pragma mark - UI description
-- (void) describe_self {
+- (void) describeSelf {
     NSLog(@"%@", [NSString stringWithFormat: @"a description of a solar system with %lu planets", [planetoids count]]);
     [star describe];
     [planetoids enumerateObjectsUsingBlock:^(GLGPlanetoid *p, NSUInteger index, BOOL *stop) {

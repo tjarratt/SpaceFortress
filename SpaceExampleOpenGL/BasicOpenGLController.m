@@ -10,7 +10,7 @@
 
 @implementation BasicOpenGLController
 
-@synthesize frame_number, framerate;
+@synthesize frameNumber, framerate;
 @synthesize paused;
 
 - (id) initWithWindow: (NSWindow *) theWindow {
@@ -19,21 +19,21 @@
         
         window = theWindow;
         
-        frame_number = 0;
+        frameNumber = 0;
         framerate = 0.0f;
         
         int width = [[NSScreen mainScreen] frame].size.width;
         int height = [[NSScreen mainScreen] frame].size.height;
-        int rect_width = 1280;
-        int rect_height = 800;
+        int rectWidth = 1280;
+        int rectHeight = 800;
         
-        NSRect window_rect = NSMakeRect(0, 0, rect_width + 100, rect_height);
-        NSRect view_rect = NSMakeRect(0, 0, rect_width, rect_height);
-        NSPoint point = NSMakePoint((width - rect_width - 100) / 2, (height - rect_height) / 2);
-        [window setFrame:window_rect display:YES];
+        NSRect windowRect = NSMakeRect(0, 0, rectWidth + 100, rectHeight);
+        NSRect viewRect = NSMakeRect(0, 0, rectWidth, rectHeight);
+        NSPoint point = NSMakePoint((width - rectWidth - 100) / 2, (height - rectHeight) / 2);
+        [window setFrame:windowRect display:YES];
         [window setFrameOrigin:point];
         
-        scene = [[GLGView alloc] initWithFrame: view_rect];
+        scene = [[GLGView alloc] initWithFrame: viewRect];
         [scene setWantsBestResolutionOpenGLSurface:YES];
         [scene setDelegate: self];
         [window makeFirstResponder:scene];
@@ -45,16 +45,16 @@
         glEnable(GL_CULL_FACE);
         glEnable(GL_DEPTH_TEST);
         
-        NSRect sidebar_frame = NSMakeRect(1280, 0, 100, 800);
-        sidebar = [[GLGSidebarView alloc] initWithFrame:sidebar_frame system:system andDelegate:self];
+        NSRect sidebarFrame = NSMakeRect(1280, 0, 100, 800);
+        sidebar = [[GLGSidebarView alloc] initWithFrame:sidebarFrame system:system andDelegate:self];
 
         [[window contentView] addSubview:scene];
         [[window contentView] addSubview:sidebar];
-        [window setMinSize:NSMakeSize(rect_width, rect_height)];
+        [window setMinSize:NSMakeSize(rectWidth, rectHeight)];
         
         // leave this till the very end so we don't skew our initial framerate
         // nothing is animated until we end this init and return to the runloop
-        last_timestamp = CFAbsoluteTimeGetCurrent();
+        lastTimestamp = CFAbsoluteTimeGetCurrent();
       }
     
     return self;
@@ -62,23 +62,23 @@
 
 - (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
     NSLog(@"frame is resizing to %f, %f", frameSize.width, frameSize.height);
-    NSRect new_frame = NSMakeRect(0, 0, frameSize.width - 200, frameSize.height);
-    [scene setFrame:new_frame];
+    NSRect newFrame = NSMakeRect(0, 0, frameSize.width - 200, frameSize.height);
+    [scene setFrame:newFrame];
     return frameSize;
 }
 
-- (void) update_framerate {
-    if (frame_number == last_frame) {
+- (void) updateFramerate {
+    if (frameNumber == lastFrame) {
         return;
     }
     
-    double current_time = CFAbsoluteTimeGetCurrent();
-    double diff = current_time - last_timestamp;
-    double rate = (frame_number - last_frame) / diff;
+    double currentTime = CFAbsoluteTimeGetCurrent();
+    double diff = currentTime - lastTimestamp;
+    double rate = (frameNumber - lastFrame) / diff;
     [self setFramerate: round(rate * 100) / 100.0f];
     
-    last_frame = frame_number;
-    last_timestamp = current_time;
+    lastFrame = frameNumber;
+    lastTimestamp = currentTime;
 }
 
 - (void) update {
@@ -114,33 +114,33 @@
 // suggest we scale up planets to 5-25 pixels
 - (void) BasicOpenGLView:(GLGView *)view drawInRect:(NSRect)rect {
     if (![self paused]) {
-        [self setFrame_number:(frame_number + 1)];
+        [self setFrameNumber:(frameNumber + 1)];
     }
     
     CGFloat __block x, y, px, py, pxp, pyp;
-    CGFloat __block meters_to_pixels_scale = 3.543e-11;
-    CGFloat __block scale = frame_number * 2 * M_PI / (float) 200;
+    CGFloat __block metersToPixelsScale = 3.543e-11;
+    CGFloat __block scale = frameNumber * 2 * M_PI / (float) 200;
     
     GLGSolarStar *star = [system star];
-    NSColor *solar_color = [star color];
-    glColor3f(solar_color.redComponent, solar_color.greenComponent, solar_color.blueComponent);
+    NSColor *solarColor = [star color];
+    glColor3f(solarColor.redComponent, solarColor.greenComponent, solarColor.blueComponent);
     x = view.bounds.size.width / 2;
     y = view.bounds.size.height / 2;
-    CGFloat solar_radius = MAX(5, [star radius] / 278400.0f);
-    [view drawCircleWithRadius:solar_radius centerX:x centerY:y];
+    CGFloat solarRadius = MAX(5, [star radius] / 278400.0f);
+    [view drawCircleWithRadius:solarRadius centerX:x centerY:y];
     
     [[system planetoids] enumerateObjectsUsingBlock:^(GLGPlanetoid *planet, NSUInteger index, BOOL *stop) {
         glColor3f(planet.color.redComponent, planet.color.greenComponent, planet.color.blueComponent);
-        CGFloat radius = MAX([planet radius] * meters_to_pixels_scale, 5);
+        CGFloat radius = MAX([planet radius] * metersToPixelsScale, 5);
 
-        px = x + planet.apogee_meters * meters_to_pixels_scale * cos(scale);
-        py = y + planet.perogee_meters * meters_to_pixels_scale * sin(scale);
+        px = x + planet.apogeeMeters * metersToPixelsScale * cos(scale);
+        py = y + planet.perogeeMeters * metersToPixelsScale * sin(scale);
         
-        pxp = px * cos(planet.rotation_angle_around_star) - py * sin(planet.rotation_angle_around_star);
-        pyp = px * sin(planet.rotation_angle_around_star) + py * cos(planet.rotation_angle_around_star);
+        pxp = px * cos(planet.rotationAngleAroundStar) - py * sin(planet.rotationAngleAroundStar);
+        pyp = px * sin(planet.rotationAngleAroundStar) + py * cos(planet.rotationAngleAroundStar);
 
-        CGFloat translated_x = x * cos(planet.rotation_angle_around_star) - y * sin(planet.rotation_angle_around_star);
-        CGFloat translated_y = x * sin(planet.rotation_angle_around_star) + y * cos(planet.rotation_angle_around_star);
+        CGFloat translated_x = x * cos(planet.rotationAngleAroundStar) - y * sin(planet.rotationAngleAroundStar);
+        CGFloat translated_y = x * sin(planet.rotationAngleAroundStar) + y * cos(planet.rotationAngleAroundStar);
         pxp -= (translated_x - x);
         pyp -= (translated_y - y) ;
         
@@ -157,15 +157,15 @@
     }
 }
 
-- (void) reset_system {
+- (void) resetSystem {
     [system release];
     system = [[GLGSolarSystem alloc] init];
 
     [sidebar removeFromSuperview];
     [sidebar release];
     
-    NSRect sidebar_frame = NSMakeRect(1280, 0, 100, 800);
-    sidebar = [[GLGSidebarView alloc] initWithFrame:sidebar_frame system:system andDelegate:self];
+    NSRect sidebarFrame = NSMakeRect(1280, 0, 100, 800);
+    sidebar = [[GLGSidebarView alloc] initWithFrame:sidebarFrame system:system andDelegate:self];
     [[window contentView] addSubview: sidebar];
 }
 

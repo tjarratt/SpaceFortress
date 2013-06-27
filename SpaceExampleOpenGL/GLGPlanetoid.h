@@ -14,22 +14,20 @@
     CGFloat age;
     CGFloat mass;
     CGFloat radius;
-    CGFloat surface_temperature;
+    CGFloat surfaceTemperature;
     
-    NSInteger rotation_around_axis_seconds;
-    NSInteger rotation_around_solar_body_seconds;
+    NSInteger rotationAroundAxisSeconds;
+    NSInteger rotationAroundSolarBodySeconds;
 
-    BOOL has_water;
-    BOOL has_atmosphere;
-    BOOL has_magnetic_field;
+    BOOL hasWater;
+    BOOL hasAtmosphere;
+    BOOL hasMagneticField;
  
-    CGFloat average_distance_from_star;
-    CGFloat perogee_meters;
-    CGFloat apogee_meters;
+    CGFloat averageDistanceFromStar;
     
     CGFloat metallicity;
-    CGFloat average_albedo;
-    CGFloat average_emissivity;
+    CGFloat averageAlbedo;
+    CGFloat averageEmissivity;
 }
 
 @property CGFloat age;
@@ -38,10 +36,10 @@
 
 @property (retain) NSColor *color;
 
-@property CGFloat apogee_meters;
-@property CGFloat perogee_meters;
+@property CGFloat apogeeMeters;
+@property CGFloat perogeeMeters;
 
-@property CGFloat rotation_angle_around_star;
+@property CGFloat rotationAngleAroundStar;
 
 - (id) initWithStar: (GLGSolarStar *) star;
 - (float) wattsSolarEnergyPerSquareMeter;

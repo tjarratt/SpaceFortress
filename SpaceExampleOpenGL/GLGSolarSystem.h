@@ -19,6 +19,6 @@
 @property (readonly) NSMutableArray *planetoids;
 @property (readonly) GLGSolarStar *star;
 
-- (void) describe_self;
+- (void) describeSelf;
 
 @end
