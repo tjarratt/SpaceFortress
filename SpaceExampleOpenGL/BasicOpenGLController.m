@@ -138,8 +138,6 @@
         [view drawCircleWithRadius:radius centerX:px centerY:py];
         [view drawOrbitForPlanet:planet atPointX:px pointY:py];
     }];
-    
-    return;
 }
 
 - (void) keyWasPressed:(NSEvent *)event {
@@ -148,6 +146,11 @@
             [self pause];
             break;
     }
+}
+
+- (void) reset_system {
+    [system release];
+    system = [[GLGSolarSystem alloc] init];
 }
 
 - (void) pause {

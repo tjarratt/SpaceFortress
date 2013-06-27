@@ -90,6 +90,13 @@
         [metallicity_value setStringValue:metallicity_string];
         [self addSubview:metallicity_value];
         [metallicity_value release];
+        
+        NSButton *reset = [[NSButton alloc] initWithFrame:NSMakeRect(10, 740, 80, 30)];
+        [reset setTitle:@"Reset"];
+        [reset setTarget:delegate];
+        [reset setAction:@selector(reset_system)];
+        [self addSubview:reset];
+        [reset release];
     }
     
     return self;
