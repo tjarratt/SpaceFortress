@@ -20,7 +20,6 @@
     GLGView *scene;
     NSView *sidebar;
     
-    NSUInteger activeSystemIndex;
     NSMutableArray *solarSystems;
     
     // framerate helpers
@@ -31,6 +30,7 @@
 @property CGFloat framerate;
 @property NSUInteger frameNumber;
 @property BOOL paused;
+@property NSUInteger activeSystemIndex;
 
 - (id) initWithWindow: (NSWindow *) window;
 

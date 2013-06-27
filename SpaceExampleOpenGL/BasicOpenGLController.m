@@ -10,8 +10,8 @@
 
 @implementation BasicOpenGLController
 
-@synthesize frameNumber, framerate;
-@synthesize paused;
+@synthesize paused, frameNumber, framerate;
+@synthesize activeSystemIndex;
 
 const NSUInteger solarSystemCapacity = 3;
 
@@ -70,6 +70,7 @@ const NSUInteger solarSystemCapacity = 3;
         [solarSystems addObject:sys];
         [sys release];
     }
+    [self setActiveSystemIndex:0];
 }
 
 - (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
@@ -171,20 +172,20 @@ const NSUInteger solarSystemCapacity = 3;
 }
 
 - (void) nextSystem {
-    if (activeSystemIndex == (solarSystemCapacity - 1)) {
-        activeSystemIndex = 0;
+    if (self.activeSystemIndex == (solarSystemCapacity - 1)) {
+        self.activeSystemIndex = 0;
     }
     else {
-        ++activeSystemIndex;
+        ++self.activeSystemIndex;
     }
 }
 
 - (void) previousSystem {
-    if (activeSystemIndex == 0) {
-        activeSystemIndex = (solarSystemCapacity - 1);
+    if (self.activeSystemIndex == 0) {
+        self.activeSystemIndex = (solarSystemCapacity - 1);
     }
     else {
-        --activeSystemIndex;
+        --self.activeSystemIndex;
     }
 }
 
@@ -198,6 +199,37 @@ const NSUInteger solarSystemCapacity = 3;
 
 - (GLGSolarSystem *)activeSystem {
     return [solarSystems objectAtIndex:activeSystemIndex];
+}
+
+- (NSString *) activeStarRadius {
+    return [[[self activeSystem] star] radiusComparison];
+}
+
+- (NSString *) activeStarMass {
+    return [[[self activeSystem] star] massComparison];
+}
+
+- (NSString *) activeStarTemperature {
+    return [[[self activeSystem] star] surfaceTemperatureComparison];
+}
+
+- (NSString *) activeStarMetallicity {
+    return [[[self activeSystem] star] metallicityComparison];
+}
+
++ (NSSet *) keyPathsForValuesAffectingValueForKey:(NSString *)key {
+    NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
+    
+    NSSet *affectedPaths = [[NSSet alloc] initWithArray:@[@"activeStarRadius", @"activeStarMass", @"activeStarTemperature", @"activeStarMetallicity"]];
+    
+    if ([affectedPaths containsObject:key]) {
+        NSArray *otherPaths = @[@"activeSystemIndex"];
+        keyPaths = [keyPaths setByAddingObjectsFromArray:otherPaths];
+    }
+    
+    [affectedPaths release];
+    
+    return keyPaths;
 }
 
 @end

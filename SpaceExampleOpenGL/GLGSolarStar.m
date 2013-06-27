@@ -177,20 +177,20 @@ const CGFloat solarMetallicity = 0; // or 1.2% by ratio of H + He to remaining
 }
 
 #pragma mark - percentage comparison to SOL
-- (CGFloat) radiusComparison {
-    return radius * 100 / solarRadius;
+- (NSString *) radiusComparison {
+    return [NSString stringWithFormat: @"%f", radius * 100 / solarRadius];
 }
 
-- (CGFloat) massComparison {
-    return mass * 100 / solarMass;
+- (NSString *) massComparison {
+    return [NSString stringWithFormat: @"%f", mass * 100 / solarMass];
 }
 
-- (CGFloat) surfaceTemperatureComparison {
-    return surfaceTemperature * 100 / solarSurfaceTemperature;
+- (NSString *) surfaceTemperatureComparison {
+    return [NSString stringWithFormat: @"%f", surfaceTemperature * 100 / solarSurfaceTemperature];
 }
 
-- (CGFloat) metallicityComparison {
-    return metallicity;
+- (NSString *) metallicityComparison {
+    return [NSString stringWithFormat: @"%f", metallicity];
 }
 
 @end

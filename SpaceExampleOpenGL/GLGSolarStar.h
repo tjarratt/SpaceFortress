@@ -40,9 +40,9 @@ facts:
 - (void) describe;
 
 // UI methods
-- (CGFloat) radiusComparison;
-- (CGFloat) massComparison;
-- (CGFloat) surfaceTemperatureComparison;
-- (CGFloat) metallicityComparison;
+- (NSString *) radiusComparison;
+- (NSString *) massComparison;
+- (NSString *) surfaceTemperatureComparison;
+- (NSString *) metallicityComparison;
 
 @end

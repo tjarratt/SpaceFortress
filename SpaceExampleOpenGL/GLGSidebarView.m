@@ -38,8 +38,7 @@
         
         NSTextField *radiusValue = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 75, 100, 30)];
         [radiusValue setEditable:NO];
-        NSString *radius_string = [NSString stringWithFormat:@"%f", system.star.radiusComparison];
-        [radiusValue setStringValue: radius_string];
+        [radiusValue bind:@"value" toObject:delegate withKeyPath:@"activeStarRadius" options:nil];
         [self addSubview:radiusValue];
         [radiusValue release];
         
@@ -52,10 +51,9 @@
         [self addSubview:massLabel];
         [massLabel release];
         
-        NSString *massString = [NSString stringWithFormat:@"%f", system.star.massComparison];
         NSTextField *massValue = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 170, 100, 30)];
         [massValue setEditable:NO];
-        [massValue setStringValue:massString];
+        [massValue bind:@"value" toObject:delegate withKeyPath:@"activeStarMass" options:nil];
         [self addSubview:massValue];
         [massValue release];
         
@@ -68,10 +66,9 @@
         [self addSubview:surfaceTemperatureLabel];
         [surfaceTemperatureLabel release];
         
-        NSString *surfaceTemperatureString = [NSString stringWithFormat:@"%f", system.star.surfaceTemperatureComparison];
         NSTextField *surfaceTemperatureValue = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 270, 100, 30)];
         [surfaceTemperatureValue setEditable:NO];
-        [surfaceTemperatureValue setStringValue:surfaceTemperatureString];
+        [surfaceTemperatureValue bind:@"value" toObject:delegate withKeyPath:@"activeStarTemperature" options:nil];
         [self addSubview:surfaceTemperatureValue];
         [surfaceTemperatureValue release];
         
@@ -84,10 +81,9 @@
         [self addSubview:metallicityLabel];
         [metallicityLabel release];
         
-        NSString *metallicityString = [NSString stringWithFormat:@"%f", system.star.metallicityComparison];
         NSTextField *metallicityValue = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 370, 100, 30)];
         [metallicityValue setEditable:NO];
-        [metallicityValue setStringValue:metallicityString];
+        [metallicityValue bind:@"value" toObject:delegate withKeyPath:@"activeStarMetallicity" options:nil];
         [self addSubview:metallicityValue];
         [metallicityValue release];
         
