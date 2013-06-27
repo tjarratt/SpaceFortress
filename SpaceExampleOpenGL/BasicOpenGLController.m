@@ -29,7 +29,7 @@
         
         NSRect window_rect = NSMakeRect(0, 0, rect_width + 100, rect_height);
         NSRect view_rect = NSMakeRect(0, 0, rect_width, rect_height);
-        NSPoint point = NSMakePoint((width - rect_width) / 2, (height - rect_height) / 2);
+        NSPoint point = NSMakePoint((width - rect_width - 100) / 2, (height - rect_height) / 2);
         [window setFrame:window_rect display:YES];
         [window setFrameOrigin:point];
         
