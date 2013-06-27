@@ -65,16 +65,26 @@
     glEnable(GL_LINE_STIPPLE);
     glBegin(GL_LINES);
     
-    CGFloat ox, oy;
+    CGFloat ox, oy, oxp, oyp;
     CGFloat x = self.bounds.size.width / 2;
     CGFloat y = self.bounds.size.height / 2;
     CGFloat meters_to_pixels_scale = 3.543e-11;
     
     glColor3f(1, 1, 1);
     for (CGFloat i = -2 * M_PI; i < 2 * M_PI; i+= 0.1) {
-        ox = x + planet.apogee_meters * meters_to_pixels_scale * cos(i);
-        oy = y + planet.perogee_meters * meters_to_pixels_scale * sin(i);
-        glVertex2f(ox, oy);
+        ox = x + planet.apogee_meters * meters_to_pixels_scale * cos(i + planet.rotation_angle_around_star);
+        oy = y + planet.perogee_meters * meters_to_pixels_scale * sin(i + planet.rotation_angle_around_star);
+        
+        oxp = ox * cos(planet.rotation_angle_around_star) - oy * sin(planet.rotation_angle_around_star);
+        oyp = ox * sin(planet.rotation_angle_around_star) + oy * cos(planet.rotation_angle_around_star);
+        
+        CGFloat tx = x * cos(planet.rotation_angle_around_star) - y * sin(planet.rotation_angle_around_star);
+        CGFloat ty = x * sin(planet.rotation_angle_around_star) + y * cos(planet.rotation_angle_around_star);
+        
+        oxp -= tx - x;
+        oyp -= ty - y;
+        
+        glVertex2f(oxp, oyp);
     }
     
     glEnd();

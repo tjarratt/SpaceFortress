@@ -36,6 +36,8 @@
 @property CGFloat mass;
 @property CGFloat radius;
 
+@property (retain) NSColor *color;
+
 @property CGFloat apogee_meters;
 @property CGFloat perogee_meters;
 

@@ -22,10 +22,28 @@
         star = [[GLGSolarStar alloc] init];
         for (i = 0; i < num_planetoids; ++i) {
             GLGPlanetoid *planet = [[GLGPlanetoid alloc] initWithStar: star];
+            switch (i) {
+                case 0:
+                    [planet setColor:[NSColor colorWithDeviceRed:0.9 green:0.35 blue:0.35 alpha:1.0]];
+                    break;
+                case 1:
+                    [planet setColor: [NSColor colorWithDeviceRed:0.35 green:0.9 blue:0.35 alpha:1.0]];
+                    break;
+                case 2:
+                    [planet setColor: [NSColor colorWithDeviceRed:0.35 green:0.35 blue:0.9 alpha:1.0]];
+                    break;
+                case 3:
+                    [planet setColor:[NSColor colorWithDeviceRed:0.9 green:0.9 blue:0.9 alpha:1.0]];
+                    break;
+                    
+            }
+            
             [planetoids addObject:planet];
             [planet release];
         }
     }
+    
+    [self describe_self];
     
     return self;
 }

@@ -16,9 +16,9 @@
 - (id) initWithWindow: (NSWindow *) theWindow {
     if (self = [super init]) {
         system = [[GLGSolarSystem alloc] init];
-        [system describe_self];
         
         window = theWindow;
+        
         frame_number = 0;
         framerate = 0.0f;
         
@@ -117,9 +117,9 @@
         [self setFrame_number:(frame_number + 1)];
     }
     
-    CGFloat __block x, y, px, py;
+    CGFloat __block x, y, px, py, pxp, pyp;
     CGFloat __block meters_to_pixels_scale = 3.543e-11;
-    CGFloat __block scale = frame_number * 2 * M_PI / (float) 600;
+    CGFloat __block scale = frame_number * 2 * M_PI / (float) 200;
     
     GLGSolarStar *star = [system star];
     NSColor *solar_color = [star color];
@@ -130,13 +130,22 @@
     [view drawCircleWithRadius:solar_radius centerX:x centerY:y];
     
     [[system planetoids] enumerateObjectsUsingBlock:^(GLGPlanetoid *planet, NSUInteger index, BOOL *stop) {
-        glColor3f(0.85f, 0.35f, 0.35f);
+        glColor3f(planet.color.redComponent, planet.color.greenComponent, planet.color.blueComponent);
         CGFloat radius = MAX([planet radius] * meters_to_pixels_scale, 5);
 
-        px = x + planet.apogee_meters * meters_to_pixels_scale * cos(scale * 4.2 * planet.rotation_angle_around_star);
-        py = y + planet.perogee_meters * meters_to_pixels_scale * sin(scale * 4.2 * planet.rotation_angle_around_star);
-        [view drawCircleWithRadius:radius centerX:px centerY:py];
-        [view drawOrbitForPlanet:planet atPointX:px pointY:py];
+        px = x + planet.apogee_meters * meters_to_pixels_scale * cos(scale);
+        py = y + planet.perogee_meters * meters_to_pixels_scale * sin(scale);
+        
+        pxp = px * cos(planet.rotation_angle_around_star) - py * sin(planet.rotation_angle_around_star);
+        pyp = px * sin(planet.rotation_angle_around_star) + py * cos(planet.rotation_angle_around_star);
+
+        CGFloat translated_x = x * cos(planet.rotation_angle_around_star) - y * sin(planet.rotation_angle_around_star);
+        CGFloat translated_y = x * sin(planet.rotation_angle_around_star) + y * cos(planet.rotation_angle_around_star);
+        pxp -= (translated_x - x);
+        pyp -= (translated_y - y) ;
+        
+        [view drawCircleWithRadius:radius centerX:pxp centerY:pyp];
+        [view drawOrbitForPlanet:planet atPointX:pxp pointY:pyp];
     }];
 }
 

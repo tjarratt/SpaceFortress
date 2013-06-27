@@ -10,7 +10,7 @@
 
 @implementation GLGPlanetoid
 
-@synthesize age, mass, radius;
+@synthesize age, mass, radius, color;
 @synthesize perogee_meters, apogee_meters;
 @synthesize rotation_angle_around_star;
 
@@ -41,7 +41,7 @@ const CGFloat astronomical_unit = 1.49e11; // mean earth-sun distance
         rotation_around_solar_body_seconds = [RangeProperty randomValueWithMinimum:min_body_rotation maximum:max_body_rotation];
 
         // completely random for now -> but this should be ~ delta a standard value for the system, right?
-        rotation_angle_around_star = [RangeProperty randomValueWithMinimum:-1 * M_PI_4 maximum:(M_PI_4)];
+        rotation_angle_around_star = [RangeProperty randomValueWithMinimum:-1 * M_PI_4 maximum:M_PI_4];
         
         CGFloat minimum_distance_from_star = 4.619e10;
         CGFloat maximum_distance_from_star = 1.49e13;
@@ -93,6 +93,8 @@ const CGFloat astronomical_unit = 1.49e11; // mean earth-sun distance
 - (void) describe {
     NSLog(@"I am just a simple planetoid. I am %@", [self ageInBillionsOfYears]);
     NSLog(@"My mass is %@, my radius is %@", [self friendlyMass], [self friendlyRadius]);
+    NSLog(@"My rotation angle around my star is %f", rotation_angle_around_star);
+    NSLog(@"My color is (%f, %f, %f)", color.redComponent, color.greenComponent, color.blueComponent);
 }
 
 @end
