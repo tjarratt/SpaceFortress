@@ -122,9 +122,6 @@
 		F77DA119176A8D3D00518BC3 = {
 			isa = PBXGroup;
 			children = (
-				F77DA160176A8EB700518BC3 /* OpenGL.framework */,
-				F77DA15E176A8EAD00518BC3 /* QuartzCore.framework */,
-				F77DA15C176A8EA400518BC3 /* GLKit.framework */,
 				F77DA12D176A8E8300518BC3 /* SpaceExampleOpenGL */,
 				F77DA14D176A8E8400518BC3 /* SpaceExampleOpenGLTests */,
 				F77DA126176A8E8300518BC3 /* Frameworks */,
@@ -144,6 +141,9 @@
 		F77DA126176A8E8300518BC3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F77DA160176A8EB700518BC3 /* OpenGL.framework */,
+				F77DA15E176A8EAD00518BC3 /* QuartzCore.framework */,
+				F77DA15C176A8EA400518BC3 /* GLKit.framework */,
 				F77DA127176A8E8300518BC3 /* Cocoa.framework */,
 				F77DA148176A8E8400518BC3 /* SenTestingKit.framework */,
 				F77DA129176A8E8300518BC3 /* Other Frameworks */,
