@@ -118,7 +118,7 @@
     }
     
     CGFloat __block x, y, px, py;
-    CGFloat __block meters_to_pixels_scale = 3.543e-9 / 100;
+    CGFloat __block meters_to_pixels_scale = 3.543e-11;
     CGFloat __block scale = frame_number * 2 * M_PI / (float) 600;
     
     GLGSolarStar *star = [system star];

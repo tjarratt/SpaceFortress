@@ -60,8 +60,26 @@
 }
 
 - (void) drawOrbitForPlanet:(GLGPlanetoid *)planet atPointX:(CGFloat) px pointY:(CGFloat) py {
-    // basically, walk the entire orbit from -2pi to 2pi and draw a line
-    // figure out how to dash this later, probably with modulo 10 ? <5 ?? >5 
+    glPushAttrib(GL_ENABLE_BIT);
+    glLineStipple(10, 0xAAAA);
+    glEnable(GL_LINE_STIPPLE);
+    glBegin(GL_LINES);
+    
+    CGFloat ox, oy;
+    CGFloat x = self.bounds.size.width / 2;
+    CGFloat y = self.bounds.size.height / 2;
+    CGFloat meters_to_pixels_scale = 3.543e-11;
+    
+    glColor3f(1, 1, 1);
+    for (CGFloat i = -2 * M_PI; i < 2 * M_PI; i+= 0.1) {
+        ox = x + planet.apogee_meters * meters_to_pixels_scale * cos(i);
+        oy = y + planet.perogee_meters * meters_to_pixels_scale * sin(i);
+        glVertex2f(ox, oy);
+    }
+    
+    glEnd();
+    
+    glPopAttrib();
 }
 
 @end
