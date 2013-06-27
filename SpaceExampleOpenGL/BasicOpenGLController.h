@@ -38,5 +38,6 @@
 - (void) BasicOpenGLView:(GLGView *)view drawInRect:(NSRect)rect;
 - (void) BasicOpenGLViewDidReshape:(GLGView *)view;
 - (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize;
+- (void) keyWasPressed:(NSEvent *)event;
 
 @end

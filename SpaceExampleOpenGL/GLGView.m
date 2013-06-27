@@ -1,4 +1,4 @@
-//
+ //
 //  GLGView.m
 //  SpaceExampleOpenGL
 //
@@ -15,7 +15,7 @@
 }
 
 - (void) keyDown:(NSEvent *)theEvent {
-    if (delegate && [delegate respondsToSelector:@selector(keyWasPressed)]) {
+    if (delegate) {
         [delegate keyWasPressed:theEvent];
     }
 }

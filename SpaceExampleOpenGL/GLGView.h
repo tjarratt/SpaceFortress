@@ -27,10 +27,10 @@
 
 @required
 - (void)prepareOpenGL;
+- (void)keyWasPressed:(NSEvent *) event;
 
 @optional
 - (void)GLGOpenGLView:(NSOpenGLView *) view drawInRect:(NSRect) rect;
 - (void)GLGOpenGLViewDidReshape:(NSOpenGLView *) view;
-- (void)keyWasPressed:(NSEvent *) event;
 
 @end
