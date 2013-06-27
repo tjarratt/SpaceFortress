@@ -13,9 +13,11 @@
 @synthesize frameNumber, framerate;
 @synthesize paused;
 
+const NSUInteger solarSystemCapacity = 3;
+
 - (id) initWithWindow: (NSWindow *) theWindow {
     if (self = [super init]) {
-        system = [[GLGSolarSystem alloc] init];
+        [self initializeSolarSystems];
         
         window = theWindow;
         
@@ -46,7 +48,7 @@
         glEnable(GL_DEPTH_TEST);
         
         NSRect sidebarFrame = NSMakeRect(1280, 0, 100, 800);
-        sidebar = [[GLGSidebarView alloc] initWithFrame:sidebarFrame system:system andDelegate:self];
+        sidebar = [[GLGSidebarView alloc] initWithFrame:sidebarFrame system:[self activeSystem] andDelegate:self];
 
         [[window contentView] addSubview:scene];
         [[window contentView] addSubview:sidebar];
@@ -58,6 +60,16 @@
       }
     
     return self;
+}
+
+- (void) initializeSolarSystems {
+    [solarSystems release];
+    solarSystems = [[NSMutableArray alloc] initWithCapacity:solarSystemCapacity];
+    for (int i = 0; i < solarSystemCapacity; ++i) {
+        GLGSolarSystem *sys = [[GLGSolarSystem alloc] init];
+        [solarSystems addObject:sys];
+        [sys release];
+    }
 }
 
 - (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
@@ -120,6 +132,7 @@
     CGFloat __block x, y, px, py, pxp, pyp;
     CGFloat __block metersToPixelsScale = 3.543e-11;
     CGFloat __block scale = frameNumber * 2 * M_PI / (float) 200;
+    GLGSolarSystem *system = [self activeSystem];
     
     GLGSolarStar *star = [system star];
     NSColor *solarColor = [star color];
@@ -157,20 +170,34 @@
     }
 }
 
-- (void) resetSystem {
-    [system release];
-    system = [[GLGSolarSystem alloc] init];
+- (void) nextSystem {
+    if (activeSystemIndex == (solarSystemCapacity - 1)) {
+        activeSystemIndex = 0;
+    }
+    else {
+        ++activeSystemIndex;
+    }
+}
 
-    [sidebar removeFromSuperview];
-    [sidebar release];
-    
-    NSRect sidebarFrame = NSMakeRect(1280, 0, 100, 800);
-    sidebar = [[GLGSidebarView alloc] initWithFrame:sidebarFrame system:system andDelegate:self];
-    [[window contentView] addSubview: sidebar];
+- (void) previousSystem {
+    if (activeSystemIndex == 0) {
+        activeSystemIndex = (solarSystemCapacity - 1);
+    }
+    else {
+        --activeSystemIndex;
+    }
 }
 
 - (void) pause {
     [self setPaused:![self paused]];
+}
+
+- (void) reset {
+    [self initializeSolarSystems];
+}
+
+- (GLGSolarSystem *)activeSystem {
+    return [solarSystems objectAtIndex:activeSystemIndex];
 }
 
 @end

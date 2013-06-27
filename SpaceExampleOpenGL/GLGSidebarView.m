@@ -94,9 +94,23 @@
         NSButton *reset = [[NSButton alloc] initWithFrame:NSMakeRect(10, 740, 80, 30)];
         [reset setTitle:@"Reset"];
         [reset setTarget:delegate];
-        [reset setAction:@selector(resetSystem)];
+        [reset setAction:@selector(reset)];
         [self addSubview:reset];
         [reset release];
+        
+        NSButton *prev = [[NSButton alloc] initWithFrame:NSMakeRect(10, 700, 30, 30)];
+        [prev setTitle:@"<="];
+        [prev setTarget:delegate];
+        [prev setAction:@selector(previousSystem)];
+        [self addSubview:prev];
+        [prev release];
+        
+        NSButton *next = [[NSButton alloc] initWithFrame:NSMakeRect(60, 700, 30, 30)];
+        [next setTitle:@"=>"];
+        [next setTarget:delegate];
+        [next setAction:@selector(nextSystem)];
+        [self addSubview:next];
+        [next release];
     }
     
     return self;

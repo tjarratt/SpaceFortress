@@ -16,11 +16,12 @@
 #import "GLGSolarSystem.h"
 
 @interface BasicOpenGLController : NSViewController <GLGOpenGLViewDelegate, NSWindowDelegate> {
-    GLGSolarSystem *system;
     NSWindow *window;
     GLGView *scene;
-    
     NSView *sidebar;
+    
+    NSUInteger activeSystemIndex;
+    NSMutableArray *solarSystems;
     
     // framerate helpers
     NSUInteger lastFrame;
@@ -39,5 +40,6 @@
 - (void) BasicOpenGLViewDidReshape:(GLGView *)view;
 - (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize;
 - (void) keyWasPressed:(NSEvent *)event;
+- (GLGSolarSystem *) activeSystem;
 
 @end
