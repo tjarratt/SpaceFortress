@@ -18,23 +18,25 @@ const NSUInteger solarSystemCapacity = 3;
 - (id) initWithWindow: (NSWindow *) theWindow {
     if (self = [super init]) {
         [self initializeSolarSystems];
-        
+
         window = theWindow;
-        
+        [window setDelegate:self];
+
         frameNumber = 0;
         framerate = 0.0f;
-        
+
         int width = [[NSScreen mainScreen] frame].size.width;
         int height = [[NSScreen mainScreen] frame].size.height;
         int rectWidth = 1280;
         int rectHeight = 800;
-        
-        NSRect windowRect = NSMakeRect(0, 0, rectWidth + 100, rectHeight);
-        NSRect viewRect = NSMakeRect(0, 0, rectWidth, rectHeight);
-        NSPoint point = NSMakePoint((width - rectWidth - 100) / 2, (height - rectHeight) / 2);
+        int sceneWidth = rectWidth - 100;
+
+        NSRect windowRect = NSMakeRect(0, 0, rectWidth, rectHeight);
+        NSRect viewRect = NSMakeRect(0, 0, sceneWidth, rectHeight);
+        NSPoint point = NSMakePoint((width - rectWidth) / 2, (height - rectHeight) / 2);
         [window setFrame:windowRect display:YES];
         [window setFrameOrigin:point];
-        
+
         scene = [[GLGView alloc] initWithFrame: viewRect];
         [scene setWantsBestResolutionOpenGLSurface:YES];
         [scene setDelegate: self];
@@ -43,22 +45,23 @@ const NSUInteger solarSystemCapacity = 3;
         [[scene openGLContext] makeCurrentContext];
         GLint swapInt = 1;
         [[scene openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
-                
+
         glEnable(GL_CULL_FACE);
         glEnable(GL_DEPTH_TEST);
-        
-        NSRect sidebarFrame = NSMakeRect(1280, 0, 100, 800);
+
+        NSRect sidebarFrame = NSMakeRect(sceneWidth, 0, 100, rectHeight);
         sidebar = [[GLGSidebarView alloc] initWithFrame:sidebarFrame system:[self activeSystem] andDelegate:self];
 
         [[window contentView] addSubview:scene];
         [[window contentView] addSubview:sidebar];
         [window setMinSize:NSMakeSize(rectWidth, rectHeight)];
-        
+        [window setAspectRatio:NSMakeSize(rectWidth, rectHeight)];
+
         // leave this till the very end so we don't skew our initial framerate
         // nothing is animated until we end this init and return to the runloop
         lastTimestamp = CFAbsoluteTimeGetCurrent();
       }
-    
+
     return self;
 }
 
@@ -74,9 +77,12 @@ const NSUInteger solarSystemCapacity = 3;
 }
 
 - (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
-    NSLog(@"frame is resizing to %f, %f", frameSize.width, frameSize.height);
-    NSRect newFrame = NSMakeRect(0, 0, frameSize.width - 200, frameSize.height);
+    NSRect newFrame = NSMakeRect(0, 0, frameSize.width - 100, frameSize.height);
     [scene setFrame:newFrame];
+
+    NSRect newSidebarFrame = NSMakeRect(frameSize.width - 100, 0, 100, frameSize.height);
+    [sidebar setFrame:newSidebarFrame];
+
     return frameSize;
 }
 
@@ -84,12 +90,12 @@ const NSUInteger solarSystemCapacity = 3;
     if (frameNumber == lastFrame) {
         return;
     }
-    
+
     double currentTime = CFAbsoluteTimeGetCurrent();
     double diff = currentTime - lastTimestamp;
     double rate = (frameNumber - lastFrame) / diff;
     [self setFramerate: round(rate * 100) / 100.0f];
-    
+
     lastFrame = frameNumber;
     lastTimestamp = currentTime;
 }
@@ -101,7 +107,7 @@ const NSUInteger solarSystemCapacity = 3;
 
 - (void) prepareOpenGL {
     [self becomeFirstResponder];
-    
+
     return;
 }
 
@@ -109,14 +115,15 @@ const NSUInteger solarSystemCapacity = 3;
 - (void) BasicOpenGLViewDidReshape:(NSOpenGLView *)view {
     const GLfloat width = [view bounds].size.width;
     const GLfloat height = [view bounds].size.height;
-    
+
     NSParameterAssert(0 < height);
-    
+
     glMatrixMode (GL_PROJECTION);
     glLoadIdentity();
+    glViewport(0, 0, width, height);
     glOrtho(0, width, 0, height, -1, 1);
-    
-    NSLog(@"resized to %f, %f", width, height);
+
+    [[view openGLContext] update];
 }
 
 // 800 x 600 or 1280 x 800?
@@ -129,12 +136,12 @@ const NSUInteger solarSystemCapacity = 3;
     if (![self paused]) {
         [self setFrameNumber:(frameNumber + 1)];
     }
-    
+
     CGFloat __block x, y, px, py, pxp, pyp;
     CGFloat __block metersToPixelsScale = 3.543e-11;
     CGFloat __block scale = frameNumber * 2 * M_PI / (float) 200;
     GLGSolarSystem *system = [self activeSystem];
-    
+
     GLGSolarStar *star = [system star];
     NSColor *solarColor = [star color];
     glColor3f(solarColor.redComponent, solarColor.greenComponent, solarColor.blueComponent);
@@ -142,14 +149,14 @@ const NSUInteger solarSystemCapacity = 3;
     y = view.bounds.size.height / 2;
     CGFloat solarRadius = MAX(5, [star radius] / 278400.0f);
     [view drawCircleWithRadius:solarRadius centerX:x centerY:y];
-    
+
     [[system planetoids] enumerateObjectsUsingBlock:^(GLGPlanetoid *planet, NSUInteger index, BOOL *stop) {
         glColor3f(planet.color.redComponent, planet.color.greenComponent, planet.color.blueComponent);
         CGFloat radius = MAX([planet radius] * metersToPixelsScale, 5);
 
         px = x + planet.apogeeMeters * metersToPixelsScale * cos(scale);
         py = y + planet.perogeeMeters * metersToPixelsScale * sin(scale);
-        
+
         pxp = px * cos(planet.rotationAngleAroundStar) - py * sin(planet.rotationAngleAroundStar);
         pyp = px * sin(planet.rotationAngleAroundStar) + py * cos(planet.rotationAngleAroundStar);
 
@@ -157,7 +164,7 @@ const NSUInteger solarSystemCapacity = 3;
         CGFloat translated_y = x * sin(planet.rotationAngleAroundStar) + y * cos(planet.rotationAngleAroundStar);
         pxp -= (translated_x - x);
         pyp -= (translated_y - y) ;
-        
+
         [view drawCircleWithRadius:radius centerX:pxp centerY:pyp];
         [view drawOrbitForPlanet:planet atPointX:pxp pointY:pyp];
     }];
@@ -219,16 +226,16 @@ const NSUInteger solarSystemCapacity = 3;
 
 + (NSSet *) keyPathsForValuesAffectingValueForKey:(NSString *)key {
     NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-    
+
     NSSet *affectedPaths = [[NSSet alloc] initWithArray:@[@"activeStarRadius", @"activeStarMass", @"activeStarTemperature", @"activeStarMetallicity"]];
-    
+
     if ([affectedPaths containsObject:key]) {
         NSArray *otherPaths = @[@"activeSystemIndex"];
         keyPaths = [keyPaths setByAddingObjectsFromArray:otherPaths];
     }
-    
+
     [affectedPaths release];
-    
+
     return keyPaths;
 }
 
