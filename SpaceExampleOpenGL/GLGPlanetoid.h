@@ -7,6 +7,7 @@
 //
 
 #import "GLGSolarStar.h"
+#import "NameProperty.h"
 #import "RangeProperty.h"
 #import <Foundation/Foundation.h>
 
@@ -33,6 +34,7 @@
 @property CGFloat age;
 @property CGFloat mass;
 @property CGFloat radius;
+@property (retain) NSString *name;
 
 @property (retain) NSColor *color;
 

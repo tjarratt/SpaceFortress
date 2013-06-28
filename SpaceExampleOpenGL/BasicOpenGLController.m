@@ -15,8 +15,10 @@
 
 const NSUInteger solarSystemCapacity = 3;
 
+#pragma Lifecycle methods
 - (id) initWithWindow: (NSWindow *) theWindow {
     if (self = [super init]) {
+        [NameProperty initialize];
         [self initializeSolarSystems];
 
         window = theWindow;
@@ -76,6 +78,7 @@ const NSUInteger solarSystemCapacity = 3;
     [self setActiveSystemIndex:0];
 }
 
+#pragma mark - NSWindow delegate methods
 - (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
     NSRect newFrame = NSMakeRect(0, 0, frameSize.width - 100, frameSize.height);
     [scene setFrame:newFrame];
@@ -86,6 +89,7 @@ const NSUInteger solarSystemCapacity = 3;
     return frameSize;
 }
 
+#pragma mark - openGL update methods
 - (void) updateFramerate {
     if (frameNumber == lastFrame) {
         return;
@@ -170,6 +174,7 @@ const NSUInteger solarSystemCapacity = 3;
     }];
 }
 
+#pragma mark - UI control methods
 - (void) keyWasPressed:(NSEvent *)event {
     switch ([event keyCode]) {
         case 49:
@@ -204,6 +209,7 @@ const NSUInteger solarSystemCapacity = 3;
     [self initializeSolarSystems];
 }
 
+#pragma mark - UI Observer binding methods
 - (GLGSolarSystem *)activeSystem {
     return [solarSystems objectAtIndex:activeSystemIndex];
 }

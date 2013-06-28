@@ -10,7 +10,7 @@
 
 @implementation GLGPlanetoid
 
-@synthesize age, mass, radius, color;
+@synthesize age, mass, name, radius, color;
 @synthesize perogeeMeters, apogeeMeters;
 @synthesize rotationAngleAroundStar;
 
@@ -19,6 +19,8 @@ const CGFloat astronomical_unit = 1.49e11; // mean earth-sun distance
 
 - (id) initWithStar: (GLGSolarStar* ) star {
     if (self = [super init]) {
+        name = [NameProperty randomName];
+        
         CGFloat formation_time = [RangeProperty randomValueWithMinimum:150 maximum:350];
         age = [star age] - formation_time;
         
@@ -91,7 +93,8 @@ const CGFloat astronomical_unit = 1.49e11; // mean earth-sun distance
 }
 
 - (void) describe {
-    NSLog(@"I am just a simple planetoid. I am %@", [self ageInBillionsOfYears]);
+    NSLog(@"I am just a simple planetoid: %@", [self name]);
+    NSLog(@"I am %@", [self ageInBillionsOfYears]);
     NSLog(@"My mass is %@, my radius is %@", [self friendlyMass], [self friendlyRadius]);
     NSLog(@"My rotation angle around my star is %f", rotationAngleAroundStar);
     NSLog(@"My color is (%f, %f, %f)", color.redComponent, color.greenComponent, color.blueComponent);

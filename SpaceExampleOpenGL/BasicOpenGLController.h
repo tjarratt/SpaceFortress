@@ -12,6 +12,7 @@
 #import "GLGView.h"
 #import "GLGSidebarView.h"
 
+#import "NameProperty.h"
 #import "RangeProperty.h"
 #import "GLGSolarSystem.h"
 

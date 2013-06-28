@@ -31,6 +31,7 @@
 		F77DA1CE177132DA00518BC3 /* GLGSolarStar.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA1CD177132DA00518BC3 /* GLGSolarStar.m */; };
 		F77DA1D1177132E600518BC3 /* GLGSolarSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA1D0177132E600518BC3 /* GLGSolarSystem.m */; };
 		F77DA1D41771330C00518BC3 /* GLGPlanetoid.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA1D31771330C00518BC3 /* GLGPlanetoid.m */; };
+		F7D6D76C177E33F2001F2FB0 /* NameProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D76B177E33F2001F2FB0 /* NameProperty.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,8 @@
 		F77DA1D0177132E600518BC3 /* GLGSolarSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGSolarSystem.m; sourceTree = "<group>"; };
 		F77DA1D21771330C00518BC3 /* GLGPlanetoid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGPlanetoid.h; sourceTree = "<group>"; };
 		F77DA1D31771330C00518BC3 /* GLGPlanetoid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGPlanetoid.m; sourceTree = "<group>"; };
+		F7D6D76A177E33F2001F2FB0 /* NameProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameProperty.h; sourceTree = "<group>"; };
+		F7D6D76B177E33F2001F2FB0 /* NameProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameProperty.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +116,8 @@
 		F70C6BF91773A66800AFBFDE /* Properties */ = {
 			isa = PBXGroup;
 			children = (
+				F7D6D76A177E33F2001F2FB0 /* NameProperty.h */,
+				F7D6D76B177E33F2001F2FB0 /* NameProperty.m */,
 				F70C6BFA1773A67800AFBFDE /* RangeProperty.h */,
 				F70C6BFB1773A67800AFBFDE /* RangeProperty.m */,
 			);
@@ -346,6 +351,7 @@
 				F77DA1D41771330C00518BC3 /* GLGPlanetoid.m in Sources */,
 				F70C6BFC1773A67800AFBFDE /* RangeProperty.m in Sources */,
 				F70C6C06177A89F800AFBFDE /* GLGSidebarView.m in Sources */,
+				F7D6D76C177E33F2001F2FB0 /* NameProperty.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
