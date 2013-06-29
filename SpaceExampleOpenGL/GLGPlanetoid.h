@@ -6,10 +6,13 @@
 //
 //
 
+#import "constants.h"
 #import "GLGSolarStar.h"
 #import "NameProperty.h"
 #import "RangeProperty.h"
 #import <Foundation/Foundation.h>
+
+@class GLGSolarStar;
 
 @interface GLGPlanetoid : NSObject {
     CGFloat age;

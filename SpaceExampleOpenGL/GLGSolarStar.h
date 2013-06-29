@@ -5,6 +5,7 @@
 //  Created by Tim Jarratt on 6/18/13.
 //
 //
+#import "GLGPlanetoid.h"
 #import <Foundation/Foundation.h>
 #import "RangeProperty.h"
 

@@ -14,9 +14,6 @@
 @synthesize perogeeMeters, apogeeMeters;
 @synthesize rotationAngleAroundStar;
 
-const CGFloat maximum_mass_before_nuclear_fusion = 9.9945e28;
-const CGFloat astronomical_unit = 1.49e11; // mean earth-sun distance
-
 - (id) initWithStar: (GLGSolarStar* ) star {
     if (self = [super init]) {
         name = [NameProperty randomName];

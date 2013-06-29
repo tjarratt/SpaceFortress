@@ -6,7 +6,7 @@
 //
 //
 
-#include <stdlib.h>
+#import <stdlib.h>
 #import "GLGSolarStar.h"
 #import "GLGPlanetoid.h"
 #import <Foundation/Foundation.h>
