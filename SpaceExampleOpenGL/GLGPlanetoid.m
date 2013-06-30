@@ -12,7 +12,7 @@
 
 @synthesize age, mass, name, radius, color;
 @synthesize perogeeMeters, apogeeMeters;
-@synthesize rotationAngleAroundStar;
+@synthesize rotationAngleAroundStar, rotationAroundAxisSeconds, rotationAroundSolarBodySeconds;
 
 - (id) initWithStar: (GLGSolarStar* ) star {
     if (self = [super init]) {

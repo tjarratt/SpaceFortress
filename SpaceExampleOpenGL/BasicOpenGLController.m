@@ -143,7 +143,7 @@ const NSUInteger solarSystemCapacity = 3;
 
     CGFloat __block x, y, px, py, pxp, pyp;
     CGFloat __block metersToPixelsScale = 3.543e-11;
-    CGFloat __block scale = frameNumber * 2 * M_PI / (float) 200;
+    CGFloat __block scale = frameNumber * 2 * M_PI / (float) 2e12;
     GLGSolarSystem *system = [self activeSystem];
 
     GLGSolarStar *star = [system star];
@@ -164,8 +164,8 @@ const NSUInteger solarSystemCapacity = 3;
         glColor3f(planet.color.redComponent, planet.color.greenComponent, planet.color.blueComponent);
         CGFloat radius = MAX([planet radius] * metersToPixelsScale, 5);
 
-        px = x + planet.apogeeMeters * metersToPixelsScale * cos(scale);
-        py = y + planet.perogeeMeters * metersToPixelsScale * sin(scale);
+        px = x + planet.apogeeMeters * metersToPixelsScale * cos(scale * planet.rotationAroundSolarBodySeconds);
+        py = y + planet.perogeeMeters * metersToPixelsScale * sin(scale * planet.rotationAroundSolarBodySeconds);
 
         pxp = px * cos(planet.rotationAngleAroundStar) - py * sin(planet.rotationAngleAroundStar);
         pyp = px * sin(planet.rotationAngleAroundStar) + py * cos(planet.rotationAngleAroundStar);

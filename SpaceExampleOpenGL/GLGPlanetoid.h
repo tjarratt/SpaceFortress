@@ -20,9 +20,6 @@
     CGFloat radius;
     CGFloat surfaceTemperature;
     
-    NSInteger rotationAroundAxisSeconds;
-    NSInteger rotationAroundSolarBodySeconds;
-
     BOOL hasWater;
     BOOL hasAtmosphere;
     BOOL hasMagneticField;
@@ -45,6 +42,8 @@
 @property CGFloat perogeeMeters;
 
 @property CGFloat rotationAngleAroundStar;
+@property CGFloat rotationAroundAxisSeconds;
+@property CGFloat rotationAroundSolarBodySeconds;
 
 - (id) initWithStar: (GLGSolarStar *) star;
 - (float) wattsSolarEnergyPerSquareMeter;
