@@ -19,6 +19,7 @@
 - (void) setDelegate: (id) delegate;
 - (void) drawCircleWithRadius: (CGFloat)radius centerX:(CGFloat)cx centerY:(CGFloat)cy;
 - (void) drawOrbitForPlanet:(GLGPlanetoid *) planet atPointX:(CGFloat) px pointY:(CGFloat) py;
+- (void) drawTorusAtPoint:(CGPoint) center innerRadius:(CGFloat) innerRadius outerRadius:(CGFloat) outerRadius;
 
 @end
 

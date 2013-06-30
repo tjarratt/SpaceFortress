@@ -153,6 +153,12 @@ const NSUInteger solarSystemCapacity = 3;
     y = view.bounds.size.height / 2;
     CGFloat solarRadius = MAX(5, [star radius] / 278400.0f);
     [view drawCircleWithRadius:solarRadius centerX:x centerY:y];
+    
+    // draw habitable zone
+    glColor4f(0.1f, 0.65f, 0.1f, 0.1f);
+    CGFloat innerRadius = star.habitableZoneInnerRadius * metersToPixelsScale;
+    CGFloat outerRadius = star.habitableZoneOuterRadius * metersToPixelsScale;
+    [view drawTorusAtPoint:NSMakePoint(x, y) innerRadius:innerRadius outerRadius:outerRadius];
 
     [[system planetoids] enumerateObjectsUsingBlock:^(GLGPlanetoid *planet, NSUInteger index, BOOL *stop) {
         glColor3f(planet.color.redComponent, planet.color.greenComponent, planet.color.blueComponent);

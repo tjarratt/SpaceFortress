@@ -23,8 +23,12 @@ facts:
     // percentage of its mass not derived from H, HE
     // http://en.wikipedia.org/wiki/Metallicity
     CGFloat metallicity;
+    CGFloat absoluteMagnitude;
+    CGFloat apparentMagnitude;
     
     NSString *classification;
+    NSString *luminosityClass;
+    NSString *primaryClass;
 }
 
 @property CGFloat age;

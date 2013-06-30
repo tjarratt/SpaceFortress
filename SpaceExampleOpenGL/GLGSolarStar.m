@@ -30,6 +30,54 @@
         
         // calculate spectral classification and color
         [self calculateSpectralClassification];
+        
+        // calculate habitable zone
+        // Mv -> absolute magnitude == mv - 5 * log(d / 10)
+        // mv -> apparent magnitude
+        // d  -> distance from planet to star
+
+        // Mbol -> bolometric magnitude = Mv + BC
+        // BC   -> bolometric correction constant (table for spectral classes)
+        // B:-2   A:-0.3   F:-0.15   G:-0.4   K:-0.8   M:-2.0
+
+        // absolute luminosity of the star
+        // Lstar / Lsun = 10 ^^ ( (Mbolstar - Mbolsun) / -2.5 )
+
+        // ri = sqrt(Lstar/Lsun / 1.1)
+        // ro = sqrt(Lstar/Lsun / 0.53)
+        
+        // http://arxiv.org/pdf/1212.0928.pdf
+        // http://en.wikipedia.org/wiki/Bolometric_correction
+        // http://www.planetarybiology.com/calculating_habitable_zone.htm
+        // nb: there is very little agreement on the Bolometric Correction Constants
+        CGFloat bolometricCorrectionConstant = 0;
+        if ([luminosityClass isEqualToString:@"O"]) {
+            bolometricCorrectionConstant = -4.3;
+        }
+        else if ([luminosityClass isEqualToString:@"B"]) {
+            bolometricCorrectionConstant = -2.0f;
+        }
+        else if ([luminosityClass isEqualToString:@"A"]) {
+            bolometricCorrectionConstant = -0.3f;
+        }
+        else if ([luminosityClass isEqualToString:@"F"]) {
+            bolometricCorrectionConstant = -0.15f;
+        }
+        else if ([luminosityClass isEqualToString:@"G"]) {
+            bolometricCorrectionConstant = -0.4f;
+        }
+        else if ([luminosityClass isEqualToString:@"K"]) {
+            bolometricCorrectionConstant = -0.8f;
+        }
+        else {
+            bolometricCorrectionConstant = -4.0;
+        }
+        
+        CGFloat bolometricMagnitude = absoluteMagnitude + bolometricCorrectionConstant;
+        
+        CGFloat absoluteLuminosityRelativeToTheSun = pow(10, (bolometricMagnitude - solarBolometricMagnitude) / -2.5f);
+        habitableZoneInnerRadius = sqrt(absoluteLuminosityRelativeToTheSun / 1.1f) * astronomical_unit;
+        habitableZoneOuterRadius = sqrt(absoluteLuminosityRelativeToTheSun / 0.53f) * astronomical_unit;
     }
 
     return self;
@@ -45,18 +93,18 @@
 
 - (void) calculateSpectralClassification {
     int rangeBetween;
-    NSString *primaryClass, *spectrumRange, *luminosityClass;
+    NSString *spectrumRange;
     
     // for short distances (ie: within the same galaxy, this is the real distance eg: euclidean)
     // for greater distances, you need to take into account general relativity (redshift affects large distances)
-    CGFloat luminosityDistanceLightYears = (random() / RAND_MAX) * 20;
+    CGFloat luminosityDistanceLightYears = [RangeProperty randomValueWithMinimum:0 maximum:20];
     CGFloat luminosityDistanceParsecs = luminosityDistanceLightYears / 3.26;
 
     // http://www.astro.wisc.edu/~dolan/constellations/extra/brightest.html
     // http://en.wikipedia.org/wiki/Apparent_magnitude#Calculations
-    CGFloat apparentMagnitude = (random() / RAND_MAX) * 3 - 1.5;
+    apparentMagnitude = [RangeProperty randomValueWithMinimum:-1.5 maximum:1.5];
+    absoluteMagnitude = apparentMagnitude - 5 * (log10f(luminosityDistanceParsecs) - 1);
     
-    CGFloat absoluteMagnitude = apparentMagnitude - 5 * (log10f(luminosityDistanceParsecs) - 1);
     if (absoluteMagnitude < -7.5) {
         luminosityClass = @"0";
     }
@@ -159,6 +207,7 @@
     NSLog(@"My solar mass is %f", mass);
     NSLog(@"My age is %@", [self ageInYears]);
     NSLog(@"My solar radius is %f", radius);
+    NSLog(@"My habitable zone is between %f and %f", habitableZoneInnerRadius, habitableZoneOuterRadius);
 }
 
 - (NSString *) radiusAsMeters {

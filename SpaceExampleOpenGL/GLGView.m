@@ -59,6 +59,20 @@
     
 }
 
+- (void) drawTorusAtPoint:(CGPoint) center innerRadius:(CGFloat) innerRadius outerRadius:(CGFloat) outerRadius {
+    glBegin(GL_TRIANGLE_STRIP);
+    
+    int segments = 100;
+    CGFloat scale = 2 * M_PI / (float) segments;
+    
+    for (int i = 0; i <= segments; ++i) {
+        glVertex2f(center.x + innerRadius * cos(i * scale), center.y + innerRadius * sin(i * scale));
+        glVertex2f(center.x + outerRadius * cos(i * scale), center.y + outerRadius * sin(i * scale));
+    }
+    
+    glEnd();
+}
+
 - (void) drawOrbitForPlanet:(GLGPlanetoid *)planet atPointX:(CGFloat) px pointY:(CGFloat) py {
     glPushAttrib(GL_ENABLE_BIT);
     glLineStipple(10, 0xAAAA);
