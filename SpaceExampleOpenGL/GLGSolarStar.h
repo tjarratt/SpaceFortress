@@ -5,6 +5,7 @@
 //  Created by Tim Jarratt on 6/18/13.
 //
 //
+#import "GLGBody.h"
 #import "GLGPlanetoid.h"
 #import <Foundation/Foundation.h>
 #import "RangeProperty.h"
@@ -14,8 +15,7 @@ facts:
   85% of all stars are red dwarfs
 */
 
-@interface GLGSolarStar : NSObject {
-    CGFloat mass;
+@interface GLGSolarStar : GLGBody {
     CGFloat surfaceTemperature;
     NSUInteger rotationRateSeconds;
     NSString *name;
@@ -31,9 +31,6 @@ facts:
     NSString *primaryClass;
 }
 
-@property CGFloat age;
-@property CGFloat radius;
-@property (retain) NSColor *color;
 @property CGFloat habitableZoneInnerRadius;
 @property CGFloat habitableZoneOuterRadius;
 

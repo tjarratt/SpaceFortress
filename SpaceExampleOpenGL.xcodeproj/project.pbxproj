@@ -33,6 +33,7 @@
 		F77DA1D41771330C00518BC3 /* GLGPlanetoid.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA1D31771330C00518BC3 /* GLGPlanetoid.m */; };
 		F7D6D76C177E33F2001F2FB0 /* NameProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D76B177E33F2001F2FB0 /* NameProperty.m */; };
 		F7D6D770177E6C91001F2FB0 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D76F177E6C91001F2FB0 /* constants.m */; };
+		F7D6D77317822E73001F2FB0 /* GLGBody.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D77217822E73001F2FB0 /* GLGBody.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,8 @@
 		F7D6D76B177E33F2001F2FB0 /* NameProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameProperty.m; sourceTree = "<group>"; };
 		F7D6D76D177E6662001F2FB0 /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		F7D6D76F177E6C91001F2FB0 /* constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = constants.m; sourceTree = "<group>"; };
+		F7D6D77117822E73001F2FB0 /* GLGBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGBody.h; sourceTree = "<group>"; };
+		F7D6D77217822E73001F2FB0 /* GLGBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGBody.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,12 +230,14 @@
 				F70C6BF91773A66800AFBFDE /* Properties */,
 				F7D6D76D177E6662001F2FB0 /* constants.h */,
 				F7D6D76F177E6C91001F2FB0 /* constants.m */,
+				F7D6D77117822E73001F2FB0 /* GLGBody.h */,
+				F7D6D77217822E73001F2FB0 /* GLGBody.m */,
 				F77DA1CC177132DA00518BC3 /* GLGSolarStar.h */,
 				F77DA1CD177132DA00518BC3 /* GLGSolarStar.m */,
-				F77DA1CF177132E600518BC3 /* GLGSolarSystem.h */,
-				F77DA1D0177132E600518BC3 /* GLGSolarSystem.m */,
 				F77DA1D21771330C00518BC3 /* GLGPlanetoid.h */,
 				F77DA1D31771330C00518BC3 /* GLGPlanetoid.m */,
+				F77DA1CF177132E600518BC3 /* GLGSolarSystem.h */,
+				F77DA1D0177132E600518BC3 /* GLGSolarSystem.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 				F70C6C06177A89F800AFBFDE /* GLGSidebarView.m in Sources */,
 				F7D6D76C177E33F2001F2FB0 /* NameProperty.m in Sources */,
 				F7D6D770177E6C91001F2FB0 /* constants.m in Sources */,
+				F7D6D77317822E73001F2FB0 /* GLGBody.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

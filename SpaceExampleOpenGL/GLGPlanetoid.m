@@ -10,24 +10,13 @@
 
 @implementation GLGPlanetoid
 
-@synthesize age, mass, name, radius, color;
 @synthesize perogeeMeters, apogeeMeters;
 @synthesize rotationAngleAroundStar, rotationAroundAxisSeconds, rotationAroundSolarBodySeconds;
 
 - (id) initWithStar: (GLGSolarStar* ) star {
     if (self = [super init]) {
-        name = [NameProperty randomName];
-        
         CGFloat formation_time = [RangeProperty randomValueWithMinimum:150 maximum:350];
-        age = [star age] - formation_time;
-        
-        CGFloat earth_mass = 7.349e22; // kg
-        CGFloat min_mass = earth_mass / 10000;
-        mass = [RangeProperty randomValueWithMinimum:min_mass maximum:maximum_mass_before_nuclear_fusion];
-        
-        CGFloat min_radius = 1.5e6;
-        CGFloat max_radius = 75e6;
-        radius = [RangeProperty randomValueWithMinimum:min_radius maximum:max_radius];
+        [self setAge:([star age] - formation_time)];
         
         CGFloat seconds_day = 86400;
         CGFloat min_axis_rotation = seconds_day * 0.1;
@@ -73,15 +62,15 @@
 }
 
 - (NSString *)friendlyMass {
-    return [[NSString stringWithFormat:@"%e kilograms", mass] stringByReplacingOccurrencesOfString:@"e+" withString:@" * 10^"];
+    return [[NSString stringWithFormat:@"%e kilograms", [self mass]] stringByReplacingOccurrencesOfString:@"e+" withString:@" * 10^"];
 }
 
 - (NSString *)ageInBillionsOfYears {
-    return [[NSString stringWithFormat:@"%e billions of years old", age] stringByReplacingOccurrencesOfString:@"e+" withString:@" * 10^"];
+    return [[NSString stringWithFormat:@"%e billions of years old", [self age]] stringByReplacingOccurrencesOfString:@"e+" withString:@" * 10^"];
 }
 
 - (NSString *)friendlyRadius {
-    return [[NSString stringWithFormat:@"%e meters", radius] stringByReplacingOccurrencesOfString:@"e+" withString:@" * 10^"];
+    return [[NSString stringWithFormat:@"%e meters", [self radius]] stringByReplacingOccurrencesOfString:@"e+" withString:@" * 10^"];
 }
 
 // xxx implement me correctly using radius + distance from body + luminosity + all those things
@@ -94,6 +83,8 @@
     NSLog(@"I am %@", [self ageInBillionsOfYears]);
     NSLog(@"My mass is %@, my radius is %@", [self friendlyMass], [self friendlyRadius]);
     NSLog(@"My rotation angle around my star is %f", rotationAngleAroundStar);
+    
+    NSColor *color = [self color];
     NSLog(@"My color is (%f, %f, %f)", color.redComponent, color.greenComponent, color.blueComponent);
 }
 

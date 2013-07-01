@@ -20,6 +20,7 @@ FOUNDATION_EXPORT const CGFloat solarMetallicity;
 FOUNDATION_EXPORT const CGFloat solarBolometricMagnitude;
 
 // other astronomical units
+FOUNDATION_EXPORT const CGFloat universalGravitationConstant;
 FOUNDATION_EXPORT const CGFloat astronomical_unit;
 FOUNDATION_EXPORT const CGFloat chandrasekharLimit;
 FOUNDATION_EXPORT const CGFloat maximum_mass_before_nuclear_fusion;

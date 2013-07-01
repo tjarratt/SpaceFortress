@@ -7,6 +7,7 @@
 //
 
 #import "constants.h"
+#import "GLGBody.h"
 #import "GLGSolarStar.h"
 #import "NameProperty.h"
 #import "RangeProperty.h"
@@ -14,10 +15,7 @@
 
 @class GLGSolarStar;
 
-@interface GLGPlanetoid : NSObject {
-    CGFloat age;
-    CGFloat mass;
-    CGFloat radius;
+@interface GLGPlanetoid : GLGBody {
     CGFloat surfaceTemperature;
     
     BOOL hasWater;
@@ -29,14 +27,8 @@
     CGFloat metallicity;
     CGFloat averageAlbedo;
     CGFloat averageEmissivity;
+    CGFloat escapeVelocity;
 }
-
-@property CGFloat age;
-@property CGFloat mass;
-@property CGFloat radius;
-@property (retain) NSString *name;
-
-@property (retain) NSColor *color;
 
 @property CGFloat apogeeMeters;
 @property CGFloat perogeeMeters;

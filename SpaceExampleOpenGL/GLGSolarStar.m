@@ -17,7 +17,7 @@
     if (self = [super init]) {
         classification = @"";
         age = [RangeProperty randomValueWithMinimum:1 maximum:11];
-        mass = [RangeProperty randomValueWithMinimum:1.76e29 maximum:(264 * solarMass)];
+        [self setMass:[RangeProperty randomValueWithMinimum:1.76e29 maximum:(264 * solarMass)] ];
         radius = [RangeProperty randomValueWithMinimum:(0.13 * solarRadius) maximum:18 * solarRadius];
         surfaceTemperature = [RangeProperty randomValueWithMinimum:1000 maximum:(50000)];
         rotationRateSeconds = [RangeProperty randomValueWithMinimum:1e-5 maximum:(150 * solarRotationRate)];
@@ -196,15 +196,9 @@
     return 4 * M_PI * pow(radius, 2) * pow(surfaceTemperature, 4) * boltzman;
 }
 
-// units are in meters per second
-- (CGFloat) escapeVelocity {
-    const CGFloat gravitationConstant = 6.67e-11;
-    return pow(2 * gravitationConstant * mass / radius, 0.5f);
-}
-
 - (void) describe {
     NSLog(@"I am just a simple %@ star, radiating at %fK", classification, surfaceTemperature);
-    NSLog(@"My solar mass is %f", mass);
+    NSLog(@"My solar mass is %f", [self mass]);
     NSLog(@"My age is %@", [self ageInYears]);
     NSLog(@"My solar radius is %f", radius);
     NSLog(@"My habitable zone is between %f and %f", habitableZoneInnerRadius, habitableZoneOuterRadius);
@@ -220,7 +214,7 @@
 }
 
 - (NSString *) massComparison {
-    return [NSString stringWithFormat: @"%f", mass * 100 / solarMass];
+    return [NSString stringWithFormat: @"%f", [self mass] * 100 / solarMass];
 }
 
 - (NSString *) surfaceTemperatureComparison {
