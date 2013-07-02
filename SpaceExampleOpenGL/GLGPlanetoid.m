@@ -12,6 +12,7 @@
 
 @synthesize perogeeMeters, apogeeMeters;
 @synthesize rotationAngleAroundStar, rotationAroundAxisSeconds, rotationAroundSolarBodySeconds;
+@synthesize density;
 
 - (id) initWithStar: (GLGSolarStar* ) star {
     if (self = [super init]) {
@@ -74,8 +75,21 @@
 }
 
 // xxx implement me correctly using radius + distance from body + luminosity + all those things
-- (float) wattsSolarEnergyPerSquareMeter {
-    return (float)0;
+- (CGFloat) wattsSolarEnergyPerSquareMeter {
+    return 0.0f;
+}
+
+- (CGFloat) gravity {
+    return 0.0f;
+}
+
+- (CGFloat) earthSimilarityIndex {
+    CGFloat radiusComponent = powf(1 - ([self radius] - earthRadius) / ([self radius] + earthRadius), 0.57f);
+    CGFloat densityComponent = powf(1 - ([self density] - earthDensity) / ([self density] + earthDensity), 1.07f);
+    CGFloat escapeVelocityComponent = powf(1 - ([self escapeVelocity] - earthEscapeVelocity) / ([self escapeVelocity] + earthEscapeVelocity), 0.70f);
+    CGFloat surfaceTemperatureComponent = powf(1 - (surfaceTemperature - earthSurfaceTemperature) / (surfaceTemperature + earthSurfaceTemperature), 5.58f);
+    
+    return radiusComponent * densityComponent * escapeVelocityComponent * surfaceTemperatureComponent;
 }
 
 - (void) describe {

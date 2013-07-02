@@ -33,12 +33,16 @@
 @property CGFloat apogeeMeters;
 @property CGFloat perogeeMeters;
 
+@property CGFloat density;
+
 @property CGFloat rotationAngleAroundStar;
 @property CGFloat rotationAroundAxisSeconds;
 @property CGFloat rotationAroundSolarBodySeconds;
 
 - (id) initWithStar: (GLGSolarStar *) star;
-- (float) wattsSolarEnergyPerSquareMeter;
+- (CGFloat) wattsSolarEnergyPerSquareMeter;
+- (CGFloat) earthSimilarityIndex;
+- (CGFloat) gravity;
 - (NSString *) friendlyMass;
 - (NSString *) ageInBillionsOfYears;
 - (void) describe;

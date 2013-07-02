@@ -76,8 +76,8 @@
         CGFloat bolometricMagnitude = absoluteMagnitude + bolometricCorrectionConstant;
         
         CGFloat absoluteLuminosityRelativeToTheSun = pow(10, (bolometricMagnitude - solarBolometricMagnitude) / -2.5f);
-        habitableZoneInnerRadius = sqrt(absoluteLuminosityRelativeToTheSun / 1.1f) * astronomical_unit;
-        habitableZoneOuterRadius = sqrt(absoluteLuminosityRelativeToTheSun / 0.53f) * astronomical_unit;
+        habitableZoneInnerRadius = sqrt(absoluteLuminosityRelativeToTheSun / 1.1f) * astronomicalUnit;
+        habitableZoneOuterRadius = sqrt(absoluteLuminosityRelativeToTheSun / 0.53f) * astronomicalUnit;
     }
 
     return self;
