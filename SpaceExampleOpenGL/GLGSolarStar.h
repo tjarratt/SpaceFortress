@@ -38,7 +38,6 @@ facts:
 // http://en.wikipedia.org/wiki/Spectral_classification
 - (NSString *) spectralClassification;
 - (CGFloat) luminosity;
-- (CGFloat) escapeVelocity;
 - (void) describe;
 
 // UI methods
