@@ -21,8 +21,14 @@ FOUNDATION_EXPORT const CGFloat solarBolometricMagnitude;
 
 // other astronomical units
 FOUNDATION_EXPORT const CGFloat universalGravitationConstant;
-FOUNDATION_EXPORT const CGFloat astronomical_unit;
+FOUNDATION_EXPORT const CGFloat astronomicalUnit;
 FOUNDATION_EXPORT const CGFloat chandrasekharLimit;
-FOUNDATION_EXPORT const CGFloat maximum_mass_before_nuclear_fusion;
+FOUNDATION_EXPORT const CGFloat maximumMassBeforeNuclearFusion;
+
+// constants for Earth
+FOUNDATION_EXPORT const CGFloat earthRadius;
+FOUNDATION_EXPORT const CGFloat earthDensity;
+FOUNDATION_EXPORT const CGFloat earthEscapeVelocity;
+FOUNDATION_EXPORT const CGFloat earthSurfaceTemperature;
 
 #endif

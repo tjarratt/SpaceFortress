@@ -21,5 +21,10 @@ const CGFloat solarBolometricMagnitude = 4.72;
 
 const CGFloat universalGravitationConstant = 6.67e-11;
 
-const CGFloat maximum_mass_before_nuclear_fusion = 9.9945e28;
-const CGFloat astronomical_unit = 1.49e11; // mean earth-sun distance
+const CGFloat maximumMassBeforeNuclearFusion = 9.9945e28;
+const CGFloat astronomicalUnit = 1.49e11; // mean earth-sun distance
+
+const CGFloat earthRadius = 6.371e+6;
+const CGFloat earthDensity = 5.515;
+const CGFloat earthEscapeVelocity = 11.186;
+const CGFloat earthSurfaceTemperature = 288;
