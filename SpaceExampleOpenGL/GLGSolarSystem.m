@@ -18,8 +18,12 @@
         int i;
         int num_planetoids = arc4random() % 4 + 1;
         planetoids = [[NSMutableArray alloc] initWithCapacity:num_planetoids];
-        
         star = [[GLGSolarStar alloc] init];
+        
+        NSString *systemName = [NameProperty randomName];
+        [star setName:systemName];
+        [self setName:systemName];
+        
         for (i = 0; i < num_planetoids; ++i) {
             GLGPlanetoid *planet = [[GLGPlanetoid alloc] initWithStar: star];
             switch (i) {
@@ -37,6 +41,10 @@
                     break;
                     
             }
+            
+            NSString *numeral = [NameProperty numeralForDigit:i];
+            NSString *planetName = [NSString stringWithFormat:@"%@ %@", systemName, numeral];
+            [planet setName:planetName];
             
             [planetoids addObject:planet];
             [planet release];

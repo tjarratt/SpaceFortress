@@ -6,7 +6,7 @@
 //
 //
 
-#import <stdlib.h>
+#import "NameProperty.h"
 #import "GLGSolarStar.h"
 #import "GLGPlanetoid.h"
 #import <Foundation/Foundation.h>
@@ -16,6 +16,7 @@
     GLGSolarStar *star;
 }
 
+@property (retain) NSString *name;
 @property (readonly) NSMutableArray *planetoids;
 @property (readonly) GLGSolarStar *star;
 

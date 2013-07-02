@@ -22,6 +22,12 @@ static NSArray *romanNumerals;
     [romanNumerals retain];
 }
 
++ (NSString *) numeralForDigit: (NSInteger) n {
+    assert(n < [romanNumerals count] && n >= 0);
+    
+    return [romanNumerals objectAtIndex:n];
+}
+
 + (NSInteger) randomIntegerBetweenZeroAnd: (NSInteger) maximum {
     CGFloat scale = (CGFloat) arc4random() / 0x100000000;
     return scale * maximum;
@@ -30,9 +36,8 @@ static NSArray *romanNumerals;
 + (NSString *) randomName {
     NSString *first = [[greekAlphabet objectAtIndex: [self randomIntegerBetweenZeroAnd: [greekAlphabet count]]] capitalizedString];
     NSString *second = [[latinWords objectAtIndex: [self randomIntegerBetweenZeroAnd:[latinWords count]]] capitalizedString];
-    NSString *third = [romanNumerals objectAtIndex: [self randomIntegerBetweenZeroAnd:[romanNumerals count]]];
     
-    return [NSString stringWithFormat:@"%@ %@ %@", first, second, third];
+    return [NSString stringWithFormat:@"%@ %@", first, second];
 }
 
 #pragma mark - initializers

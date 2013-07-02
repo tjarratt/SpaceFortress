@@ -10,5 +10,7 @@
 
 @interface NameProperty : NSObject 
 
++ (NSString *) numeralForDigit: (NSInteger)n;
 + (NSString *) randomName;
+
 @end

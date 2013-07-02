@@ -6,7 +6,6 @@
 //
 //
 #import "constants.h"
-#import "NameProperty.h"
 #import "RangeProperty.h"
 #import <Foundation/Foundation.h>
 
