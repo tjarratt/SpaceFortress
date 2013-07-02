@@ -16,6 +16,7 @@
 @class GLGSolarStar;
 
 @interface GLGPlanetoid : GLGBody {
+    GLGSolarStar *star;
     CGFloat surfaceTemperature;
     
     BOOL hasWater;
@@ -42,7 +43,6 @@
 - (id) initWithStar: (GLGSolarStar *) star;
 - (CGFloat) wattsSolarEnergyPerSquareMeter;
 - (CGFloat) earthSimilarityIndex;
-- (CGFloat) gravity;
 - (NSString *) friendlyMass;
 - (NSString *) ageInBillionsOfYears;
 - (void) describe;

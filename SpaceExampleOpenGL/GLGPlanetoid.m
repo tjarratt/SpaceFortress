@@ -14,8 +14,9 @@
 @synthesize rotationAngleAroundStar, rotationAroundAxisSeconds, rotationAroundSolarBodySeconds;
 @synthesize density;
 
-- (id) initWithStar: (GLGSolarStar* ) star {
+- (id) initWithStar: (GLGSolarStar* ) theStar {
     if (self = [super init]) {
+        star = theStar;
         CGFloat formation_time = [RangeProperty randomValueWithMinimum:150 maximum:350];
         [self setAge:([star age] - formation_time)];
         
@@ -74,13 +75,9 @@
     return [[NSString stringWithFormat:@"%e meters", [self radius]] stringByReplacingOccurrencesOfString:@"e+" withString:@" * 10^"];
 }
 
-// xxx implement me correctly using radius + distance from body + luminosity + all those things
 - (CGFloat) wattsSolarEnergyPerSquareMeter {
-    return 0.0f;
-}
-
-- (CGFloat) gravity {
-    return 0.0f;
+    CGFloat surfaceAreaLuminosity = 4 * M_PI * powf(averageDistanceFromStar, 2);
+    return star.luminosity / surfaceAreaLuminosity;
 }
 
 - (CGFloat) earthSimilarityIndex {

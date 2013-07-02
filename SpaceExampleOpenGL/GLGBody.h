@@ -14,8 +14,10 @@
 @property CGFloat age;
 @property CGFloat mass;
 @property CGFloat radius;
-@property CGFloat escapeVelocity;
 @property (retain) NSString *name;
 @property (retain) NSColor *color;
+
+- (CGFloat) gravityAtSurface;
+- (CGFloat) escapeVelocity;
 
 @end

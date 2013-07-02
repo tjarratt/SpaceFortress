@@ -10,7 +10,7 @@
 
 @implementation GLGBody
 
-@synthesize age, mass, name, radius, color, escapeVelocity;
+@synthesize age, mass, name, radius, color;
 
 - (id) init {
     if (self = [super init]) {
@@ -21,12 +21,18 @@
         CGFloat min_radius = 1.5e6;
         CGFloat max_radius = 75e6;
         radius = [RangeProperty randomValueWithMinimum:min_radius maximum:max_radius];
-        
-        escapeVelocity = sqrtf(2 * mass * universalGravitationConstant / radius);
 
     }
     
     return self;
+}
+
+- (CGFloat) escapeVelocity {
+    return sqrtf(2.0f * mass * universalGravitationConstant / radius);
+}
+
+- (CGFloat) gravityAtSurface {
+    return universalGravitationConstant * self.mass / powf(self.radius, 2);
 }
 
 @end
