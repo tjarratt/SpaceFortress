@@ -18,6 +18,7 @@ FOUNDATION_EXPORT const CGFloat solarSurfaceTemperature;
 FOUNDATION_EXPORT const CGFloat solarRotationRate;
 FOUNDATION_EXPORT const CGFloat solarMetallicity;
 FOUNDATION_EXPORT const CGFloat solarBolometricMagnitude;
+FOUNDATION_EXPORT const CGFloat solarLuminosity;
 
 // other astronomical units
 FOUNDATION_EXPORT const CGFloat universalGravitationConstant;

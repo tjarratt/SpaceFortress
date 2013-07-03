@@ -18,6 +18,7 @@ const CGFloat solarSurfaceTemperature = 5887;
 const CGFloat solarRotationRate = 2592000; // 25-30 earth days
 const CGFloat solarMetallicity = 0; // or 1.2% by ratio of H + He to remaining
 const CGFloat solarBolometricMagnitude = 4.72;
+const CGFloat solarLuminosity = 3.839e26;
 
 const CGFloat universalGravitationConstant = 6.67e-11;
 
