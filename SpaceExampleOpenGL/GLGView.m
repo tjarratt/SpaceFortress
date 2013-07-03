@@ -77,6 +77,13 @@
     glPushAttrib(GL_ENABLE_BIT);
     glLineStipple(10, 0x1111);
     glEnable(GL_LINE_STIPPLE);
+
+    glEnable(GL_LINE_SMOOTH);
+    glEnable(GL_BLEND);
+    glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glLineWidth(3.0f);
+    glHint(GL_NICEST, GL_LINE_SMOOTH_HINT);
+    
     glBegin(GL_LINES);
     
     CGFloat ox, oy, oxp, oyp;
