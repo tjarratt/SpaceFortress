@@ -161,7 +161,6 @@ const NSUInteger solarSystemCapacity = 3;
     [view drawTorusAtPoint:NSMakePoint(x, y) innerRadius:innerRadius outerRadius:outerRadius];
 
     [[system planetoids] enumerateObjectsUsingBlock:^(GLGPlanetoid *planet, NSUInteger index, BOOL *stop) {
-        glColor3f(planet.color.redComponent, planet.color.greenComponent, planet.color.blueComponent);
         CGFloat radius = MAX([planet radius] * metersToPixelsScale, 5);
 
         px = x + planet.apogeeMeters * metersToPixelsScale * cos(scale * planet.rotationAroundSolarBodySeconds);
@@ -175,8 +174,10 @@ const NSUInteger solarSystemCapacity = 3;
         pxp -= (translated_x - x);
         pyp -= (translated_y - y) ;
 
-        [view drawCircleWithRadius:radius centerX:pxp centerY:pyp];
         [view drawOrbitForPlanet:planet atPointX:pxp pointY:pyp];
+        
+        glColor3f(planet.color.redComponent, planet.color.greenComponent, planet.color.blueComponent);
+        [view drawCircleWithRadius:radius centerX:pxp centerY:pyp];
     }];
 }
 
