@@ -75,7 +75,7 @@
 
 - (void) drawOrbitForPlanet:(GLGPlanetoid *)planet atPointX:(CGFloat) px pointY:(CGFloat) py {
     glPushAttrib(GL_ENABLE_BIT);
-    glLineStipple(10, 0xAAAA);
+    glLineStipple(10, 0x1111);
     glEnable(GL_LINE_STIPPLE);
     glBegin(GL_LINES);
     
