@@ -31,7 +31,7 @@
         rotationAroundSolarBodySeconds = [RangeProperty randomValueWithMinimum:min_body_rotation maximum:max_body_rotation];
 
         // completely random for now -> but this should be ~ delta a standard value for the system, right?
-        rotationAngleAroundStar = [RangeProperty randomValueWithMinimum:-1 * M_PI_4 maximum:M_PI_4];
+        rotationAngleAroundStar = [RangeProperty randomValueWithMinimum:-0.5 * M_PI_4 maximum:M_PI_4 * 0.5];
         
         CGFloat minimum_distance_from_star = 4.619e10;
         CGFloat maximum_distance_from_star = 1.49e13;
@@ -87,16 +87,6 @@
     CGFloat surfaceTemperatureComponent = powf(1 - (surfaceTemperature - earthSurfaceTemperature) / (surfaceTemperature + earthSurfaceTemperature), 5.58f);
     
     return radiusComponent * densityComponent * escapeVelocityComponent * surfaceTemperatureComponent;
-}
-
-- (void) describe {
-    NSLog(@"I am just a simple planetoid: %@", [self name]);
-    NSLog(@"I am %@", [self ageInBillionsOfYears]);
-    NSLog(@"My mass is %@, my radius is %@", [self friendlyMass], [self friendlyRadius]);
-    NSLog(@"My rotation angle around my star is %f", rotationAngleAroundStar);
-    
-    NSColor *color = [self color];
-    NSLog(@"My color is (%f, %f, %f)", color.redComponent, color.greenComponent, color.blueComponent);
 }
 
 @end

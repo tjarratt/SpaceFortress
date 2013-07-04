@@ -27,14 +27,16 @@ const NSUInteger solarSystemCapacity = 3;
         frameNumber = 0;
         framerate = 0.0f;
 
-        int width = [[NSScreen mainScreen] frame].size.width;
-        int height = [[NSScreen mainScreen] frame].size.height;
-        int rectWidth = 1280;
-        int rectHeight = 800;
-        int sceneWidth = rectWidth - 100;
+        CGFloat width = [[NSScreen mainScreen] frame].size.width;
+        CGFloat height = [[NSScreen mainScreen] frame].size.height;
+        CGFloat rectWidth = 1280;
+        CGFloat rectHeight = 800;
+        CGFloat sidebarWidth = 150;
+        CGFloat sceneWidth = rectWidth - sidebarWidth;
+        CGFloat sceneHeight = rectHeight - 50;
 
         NSRect windowRect = NSMakeRect(0, 0, rectWidth, rectHeight);
-        NSRect viewRect = NSMakeRect(0, 0, sceneWidth, rectHeight);
+        NSRect viewRect = NSMakeRect(0, 0, sceneWidth, sceneHeight);
         NSPoint point = NSMakePoint((width - rectWidth) / 2, (height - rectHeight) / 2);
         [window setFrame:windowRect display:YES];
         [window setFrameOrigin:point];
@@ -51,11 +53,25 @@ const NSUInteger solarSystemCapacity = 3;
         glEnable(GL_CULL_FACE);
         glEnable(GL_DEPTH_TEST);
 
-        NSRect sidebarFrame = NSMakeRect(sceneWidth, 0, 100, rectHeight);
-        sidebar = [[GLGSidebarView alloc] initWithFrame:sidebarFrame system:[self activeSystem] andDelegate:self];
+        NSRect sidebarFrame = NSMakeRect(sceneWidth, 0, sidebarWidth, rectHeight);
+        sidebar = [[GLGSidebarView alloc] initWithFrame:sidebarFrame systems:solarSystems andDelegate:self];
+        [sidebar didSelectObjectAtIndex:activeSystemIndex];
+        
+        NSRect titleFrame = NSMakeRect(0, sceneHeight, sceneWidth, 50);
+        titleView = [[NSView alloc] initWithFrame:titleFrame];        
+        NSRect innerFrame = NSMakeRect(5, 0, 200, 25);
+        title = [[NSTextField alloc] initWithFrame:innerFrame];
+        [title setEditable:NO];
+        [title setBezeled:NO];
+        [title setSelectable:NO];
+        [title setBackgroundColor:[NSColor clearColor]];
+        [title setStringValue:@"Choose a galaxy to colonize > "];
+        [titleView addSubview:title];
 
         [[window contentView] addSubview:scene];
         [[window contentView] addSubview:sidebar];
+        [[window contentView] addSubview:titleView];
+        
         [window setMinSize:NSMakeSize(rectWidth, rectHeight)];
         [window setAspectRatio:NSMakeSize(rectWidth, rectHeight)];
 
@@ -216,31 +232,20 @@ const NSUInteger solarSystemCapacity = 3;
     [self initializeSolarSystems];
 }
 
+- (void) systemWasSelected:(GLGSolarSystem *) system {
+    activeSystemIndex = [solarSystems indexOfObject:system];
+    [sidebar didSelectObjectAtIndex:activeSystemIndex];
+}
+
 #pragma mark - UI Observer binding methods
 - (GLGSolarSystem *)activeSystem {
     return [solarSystems objectAtIndex:activeSystemIndex];
 }
 
-- (NSString *) activeStarRadius {
-    return [[[self activeSystem] star] radiusComparison];
-}
-
-- (NSString *) activeStarMass {
-    return [[[self activeSystem] star] massComparison];
-}
-
-- (NSString *) activeStarTemperature {
-    return [[[self activeSystem] star] surfaceTemperatureComparison];
-}
-
-- (NSString *) activeStarMetallicity {
-    return [[[self activeSystem] star] metallicityComparison];
-}
-
 + (NSSet *) keyPathsForValuesAffectingValueForKey:(NSString *)key {
     NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 
-    NSSet *affectedPaths = [[NSSet alloc] initWithArray:@[@"activeStarRadius", @"activeStarMass", @"activeStarTemperature", @"activeStarMetallicity"]];
+    NSSet *affectedPaths = [[NSSet alloc] initWithArray:@[]];
 
     if ([affectedPaths containsObject:key]) {
         NSArray *otherPaths = @[@"activeSystemIndex"];

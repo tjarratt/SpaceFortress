@@ -51,8 +51,6 @@
         }
     }
     
-    [self describeSelf];
-    
     return self;
 }
 
@@ -60,15 +58,6 @@
     [planetoids release];
     [star release];
     return [super dealloc];
-}
-
-#pragma mark - UI description
-- (void) describeSelf {
-    NSLog(@"%@", [NSString stringWithFormat: @"a description of a solar system with %lu planets", [planetoids count]]);
-    [star describe];
-    [planetoids enumerateObjectsUsingBlock:^(GLGPlanetoid *p, NSUInteger index, BOOL *stop) {
-        [p describe];
-    }];
 }
 
 @end

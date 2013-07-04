@@ -8,7 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 #import "GLGSolarSystem.h"
+#import "GLGSidebarGalaxyView.h"
 
-@interface GLGSidebarView : NSView
-- (id)initWithFrame:(NSRect)frame system: (GLGSolarSystem *)system andDelegate:(id)delegate;
+@class GLGSolarSystem;
+
+@interface GLGSidebarView : NSView {
+    NSMutableArray *subViews;
+}
+
+- (id)initWithFrame:(NSRect)frame systems:(NSMutableArray *)systems andDelegate:(id)delegate;
+- (void) didSelectObjectAtIndex:(NSInteger) index;
 @end

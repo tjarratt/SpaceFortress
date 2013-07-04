@@ -19,7 +19,9 @@
 @interface BasicOpenGLController : NSViewController <GLGOpenGLViewDelegate, NSWindowDelegate> {
     NSWindow *window;
     GLGView *scene;
-    NSView *sidebar;
+    GLGSidebarView *sidebar;
+    NSView *titleView;
+    NSTextField *title;
     
     NSMutableArray *solarSystems;
     
@@ -28,9 +30,9 @@
     double lastTimestamp;
 }
 
+@property BOOL paused;
 @property CGFloat framerate;
 @property NSUInteger frameNumber;
-@property BOOL paused;
 @property NSUInteger activeSystemIndex;
 
 - (id) initWithWindow: (NSWindow *) window;
@@ -41,6 +43,7 @@
 - (void) BasicOpenGLViewDidReshape:(GLGView *)view;
 - (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize;
 - (void) keyWasPressed:(NSEvent *)event;
+- (void) systemWasSelected:(GLGSolarSystem *) system;
 - (GLGSolarSystem *) activeSystem;
 
 @end

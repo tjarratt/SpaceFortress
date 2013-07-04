@@ -10,106 +10,47 @@
 
 @implementation GLGSidebarView
 
-- (id)initWithFrame:(NSRect)frame system: (GLGSolarSystem *) system andDelegate: (id) delegate {
+- (id)initWithFrame:(NSRect)frame systems:(NSMutableArray *)systems andDelegate: (id) delegate {
     if (self = [super initWithFrame:frame]) {
-        NSTextField *framerateValue = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 100, 30)];
-        [framerateValue setEditable:NO];
+        GLGLabel *framerateValue = [[GLGLabel alloc] initWithFrame:NSMakeRect(65, 0, 60, 20)];
         [framerateValue bind:@"value" toObject:delegate withKeyPath:@"framerate" options:nil];
         [self addSubview:framerateValue];
         [framerateValue release];
-        
-        NSTextField *framerateLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 20, 100, 30)];
+        subViews = [[NSMutableArray alloc] initWithCapacity:[systems count]];
+
+        NSTextField *framerateLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 80, 20)];
         [framerateLabel setEditable:NO];
-        [framerateLabel setStringValue:@"Framerate"];
+        [framerateLabel setStringValue:@"Framerate:"];
         [framerateLabel setBezeled:NO];
         [framerateLabel setSelectable:NO];
         [framerateLabel setBackgroundColor:[NSColor clearColor]];
         [self addSubview:framerateLabel];
         [framerateLabel release];
         
-        NSTextField *radiusLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 100, 100, 40)];
-        [radiusLabel setEditable:NO];
-        [radiusLabel setStringValue:@"Percentage Solar Radius"];
-        [radiusLabel setBezeled:NO];
-        [radiusLabel setSelectable:NO];
-        [radiusLabel setBackgroundColor:[NSColor clearColor]];
-        [self addSubview:radiusLabel];
-        [radiusLabel release];
+        subViews = [[NSMutableArray alloc] initWithCapacity:[systems count]];
         
-        NSTextField *radiusValue = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 75, 100, 30)];
-        [radiusValue setEditable:NO];
-        [radiusValue bind:@"value" toObject:delegate withKeyPath:@"activeStarRadius" options:nil];
-        [self addSubview:radiusValue];
-        [radiusValue release];
-        
-        NSTextField *massLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 205, 100, 30)];
-        [massLabel setEditable:NO];
-        [massLabel setStringValue:@"Percentage Solar Mass"];
-        [massLabel setBezeled:NO];
-        [massLabel setSelectable:NO];
-        [massLabel setBackgroundColor:[NSColor clearColor]];
-        [self addSubview:massLabel];
-        [massLabel release];
-        
-        NSTextField *massValue = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 170, 100, 30)];
-        [massValue setEditable:NO];
-        [massValue bind:@"value" toObject:delegate withKeyPath:@"activeStarMass" options:nil];
-        [self addSubview:massValue];
-        [massValue release];
-        
-        NSTextField *surfaceTemperatureLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 305, 100, 30)];
-        [surfaceTemperatureLabel setEditable:NO];
-        [surfaceTemperatureLabel setStringValue:@"Percentage Solar Surface Temperature"];
-        [surfaceTemperatureLabel setBezeled:NO];
-        [surfaceTemperatureLabel setSelectable:NO];
-        [surfaceTemperatureLabel setBackgroundColor:[NSColor clearColor]];
-        [self addSubview:surfaceTemperatureLabel];
-        [surfaceTemperatureLabel release];
-        
-        NSTextField *surfaceTemperatureValue = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 270, 100, 30)];
-        [surfaceTemperatureValue setEditable:NO];
-        [surfaceTemperatureValue bind:@"value" toObject:delegate withKeyPath:@"activeStarTemperature" options:nil];
-        [self addSubview:surfaceTemperatureValue];
-        [surfaceTemperatureValue release];
-        
-        NSTextField *metallicityLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 405, 100, 35)];
-        [metallicityLabel setEditable:NO];
-        [metallicityLabel setStringValue:@"Percentage Solar Metallicity"];
-        [metallicityLabel setBezeled:NO];
-        [metallicityLabel setSelectable:NO];
-        [metallicityLabel setBackgroundColor:[NSColor clearColor]];
-        [self addSubview:metallicityLabel];
-        [metallicityLabel release];
-        
-        NSTextField *metallicityValue = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 370, 100, 30)];
-        [metallicityValue setEditable:NO];
-        [metallicityValue bind:@"value" toObject:delegate withKeyPath:@"activeStarMetallicity" options:nil];
-        [self addSubview:metallicityValue];
-        [metallicityValue release];
-        
-        NSButton *reset = [[NSButton alloc] initWithFrame:NSMakeRect(10, 740, 80, 30)];
-        [reset setTitle:@"Reset"];
-        [reset setTarget:delegate];
-        [reset setAction:@selector(reset)];
-        [self addSubview:reset];
-        [reset release];
-        
-        NSButton *prev = [[NSButton alloc] initWithFrame:NSMakeRect(10, 700, 30, 30)];
-        [prev setTitle:@"<="];
-        [prev setTarget:delegate];
-        [prev setAction:@selector(previousSystem)];
-        [self addSubview:prev];
-        [prev release];
-        
-        NSButton *next = [[NSButton alloc] initWithFrame:NSMakeRect(60, 700, 30, 30)];
-        [next setTitle:@"=>"];
-        [next setTarget:delegate];
-        [next setAction:@selector(nextSystem)];
-        [self addSubview:next];
-        [next release];
+        CGFloat padding = 5.0f;
+        CGFloat heightOfGalaxyItem = 100.0f;
+        CGFloat __block height = frame.size.height - 44;
+
+        [systems enumerateObjectsUsingBlock:^(GLGSolarSystem *system, NSUInteger index, BOOL *stop) {
+            height -= padding + heightOfGalaxyItem;
+            NSRect rect = NSMakeRect(0, height, frame.size.width, heightOfGalaxyItem);
+            GLGSidebarGalaxyView *view = [[GLGSidebarGalaxyView alloc] initWithFrame:rect delegate: delegate andSystem:system];
+            [self addSubview:view];
+            [subViews addObject:view];
+            [view release];
+        }];
     }
     
     return self;
+}
+
+- (void) didSelectObjectAtIndex:(NSInteger) index {
+    [subViews enumerateObjectsUsingBlock:^(GLGSidebarGalaxyView *view, NSUInteger idx, BOOL *stop) {
+        [view setSelected:(index == idx)];
+        [view setNeedsDisplay:YES];
+    }];
 }
 
 @end

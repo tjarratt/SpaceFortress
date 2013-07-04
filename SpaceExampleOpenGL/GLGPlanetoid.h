@@ -45,6 +45,5 @@
 - (CGFloat) earthSimilarityIndex;
 - (NSString *) friendlyMass;
 - (NSString *) ageInBillionsOfYears;
-- (void) describe;
 
 @end

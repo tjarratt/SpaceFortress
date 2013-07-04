@@ -196,14 +196,6 @@
     return 4 * M_PI * pow(radius, 2) * pow(surfaceTemperature, 4) * boltzman;
 }
 
-- (void) describe {
-    NSLog(@"I am just a simple %@ star, radiating at %fK", classification, surfaceTemperature);
-    NSLog(@"My solar mass is %f", [self mass]);
-    NSLog(@"My age is %@", [self ageInYears]);
-    NSLog(@"My solar radius is %f", radius);
-    NSLog(@"My habitable zone is between %f and %f", habitableZoneInnerRadius, habitableZoneOuterRadius);
-}
-
 - (NSString *) radiusAsMeters {
     return [NSString stringWithFormat:@"%f meters", radius];
 }
