@@ -23,6 +23,8 @@ const NSUInteger solarSystemCapacity = 3;
 
         window = theWindow;
         [window setDelegate:self];
+        
+        zoomScale = 0.0f;
 
         frameNumber = 0;
         framerate = 0.0f;
@@ -158,8 +160,9 @@ const NSUInteger solarSystemCapacity = 3;
     }
 
     CGFloat __block x, y, px, py, pxp, pyp;
-    CGFloat __block metersToPixelsScale = 3.543e-11;
-    CGFloat __block scale = frameNumber * 2 * M_PI / (float) 2e12;
+    CGFloat zoomScaleFactor = powf(1.01, zoomScale);
+    CGFloat metersToPixelsScale = 3.543e-11 * zoomScaleFactor;
+    CGFloat scale = frameNumber * 2 * M_PI / (float) 2e12;
     GLGSolarSystem *system = [self activeSystem];
 
     GLGSolarStar *star = [system star];
@@ -170,7 +173,6 @@ const NSUInteger solarSystemCapacity = 3;
     CGFloat solarRadius = MAX(5, [star radius] / 278400.0f);
     [view drawCircleWithRadius:solarRadius centerX:x centerY:y];
     
-    // draw habitable zone
     glColor4f(0.1f, 0.65f, 0.1f, 0.1f);
     CGFloat innerRadius = star.habitableZoneInnerRadius * metersToPixelsScale;
     CGFloat outerRadius = star.habitableZoneOuterRadius * metersToPixelsScale;
@@ -190,7 +192,7 @@ const NSUInteger solarSystemCapacity = 3;
         pxp -= (translated_x - x);
         pyp -= (translated_y - y) ;
 
-        [view drawOrbitForPlanet:planet atPointX:pxp pointY:pyp];
+        [view drawOrbitForPlanet:planet atScale:zoomScaleFactor];
         
         glColor3f(planet.color.redComponent, planet.color.greenComponent, planet.color.blueComponent);
         [view drawCircleWithRadius:radius centerX:pxp centerY:pyp];
@@ -206,35 +208,18 @@ const NSUInteger solarSystemCapacity = 3;
     }
 }
 
-- (void) nextSystem {
-    if (self.activeSystemIndex == (solarSystemCapacity - 1)) {
-        self.activeSystemIndex = 0;
-    }
-    else {
-        ++self.activeSystemIndex;
-    }
-}
-
-- (void) previousSystem {
-    if (self.activeSystemIndex == 0) {
-        self.activeSystemIndex = (solarSystemCapacity - 1);
-    }
-    else {
-        --self.activeSystemIndex;
-    }
-}
-
 - (void) pause {
     [self setPaused:![self paused]];
-}
-
-- (void) reset {
-    [self initializeSolarSystems];
 }
 
 - (void) systemWasSelected:(GLGSolarSystem *) system {
     activeSystemIndex = [solarSystems indexOfObject:system];
     [sidebar didSelectObjectAtIndex:activeSystemIndex];
+}
+
+- (void) didZoom:(CGFloat) amount {
+    zoomScale += amount;
+    NSLog(@"current zoom factor is %f", zoomScale);
 }
 
 #pragma mark - UI Observer binding methods

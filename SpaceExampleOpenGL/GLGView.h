@@ -18,8 +18,11 @@
 
 - (void) setDelegate: (id) delegate;
 - (void) drawCircleWithRadius: (CGFloat)radius centerX:(CGFloat)cx centerY:(CGFloat)cy;
-- (void) drawOrbitForPlanet:(GLGPlanetoid *) planet atPointX:(CGFloat) px pointY:(CGFloat) py;
+- (void) drawOrbitForPlanet:(GLGPlanetoid *) planet atScale:(CGFloat) scale;
 - (void) drawTorusAtPoint:(CGPoint) center innerRadius:(CGFloat) innerRadius outerRadius:(CGFloat) outerRadius;
+
+#pragma mark - scroll delegate events
+- (void)scrollWheel:(NSEvent *) event;
 
 @end
 
@@ -29,6 +32,7 @@
 @required
 - (void)prepareOpenGL;
 - (void)keyWasPressed:(NSEvent *) event;
+- (void)didZoom:(CGFloat) amount;
 
 @optional
 - (void)GLGOpenGLView:(NSOpenGLView *) view drawInRect:(NSRect) rect;

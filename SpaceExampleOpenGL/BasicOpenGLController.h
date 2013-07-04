@@ -23,6 +23,7 @@
     NSView *titleView;
     NSTextField *title;
     
+    CGFloat zoomScale;
     NSMutableArray *solarSystems;
     
     // framerate helpers

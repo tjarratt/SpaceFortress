@@ -10,6 +10,13 @@
 
 @implementation GLGView
 
+- (id) initWithFrame:(NSRect)frameRect {
+    if (self = [super initWithFrame:frameRect]) {
+        [self setAcceptsTouchEvents:YES];
+    }
+    return self;
+}
+
 - (void) setDelegate: (id) _delegate {
     delegate = _delegate;
 }
@@ -73,7 +80,7 @@
     glEnd();
 }
 
-- (void) drawOrbitForPlanet:(GLGPlanetoid *)planet atPointX:(CGFloat) px pointY:(CGFloat) py {
+- (void) drawOrbitForPlanet:(GLGPlanetoid *)planet atScale:(CGFloat)scale {
     glPushAttrib(GL_ENABLE_BIT);
     glLineStipple(10, 0x1111);
     glEnable(GL_LINE_STIPPLE);
@@ -89,7 +96,7 @@
     CGFloat ox, oy, oxp, oyp;
     CGFloat x = self.bounds.size.width / 2;
     CGFloat y = self.bounds.size.height / 2;
-    CGFloat metersToPixelsScale = 3.543e-11;
+    CGFloat metersToPixelsScale = 3.543e-11 * scale;
     
     glColor3f(1, 1, 1);
     for (CGFloat i = -2 * M_PI; i < 2 * M_PI; i+= 0.1) {
@@ -111,6 +118,13 @@
     glEnd();
     
     glPopAttrib();
+}
+
+#pragma mark - touch, scroll and mouse events
+- (void) scrollWheel:(NSEvent *) event {
+    if (delegate) {
+        [delegate didZoom:[event deltaY]];
+    }
 }
 
 @end
