@@ -129,7 +129,7 @@
 
 - (void) mouseDragged:(NSEvent *)theEvent {
     if (delegate) {
-        [delegate didPanByVector:CGPointMake(theEvent.deltaX, -1 * theEvent.deltaY)];
+        [delegate didPanByVector:CGPointMake(1.5 * theEvent.deltaX, -1.5f * theEvent.deltaY)];
     }
 }
 
