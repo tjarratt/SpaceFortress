@@ -98,10 +98,10 @@ const NSUInteger solarSystemCapacity = 3;
 
 #pragma mark - NSWindow delegate methods
 - (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
-    NSRect newFrame = NSMakeRect(0, 0, frameSize.width - 100, frameSize.height);
+    NSRect newFrame = NSMakeRect(0, 0, frameSize.width - 150, frameSize.height);
     [scene setFrame:newFrame];
 
-    NSRect newSidebarFrame = NSMakeRect(frameSize.width - 100, 0, 100, frameSize.height);
+    NSRect newSidebarFrame = NSMakeRect(frameSize.width - 150, 0, 150, frameSize.height);
     [sidebar setFrame:newSidebarFrame];
 
     return frameSize;
