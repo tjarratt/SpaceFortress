@@ -13,7 +13,7 @@
 @synthesize paused, frameNumber, framerate;
 @synthesize activeSystemIndex;
 
-const NSUInteger solarSystemCapacity = 3;
+const NSUInteger solarSystemCapacity = 10;
 
 #pragma Lifecycle methods
 - (id) initWithWindow: (NSWindow *) theWindow {

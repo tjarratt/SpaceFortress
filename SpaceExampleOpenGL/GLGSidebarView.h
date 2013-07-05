@@ -12,7 +12,8 @@
 
 @class GLGSolarSystem;
 
-@interface GLGSidebarView : NSView {
+@interface GLGSidebarView : NSScrollView {
+    NSView *innerView;
     NSMutableArray *subViews;
 }
 
