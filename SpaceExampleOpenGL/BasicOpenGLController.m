@@ -177,6 +177,10 @@ const NSUInteger solarSystemCapacity = 10;
     CGFloat innerRadius = star.habitableZoneInnerRadius * metersToPixelsScale;
     CGFloat outerRadius = star.habitableZoneOuterRadius * metersToPixelsScale;
     [view drawTorusAtPoint:NSMakePoint(x, y) innerRadius:innerRadius outerRadius:outerRadius];
+    
+    [[system planetoids] enumerateObjectsUsingBlock:^(GLGPlanetoid *planet, NSUInteger index, BOOL *stop) {
+        [view drawOrbitForPlanet:planet atScale:zoomScaleFactor atOrigin:origin];
+    }];
 
     [[system planetoids] enumerateObjectsUsingBlock:^(GLGPlanetoid *planet, NSUInteger index, BOOL *stop) {
         CGFloat radius = MAX([planet radius] * metersToPixelsScale, 5);
@@ -191,8 +195,6 @@ const NSUInteger solarSystemCapacity = 10;
         CGFloat translated_y = x * sin(planet.rotationAngleAroundStar) + y * cos(planet.rotationAngleAroundStar);
         pxp -= (translated_x - x);
         pyp -= (translated_y - y) ;
-
-        [view drawOrbitForPlanet:planet atScale:zoomScaleFactor atOrigin:origin];
         
         glColor3f(planet.color.redComponent, planet.color.greenComponent, planet.color.blueComponent);
         [view drawCircleWithRadius:radius centerX:pxp centerY:pyp];
