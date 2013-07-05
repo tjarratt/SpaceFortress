@@ -168,8 +168,8 @@ const NSUInteger solarSystemCapacity = 10;
     GLGSolarStar *star = [system star];
     NSColor *solarColor = [star color];
     glColor3f(solarColor.redComponent, solarColor.greenComponent, solarColor.blueComponent);
-    x = view.bounds.size.width / 2;
-    y = view.bounds.size.height / 2;
+    x = view.bounds.size.width / 2 + origin.x;
+    y = view.bounds.size.height / 2 + origin.y;
     CGFloat solarRadius = MAX(5, [star radius] / 278400.0f);
     [view drawCircleWithRadius:solarRadius centerX:x centerY:y];
     
@@ -192,7 +192,7 @@ const NSUInteger solarSystemCapacity = 10;
         pxp -= (translated_x - x);
         pyp -= (translated_y - y) ;
 
-        [view drawOrbitForPlanet:planet atScale:zoomScaleFactor];
+        [view drawOrbitForPlanet:planet atScale:zoomScaleFactor atOrigin:origin];
         
         glColor3f(planet.color.redComponent, planet.color.greenComponent, planet.color.blueComponent);
         [view drawCircleWithRadius:radius centerX:pxp centerY:pyp];
@@ -213,13 +213,21 @@ const NSUInteger solarSystemCapacity = 10;
 }
 
 - (void) systemWasSelected:(GLGSolarSystem *) system {
+    zoomScale = 0;
+    origin = NSMakePoint(0, 0);
     activeSystemIndex = [solarSystems indexOfObject:system];
     [sidebar didSelectObjectAtIndex:activeSystemIndex];
 }
 
 - (void) didZoom:(CGFloat) amount {
     zoomScale += amount;
-    NSLog(@"current zoom factor is %f", zoomScale);
+    zoomScale = MIN(zoomScale, 100);
+    zoomScale = MAX(zoomScale, -100);
+}
+
+- (void) didPanByVector:(CGPoint) vector {
+    origin.x += vector.x;
+    origin.y += vector.y;
 }
 
 #pragma mark - UI Observer binding methods

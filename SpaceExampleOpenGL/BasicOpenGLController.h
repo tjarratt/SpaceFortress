@@ -24,6 +24,7 @@
     NSTextField *title;
     
     CGFloat zoomScale;
+    CGPoint origin;
     NSMutableArray *solarSystems;
     
     // framerate helpers
@@ -47,4 +48,6 @@
 - (void) systemWasSelected:(GLGSolarSystem *) system;
 - (GLGSolarSystem *) activeSystem;
 
+- (void) didZoom:(CGFloat) amount;
+- (void) didPanByVector:(CGPoint) vector;
 @end

@@ -80,7 +80,7 @@
     glEnd();
 }
 
-- (void) drawOrbitForPlanet:(GLGPlanetoid *)planet atScale:(CGFloat)scale {
+- (void) drawOrbitForPlanet:(GLGPlanetoid *)planet atScale:(CGFloat)scale atOrigin:(CGPoint) origin {
     glPushAttrib(GL_ENABLE_BIT);
     glLineStipple(10, 0x1111);
     glEnable(GL_LINE_STIPPLE);
@@ -94,8 +94,8 @@
     glBegin(GL_LINES);
     
     CGFloat ox, oy, oxp, oyp;
-    CGFloat x = self.bounds.size.width / 2;
-    CGFloat y = self.bounds.size.height / 2;
+    CGFloat x = self.bounds.size.width / 2 + origin.x;
+    CGFloat y = self.bounds.size.height / 2 + origin.y;
     CGFloat metersToPixelsScale = 3.543e-11 * scale;
     
     glColor3f(1, 1, 1);
@@ -124,6 +124,12 @@
 - (void) scrollWheel:(NSEvent *) event {
     if (delegate) {
         [delegate didZoom:[event deltaY]];
+    }
+}
+
+- (void) mouseDragged:(NSEvent *)theEvent {
+    if (delegate) {
+        [delegate didPanByVector:CGPointMake(theEvent.deltaX, -1 * theEvent.deltaY)];
     }
 }
 
