@@ -10,7 +10,7 @@
 
 @implementation GLGSidebarGalaxyView
 
-@synthesize selected;
+@synthesize selected, open;
 @synthesize galaxy;
 
 - (id)initWithFrame:(NSRect)frame delegate:(id) theDelegate andSystem:(GLGSolarSystem *) system {
@@ -19,7 +19,7 @@
         delegate = theDelegate;
 
         CGFloat height = frame.size.height;
-        CGFloat heightOfLabels = 20.0f;
+        CGFloat heightOfLabels = 25.0f;
         CGFloat widthOfLabels = frame.size.width - 10;
         CGFloat numberOfLabels = 3.0f;
         CGFloat padding = (height - (heightOfLabels * numberOfLabels)) / (numberOfLabels + 1);
@@ -42,7 +42,18 @@
         
         currentHeight -= heightOfLabels + padding;
         
-        NSRect numPlanetsRect = NSMakeRect(5, currentHeight, widthOfLabels, heightOfLabels);
+        disclosureTriangle = [[NSButton alloc] initWithFrame:NSMakeRect(5, currentHeight + 3, 30, heightOfLabels)];
+        [disclosureTriangle setTitle:@""];
+        [disclosureTriangle setState:NSOnState];
+        [disclosureTriangle setButtonType: NSPushOnPushOffButton];
+        [disclosureTriangle setBezelStyle:NSRoundedDisclosureBezelStyle];
+        [disclosureTriangle setTarget:self];
+        [disclosureTriangle setAction:@selector(openedDisclosureTriangle)];
+        
+        // create a currently hidden view here that has the planets in it
+        // doesn't make sense to create this, so we should probably set its height to 0
+        
+        NSRect numPlanetsRect = NSMakeRect(35, currentHeight, widthOfLabels - 35, heightOfLabels);
         GLGLabel *numPlanets = [[GLGLabel alloc] initWithFrame:numPlanetsRect];
         NSString *planetsString;
         if ([[system planetoids] count] > 1) {
@@ -54,6 +65,7 @@
         
         NSString *readablePlanets = [NSString stringWithFormat:@"%lu %@", [[system planetoids] count], planetsString];
         [numPlanets setStringValue:readablePlanets];
+        [self addSubview:disclosureTriangle];
         [self addSubview:numPlanets];
         [numPlanets release];
     }
@@ -83,6 +95,16 @@
     
     [borderColor set];
     [borderPath stroke];
+}
+
+- (void) openedDisclosureTriangle {
+    // logic is backwards because the state is currently changing
+    if ([disclosureTriangle state] == NSOnState) {
+        [delegate stopViewingPlanet];
+    }
+    else {
+        [delegate startViewingPlanet: [[galaxy planetoids] objectAtIndex:0]];
+    }
 }
 
 - (void) mouseUp:(NSEvent *) event {

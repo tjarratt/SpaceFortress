@@ -24,8 +24,13 @@ const NSUInteger solarSystemCapacity = 10;
         window = theWindow;
         [window setDelegate:self];
         
-        zoomScale = 0.0f;
-
+        zoomScale = [[GLGEasedValue alloc] initWithValue: 0.0f];
+        [zoomScale setMinimum:-100.0f];
+        [zoomScale setMaximum:100.0];
+        origin = [[GLGEasedPoint alloc] initWithPoint:NSMakePoint(0, 0)];
+        [origin setMinimum:NSMakePoint(-1200, -1200)];
+        [origin setMaximum:NSMakePoint(1200, 1200)];
+        
         frameNumber = 0;
         framerate = 0.0f;
 
@@ -86,6 +91,7 @@ const NSUInteger solarSystemCapacity = 10;
 }
 
 - (void) initializeSolarSystems {
+    selectedPlanet = nil;
     [solarSystems release];
     solarSystems = [[NSMutableArray alloc] initWithCapacity:solarSystemCapacity];
     for (int i = 0; i < solarSystemCapacity; ++i) {
@@ -160,16 +166,26 @@ const NSUInteger solarSystemCapacity = 10;
     }
 
     CGFloat __block x, y, px, py, pxp, pyp;
-    CGFloat zoomScaleFactor = powf(1.01, zoomScale);
+    CGFloat zoomScaleFactor = powf(1.01, [zoomScale currentValue]);
     CGFloat metersToPixelsScale = 3.543e-11 * zoomScaleFactor;
-    CGFloat scale = frameNumber * 2 * M_PI / (float) 2e12;
+    CGFloat scale = frameNumber * 2 * M_PI / 2.0e12;
     GLGSolarSystem *system = [self activeSystem];
 
     GLGSolarStar *star = [system star];
     NSColor *solarColor = [star color];
     glColor3f(solarColor.redComponent, solarColor.greenComponent, solarColor.blueComponent);
-    x = view.bounds.size.width / 2 + origin.x;
-    y = view.bounds.size.height / 2 + origin.y;
+    
+    NSPoint currentOrigin = [origin currentValue];
+    x = view.bounds.size.width / 2 + currentOrigin.x;
+    y = view.bounds.size.height / 2 + currentOrigin.y;
+    
+    if (selectedPlanet != nil) {
+        CGFloat deltaX = -1 * selectedPlanet.apogeeMeters * metersToPixelsScale * cos(scale * selectedPlanet.rotationAroundSolarBodySeconds);
+        CGFloat deltaY = -1 * selectedPlanet.perogeeMeters * metersToPixelsScale * sin(scale * selectedPlanet.rotationAroundSolarBodySeconds);
+
+        [origin setPoint:NSMakePoint(deltaX, deltaY)];
+    }
+    
     CGFloat solarRadius = MAX(5, [star radius] / 278400.0f);
     [view drawCircleWithRadius:solarRadius centerX:x centerY:y];
     
@@ -179,7 +195,7 @@ const NSUInteger solarSystemCapacity = 10;
     [view drawTorusAtPoint:NSMakePoint(x, y) innerRadius:innerRadius outerRadius:outerRadius];
     
     [[system planetoids] enumerateObjectsUsingBlock:^(GLGPlanetoid *planet, NSUInteger index, BOOL *stop) {
-        [view drawOrbitForPlanet:planet atScale:zoomScaleFactor atOrigin:origin];
+        [view drawOrbitForPlanet:planet atScale:zoomScaleFactor atOrigin:[origin currentValue]];
     }];
 
     [[system planetoids] enumerateObjectsUsingBlock:^(GLGPlanetoid *planet, NSUInteger index, BOOL *stop) {
@@ -215,21 +231,35 @@ const NSUInteger solarSystemCapacity = 10;
 }
 
 - (void) systemWasSelected:(GLGSolarSystem *) system {
-    zoomScale = 0;
-    origin = NSMakePoint(0, 0);
+    [zoomScale setCurrentValue:0 animate:NO];
+    [origin setPoint:NSMakePoint(0, 0)];
     activeSystemIndex = [solarSystems indexOfObject:system];
     [sidebar didSelectObjectAtIndex:activeSystemIndex];
+    selectedPlanet = nil;
+}
+
+- (void) startViewingPlanet:(GLGPlanetoid *) planet {
+    [zoomScale setCurrentValue:20 animate:YES];
+    selectedPlanet = planet;
+    [sidebar shouldResize];
+}
+
+- (void) stopViewingPlanet {
+    [zoomScale setCurrentValue:0 animate:YES];
+    [origin easeToPoint:NSMakePoint(0, 0)];
+    
+    selectedPlanet = nil;
+    [sidebar shouldResize];
 }
 
 - (void) didZoom:(CGFloat) amount {
-    zoomScale += amount;
-    zoomScale = MIN(zoomScale, 100);
-    zoomScale = MAX(zoomScale, -100);
+    [zoomScale incrementBy:amount];
 }
 
 - (void) didPanByVector:(CGPoint) vector {
-    origin.x += vector.x;
-    origin.y += vector.y;
+    if (selectedPlanet == nil) {
+        [origin addVector:vector];
+    }
 }
 
 #pragma mark - UI Observer binding methods

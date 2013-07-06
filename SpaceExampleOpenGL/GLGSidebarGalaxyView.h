@@ -14,9 +14,11 @@
 
 @interface GLGSidebarGalaxyView : NSView {
     id delegate;
+    NSButton *disclosureTriangle;
 }
 
 @property (readonly, retain) GLGSolarSystem* galaxy;
+@property BOOL open;
 @property BOOL selected;
 
 - (id) initWithFrame:(NSRect)frameRect delegate:(id) theDelegate andSystem:(GLGSolarSystem *) system;

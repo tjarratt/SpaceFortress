@@ -19,4 +19,5 @@
 
 - (id)initWithFrame:(NSRect)frame systems:(NSMutableArray *)systems andDelegate:(id)delegate;
 - (void) didSelectObjectAtIndex:(NSInteger) index;
+- (void) shouldResize;
 @end

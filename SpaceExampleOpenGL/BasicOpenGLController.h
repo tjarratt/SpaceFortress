@@ -12,6 +12,8 @@
 #import "GLGView.h"
 #import "GLGSidebarView.h"
 
+#import "GLGEasedPoint.h"
+#import "GLGEasedValue.h"
 #import "NameProperty.h"
 #import "RangeProperty.h"
 #import "GLGSolarSystem.h"
@@ -23,13 +25,15 @@
     NSView *titleView;
     NSTextField *title;
     
-    CGFloat zoomScale;
-    CGPoint origin;
+    GLGEasedValue *zoomScale;
+    GLGEasedPoint *origin;
     NSMutableArray *solarSystems;
     
     // framerate helpers
     NSUInteger lastFrame;
     double lastTimestamp;
+    
+    GLGPlanetoid *selectedPlanet;
 }
 
 @property BOOL paused;
@@ -47,6 +51,9 @@
 - (void) keyWasPressed:(NSEvent *)event;
 - (void) systemWasSelected:(GLGSolarSystem *) system;
 - (GLGSolarSystem *) activeSystem;
+
+- (void) startViewingPlanet:(GLGPlanetoid *) planet;
+- (void) stopViewingPlanet;
 
 - (void) didZoom:(CGFloat) amount;
 - (void) didPanByVector:(CGPoint) vector;

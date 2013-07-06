@@ -36,6 +36,8 @@
 		F7D6D77317822E73001F2FB0 /* GLGBody.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D77217822E73001F2FB0 /* GLGBody.m */; };
 		F7D6D7791784E3FD001F2FB0 /* GLGSidebarGalaxyView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D7781784E3FD001F2FB0 /* GLGSidebarGalaxyView.m */; };
 		F7D6D77C1784EA6F001F2FB0 /* GLGLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D77B1784EA6F001F2FB0 /* GLGLabel.m */; };
+		F7D6D7861788B84A001F2FB0 /* GLGEasedValue.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D7851788B84A001F2FB0 /* GLGEasedValue.m */; };
+		F7D6D7891788CAAA001F2FB0 /* GLGEasedPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D7881788CAAA001F2FB0 /* GLGEasedPoint.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,10 @@
 		F7D6D7781784E3FD001F2FB0 /* GLGSidebarGalaxyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGSidebarGalaxyView.m; sourceTree = "<group>"; };
 		F7D6D77A1784EA6F001F2FB0 /* GLGLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGLabel.h; sourceTree = "<group>"; };
 		F7D6D77B1784EA6F001F2FB0 /* GLGLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGLabel.m; sourceTree = "<group>"; };
+		F7D6D7841788B84A001F2FB0 /* GLGEasedValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGEasedValue.h; sourceTree = "<group>"; };
+		F7D6D7851788B84A001F2FB0 /* GLGEasedValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGEasedValue.m; sourceTree = "<group>"; };
+		F7D6D7871788CAAA001F2FB0 /* GLGEasedPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGEasedPoint.h; sourceTree = "<group>"; };
+		F7D6D7881788CAAA001F2FB0 /* GLGEasedPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGEasedPoint.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +134,10 @@
 		F70C6BF91773A66800AFBFDE /* Properties */ = {
 			isa = PBXGroup;
 			children = (
+				F7D6D7841788B84A001F2FB0 /* GLGEasedValue.h */,
+				F7D6D7851788B84A001F2FB0 /* GLGEasedValue.m */,
+				F7D6D7871788CAAA001F2FB0 /* GLGEasedPoint.h */,
+				F7D6D7881788CAAA001F2FB0 /* GLGEasedPoint.m */,
 				F7D6D76A177E33F2001F2FB0 /* NameProperty.h */,
 				F7D6D76B177E33F2001F2FB0 /* NameProperty.m */,
 				F70C6BFA1773A67800AFBFDE /* RangeProperty.h */,
@@ -384,6 +394,8 @@
 				F7D6D77317822E73001F2FB0 /* GLGBody.m in Sources */,
 				F7D6D7791784E3FD001F2FB0 /* GLGSidebarGalaxyView.m in Sources */,
 				F7D6D77C1784EA6F001F2FB0 /* GLGLabel.m in Sources */,
+				F7D6D7861788B84A001F2FB0 /* GLGEasedValue.m in Sources */,
+				F7D6D7891788CAAA001F2FB0 /* GLGEasedPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

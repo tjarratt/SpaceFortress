@@ -70,4 +70,8 @@
     }];
 }
 
+- (void) shouldResize {
+    NSLog(@"Guess I should resize because one of the sidebar items opened or closed");
+}
+
 @end
