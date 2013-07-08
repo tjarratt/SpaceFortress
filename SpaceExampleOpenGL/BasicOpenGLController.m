@@ -169,23 +169,22 @@ const NSUInteger solarSystemCapacity = 10;
     CGFloat zoomScaleFactor = powf(1.01, [zoomScale currentValue]);
     CGFloat metersToPixelsScale = 3.543e-11 * zoomScaleFactor;
     CGFloat scale = frameNumber * 2 * M_PI / 2.0e12;
-    GLGSolarSystem *system = [self activeSystem];
-
-    GLGSolarStar *star = [system star];
-    NSColor *solarColor = [star color];
-    glColor3f(solarColor.redComponent, solarColor.greenComponent, solarColor.blueComponent);
     
     NSPoint currentOrigin = [origin currentValue];
     x = view.bounds.size.width / 2 + currentOrigin.x;
     y = view.bounds.size.height / 2 + currentOrigin.y;
     
     if (selectedPlanet != nil) {
-        CGFloat deltaX = -1 * selectedPlanet.apogeeMeters * metersToPixelsScale * cos(scale * selectedPlanet.rotationAroundSolarBodySeconds);
-        CGFloat deltaY = -1 * selectedPlanet.perogeeMeters * metersToPixelsScale * sin(scale * selectedPlanet.rotationAroundSolarBodySeconds);
+        CGFloat planetX = -1 * selectedPlanet.apogeeMeters * metersToPixelsScale * cos(scale * selectedPlanet.rotationAroundSolarBodySeconds);
+        CGFloat planetY = -1 * selectedPlanet.perogeeMeters * metersToPixelsScale * sin(scale * selectedPlanet.rotationAroundSolarBodySeconds);
 
-        [origin setPoint:NSMakePoint(deltaX, deltaY)];
+        [origin setPoint:NSMakePoint(planetX, planetY)];
     }
-    
+
+    GLGSolarSystem *system = [self activeSystem];
+    GLGSolarStar *star = [system star];
+    NSColor *solarColor = [star color];
+    glColor3f(solarColor.redComponent, solarColor.greenComponent, solarColor.blueComponent);
     CGFloat solarRadius = MAX(5, [star radius] / 278400.0f);
     [view drawCircleWithRadius:solarRadius centerX:x centerY:y];
     
@@ -239,8 +238,25 @@ const NSUInteger solarSystemCapacity = 10;
 }
 
 - (void) startViewingPlanet:(GLGPlanetoid *) planet {
+    assert( [self.activeSystem.planetoids indexOfObject:planet] >= 0 );
+
     [zoomScale setCurrentValue:20 animate:YES];
-    selectedPlanet = planet;
+    CGFloat animationTime = 0.75; // less hardcoded please
+    NSInteger framesToComplete = floor(animationTime * 30.0);
+    NSInteger animationCompleteFrame = frameNumber + framesToComplete;
+
+    CGFloat zoomScaleFactor = powf(1.01, 20);
+    CGFloat metersToPixelsScale = 3.543e-11 * zoomScaleFactor;
+    CGFloat scale = animationCompleteFrame * 2 * M_PI / 2.0e12;
+
+    CGFloat planetX = -1 * planet.apogeeMeters * metersToPixelsScale * cos(scale * planet.rotationAroundSolarBodySeconds);
+    CGFloat planetY = -1 * planet.perogeeMeters * metersToPixelsScale * sin(scale * planet.rotationAroundSolarBodySeconds);
+
+    void (^completionHandler)(void) = ^(void) {
+        selectedPlanet = planet;
+    };
+
+    [origin easeToPoint:NSMakePoint(planetX, planetY) withBlock:completionHandler];
     [sidebar shouldResize];
 }
 

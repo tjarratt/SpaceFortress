@@ -10,10 +10,16 @@
 
 @implementation GLGEasedPoint
 
+@synthesize block;
+
 - (id) initWithPoint:(NSPoint)point {
     if (self = [super init]) {
+        [self setBlock:nil];
         x = [[GLGEasedValue alloc] initWithValue:point.x];
         y = [[GLGEasedValue alloc] initWithValue:point.y];
+
+        [x setDelegate:self];
+        [y setDelegate:self];
     }
     
     return self;
@@ -40,8 +46,23 @@
 }
 
 - (void) easeToPoint:(NSPoint)point {
+    pendingAnimations = 2;
     [x setCurrentValue:point.x animate:YES];
     [y setCurrentValue:point.y animate:YES];
+}
+
+- (void) easeToPoint:(NSPoint)point withBlock:(void *) _block {
+    [self setBlock:_block];
+    [self easeToPoint:point];
+}
+
+- (void) animationDidComplete {
+    pendingAnimations--;
+
+    if (pendingAnimations == 0 && self.block != nil) {
+        self.block();
+        self.block = nil;
+    }
 }
 
 - (NSPoint) currentValue {

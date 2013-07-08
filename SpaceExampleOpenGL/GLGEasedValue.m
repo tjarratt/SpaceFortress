@@ -24,6 +24,7 @@
         }
         
         [animation setProgressMarks:progressMarks];
+        [progressMarks release];
     }
     
     return self;
@@ -63,6 +64,14 @@
 
 - (void) animation:(NSAnimation *)animation didReachProgressMark:(NSAnimationProgress)progress {
     currentValue = startValue + progress * (endValue - startValue);
+
+    if (progress >= 0.99 && delegate) {
+        [delegate animationDidComplete];
+    }
+}
+
+- (void) setDelegate:(id) _delegate {
+    delegate = _delegate;
 }
 
 @end
