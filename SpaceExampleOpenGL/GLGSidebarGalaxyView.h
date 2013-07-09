@@ -11,10 +11,15 @@
 #import "GLGLabel.h"
 #import "GLGSolarStar.h"
 #import "GLGSolarSystem.h"
+#import "GLGSidebarPlanetDetail.h"
 
 @interface GLGSidebarGalaxyView : NSView {
     id delegate;
-    NSButton *disclosureTriangle;
+    NSMutableArray *planetDetailViews;
+
+    GLGLabel *galaxyName;
+    GLGLabel *starTypeField;
+    GLGLabel *numPlanets;
 }
 
 @property (readonly, retain) GLGSolarSystem* galaxy;

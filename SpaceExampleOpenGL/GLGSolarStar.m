@@ -184,10 +184,12 @@
         rangeBetween = (700 - surfaceTemperature) / 100;
         color = [NSColor colorWithDeviceRed:0.21 green:0.16 blue:0.23 alpha:1];
     }
-    
-    [color retain];
+
     spectrumRange = [NSString stringWithFormat:@"%d", rangeBetween];
     classification = [NSString stringWithFormat:@"%@%@%@", primaryClass, spectrumRange, luminosityClass];
+
+    [color retain];
+    [classification retain];
 }
 
 // units are in Watts (Joules / second)

@@ -18,99 +18,133 @@
         galaxy = system;
         delegate = theDelegate;
 
-        CGFloat height = frame.size.height;
-        CGFloat heightOfLabels = 25.0f;
-        CGFloat widthOfLabels = frame.size.width - 10;
-        CGFloat numberOfLabels = 3.0f;
-        CGFloat padding = (height - (heightOfLabels * numberOfLabels)) / (numberOfLabels + 1);
-        CGFloat currentHeight = height - padding - heightOfLabels;
-        
-        NSRect galaxyRect = NSMakeRect(5, currentHeight, widthOfLabels, heightOfLabels);
-        GLGLabel *galaxyName = [[GLGLabel alloc] initWithFrame:galaxyRect];
-        [galaxyName setStringValue:[system name]];
-        [self addSubview:galaxyName];
-        [galaxyName release];
-        
-        currentHeight -= heightOfLabels + padding;
-        
-        NSRect starTypeRect = NSMakeRect(5, currentHeight, widthOfLabels, heightOfLabels);
-        NSString *starType = [NSString stringWithFormat:@"Class %@ star", [[system star] spectralClassification]];
-        GLGLabel *starTypeField = [[GLGLabel alloc] initWithFrame:starTypeRect];
+        galaxyName = [[GLGLabel alloc] init];
+        [galaxyName setStringValue:[galaxy name]];
+
+        self.wantsLayer = YES;
+        self.layer.masksToBounds = YES;
+        self.layer.frame = self.frame;
+        [[self layer] setCornerRadius:5.0];
+
+        NSColor *borderColor;
+        if (selected) {
+            borderColor = [NSColor colorWithDeviceRed:0.3f green:0.8f blue:0.1f alpha:1.0];
+        }
+        else {
+            borderColor = [NSColor blackColor];
+        }
+
+        [[self layer] setBorderWidth:1.0];
+        [[self layer] setBorderColor:[borderColor CGColor]];
+
+        NSString *starType = [NSString stringWithFormat:@"Class %@ star", [[galaxy star] spectralClassification]];
+        starTypeField = [[GLGLabel alloc] init];
         [starTypeField setStringValue:starType];
-        [self addSubview:starTypeField];
-        [starTypeField release];
-        
-        currentHeight -= heightOfLabels + padding;
-        
-        disclosureTriangle = [[NSButton alloc] initWithFrame:NSMakeRect(5, currentHeight + 3, 30, heightOfLabels)];
-        [disclosureTriangle setTitle:@""];
-        [disclosureTriangle setState:NSOnState];
-        [disclosureTriangle setButtonType: NSPushOnPushOffButton];
-        [disclosureTriangle setBezelStyle:NSRoundedDisclosureBezelStyle];
-        [disclosureTriangle setTarget:self];
-        [disclosureTriangle setAction:@selector(openedDisclosureTriangle)];
-        
-        // create a currently hidden view here that has the planets in it
-        // doesn't make sense to create this, so we should probably set its height to 0
-        
-        NSRect numPlanetsRect = NSMakeRect(35, currentHeight, widthOfLabels - 35, heightOfLabels);
-        GLGLabel *numPlanets = [[GLGLabel alloc] initWithFrame:numPlanetsRect];
+
+        numPlanets = [[GLGLabel alloc] init];
         NSString *planetsString;
-        if ([[system planetoids] count] > 1) {
+        if ([[galaxy planetoids] count] > 1) {
             planetsString = @"planets";
         }
         else {
             planetsString = @"planet";
         }
-        
-        NSString *readablePlanets = [NSString stringWithFormat:@"%lu %@", [[system planetoids] count], planetsString];
+
+        NSString *readablePlanets = [NSString stringWithFormat:@"%lu %@", [[galaxy planetoids] count], planetsString];
         [numPlanets setStringValue:readablePlanets];
-        [self addSubview:disclosureTriangle];
+
+        planetDetailViews = [[NSMutableArray alloc] initWithCapacity:[[galaxy planetoids] count]];
+
+        [[galaxy planetoids] enumerateObjectsUsingBlock:^(GLGPlanetoid *planet, NSUInteger index, BOOL *stop) {
+            GLGSidebarPlanetDetail *planetView = [[GLGSidebarPlanetDetail alloc] initWithPlanet:planet];
+            [planetView setDelegate:delegate];
+            [planetDetailViews addObject:planetView];
+            [planetView release];
+        }];
+
+        [self positionSubviews];
+        [self addSubview:galaxyName];
+        [self addSubview:starTypeField];
         [self addSubview:numPlanets];
-        [numPlanets release];
+        [planetDetailViews enumerateObjectsUsingBlock:^(GLGSidebarPlanetDetail *view, NSUInteger index, BOOL *stop) {
+            [self addSubview:view];
+        }];
     }
-    
+
     return self;
 }
 
-- (void)drawRect:(NSRect) rect {
-    NSRect frameRect = [self bounds];
-    if (rect.size.height < frameRect.size.height) {
-        return;
-    }
-    
-    int borderSize = 2;
-    NSRect newRect = NSMakeRect(rect.origin.x + borderSize, rect.origin.y + borderSize, rect.size.width - 4, rect.size.height - 4);
+- (CGFloat) positionSubviews {
+    NSRect frame = [self frame];
+    CGFloat height = frame.size.height;
+    CGFloat heightOfLabels = 25.0f;
+    CGFloat widthOfLabels = frame.size.width - 10;
+    CGFloat numberOfLabels = 3.0f;
 
-    NSBezierPath *borderPath = [NSBezierPath bezierPathWithRoundedRect:newRect xRadius:10 yRadius:10];
-    [borderPath setLineWidth:borderSize];
-    
-    NSColor *borderColor;
     if (selected) {
-        borderColor = [NSColor colorWithDeviceRed:0.3f green:0.8f blue:0.1f alpha:1.0];
+        numberOfLabels += [planetDetailViews count];
     }
-    else {
-        borderColor = [NSColor blackColor];
-    }
-    
-    [borderColor set];
-    [borderPath stroke];
+
+    CGFloat padding = (height - (heightOfLabels * numberOfLabels)) / (numberOfLabels + 1);
+    __block CGFloat currentHeight = height - padding - heightOfLabels;
+
+    NSRect galaxyRect = NSMakeRect(5, currentHeight, widthOfLabels, heightOfLabels);
+    [galaxyName setFrame:galaxyRect];
+
+    currentHeight -= heightOfLabels + padding;
+
+    NSRect starTypeRect = NSMakeRect(5, currentHeight, widthOfLabels, heightOfLabels);
+    [starTypeField setFrame:starTypeRect];
+
+    currentHeight -= heightOfLabels + padding;
+
+    NSRect numPlanetsRect = NSMakeRect(5, currentHeight, widthOfLabels - 35, heightOfLabels);
+    [numPlanets setFrame:numPlanetsRect];
+
+    padding = 5;
+    numberOfLabels = 20;
+    CGFloat heightOfLabel = 25;
+    CGFloat heightOfView = padding + (heightOfLabel + padding) * numberOfLabels;
+    currentHeight -= padding;
+
+    [planetDetailViews enumerateObjectsUsingBlock:^(GLGSidebarPlanetDetail *view, NSUInteger index, BOOL *stop) {
+         NSRect planetFrame = NSMakeRect(0, currentHeight, frame.size.width, heightOfView);
+        [view setFrame:planetFrame];
+        [view bind:@"hidden" toObject:self withKeyPath:@"hidden" options:nil];
+        currentHeight -= heightOfLabel + padding;
+    }];
+
+    return heightOfView;
 }
 
-- (void) openedDisclosureTriangle {
-    // logic is backwards because the state is currently changing
-    if ([disclosureTriangle state] == NSOnState) {
-        [delegate stopViewingPlanet];
-    }
-    else {
-        [delegate startViewingPlanet: [[galaxy planetoids] objectAtIndex:0]];
-    }
+- (void) setFrame:(NSRect) frameRect {
+    [super setFrame:frameRect];
+    [numPlanets setHidden:selected];
+    [self positionSubviews];
 }
 
 - (void) mouseUp:(NSEvent *) event {
-    if (!selected) {
-        [delegate systemWasSelected: galaxy];
+    [delegate systemWasSelected: galaxy];
+}
+
+#pragma mark - planet viewing observer methods
+- (BOOL) hidden {
+    return !selected;
+}
+
++ (NSSet *) keyPathsForValuesAffectingValueForKey:(NSString *)key {
+    NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
+
+    NSSet *affectedPaths = [[NSSet alloc] initWithArray:@[]];
+
+    if ([affectedPaths containsObject:key]) {
+        NSArray *otherPaths = @[@"activeSystemIndex"];
+        keyPaths = [keyPaths setByAddingObjectsFromArray:otherPaths];
     }
+
+    [affectedPaths release];
+
+    return keyPaths;
 }
 
 @end

@@ -257,7 +257,6 @@ const NSUInteger solarSystemCapacity = 10;
     };
 
     [origin easeToPoint:NSMakePoint(planetX, planetY) withBlock:completionHandler];
-    [sidebar shouldResize];
 }
 
 - (void) stopViewingPlanet {
@@ -265,7 +264,6 @@ const NSUInteger solarSystemCapacity = 10;
     [origin easeToPoint:NSMakePoint(0, 0)];
     
     selectedPlanet = nil;
-    [sidebar shouldResize];
 }
 
 - (void) didZoom:(CGFloat) amount {

@@ -38,6 +38,7 @@
 		F7D6D77C1784EA6F001F2FB0 /* GLGLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D77B1784EA6F001F2FB0 /* GLGLabel.m */; };
 		F7D6D7861788B84A001F2FB0 /* GLGEasedValue.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D7851788B84A001F2FB0 /* GLGEasedValue.m */; };
 		F7D6D7891788CAAA001F2FB0 /* GLGEasedPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D7881788CAAA001F2FB0 /* GLGEasedPoint.m */; };
+		F7D6D7BD178B897B001F2FB0 /* GLGSidebarPlanetDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D7BC178B897B001F2FB0 /* GLGSidebarPlanetDetail.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,8 @@
 		F7D6D7851788B84A001F2FB0 /* GLGEasedValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGEasedValue.m; sourceTree = "<group>"; };
 		F7D6D7871788CAAA001F2FB0 /* GLGEasedPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGEasedPoint.h; sourceTree = "<group>"; };
 		F7D6D7881788CAAA001F2FB0 /* GLGEasedPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGEasedPoint.m; sourceTree = "<group>"; };
+		F7D6D7BB178B897B001F2FB0 /* GLGSidebarPlanetDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGSidebarPlanetDetail.h; sourceTree = "<group>"; };
+		F7D6D7BC178B897B001F2FB0 /* GLGSidebarPlanetDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGSidebarPlanetDetail.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +269,8 @@
 				F7D6D7781784E3FD001F2FB0 /* GLGSidebarGalaxyView.m */,
 				F7D6D77A1784EA6F001F2FB0 /* GLGLabel.h */,
 				F7D6D77B1784EA6F001F2FB0 /* GLGLabel.m */,
+				F7D6D7BB178B897B001F2FB0 /* GLGSidebarPlanetDetail.h */,
+				F7D6D7BC178B897B001F2FB0 /* GLGSidebarPlanetDetail.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 				F7D6D77C1784EA6F001F2FB0 /* GLGLabel.m in Sources */,
 				F7D6D7861788B84A001F2FB0 /* GLGEasedValue.m in Sources */,
 				F7D6D7891788CAAA001F2FB0 /* GLGEasedPoint.m in Sources */,
+				F7D6D7BD178B897B001F2FB0 /* GLGSidebarPlanetDetail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
