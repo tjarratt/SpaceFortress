@@ -25,17 +25,10 @@
         self.layer.masksToBounds = YES;
         self.layer.frame = self.frame;
         [[self layer] setCornerRadius:5.0];
-
-        NSColor *borderColor;
-        if (selected) {
-            borderColor = [NSColor colorWithDeviceRed:0.3f green:0.8f blue:0.1f alpha:1.0];
-        }
-        else {
-            borderColor = [NSColor blackColor];
-        }
-
         [[self layer] setBorderWidth:1.0];
-        [[self layer] setBorderColor:[borderColor CGColor]];
+
+        CGColorRef defaultColor = [[NSColor blackColor] CGColor];
+        [[self layer] setBorderColor:defaultColor];
 
         NSString *starType = [NSString stringWithFormat:@"Class %@ star", [[galaxy star] spectralClassification]];
         starTypeField = [[GLGLabel alloc] init];
@@ -125,6 +118,19 @@
 
 - (void) mouseUp:(NSEvent *) event {
     [delegate systemWasSelected: galaxy];
+}
+
+- (void) setSelected:(BOOL) _selected {
+    selected = _selected;
+
+    if ([self selected]) {
+        CGColorRef selectedColor = [[NSColor colorWithDeviceRed:0.3f green:0.8f blue:0.1f alpha:1.0] CGColor];
+        [[self layer] setBorderColor:selectedColor];
+    }
+    else {
+        CGColorRef defaultColor = [[NSColor blackColor] CGColor];
+        [[self layer] setBorderColor:defaultColor];
+    }
 }
 
 #pragma mark - planet viewing observer methods
