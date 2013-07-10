@@ -41,6 +41,8 @@
 -(void) incrementBy:(CGFloat) value {
     [animation stopAnimation];
     currentValue += value;
+    currentValue = MIN(currentValue, maximum);
+    currentValue = MAX(currentValue, minimum);
 }
 
 -(CGFloat) currentValue {
