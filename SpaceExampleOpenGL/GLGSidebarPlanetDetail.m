@@ -35,6 +35,10 @@
     return self;
 }
 
+- (BOOL) isFlipped {
+    return YES;
+}
+
 - (void) setDelegate:(id) _delegate {
     delegate = _delegate;
 }

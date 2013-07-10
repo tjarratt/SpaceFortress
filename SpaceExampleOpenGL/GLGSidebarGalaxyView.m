@@ -67,6 +67,10 @@
     return self;
 }
 
+- (BOOL) isFlipped {
+    return YES;
+}
+
 - (CGFloat) positionSubviews {
     NSRect frame = [self frame];
     CGFloat height = frame.size.height;
@@ -79,17 +83,17 @@
     }
 
     CGFloat padding = (height - (heightOfLabels * numberOfLabels)) / (numberOfLabels + 1);
-    __block CGFloat currentHeight = height - padding - heightOfLabels;
+    __block CGFloat currentHeight = padding;
 
     NSRect galaxyRect = NSMakeRect(5, currentHeight, widthOfLabels, heightOfLabels);
     [galaxyName setFrame:galaxyRect];
 
-    currentHeight -= heightOfLabels + padding;
+    currentHeight += heightOfLabels + padding;
 
     NSRect starTypeRect = NSMakeRect(5, currentHeight, widthOfLabels, heightOfLabels);
     [starTypeField setFrame:starTypeRect];
 
-    currentHeight -= heightOfLabels + padding;
+    currentHeight += heightOfLabels + padding;
 
     NSRect numPlanetsRect = NSMakeRect(5, currentHeight, widthOfLabels - 35, heightOfLabels);
     [numPlanets setFrame:numPlanetsRect];
@@ -104,7 +108,7 @@
          NSRect planetFrame = NSMakeRect(0, currentHeight, frame.size.width, heightOfView);
         [view setFrame:planetFrame];
         [view bind:@"hidden" toObject:self withKeyPath:@"hidden" options:nil];
-        currentHeight -= heightOfLabel + padding;
+        currentHeight += heightOfLabel + padding;
     }];
 
     return heightOfView;

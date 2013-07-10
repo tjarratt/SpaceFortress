@@ -11,6 +11,7 @@
 		F70C6BFE177A632800AFBFDE /* greek_alphabet.txt in Resources */ = {isa = PBXBuildFile; fileRef = F70C6BFD177A632800AFBFDE /* greek_alphabet.txt */; };
 		F70C6C00177A65AB00AFBFDE /* latin.txt in Resources */ = {isa = PBXBuildFile; fileRef = F70C6BFF177A65AB00AFBFDE /* latin.txt */; };
 		F70C6C06177A89F800AFBFDE /* GLGSidebarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F70C6C05177A89F800AFBFDE /* GLGSidebarView.m */; };
+		F72F3E6C178DEA1F009D9587 /* GLGFlippedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F72F3E6B178DEA1F009D9587 /* GLGFlippedView.m */; };
 		F77DA128176A8E8300518BC3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA127176A8E8300518BC3 /* Cocoa.framework */; };
 		F77DA132176A8E8300518BC3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F77DA130176A8E8300518BC3 /* InfoPlist.strings */; };
 		F77DA134176A8E8300518BC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA133176A8E8300518BC3 /* main.m */; };
@@ -58,6 +59,8 @@
 		F70C6BFF177A65AB00AFBFDE /* latin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = latin.txt; sourceTree = "<group>"; };
 		F70C6C04177A89F800AFBFDE /* GLGSidebarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGSidebarView.h; sourceTree = "<group>"; };
 		F70C6C05177A89F800AFBFDE /* GLGSidebarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGSidebarView.m; sourceTree = "<group>"; };
+		F72F3E6A178DEA1F009D9587 /* GLGFlippedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGFlippedView.h; sourceTree = "<group>"; };
+		F72F3E6B178DEA1F009D9587 /* GLGFlippedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGFlippedView.m; sourceTree = "<group>"; };
 		F77DA124176A8E8300518BC3 /* SpaceExampleOpenGL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceExampleOpenGL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F77DA127176A8E8300518BC3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F77DA12A176A8E8300518BC3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -258,19 +261,29 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		F7D6D7761784E389001F2FB0 /* Views */ = {
+		F7D39BC6178DED0E00E92434 /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
-				F77DA1C817711AF700518BC3 /* GLGView.h */,
-				F77DA1C917711AF700518BC3 /* GLGView.m */,
 				F70C6C04177A89F800AFBFDE /* GLGSidebarView.h */,
 				F70C6C05177A89F800AFBFDE /* GLGSidebarView.m */,
 				F7D6D7771784E3FD001F2FB0 /* GLGSidebarGalaxyView.h */,
 				F7D6D7781784E3FD001F2FB0 /* GLGSidebarGalaxyView.m */,
-				F7D6D77A1784EA6F001F2FB0 /* GLGLabel.h */,
-				F7D6D77B1784EA6F001F2FB0 /* GLGLabel.m */,
 				F7D6D7BB178B897B001F2FB0 /* GLGSidebarPlanetDetail.h */,
 				F7D6D7BC178B897B001F2FB0 /* GLGSidebarPlanetDetail.m */,
+			);
+			name = Sidebar;
+			sourceTree = "<group>";
+		};
+		F7D6D7761784E389001F2FB0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F7D39BC6178DED0E00E92434 /* Sidebar */,
+				F77DA1C817711AF700518BC3 /* GLGView.h */,
+				F77DA1C917711AF700518BC3 /* GLGView.m */,
+				F7D6D77A1784EA6F001F2FB0 /* GLGLabel.h */,
+				F7D6D77B1784EA6F001F2FB0 /* GLGLabel.m */,
+				F72F3E6A178DEA1F009D9587 /* GLGFlippedView.h */,
+				F72F3E6B178DEA1F009D9587 /* GLGFlippedView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -402,6 +415,7 @@
 				F7D6D7861788B84A001F2FB0 /* GLGEasedValue.m in Sources */,
 				F7D6D7891788CAAA001F2FB0 /* GLGEasedPoint.m in Sources */,
 				F7D6D7BD178B897B001F2FB0 /* GLGSidebarPlanetDetail.m in Sources */,
+				F72F3E6C178DEA1F009D9587 /* GLGFlippedView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
