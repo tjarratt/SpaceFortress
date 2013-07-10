@@ -185,7 +185,7 @@ const NSUInteger solarSystemCapacity = 10;
     GLGSolarStar *star = [system star];
     NSColor *solarColor = [star color];
     glColor3f(solarColor.redComponent, solarColor.greenComponent, solarColor.blueComponent);
-    CGFloat solarRadius = MAX(5, [star radius] / 278400.0f);
+    CGFloat solarRadius = MAX(5, [star radius] * metersToPixelsScale * 100000);
     [view drawCircleWithRadius:solarRadius centerX:x centerY:y];
     
     glColor4f(0.1f, 0.65f, 0.1f, 0.1f);
@@ -198,7 +198,7 @@ const NSUInteger solarSystemCapacity = 10;
     }];
 
     [[system planetoids] enumerateObjectsUsingBlock:^(GLGPlanetoid *planet, NSUInteger index, BOOL *stop) {
-        CGFloat radius = MAX([planet radius] * metersToPixelsScale, 5);
+        CGFloat radius = MAX([planet radius] * metersToPixelsScale * 5000, 1);
 
         px = x + planet.apogeeMeters * metersToPixelsScale * cos(scale * planet.rotationAroundSolarBodySeconds);
         py = y + planet.perogeeMeters * metersToPixelsScale * sin(scale * planet.rotationAroundSolarBodySeconds);
