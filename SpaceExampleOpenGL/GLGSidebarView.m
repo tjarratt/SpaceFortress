@@ -11,12 +11,8 @@
 @implementation GLGSidebarView
 
 const CGFloat heightOfGalaxyItem = 100.0f;
-
-- (CGFloat) baseHeightForInnerView {
-    CGFloat padding = 5.0;
-    CGFloat heightOfScrollView = padding + (padding + heightOfGalaxyItem) * [systems count] + 60; // wtf 60?
-    return heightOfScrollView;
-}
+const CGFloat sidebarGalaxyPadding = 5.0f;
+const CGFloat sidebarGalaxyHeight = 25.0f;
 
 - (id)initWithFrame:(NSRect)frame systems:(NSMutableArray *)_systems andDelegate: (id) delegate {
     if (self = [super initWithFrame:frame]) {
@@ -67,11 +63,13 @@ const CGFloat heightOfGalaxyItem = 100.0f;
     return self;
 }
 
+#pragma mark - ScrollView delegate methods
 - (void) scrollWheel:(NSEvent *)theEvent {
     [super scrollWheel:theEvent];
     [innerView setNeedsDisplay:YES];
 }
 
+#pragma mark - methods to handle collapsing subviews
 - (void) didSelectObjectAtIndex:(NSInteger) index {
     CGFloat __block difference = 0;
     [subViews enumerateObjectsUsingBlock:^(GLGSidebarGalaxyView *view, NSUInteger idx, BOOL *stop) {
@@ -91,6 +89,12 @@ const CGFloat heightOfGalaxyItem = 100.0f;
     [self shouldResizeBy:difference];
 }
 
+- (CGFloat) baseHeightForInnerView {
+    CGFloat padding = 5.0;
+    CGFloat heightOfScrollView = padding + (padding + heightOfGalaxyItem) * [systems count] + 60; // wtf 60?
+    return heightOfScrollView;
+}
+
 - (void) shouldResizeBy:(CGFloat) difference {
     NSRect frame = [innerView frame];
     CGFloat baseHeight = [self baseHeightForInnerView];
@@ -101,7 +105,6 @@ const CGFloat heightOfGalaxyItem = 100.0f;
 }
 
 - (void) resizeViews {
-    CGFloat padding = 5.0f;
     NSRect frame = [self frame];
     CGFloat heightOfScrollView = innerView.frame.size.height;
 
@@ -109,10 +112,10 @@ const CGFloat heightOfGalaxyItem = 100.0f;
     CGFloat __block pushDownHeight = 0;
 
     [subViews enumerateObjectsUsingBlock:^(GLGSidebarGalaxyView *view, NSUInteger index, BOOL *stop) {
-        height -= padding + heightOfGalaxyItem;
+        height -= sidebarGalaxyPadding + heightOfGalaxyItem;
 
         if ([view selected]) {
-            pushDownHeight = 5 + (25 + 5) * view.galaxy.planetoids.count;
+            pushDownHeight = sidebarGalaxyPadding + (sidebarGalaxyHeight + sidebarGalaxyPadding) * view.galaxy.planetoids.count;
             height -= pushDownHeight;
             NSRect rect = NSMakeRect(0, height, frame.size.width, heightOfGalaxyItem + pushDownHeight);
             [view setFrame:rect];
