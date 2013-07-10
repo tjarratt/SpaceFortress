@@ -55,7 +55,7 @@
             [planetView release];
         }];
 
-        [self positionSubviews];
+        [self positionSubviewsWithinFrame:frame];
         [self addSubview:galaxyName];
         [self addSubview:starTypeField];
         [self addSubview:numPlanets];
@@ -71,8 +71,7 @@
     return YES;
 }
 
-- (CGFloat) positionSubviews {
-    NSRect frame = [self frame];
+- (CGFloat) positionSubviewsWithinFrame:(NSRect) frame {
     CGFloat height = frame.size.height;
     CGFloat heightOfLabels = 25.0f;
     CGFloat widthOfLabels = frame.size.width - 10;
@@ -86,17 +85,17 @@
     __block CGFloat currentHeight = padding;
 
     NSRect galaxyRect = NSMakeRect(5, currentHeight, widthOfLabels, heightOfLabels);
-    [galaxyName setFrame:galaxyRect];
+    [[galaxyName animator] setFrame:galaxyRect];
 
     currentHeight += heightOfLabels + padding;
 
     NSRect starTypeRect = NSMakeRect(5, currentHeight, widthOfLabels, heightOfLabels);
-    [starTypeField setFrame:starTypeRect];
+    [[starTypeField animator] setFrame:starTypeRect];
 
     currentHeight += heightOfLabels + padding;
 
     NSRect numPlanetsRect = NSMakeRect(5, currentHeight, widthOfLabels - 35, heightOfLabels);
-    [numPlanets setFrame:numPlanetsRect];
+    [[numPlanets animator] setFrame:numPlanetsRect];
 
     padding = 5;
     numberOfLabels = 20;
@@ -106,7 +105,7 @@
 
     [planetDetailViews enumerateObjectsUsingBlock:^(GLGSidebarPlanetDetail *view, NSUInteger index, BOOL *stop) {
          NSRect planetFrame = NSMakeRect(0, currentHeight, frame.size.width, heightOfView);
-        [view setFrame:planetFrame];
+        [[view animator] setFrame:planetFrame];
         [view bind:@"hidden" toObject:self withKeyPath:@"hidden" options:nil];
         currentHeight += heightOfLabel + padding;
     }];
@@ -114,10 +113,10 @@
     return heightOfView;
 }
 
-- (void) setFrame:(NSRect) frameRect {
-    [super setFrame:frameRect];
+- (void) animateToFrame:(NSRect) frameRect {
+    [[self animator] setFrame:frameRect];
     [numPlanets setHidden:selected];
-    [self positionSubviews];
+    [self positionSubviewsWithinFrame:frameRect];
 }
 
 - (void) mouseUp:(NSEvent *) event {

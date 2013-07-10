@@ -22,7 +22,7 @@ const CGFloat sidebarGalaxyHeight = 25.0f;
         CGFloat padding = 5.0f;
         CGFloat heightOfScrollView = padding + (padding + heightOfGalaxyItem) * [systems count] + 60;
         CGFloat widthOfScrollView = frame.size.width;
-        CGFloat __block height = heightOfScrollView - 44;
+        CGFloat __block height = 49;
         
         [self setHasHorizontalScroller:NO];
         [self setHasVerticalScroller:YES];
@@ -48,12 +48,13 @@ const CGFloat sidebarGalaxyHeight = 25.0f;
         [framerateLabel release];
 
         [systems enumerateObjectsUsingBlock:^(GLGSolarSystem *system, NSUInteger index, BOOL *stop) {
-            height -= padding + heightOfGalaxyItem;
             NSRect rect = NSMakeRect(0, height, frame.size.width, heightOfGalaxyItem);
             GLGSidebarGalaxyView *view = [[GLGSidebarGalaxyView alloc] initWithFrame:rect delegate: delegate andSystem:system];
             [innerView addSubview:view];
             [subViews addObject:view];
             [view release];
+
+            height += padding + heightOfGalaxyItem;
         }];
     }
     
@@ -101,8 +102,13 @@ const CGFloat sidebarGalaxyHeight = 25.0f;
     CGFloat baseHeight = [self baseHeightForInnerView];
     NSRect newFrame = NSMakeRect(0, 0, frame.size.width, baseHeight + difference);
 
-    [innerView setFrame:newFrame];
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:0.2];
+
+    [[innerView animator] setFrame:newFrame];
     [self resizeViews];
+
+    [NSAnimationContext endGrouping];
 }
 
 - (void) resizeViews {
@@ -114,23 +120,24 @@ const CGFloat sidebarGalaxyHeight = 25.0f;
         if ([view selected]) {
             pushDownHeight = sidebarGalaxyPadding + (sidebarGalaxyHeight + sidebarGalaxyPadding) * view.galaxy.planetoids.count;
             NSRect rect = NSMakeRect(0, currentHeight, frame.size.width, heightOfGalaxyItem + pushDownHeight);
-            [view setFrame:rect];
+
+            [view animateToFrame:rect];
             currentHeight += pushDownHeight;
 
         }
         else {
             NSRect rect = NSMakeRect(0, currentHeight, frame.size.width, heightOfGalaxyItem);
             NSRect pushedRect = NSMakeRect(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
-            [view setFrame:pushedRect];
+
+            [view animateToFrame:pushedRect];
         }
 
         currentHeight += sidebarGalaxyPadding + heightOfGalaxyItem;
         [view setNeedsDisplay:YES];
     }];
 
-    CGFloat heightOfScrollView = innerView.frame.size.height;
-    [framerateValue setFrame:NSMakeRect(65, heightOfScrollView - 20, 60, 20)];
-    [framerateLabel setFrame:NSMakeRect(0, heightOfScrollView - 20, 80, 20)];
+    [[framerateValue animator] setFrame:NSMakeRect(65, currentHeight, 60, 20)];
+    [[framerateLabel animator] setFrame:NSMakeRect(0, currentHeight, 80, 20)];
 }
 
 @end

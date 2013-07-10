@@ -13,7 +13,7 @@
 @synthesize paused, frameNumber, framerate;
 @synthesize activeSystemIndex;
 
-const NSUInteger solarSystemCapacity = 10;
+const NSUInteger solarSystemCapacity = 3;
 
 #pragma Lifecycle methods
 - (id) initWithWindow: (NSWindow *) theWindow {
@@ -62,8 +62,8 @@ const NSUInteger solarSystemCapacity = 10;
 
         NSRect sidebarFrame = NSMakeRect(sceneWidth, 0, sidebarWidth, rectHeight);
         sidebar = [[GLGSidebarView alloc] initWithFrame:sidebarFrame systems:solarSystems andDelegate:self];
-        [sidebar didSelectObjectAtIndex:activeSystemIndex];
-        
+        activeSystemIndex = -1;
+
         NSRect titleFrame = NSMakeRect(0, sceneHeight, sceneWidth, 50);
         titleView = [[NSView alloc] initWithFrame:titleFrame];        
         NSRect innerFrame = NSMakeRect(5, 0, 200, 25);
@@ -99,7 +99,6 @@ const NSUInteger solarSystemCapacity = 10;
         [solarSystems addObject:sys];
         [sys release];
     }
-    [self setActiveSystemIndex:0];
 }
 
 #pragma mark - NSWindow delegate methods
@@ -278,6 +277,8 @@ const NSUInteger solarSystemCapacity = 10;
 
 #pragma mark - UI Observer binding methods
 - (GLGSolarSystem *)activeSystem {
+    if (activeSystemIndex < 0) { return nil; }
+
     return [solarSystems objectAtIndex:activeSystemIndex];
 }
 

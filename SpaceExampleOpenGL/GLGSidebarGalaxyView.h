@@ -27,4 +27,5 @@
 @property BOOL selected;
 
 - (id) initWithFrame:(NSRect)frameRect delegate:(id) theDelegate andSystem:(GLGSolarSystem *) system;
+- (void) animateToFrame:(NSRect) frameRect;
 @end

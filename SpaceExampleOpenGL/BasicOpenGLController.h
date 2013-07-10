@@ -39,7 +39,7 @@
 @property BOOL paused;
 @property CGFloat framerate;
 @property NSUInteger frameNumber;
-@property NSUInteger activeSystemIndex;
+@property NSInteger activeSystemIndex;
 
 - (id) initWithWindow: (NSWindow *) window;
 

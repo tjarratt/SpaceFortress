@@ -23,13 +23,9 @@
         [disclosureButton setAction:@selector(openedPlanetDisclosure)];
         [self addSubview:disclosureButton];
 
-        planetName = [[GLGLabel alloc] initWithFrame:NSMakeRect(30, 5, 100, 25)];
+        planetName = [[GLGLabel alloc] initWithFrame:NSMakeRect(30, 5, 150, 25)];
         [planetName setStringValue:[planet name]];
         [self addSubview:planetName];
-
-        // has a disclosure triangle on each planet
-        // clicking the disclosure shows the hidden view with the details for the planet
-        // and also selects a planet
     }
     
     return self;
