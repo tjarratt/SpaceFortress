@@ -14,9 +14,9 @@ const CGFloat heightOfGalaxyItem = 100.0f;
 const CGFloat sidebarGalaxyPadding = 5.0f;
 const CGFloat sidebarGalaxyHeight = 25.0f;
 
-- (id)initWithFrame:(NSRect)frame systems:(NSMutableArray *)_systems andDelegate: (id) delegate {
+- (id)initWithFrame:(NSRect)frame andDelegate: (id) delegate {
     if (self = [super initWithFrame:frame]) {
-        systems = _systems;
+        systems = [delegate solarSystems];
         subViews = [[NSMutableArray alloc] initWithCapacity:[systems count]];
 
         CGFloat padding = 5.0f;
@@ -33,20 +33,6 @@ const CGFloat sidebarGalaxyHeight = 25.0f;
         innerView = [[GLGFlippedView alloc] initWithFrame:innerFrame];
         [self setDocumentView: innerView];
 
-        framerateValue = [[GLGLabel alloc] initWithFrame:NSMakeRect(65, heightOfScrollView + 44, 60, 20)];
-        [framerateValue bind:@"value" toObject:delegate withKeyPath:@"framerate" options:nil];
-        [innerView addSubview:framerateValue];
-        [framerateValue release];
-
-        framerateLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(0, heightOfScrollView + 44, 80, 20)];
-        [framerateLabel setEditable:NO];
-        [framerateLabel setStringValue:@"Framerate:"];
-        [framerateLabel setBezeled:NO];
-        [framerateLabel setSelectable:NO];
-        [framerateLabel setBackgroundColor:[NSColor clearColor]];
-        [innerView addSubview:framerateLabel];
-        [framerateLabel release];
-
         [systems enumerateObjectsUsingBlock:^(GLGSolarSystem *system, NSUInteger index, BOOL *stop) {
             NSRect rect = NSMakeRect(0, height, frame.size.width, heightOfGalaxyItem);
             GLGSidebarGalaxyView *view = [[GLGSidebarGalaxyView alloc] initWithFrame:rect delegate: delegate andSystem:system];
@@ -56,9 +42,30 @@ const CGFloat sidebarGalaxyHeight = 25.0f;
 
             height += padding + heightOfGalaxyItem;
         }];
+
+        framerateValue = [[GLGLabel alloc] initWithFrame:NSMakeRect(65, height, 60, 20)];
+        [framerateValue bind:@"value" toObject:delegate withKeyPath:@"framerate" options:nil];
+        [innerView addSubview:framerateValue];
+        [framerateValue release];
+
+        framerateLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(0, height, 80, 20)];
+        [framerateLabel setEditable:NO];
+        [framerateLabel setStringValue:@"Framerate:"];
+        [framerateLabel setBezeled:NO];
+        [framerateLabel setSelectable:NO];
+        [framerateLabel setBackgroundColor:[NSColor clearColor]];
+        [innerView addSubview:framerateLabel];
+        [framerateLabel release];
+
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectObjectAtIndex:) name:@"glg_sidebar_system_selected" object:nil];
     }
     
     return self;
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super dealloc];
 }
 
 - (BOOL) isFlipped {
@@ -72,7 +79,9 @@ const CGFloat sidebarGalaxyHeight = 25.0f;
 }
 
 #pragma mark - methods to handle collapsing subviews
-- (void) didSelectObjectAtIndex:(NSInteger) index {
+- (void) didSelectObjectAtIndex:(NSNotification *)notification {
+    NSInteger index = ((GLGGalaxyPickerActor *)[notification object]).activeSystemIndex;
+
     CGFloat __block difference = 0;
     [subViews enumerateObjectsUsingBlock:^(GLGSidebarGalaxyView *view, NSUInteger idx, BOOL *stop) {
         if (index == idx) {
@@ -80,7 +89,7 @@ const CGFloat sidebarGalaxyHeight = 25.0f;
             [view setSelected:selected];
 
             if (selected) {
-                difference += 5 + (25 + 5) * view.galaxy.planetoids.count;
+                difference += sidebarGalaxyPadding + (sidebarGalaxyPadding + sidebarGalaxyHeight) * view.galaxy.planetoids.count;
             }
         }
         else {
@@ -92,8 +101,7 @@ const CGFloat sidebarGalaxyHeight = 25.0f;
 }
 
 - (CGFloat) baseHeightForInnerView {
-    CGFloat padding = 5.0;
-    CGFloat heightOfScrollView = padding + (padding + heightOfGalaxyItem) * [systems count] + 60; // wtf 60?
+    CGFloat heightOfScrollView = sidebarGalaxyPadding + (sidebarGalaxyPadding + heightOfGalaxyItem) * [systems count] + 60;
     return heightOfScrollView;
 }
 

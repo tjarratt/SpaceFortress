@@ -10,6 +10,7 @@
 #import "GLGSolarSystem.h"
 #import "GLGFlippedView.h"
 #import "GLGSidebarGalaxyView.h"
+#import "GLGGalaxyPickerActor.h"
 
 @class GLGSolarSystem;
 
@@ -22,6 +23,5 @@
     NSTextField *framerateLabel;
 }
 
-- (id) initWithFrame:(NSRect)frame systems:(NSMutableArray *)systems andDelegate:(id)delegate;
-- (void) didSelectObjectAtIndex:(NSInteger) index;
+- (id) initWithFrame:(NSRect) frame andDelegate:(GLGGalaxyPickerActor *) delegate;
 @end

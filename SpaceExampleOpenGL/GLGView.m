@@ -27,10 +27,6 @@
     }
 }
 
-- (void) update {
-    
-}
-
 - (void) drawRect:(NSRect)dirtyRect
 {
     glDisable(GL_DEPTH_TEST);

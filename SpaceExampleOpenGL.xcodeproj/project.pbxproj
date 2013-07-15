@@ -12,6 +12,8 @@
 		F70C6C00177A65AB00AFBFDE /* latin.txt in Resources */ = {isa = PBXBuildFile; fileRef = F70C6BFF177A65AB00AFBFDE /* latin.txt */; };
 		F70C6C06177A89F800AFBFDE /* GLGSidebarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F70C6C05177A89F800AFBFDE /* GLGSidebarView.m */; };
 		F72F3E6C178DEA1F009D9587 /* GLGFlippedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F72F3E6B178DEA1F009D9587 /* GLGFlippedView.m */; };
+		F72FDCF81793990C00836EA1 /* GLGPlanetActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F72FDCF71793990C00836EA1 /* GLGPlanetActor.m */; };
+		F72FDCFB17939C3000836EA1 /* GLGGalaxyPickerActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F72FDCFA17939C3000836EA1 /* GLGGalaxyPickerActor.m */; };
 		F77DA128176A8E8300518BC3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA127176A8E8300518BC3 /* Cocoa.framework */; };
 		F77DA132176A8E8300518BC3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F77DA130176A8E8300518BC3 /* InfoPlist.strings */; };
 		F77DA134176A8E8300518BC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA133176A8E8300518BC3 /* main.m */; };
@@ -61,6 +63,11 @@
 		F70C6C05177A89F800AFBFDE /* GLGSidebarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGSidebarView.m; sourceTree = "<group>"; };
 		F72F3E6A178DEA1F009D9587 /* GLGFlippedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGFlippedView.h; sourceTree = "<group>"; };
 		F72F3E6B178DEA1F009D9587 /* GLGFlippedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGFlippedView.m; sourceTree = "<group>"; };
+		F72FDCF61793990C00836EA1 /* GLGPlanetActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGPlanetActor.h; sourceTree = "<group>"; };
+		F72FDCF71793990C00836EA1 /* GLGPlanetActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGPlanetActor.m; sourceTree = "<group>"; };
+		F72FDCF917939C3000836EA1 /* GLGGalaxyPickerActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGGalaxyPickerActor.h; sourceTree = "<group>"; };
+		F72FDCFA17939C3000836EA1 /* GLGGalaxyPickerActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGGalaxyPickerActor.m; sourceTree = "<group>"; };
+		F72FDCFC1793A45100836EA1 /* GLGActor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLGActor.h; sourceTree = "<group>"; };
 		F77DA124176A8E8300518BC3 /* SpaceExampleOpenGL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceExampleOpenGL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F77DA127176A8E8300518BC3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F77DA12A176A8E8300518BC3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -197,11 +204,16 @@
 		F77DA12D176A8E8300518BC3 /* SpaceExampleOpenGL */ = {
 			isa = PBXGroup;
 			children = (
-				F77DA1CB1771325300518BC3 /* Models */,
+				F72FDCFC1793A45100836EA1 /* GLGActor.h */,
+				F72FDCF61793990C00836EA1 /* GLGPlanetActor.h */,
+				F72FDCF71793990C00836EA1 /* GLGPlanetActor.m */,
+				F72FDCF917939C3000836EA1 /* GLGGalaxyPickerActor.h */,
+				F72FDCFA17939C3000836EA1 /* GLGGalaxyPickerActor.m */,
 				F77DA139176A8E8300518BC3 /* GLGAppDelegate.h */,
 				F77DA13A176A8E8300518BC3 /* GLGAppDelegate.m */,
 				F77DA167176FD3B300518BC3 /* BasicOpenGLController.h */,
 				F77DA168176FD3B300518BC3 /* BasicOpenGLController.m */,
+				F77DA1CB1771325300518BC3 /* Models */,
 				F7D6D7761784E389001F2FB0 /* Views */,
 				F77DA12E176A8E8300518BC3 /* Supporting Files */,
 			);
@@ -416,6 +428,8 @@
 				F7D6D7891788CAAA001F2FB0 /* GLGEasedPoint.m in Sources */,
 				F7D6D7BD178B897B001F2FB0 /* GLGSidebarPlanetDetail.m in Sources */,
 				F72F3E6C178DEA1F009D9587 /* GLGFlippedView.m in Sources */,
+				F72FDCF81793990C00836EA1 /* GLGPlanetActor.m in Sources */,
+				F72FDCFB17939C3000836EA1 /* GLGGalaxyPickerActor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

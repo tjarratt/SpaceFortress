@@ -13,10 +13,10 @@
 @synthesize selected, open;
 @synthesize galaxy;
 
-- (id)initWithFrame:(NSRect)frame delegate:(id) theDelegate andSystem:(GLGSolarSystem *) system {
+- (id)initWithFrame:(NSRect)frame delegate:(id) _delegate andSystem:(GLGSolarSystem *) system {
     if (self = [super initWithFrame:frame]) {        
         galaxy = system;
-        delegate = theDelegate;
+        delegate = _delegate;
 
         galaxyName = [[GLGLabel alloc] init];
         [galaxyName setStringValue:[galaxy name]];

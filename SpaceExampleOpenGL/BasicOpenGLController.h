@@ -18,6 +18,10 @@
 #import "RangeProperty.h"
 #import "GLGSolarSystem.h"
 
+#import "GLGActor.h"
+#import "GLGPlanetActor.h"
+#import "GLGGalaxyPickerActor.h"
+
 @class GLGSidebarView;
 
 @interface BasicOpenGLController : NSViewController <GLGOpenGLViewDelegate, NSWindowDelegate> {
@@ -26,37 +30,22 @@
     GLGSidebarView *sidebar;
     NSView *titleView;
     NSTextField *title;
-    
-    GLGEasedValue *zoomScale;
-    GLGEasedPoint *origin;
-    NSMutableArray *solarSystems;
-    
-    // framerate helpers
-    NSUInteger lastFrame;
-    double lastTimestamp;
-    
-    GLGPlanetoid *selectedPlanet;
+
+    id <GLGActor> gameSceneActor;
 }
 
 @property BOOL paused;
-@property CGFloat framerate;
-@property NSUInteger frameNumber;
-@property NSInteger activeSystemIndex;
 
 - (id) initWithWindow: (NSWindow *) window;
-
 - (void) update;
 - (void) prepareOpenGL;
 - (void) GLGOpenGLView:(GLGView *)view drawInRect:(NSRect)rect;
 - (void) GLGOpenGLViewDidReshape:(GLGView *)view;
 - (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize;
 - (void) keyWasPressed:(NSEvent *)event;
-- (void) systemWasSelected:(GLGSolarSystem *) system;
-- (GLGSolarSystem *) activeSystem;
 
-- (void) startViewingPlanet:(GLGPlanetoid *) planet;
-- (void) stopViewingPlanet;
-
+# pragma mark - actor delegate methods
 - (void) didZoom:(CGFloat) amount;
 - (void) didPanByVector:(CGPoint) vector;
 @end
+
