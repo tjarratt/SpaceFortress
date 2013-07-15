@@ -18,6 +18,8 @@
 #import "RangeProperty.h"
 #import "GLGSolarSystem.h"
 
+@class GLGSidebarView;
+
 @interface BasicOpenGLController : NSViewController <GLGOpenGLViewDelegate, NSWindowDelegate> {
     NSWindow *window;
     GLGView *scene;
@@ -45,8 +47,8 @@
 
 - (void) update;
 - (void) prepareOpenGL;
-- (void) BasicOpenGLView:(GLGView *)view drawInRect:(NSRect)rect;
-- (void) BasicOpenGLViewDidReshape:(GLGView *)view;
+- (void) GLGOpenGLView:(GLGView *)view drawInRect:(NSRect)rect;
+- (void) GLGOpenGLViewDidReshape:(GLGView *)view;
 - (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize;
 - (void) keyWasPressed:(NSEvent *)event;
 - (void) systemWasSelected:(GLGSolarSystem *) system;

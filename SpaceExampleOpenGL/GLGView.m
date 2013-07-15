@@ -37,8 +37,8 @@
     glClearColor(0, 0, 0, 0);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    if (delegate && [delegate respondsToSelector:@selector(BasicOpenGLView:drawInRect:)]) {
-        [delegate BasicOpenGLView:self drawInRect:dirtyRect];
+    if (delegate && [delegate respondsToSelector:@selector(GLGOpenGLView:drawInRect:)]) {
+        [delegate GLGOpenGLView:self drawInRect:dirtyRect];
     }
     
     glFlush();
@@ -46,8 +46,8 @@
 }
 
 - (void) reshape {
-    if (delegate && [delegate respondsToSelector:@selector(BasicOpenGLViewDidReshape:)]) {
-        [delegate BasicOpenGLViewDidReshape: self];
+    if (delegate && [delegate respondsToSelector:@selector(GLGOpenGLViewDidReshape:)]) {
+        [delegate GLGOpenGLViewDidReshape: self];
     }
 }
 

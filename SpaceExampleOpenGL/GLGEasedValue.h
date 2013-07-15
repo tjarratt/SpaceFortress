@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol GLGEasedValueDelegate;
+
 @interface GLGEasedValue : NSObject <NSAnimationDelegate> {
     NSAnimation *animation;
     CGFloat endValue;
@@ -17,7 +19,7 @@
     CGFloat minimum;
     CGFloat maximum;
 
-    id delegate;
+    id<GLGEasedValueDelegate> delegate;
 }
 
 - (id) initWithValue:(CGFloat) value;
@@ -32,4 +34,9 @@
 - (void) animation:(NSAnimation *)animation didReachProgressMark:(NSAnimationProgress)progress;
 
 - (void) setDelegate:(id) delegate;
+@end
+
+#pragma mark - Delegate interface
+@protocol GLGEasedValueDelegate <NSObject>
+- (void) animationDidComplete;
 @end

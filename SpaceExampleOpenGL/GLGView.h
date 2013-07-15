@@ -13,7 +13,7 @@
 @protocol GLGOpenGLViewDelegate;
 
 @interface GLGView : NSOpenGLView {
-    id delegate;
+    id<GLGOpenGLViewDelegate> delegate;
 }
 
 - (void) setDelegate: (id) delegate;
@@ -22,7 +22,7 @@
 - (void) drawTorusAtPoint:(CGPoint) center innerRadius:(CGFloat) innerRadius outerRadius:(CGFloat) outerRadius;
 
 #pragma mark - scroll delegate events
-- (void)scrollWheel:(NSEvent *) event;
+- (void) scrollWheel:(NSEvent *) event;
 
 @end
 
@@ -30,13 +30,13 @@
 @protocol GLGOpenGLViewDelegate <NSObject>
 
 @required
-- (void)prepareOpenGL;
-- (void)keyWasPressed:(NSEvent *) event;
-- (void)didZoom:(CGFloat) amount;
-- (void)didPanByVector:(CGPoint) vector;
+- (void) prepareOpenGL;
+- (void) keyWasPressed:(NSEvent *) event;
+- (void) didZoom:(CGFloat) amount;
+- (void) didPanByVector:(CGPoint) vector;
 
 @optional
-- (void)GLGOpenGLView:(NSOpenGLView *) view drawInRect:(NSRect) rect;
-- (void)GLGOpenGLViewDidReshape:(NSOpenGLView *) view;
+- (void) GLGOpenGLView:(GLGView *) view drawInRect:(NSRect) rect;
+- (void) GLGOpenGLViewDidReshape:(GLGView *) view;
 
 @end

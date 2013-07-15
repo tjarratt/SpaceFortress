@@ -12,9 +12,12 @@
 #import "GLGSolarStar.h"
 #import "GLGSolarSystem.h"
 #import "GLGSidebarPlanetDetail.h"
+#import "BasicOpenGLController.h"
+
+@class BasicOpenGLController;
 
 @interface GLGSidebarGalaxyView : NSView {
-    id delegate;
+    BasicOpenGLController *delegate;
     NSMutableArray *planetDetailViews;
 
     GLGLabel *galaxyName;
@@ -24,7 +27,7 @@
 
 @property (readonly, retain) GLGSolarSystem* galaxy;
 @property BOOL open;
-@property BOOL selected;
+@property (nonatomic) BOOL selected;
 
 - (id) initWithFrame:(NSRect)frameRect delegate:(id) theDelegate andSystem:(GLGSolarSystem *) system;
 - (void) animateToFrame:(NSRect) frameRect;

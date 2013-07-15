@@ -139,7 +139,7 @@ const NSUInteger solarSystemCapacity = 3;
 }
 
 #pragma mark - view delegate methods
-- (void) BasicOpenGLViewDidReshape:(NSOpenGLView *)view {
+- (void) GLGOpenGLViewDidReshape:(NSOpenGLView *)view {
     const GLfloat width = [view bounds].size.width;
     const GLfloat height = [view bounds].size.height;
 
@@ -159,7 +159,7 @@ const NSUInteger solarSystemCapacity = 3;
 // but planets radius is only 35e6 on average!
 // for the purposes of FUN, we'll need to scale up planet's size?
 // suggest we scale up planets to 5-25 pixels
-- (void) BasicOpenGLView:(GLGView *)view drawInRect:(NSRect)rect {
+- (void) GLGOpenGLView:(GLGView *)view drawInRect:(NSRect)rect {
     if (![self paused]) {
         [self setFrameNumber:(frameNumber + 1)];
     }
@@ -285,7 +285,7 @@ const NSUInteger solarSystemCapacity = 3;
 + (NSSet *) keyPathsForValuesAffectingValueForKey:(NSString *)key {
     NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 
-    NSSet *affectedPaths = [[NSSet alloc] initWithArray:@[]];
+    NSSet *affectedPaths = [[NSSet alloc] initWithArray:@[@"activeSystem"]];
 
     if ([affectedPaths containsObject:key]) {
         NSArray *otherPaths = @[@"activeSystemIndex"];
