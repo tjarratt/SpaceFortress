@@ -96,8 +96,11 @@
 }
 
 - (void) didResignPlanet {
-    [switchView removeFromSuperview];
-    [switchView release];
+    if (switchView) {
+        [switchView removeFromSuperview];
+        [switchView release];
+        switchView = nil;
+    }
 }
 
 - (void) switchToPlanetView {

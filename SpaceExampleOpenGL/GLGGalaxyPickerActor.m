@@ -130,6 +130,7 @@ const NSUInteger solarSystemCapacity = 3;
     }
 
     [[NSNotificationCenter defaultCenter] postNotificationName:@"glg_sidebar_system_selected" object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"glg_did_resign_planet" object:self];
 
     selectedPlanet = nil;
 }
