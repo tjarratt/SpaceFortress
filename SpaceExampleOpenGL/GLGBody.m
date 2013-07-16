@@ -16,11 +16,11 @@
     if (self = [super init]) {
         CGFloat earth_mass = 7.349e22; // kg
         CGFloat min_mass = earth_mass / 10000;
-        mass = [RangeProperty randomValueWithMinimum:min_mass maximum:maximumMassBeforeNuclearFusion];
+        mass = [GLGRangeProperty randomValueWithMinimum:min_mass maximum:maximumMassBeforeNuclearFusion];
         
         CGFloat min_radius = 1.5e6;
         CGFloat max_radius = 75e6;
-        radius = [RangeProperty randomValueWithMinimum:min_radius maximum:max_radius];
+        radius = [GLGRangeProperty randomValueWithMinimum:min_radius maximum:max_radius];
 
     }
     

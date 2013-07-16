@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NameProperty : NSObject 
+@interface GLGNameProperty : NSObject 
 
 + (NSString *) numeralForDigit: (NSInteger)n;
 + (NSString *) randomName;

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RangeProperty : NSObject
+@interface GLGRangeProperty : NSObject
 
 + (CGFloat) randomValueWithMinimum: (CGFloat)min maximum: (CGFloat)max;
 + (CGFloat) randomValueWithMinimum: (CGFloat)min maximum:(CGFloat)max scaling:(CGFloat) factor;

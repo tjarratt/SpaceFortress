@@ -12,7 +12,7 @@
 #import "GLGEasedPoint.h"
 #import "GLGPlanetoid.h"
 #import "GLGSolarSystem.h"
-#import "GLGView.h"
+#import "GLGOpenGLView.h"
 #import "GLGSidebarGalaxyView.h"
 
 @interface GLGGalaxyPickerActor : NSObject <GLGActor, GLGSidebarDelegate> {

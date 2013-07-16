@@ -17,33 +17,33 @@
 - (id) initWithStar: (GLGSolarStar* ) theStar {
     if (self = [super init]) {
         star = theStar;
-        CGFloat formation_time = [RangeProperty randomValueWithMinimum:150 maximum:350];
+        CGFloat formation_time = [GLGRangeProperty randomValueWithMinimum:150 maximum:350];
         [self setAge:([star age] - formation_time)];
         
         CGFloat seconds_day = 86400;
         CGFloat min_axis_rotation = seconds_day * 0.1;
         CGFloat max_axis_rotation = seconds_day * 243.02; // venus
-        rotationAroundAxisSeconds = [RangeProperty randomValueWithMinimum:min_axis_rotation maximum:max_axis_rotation];
+        rotationAroundAxisSeconds = [GLGRangeProperty randomValueWithMinimum:min_axis_rotation maximum:max_axis_rotation];
 
         CGFloat seconds_year = seconds_day * 365.25;
         CGFloat min_body_rotation = seconds_year * 0.2;
         CGFloat max_body_rotation = seconds_year * 350;
-        rotationAroundSolarBodySeconds = [RangeProperty randomValueWithMinimum:min_body_rotation maximum:max_body_rotation];
+        rotationAroundSolarBodySeconds = [GLGRangeProperty randomValueWithMinimum:min_body_rotation maximum:max_body_rotation];
 
         // completely random for now -> but this should be ~ delta a standard value for the system, right?
-        rotationAngleAroundStar = [RangeProperty randomValueWithMinimum:-0.5 * M_PI_4 maximum:M_PI_4 * 0.5];
+        rotationAngleAroundStar = [GLGRangeProperty randomValueWithMinimum:-0.5 * M_PI_4 maximum:M_PI_4 * 0.5];
         
         CGFloat minimum_distance_from_star = 4.619e10;
         CGFloat maximum_distance_from_star = 1.49e13;
-        averageDistanceFromStar = [RangeProperty randomValueWithMinimum:minimum_distance_from_star maximum:maximum_distance_from_star];
+        averageDistanceFromStar = [GLGRangeProperty randomValueWithMinimum:minimum_distance_from_star maximum:maximum_distance_from_star];
         
         CGFloat perogee_max = averageDistanceFromStar * 1.3;
         CGFloat apogee_max = averageDistanceFromStar * 0.9;
         CGFloat perogee_min = averageDistanceFromStar * 0.8;
         CGFloat apogee_min = averageDistanceFromStar * 0.5;
         
-        perogeeMeters = [RangeProperty randomValueWithMinimum:perogee_min maximum:perogee_max];
-        apogeeMeters = [RangeProperty randomValueWithMinimum:apogee_min maximum:apogee_max];
+        perogeeMeters = [GLGRangeProperty randomValueWithMinimum:perogee_min maximum:perogee_max];
+        apogeeMeters = [GLGRangeProperty randomValueWithMinimum:apogee_min maximum:apogee_max];
 
         averageEmissivity = random() / RAND_MAX;
         averageAlbedo = random() / RAND_MAX;

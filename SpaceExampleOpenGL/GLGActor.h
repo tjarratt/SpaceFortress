@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@class GLGView;
+@class GLGOpenGLView;
 
 @protocol GLGActor
-- (void) updateWithView:(GLGView *)view;
+- (void) updateWithView:(GLGOpenGLView *)view;
 
 - (void) incrementFrameNumber;
 - (NSUInteger) frameNumber;

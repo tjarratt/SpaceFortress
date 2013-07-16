@@ -7,10 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#include "BasicOpenGLController.h"
+#include "GLGOpenGLController.h"
 
 @interface GLGAppDelegate : NSObject <NSApplicationDelegate> {
-    BasicOpenGLController *controller;
+    GLGOpenGLController *controller;
 }
 
 @property (assign) IBOutlet NSWindow *window;

@@ -9,7 +9,7 @@
 #import "GLGActor.h"
 #import <Foundation/Foundation.h>
 
-@class GLGView;
+@class GLGOpenGLView;
 
 @interface GLGPlanetActor : NSObject <GLGActor> {
     NSUInteger frameNumber;

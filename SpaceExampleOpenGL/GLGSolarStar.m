@@ -16,17 +16,17 @@
 - (id) init {
     if (self = [super init]) {
         classification = @"";
-        age = [RangeProperty randomValueWithMinimum:1 maximum:11];
-        [self setMass:[RangeProperty randomValueWithMinimum:1.76e29 maximum:(264 * solarMass)] ];
-        radius = [RangeProperty randomValueWithMinimum:(0.13 * solarRadius) maximum:18 * solarRadius];
-        surfaceTemperature = [RangeProperty randomValueWithMinimum:1000 maximum:(50000)];
-        rotationRateSeconds = [RangeProperty randomValueWithMinimum:1e-5 maximum:(150 * solarRotationRate)];
+        age = [GLGRangeProperty randomValueWithMinimum:1 maximum:11];
+        [self setMass:[GLGRangeProperty randomValueWithMinimum:1.76e29 maximum:(264 * solarMass)] ];
+        radius = [GLGRangeProperty randomValueWithMinimum:(0.13 * solarRadius) maximum:18 * solarRadius];
+        surfaceTemperature = [GLGRangeProperty randomValueWithMinimum:1000 maximum:(50000)];
+        rotationRateSeconds = [GLGRangeProperty randomValueWithMinimum:1e-5 maximum:(150 * solarRotationRate)];
         
         // metallicity: 0.0122 ( or 1.2 %)
         // this represents the actual percentage of non H, He in the sun, but
         // this value is common represented as log10(Fe / H) for the star - log10(Fe / H) for our sun
         // a range of -2, 2 is fairly common for "habitable star systems"
-        metallicity = [RangeProperty randomValueWithMinimum: -2 maximum: 2];
+        metallicity = [GLGRangeProperty randomValueWithMinimum: -2 maximum: 2];
         
         // calculate spectral classification and color
         [self calculateSpectralClassification];
@@ -97,12 +97,12 @@
     
     // for short distances (ie: within the same galaxy, this is the real distance eg: euclidean)
     // for greater distances, you need to take into account general relativity (redshift affects large distances)
-    CGFloat luminosityDistanceLightYears = [RangeProperty randomValueWithMinimum:0 maximum:20];
+    CGFloat luminosityDistanceLightYears = [GLGRangeProperty randomValueWithMinimum:0 maximum:20];
     CGFloat luminosityDistanceParsecs = luminosityDistanceLightYears / 3.26;
 
     // http://www.astro.wisc.edu/~dolan/constellations/extra/brightest.html
     // http://en.wikipedia.org/wiki/Apparent_magnitude#Calculations
-    apparentMagnitude = [RangeProperty randomValueWithMinimum:-1.5 maximum:1.5];
+    apparentMagnitude = [GLGRangeProperty randomValueWithMinimum:-1.5 maximum:1.5];
     absoluteMagnitude = apparentMagnitude - 5 * (log10f(luminosityDistanceParsecs) - 1);
     
     if (absoluteMagnitude < -7.5) {

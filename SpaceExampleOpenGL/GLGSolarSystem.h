@@ -6,7 +6,7 @@
 //
 //
 
-#import "NameProperty.h"
+#import "GLGNameProperty.h"
 #import "GLGSolarStar.h"
 #import "GLGPlanetoid.h"
 #import <Foundation/Foundation.h>

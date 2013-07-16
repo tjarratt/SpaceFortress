@@ -6,16 +6,16 @@
 //
 //
 
-#import "BasicOpenGLController.h"
+#import "GLGOpenGLController.h"
 
-@implementation BasicOpenGLController
+@implementation GLGOpenGLController
 
 @synthesize paused;
 
 #pragma Lifecycle methods
 - (id) initWithWindow: (NSWindow *) theWindow {
     if (self = [super init]) {
-        [NameProperty initialize];
+        [GLGNameProperty initialize];
 
         window = theWindow;
         [window setDelegate:self];
@@ -34,7 +34,7 @@
         [window setFrame:windowRect display:YES];
         [window setFrameOrigin:point];
 
-        scene = [[GLGView alloc] initWithFrame: viewRect];
+        scene = [[GLGOpenGLView alloc] initWithFrame: viewRect];
         [scene setWantsBestResolutionOpenGLSurface:YES];
         [scene setDelegate: self];
         [window makeFirstResponder:scene];
@@ -134,7 +134,7 @@
     [[view openGLContext] update];
 }
 
-- (void) GLGOpenGLView:(GLGView *)view drawInRect:(NSRect)rect {
+- (void) GLGOpenGLView:(GLGOpenGLView *)view drawInRect:(NSRect)rect {
     if (![self paused]) {
         [gameSceneActor incrementFrameNumber];
     }

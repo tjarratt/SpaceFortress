@@ -10,7 +10,7 @@
 
 @implementation GLGPlanetActor
 
-- (void) updateWithView:(GLGView *)view {
+- (void) updateWithView:(GLGOpenGLView *)view {
 
 }
 

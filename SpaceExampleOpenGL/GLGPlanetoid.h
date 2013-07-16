@@ -9,8 +9,8 @@
 #import "constants.h"
 #import "GLGBody.h"
 #import "GLGSolarStar.h"
-#import "NameProperty.h"
-#import "RangeProperty.h"
+#import "GLGNameProperty.h"
+#import "GLGRangeProperty.h"
 #import <Foundation/Foundation.h>
 
 @class GLGSolarStar;

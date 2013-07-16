@@ -61,7 +61,7 @@ const NSUInteger solarSystemCapacity = 3;
 }
 
 # pragma mark - view methods
-- (void) updateWithView:(GLGView *)view {
+- (void) updateWithView:(GLGOpenGLView *)view {
     CGFloat __block x, y, px, py, pxp, pyp;
     CGFloat zoomScaleFactor = powf(1.01, [zoomScale currentValue]);
     CGFloat metersToPixelsScale = 3.543e-11 * zoomScaleFactor;

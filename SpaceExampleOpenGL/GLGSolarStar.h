@@ -8,7 +8,7 @@
 #import "GLGBody.h"
 #import "GLGPlanetoid.h"
 #import <Foundation/Foundation.h>
-#import "RangeProperty.h"
+#import "GLGRangeProperty.h"
 
 /*
 facts:

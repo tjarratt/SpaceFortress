@@ -6,7 +6,7 @@
 //
 //
 #import "constants.h"
-#import "RangeProperty.h"
+#import "GLGRangeProperty.h"
 #import <Foundation/Foundation.h>
 
 @interface GLGBody : NSObject

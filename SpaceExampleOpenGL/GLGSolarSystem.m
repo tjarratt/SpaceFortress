@@ -20,7 +20,7 @@
         planetoids = [[NSMutableArray alloc] initWithCapacity:num_planetoids];
         star = [[GLGSolarStar alloc] init];
         
-        NSString *systemName = [NameProperty randomName];
+        NSString *systemName = [GLGNameProperty randomName];
         [star setName:systemName];
         [self setName:systemName];
         
@@ -42,7 +42,7 @@
                     
             }
             
-            NSString *numeral = [NameProperty numeralForDigit:i];
+            NSString *numeral = [GLGNameProperty numeralForDigit:i];
             NSString *planetName = [NSString stringWithFormat:@"%@ %@", systemName, numeral];
             [planet setName:planetName];
             

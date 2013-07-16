@@ -9,13 +9,13 @@
 #import <OpenGL/OpenGL.h>
 #import <Foundation/Foundation.h>
 
-#import "GLGView.h"
+#import "GLGOpenGLView.h"
 #import "GLGSidebarView.h"
 
 #import "GLGEasedPoint.h"
 #import "GLGEasedValue.h"
-#import "NameProperty.h"
-#import "RangeProperty.h"
+#import "GLGNameProperty.h"
+#import "GLGRangeProperty.h"
 #import "GLGSolarSystem.h"
 
 #import "GLGActor.h"
@@ -24,9 +24,9 @@
 
 @class GLGSidebarView;
 
-@interface BasicOpenGLController : NSViewController <GLGOpenGLViewDelegate, NSWindowDelegate> {
+@interface GLGOpenGLController : NSViewController <GLGOpenGLViewDelegate, NSWindowDelegate> {
     NSWindow *window;
-    GLGView *scene;
+    GLGOpenGLView *scene;
     GLGSidebarView *sidebar;
     NSView *titleView;
     NSTextField *title;
@@ -39,8 +39,8 @@
 - (id) initWithWindow: (NSWindow *) window;
 - (void) update;
 - (void) prepareOpenGL;
-- (void) GLGOpenGLView:(GLGView *)view drawInRect:(NSRect)rect;
-- (void) GLGOpenGLViewDidReshape:(GLGView *)view;
+- (void) GLGOpenGLView:(GLGOpenGLView *)view drawInRect:(NSRect)rect;
+- (void) GLGOpenGLViewDidReshape:(GLGOpenGLView *)view;
 - (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize;
 - (void) keyWasPressed:(NSEvent *)event;
 

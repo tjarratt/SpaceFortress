@@ -6,11 +6,11 @@
 //
 //
 
-#import "RangeProperty.h"
+#import "GLGRangeProperty.h"
 
 #define ARC4RANDOM_MAX      0x100000000
 
-@implementation RangeProperty
+@implementation GLGRangeProperty
 
 +(CGFloat) randomValueWithMinimum:(CGFloat)min maximum:(CGFloat)max {
     CGFloat scale = (double) arc4random() / ARC4RANDOM_MAX;

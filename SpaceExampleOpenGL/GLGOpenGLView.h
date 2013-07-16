@@ -12,7 +12,7 @@
 
 @protocol GLGOpenGLViewDelegate;
 
-@interface GLGView : NSOpenGLView {
+@interface GLGOpenGLView : NSOpenGLView {
     id<GLGOpenGLViewDelegate> delegate;
 }
 
@@ -36,7 +36,7 @@
 - (void) didPanByVector:(CGPoint) vector;
 
 @optional
-- (void) GLGOpenGLView:(GLGView *) view drawInRect:(NSRect) rect;
-- (void) GLGOpenGLViewDidReshape:(GLGView *) view;
+- (void) GLGOpenGLView:(GLGOpenGLView *) view drawInRect:(NSRect) rect;
+- (void) GLGOpenGLViewDidReshape:(GLGOpenGLView *) view;
 
 @end

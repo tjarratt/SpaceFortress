@@ -25,7 +25,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    controller = [[BasicOpenGLController alloc] initWithWindow: [self window]];
+    controller = [[GLGOpenGLController alloc] initWithWindow: [self window]];
     
     NSTimer *mainTimer = [NSTimer timerWithTimeInterval: (1.0 / 30.0)
                                              target: controller

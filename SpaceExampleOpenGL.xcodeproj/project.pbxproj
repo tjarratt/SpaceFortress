@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F70C6BFC1773A67800AFBFDE /* RangeProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = F70C6BFB1773A67800AFBFDE /* RangeProperty.m */; };
+		F70C6BFC1773A67800AFBFDE /* GLGRangeProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = F70C6BFB1773A67800AFBFDE /* GLGRangeProperty.m */; };
 		F70C6BFE177A632800AFBFDE /* greek_alphabet.txt in Resources */ = {isa = PBXBuildFile; fileRef = F70C6BFD177A632800AFBFDE /* greek_alphabet.txt */; };
 		F70C6C00177A65AB00AFBFDE /* latin.txt in Resources */ = {isa = PBXBuildFile; fileRef = F70C6BFF177A65AB00AFBFDE /* latin.txt */; };
 		F70C6C06177A89F800AFBFDE /* GLGSidebarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F70C6C05177A89F800AFBFDE /* GLGSidebarView.m */; };
@@ -29,12 +29,12 @@
 		F77DA15F176A8EAD00518BC3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA15E176A8EAD00518BC3 /* QuartzCore.framework */; };
 		F77DA161176A8EB700518BC3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA160176A8EB700518BC3 /* OpenGL.framework */; };
 		F77DA165176B895800518BC3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA160176A8EB700518BC3 /* OpenGL.framework */; };
-		F77DA169176FD3B300518BC3 /* BasicOpenGLController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA168176FD3B300518BC3 /* BasicOpenGLController.m */; };
-		F77DA1CA17711AF700518BC3 /* GLGView.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA1C917711AF700518BC3 /* GLGView.m */; };
+		F77DA169176FD3B300518BC3 /* GLGOpenGLController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA168176FD3B300518BC3 /* GLGOpenGLController.m */; };
+		F77DA1CA17711AF700518BC3 /* GLGOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA1C917711AF700518BC3 /* GLGOpenGLView.m */; };
 		F77DA1CE177132DA00518BC3 /* GLGSolarStar.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA1CD177132DA00518BC3 /* GLGSolarStar.m */; };
 		F77DA1D1177132E600518BC3 /* GLGSolarSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA1D0177132E600518BC3 /* GLGSolarSystem.m */; };
 		F77DA1D41771330C00518BC3 /* GLGPlanetoid.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA1D31771330C00518BC3 /* GLGPlanetoid.m */; };
-		F7D6D76C177E33F2001F2FB0 /* NameProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D76B177E33F2001F2FB0 /* NameProperty.m */; };
+		F7D6D76C177E33F2001F2FB0 /* GLGNameProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D76B177E33F2001F2FB0 /* GLGNameProperty.m */; };
 		F7D6D770177E6C91001F2FB0 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D76F177E6C91001F2FB0 /* constants.m */; };
 		F7D6D77317822E73001F2FB0 /* GLGBody.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D77217822E73001F2FB0 /* GLGBody.m */; };
 		F7D6D7791784E3FD001F2FB0 /* GLGSidebarGalaxyView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D7781784E3FD001F2FB0 /* GLGSidebarGalaxyView.m */; };
@@ -55,8 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F70C6BFA1773A67800AFBFDE /* RangeProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangeProperty.h; sourceTree = "<group>"; };
-		F70C6BFB1773A67800AFBFDE /* RangeProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RangeProperty.m; sourceTree = "<group>"; };
+		F70C6BFA1773A67800AFBFDE /* GLGRangeProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGRangeProperty.h; sourceTree = "<group>"; };
+		F70C6BFB1773A67800AFBFDE /* GLGRangeProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGRangeProperty.m; sourceTree = "<group>"; };
 		F70C6BFD177A632800AFBFDE /* greek_alphabet.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = greek_alphabet.txt; sourceTree = "<group>"; };
 		F70C6BFF177A65AB00AFBFDE /* latin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = latin.txt; sourceTree = "<group>"; };
 		F70C6C04177A89F800AFBFDE /* GLGSidebarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGSidebarView.h; sourceTree = "<group>"; };
@@ -91,18 +91,18 @@
 		F77DA15C176A8EA400518BC3 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/GLKit.framework; sourceTree = DEVELOPER_DIR; };
 		F77DA15E176A8EAD00518BC3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		F77DA160176A8EB700518BC3 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/OpenGL.framework; sourceTree = DEVELOPER_DIR; };
-		F77DA167176FD3B300518BC3 /* BasicOpenGLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicOpenGLController.h; sourceTree = "<group>"; };
-		F77DA168176FD3B300518BC3 /* BasicOpenGLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicOpenGLController.m; sourceTree = "<group>"; };
-		F77DA1C817711AF700518BC3 /* GLGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGView.h; sourceTree = "<group>"; };
-		F77DA1C917711AF700518BC3 /* GLGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGView.m; sourceTree = "<group>"; };
+		F77DA167176FD3B300518BC3 /* GLGOpenGLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGOpenGLController.h; sourceTree = "<group>"; };
+		F77DA168176FD3B300518BC3 /* GLGOpenGLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGOpenGLController.m; sourceTree = "<group>"; };
+		F77DA1C817711AF700518BC3 /* GLGOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGOpenGLView.h; sourceTree = "<group>"; };
+		F77DA1C917711AF700518BC3 /* GLGOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGOpenGLView.m; sourceTree = "<group>"; };
 		F77DA1CC177132DA00518BC3 /* GLGSolarStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGSolarStar.h; sourceTree = "<group>"; };
 		F77DA1CD177132DA00518BC3 /* GLGSolarStar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGSolarStar.m; sourceTree = "<group>"; };
 		F77DA1CF177132E600518BC3 /* GLGSolarSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGSolarSystem.h; sourceTree = "<group>"; };
 		F77DA1D0177132E600518BC3 /* GLGSolarSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGSolarSystem.m; sourceTree = "<group>"; };
 		F77DA1D21771330C00518BC3 /* GLGPlanetoid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGPlanetoid.h; sourceTree = "<group>"; };
 		F77DA1D31771330C00518BC3 /* GLGPlanetoid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGPlanetoid.m; sourceTree = "<group>"; };
-		F7D6D76A177E33F2001F2FB0 /* NameProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameProperty.h; sourceTree = "<group>"; };
-		F7D6D76B177E33F2001F2FB0 /* NameProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameProperty.m; sourceTree = "<group>"; };
+		F7D6D76A177E33F2001F2FB0 /* GLGNameProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGNameProperty.h; sourceTree = "<group>"; };
+		F7D6D76B177E33F2001F2FB0 /* GLGNameProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGNameProperty.m; sourceTree = "<group>"; };
 		F7D6D76D177E6662001F2FB0 /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		F7D6D76F177E6C91001F2FB0 /* constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = constants.m; sourceTree = "<group>"; };
 		F7D6D77117822E73001F2FB0 /* GLGBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGBody.h; sourceTree = "<group>"; };
@@ -151,10 +151,10 @@
 				F7D6D7851788B84A001F2FB0 /* GLGEasedValue.m */,
 				F7D6D7871788CAAA001F2FB0 /* GLGEasedPoint.h */,
 				F7D6D7881788CAAA001F2FB0 /* GLGEasedPoint.m */,
-				F7D6D76A177E33F2001F2FB0 /* NameProperty.h */,
-				F7D6D76B177E33F2001F2FB0 /* NameProperty.m */,
-				F70C6BFA1773A67800AFBFDE /* RangeProperty.h */,
-				F70C6BFB1773A67800AFBFDE /* RangeProperty.m */,
+				F7D6D76A177E33F2001F2FB0 /* GLGNameProperty.h */,
+				F7D6D76B177E33F2001F2FB0 /* GLGNameProperty.m */,
+				F70C6BFA1773A67800AFBFDE /* GLGRangeProperty.h */,
+				F70C6BFB1773A67800AFBFDE /* GLGRangeProperty.m */,
 			);
 			name = Properties;
 			sourceTree = "<group>";
@@ -211,8 +211,8 @@
 				F72FDCFA17939C3000836EA1 /* GLGGalaxyPickerActor.m */,
 				F77DA139176A8E8300518BC3 /* GLGAppDelegate.h */,
 				F77DA13A176A8E8300518BC3 /* GLGAppDelegate.m */,
-				F77DA167176FD3B300518BC3 /* BasicOpenGLController.h */,
-				F77DA168176FD3B300518BC3 /* BasicOpenGLController.m */,
+				F77DA167176FD3B300518BC3 /* GLGOpenGLController.h */,
+				F77DA168176FD3B300518BC3 /* GLGOpenGLController.m */,
 				F77DA1CB1771325300518BC3 /* Models */,
 				F7D6D7761784E389001F2FB0 /* Views */,
 				F77DA12E176A8E8300518BC3 /* Supporting Files */,
@@ -290,8 +290,8 @@
 			isa = PBXGroup;
 			children = (
 				F7D39BC6178DED0E00E92434 /* Sidebar */,
-				F77DA1C817711AF700518BC3 /* GLGView.h */,
-				F77DA1C917711AF700518BC3 /* GLGView.m */,
+				F77DA1C817711AF700518BC3 /* GLGOpenGLView.h */,
+				F77DA1C917711AF700518BC3 /* GLGOpenGLView.m */,
 				F7D6D77A1784EA6F001F2FB0 /* GLGLabel.h */,
 				F7D6D77B1784EA6F001F2FB0 /* GLGLabel.m */,
 				F72F3E6A178DEA1F009D9587 /* GLGFlippedView.h */,
@@ -412,14 +412,14 @@
 				F77DA134176A8E8300518BC3 /* main.m in Sources */,
 				F77DA13B176A8E8300518BC3 /* GLGAppDelegate.m in Sources */,
 				F77DA141176A8E8400518BC3 /* SpaceExampleOpenGL.xcdatamodeld in Sources */,
-				F77DA169176FD3B300518BC3 /* BasicOpenGLController.m in Sources */,
-				F77DA1CA17711AF700518BC3 /* GLGView.m in Sources */,
+				F77DA169176FD3B300518BC3 /* GLGOpenGLController.m in Sources */,
+				F77DA1CA17711AF700518BC3 /* GLGOpenGLView.m in Sources */,
 				F77DA1CE177132DA00518BC3 /* GLGSolarStar.m in Sources */,
 				F77DA1D1177132E600518BC3 /* GLGSolarSystem.m in Sources */,
 				F77DA1D41771330C00518BC3 /* GLGPlanetoid.m in Sources */,
-				F70C6BFC1773A67800AFBFDE /* RangeProperty.m in Sources */,
+				F70C6BFC1773A67800AFBFDE /* GLGRangeProperty.m in Sources */,
 				F70C6C06177A89F800AFBFDE /* GLGSidebarView.m in Sources */,
-				F7D6D76C177E33F2001F2FB0 /* NameProperty.m in Sources */,
+				F7D6D76C177E33F2001F2FB0 /* GLGNameProperty.m in Sources */,
 				F7D6D770177E6C91001F2FB0 /* constants.m in Sources */,
 				F7D6D77317822E73001F2FB0 /* GLGBody.m in Sources */,
 				F7D6D7791784E3FD001F2FB0 /* GLGSidebarGalaxyView.m in Sources */,

@@ -6,9 +6,9 @@
 //
 //
 
-#import "NameProperty.h"
+#import "GLGNameProperty.h"
 
-@implementation NameProperty
+@implementation GLGNameProperty
 
 static NSArray *latinWords;
 static NSArray *greekAlphabet;

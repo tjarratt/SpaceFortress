@@ -6,9 +6,9 @@
 //
 //
 
-#import "GLGView.h"
+#import "GLGOpenGLView.h"
 
-@implementation GLGView
+@implementation GLGOpenGLView
 
 - (id) initWithFrame:(NSRect)frameRect {
     if (self = [super initWithFrame:frameRect]) {
