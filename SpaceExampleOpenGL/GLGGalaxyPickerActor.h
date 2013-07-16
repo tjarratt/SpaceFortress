@@ -20,7 +20,6 @@
     GLGEasedPoint *origin;
 
     NSMutableArray *solarSystems;
-    GLGPlanetoid *selectedPlanet;
 
     NSUInteger lastFrame;
     double lastTimestamp;
@@ -28,6 +27,7 @@
     NSUInteger frameNumber;
 }
 
+@property (retain) GLGPlanetoid *selectedPlanet;
 @property NSInteger activeSystemIndex;
 @property CGFloat framerate;
 

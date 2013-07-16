@@ -30,6 +30,7 @@
     GLGSidebarView *sidebar;
     NSView *titleView;
     NSTextField *title;
+    NSButton *switchView;
 
     id <GLGActor> gameSceneActor;
 }

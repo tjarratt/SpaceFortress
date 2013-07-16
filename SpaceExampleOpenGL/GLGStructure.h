@@ -13,6 +13,7 @@
 @property (retain) NSColor *color;
 @property NSInteger heightInStories;
 @property CGFloat length;
+@property CGFloat point;
 
-- (id) initWithColor:(NSColor *)_color height:(NSInteger) _height length:(CGFloat) _length;
+- (id) initAtPoint:(CGFloat) point withColor:(NSColor *)_color height:(NSInteger) _height length:(CGFloat) _length;
 @end

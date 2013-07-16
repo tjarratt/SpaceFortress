@@ -10,8 +10,9 @@
 
 @implementation GLGGalaxyPickerActor
 
-@synthesize activeSystemIndex;
 @synthesize framerate;
+@synthesize selectedPlanet;
+@synthesize activeSystemIndex;
 
 const NSUInteger solarSystemCapacity = 3;
 
@@ -115,9 +116,18 @@ const NSUInteger solarSystemCapacity = 3;
 }
 
 - (void) systemWasSelected:(GLGSolarSystem *) system {
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [zoomScale setCurrentValue:0 animate:NO];
     [origin setPoint:NSMakePoint(0, 0)];
-    activeSystemIndex = [solarSystems indexOfObject:system];
+
+    if (system == nil) {
+        activeSystemIndex = -1;
+        [nc postNotificationName:@"glg_did_resign_system" object:nil];
+    }
+    else {
+        activeSystemIndex = [solarSystems indexOfObject:system];
+        [nc postNotificationName:@"glg_did_select_system" object:system];
+    }
 
     [[NSNotificationCenter defaultCenter] postNotificationName:@"glg_sidebar_system_selected" object:self];
 
@@ -159,6 +169,7 @@ const NSUInteger solarSystemCapacity = 3;
     };
 
     [origin easeToPoint:NSMakePoint(planetX, planetY) withBlock:completionHandler];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"glg_did_select_planet" object:planet];
 }
 
 - (void) stopViewingPlanet {
@@ -166,6 +177,7 @@ const NSUInteger solarSystemCapacity = 3;
     [origin easeToPoint:NSMakePoint(0, 0)];
 
     selectedPlanet = nil;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"glg_did_resign_planet" object:nil];
 }
 
 - (void) didZoom:(CGFloat) amount {

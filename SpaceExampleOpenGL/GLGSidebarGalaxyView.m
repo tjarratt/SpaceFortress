@@ -120,7 +120,12 @@
 }
 
 - (void) mouseUp:(NSEvent *) event {
-    [delegate systemWasSelected: galaxy];
+    if (selected) {
+        [delegate systemWasSelected:nil];
+    }
+    else {
+        [delegate systemWasSelected: galaxy];
+    }
 }
 
 - (void) setSelected:(BOOL) _selected {

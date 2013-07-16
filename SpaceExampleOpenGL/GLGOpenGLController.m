@@ -54,7 +54,7 @@
 
         NSRect titleFrame = NSMakeRect(0, sceneHeight, sceneWidth, 50);
         titleView = [[NSView alloc] initWithFrame:titleFrame];        
-        NSRect innerFrame = NSMakeRect(5, 0, 200, 25);
+        NSRect innerFrame = NSMakeRect(5, 0, 600, 25);
         title = [[NSTextField alloc] initWithFrame:innerFrame];
         [title setEditable:NO];
         [title setBezeled:NO];
@@ -63,33 +63,66 @@
         [title setStringValue:@"Choose a galaxy to colonize > "];
         [titleView addSubview:title];
 
-        NSRect buttonRect = NSMakeRect(205, 0, 200, 25);
-        NSButton *switchItUpButton = [[NSButton alloc] initWithFrame:buttonRect];
-        [switchItUpButton setTitle:@"switch it up"];
-        [switchItUpButton setTarget:self];
-        [switchItUpButton setAction:@selector(switchItUp)];
-        [titleView addSubview:switchItUpButton];
-
         [[window contentView] addSubview:scene];
         [[window contentView] addSubview:sidebar];
         [[window contentView] addSubview:titleView];
         
         [window setMinSize:NSMakeSize(rectWidth, rectHeight)];
         [window setAspectRatio:NSMakeSize(rectWidth, rectHeight)];
+
+        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+        [center addObserver:self selector:@selector(didSelectPlanet:) name:@"glg_did_select_planet" object:nil];
+        [center addObserver:self selector:@selector(didResignPlanet) name:@"glg_did_resign_planet" object:nil];
+        [center addObserver:self selector:@selector(didSelectSystem:) name:@"glg_did_select_system" object:nil];
+        [center addObserver:self selector:@selector(didResignSystem) name:@"glg_did_resign_system" object:nil];
       }
 
     return self;
 }
 
-- (void) switchItUp {
-    [gameSceneActor release];
-    gameSceneActor = [[GLGPlanetActor alloc] init];
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super dealloc];
+}
+
+#pragma mark - view actor NSNotificationCenter methods
+- (void) didSelectPlanet:(NSNotification *) notification {
+    NSRect buttonRect = NSMakeRect(605, 0, 80, 25);
+    switchView = [[NSButton alloc] initWithFrame:buttonRect];
+    [switchView setTitle:@"Embark!"];
+    [switchView setTarget:self];
+    [switchView setAction:@selector(switchToPlanetView)];
+    [titleView addSubview:switchView];
+}
+
+- (void) didResignPlanet {
+    [switchView removeFromSuperview];
+    [switchView release];
+}
+
+- (void) switchToPlanetView {
+    GLGGalaxyPickerActor *actor = (GLGGalaxyPickerActor *) gameSceneActor;
+    GLGPlanetoid *planet = [actor selectedPlanet];
+    assert( planet != nil );
+
+    [actor release];
+    gameSceneActor = [[GLGPlanetActor alloc] initWithPlanet:planet];
 
     [title removeFromSuperview];
     [sidebar removeFromSuperview];
     CGFloat width = window.frame.size.width;
     CGFloat height = window.frame.size.height;
     [[scene animator] setFrame:NSMakeRect(0, 0, width, height)];
+}
+
+- (void) didSelectSystem:(NSNotification *) notification {
+    GLGSolarSystem *system = (GLGSolarSystem *)[notification object];
+    NSString *newTitle = [NSString stringWithFormat:@"Choose a galaxy to colonize > Pick a planet in %@ >", [system name]];
+    [title setStringValue:newTitle];
+}
+
+- (void) didResignSystem {
+    [title setStringValue:@"Choose a galaxy to colonize >"];
 }
 
 #pragma mark - NSWindow delegate methods
