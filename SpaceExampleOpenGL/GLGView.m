@@ -116,6 +116,32 @@
     glPopAttrib();
 }
 
+- (void) drawPolarRectAtPoint:(CGFloat) point withLength:(CGFloat) length atHeight:(CGFloat) height withCenter:(NSPoint) center {
+    glBegin(GL_TRIANGLE_FAN);
+    CGFloat radius = 200;
+    assert( length <= radius * 2 * M_PI );
+
+    CGFloat fullHeight = height * 25;
+
+    // convention: 0 is at 12 o'clock ->
+    CGFloat segments = 100;
+    CGFloat percentageOfCircumference = length / (radius * 2 * M_PI);
+    CGFloat scale = percentageOfCircumference / segments;
+
+    CGFloat innerRadius = radius + fullHeight;
+    CGFloat outerRadius = innerRadius + 25;
+
+    // for each point, along the circumference, draw the inner and outer portions
+    // this is basically just like drawing a torus, except that we don't 2 * PI * R
+    for (int i = 0; i <= segments; ++i) {
+        glVertex2f(center.x + innerRadius * cos(i * scale + point), center.y + innerRadius * sin(i * scale + point));
+        glVertex2f(center.x + outerRadius * cos(i * scale + point), center.y + outerRadius * sin(i * scale + point));
+    }
+
+    glEnd();
+}
+
+
 #pragma mark - touch, scroll and mouse events
 - (void) scrollWheel:(NSEvent *) event {
     if (delegate) {

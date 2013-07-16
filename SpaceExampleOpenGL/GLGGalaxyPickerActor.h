@@ -22,7 +22,6 @@
     NSMutableArray *solarSystems;
     GLGPlanetoid *selectedPlanet;
 
-    // framerate helpers
     NSUInteger lastFrame;
     double lastTimestamp;
 

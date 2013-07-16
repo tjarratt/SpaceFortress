@@ -6,10 +6,11 @@
 //
 //
 
-#import "GLGActor.h"
+#import <tgmath.h>
 #import <Foundation/Foundation.h>
-
-@class GLGView;
+#import "GLGView.h"
+#import "GLGActor.h"
+#import "RangeProperty.h"
 
 @interface GLGPlanetActor : NSObject <GLGActor> {
     NSUInteger frameNumber;
