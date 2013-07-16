@@ -6,8 +6,11 @@
 //
 //
 
-#import "GLGActor.h"
+#import <tgmath.h>
 #import <Foundation/Foundation.h>
+#import "GLGOpenGLView.h"
+#import "GLGActor.h"
+#import "GLGRangeProperty.h"
 
 @class GLGOpenGLView;
 
