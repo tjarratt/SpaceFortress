@@ -118,7 +118,7 @@
 }
 
 - (void) drawPolarRectAtPoint:(CGFloat) point withLength:(CGFloat) length atHeight:(CGFloat) height withCenter:(NSPoint) center {
-    glBegin(GL_TRIANGLE_FAN);
+    glBegin(GL_TRIANGLE_STRIP);
     CGFloat radius = 500;
     assert( length <= radius * 2 * M_PI );
 
