@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "GLGActor.h"
+#import "GLGActorBase.h"
 #import "GLGEasedValue.h"
 #import "GLGEasedPoint.h"
 #import "GLGPlanetoid.h"
@@ -15,7 +16,7 @@
 #import "GLGOpenGLView.h"
 #import "GLGSidebarGalaxyView.h"
 
-@interface GLGGalaxyPickerActor : NSObject <GLGActor, GLGSidebarDelegate> {
+@interface GLGGalaxyPickerActor : GLGActorBase <GLGActor, GLGSidebarDelegate> {
     GLGEasedValue *zoomScale;
     GLGEasedPoint *origin;
 

@@ -109,7 +109,7 @@
     assert( planet != nil );
 
     [actor release];
-    gameSceneActor = [[GLGPlanetActor alloc] initWithPlanet:planet];
+    gameSceneActor = [[GLGPlanetActor alloc] initWithPlanet:planet delegate:self];
 
     [title removeFromSuperview];
     [sidebar removeFromSuperview];
@@ -126,6 +126,10 @@
 
 - (void) didResignSystem {
     [title setStringValue:@"Choose a galaxy to colonize >"];
+}
+
+- (GLGOpenGLView *) openGLView {
+    return scene;
 }
 
 #pragma mark - NSWindow delegate methods
@@ -185,6 +189,14 @@
 
 - (void) didZoom:(CGFloat) amount {
     [gameSceneActor didZoom:amount];
+}
+
+- (void) handleMouseDown:(NSPoint) point {
+    [gameSceneActor handleMouseDown:point];
+}
+
+- (void) handleMouseUp {
+    [gameSceneActor handleMouseUp];
 }
 
 #pragma mark - UI control methods

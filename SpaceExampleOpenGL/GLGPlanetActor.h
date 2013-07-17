@@ -10,6 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "GLGOpenGLView.h"
 #import "GLGActor.h"
+#import "GLGActorBase.h"
 #import "GLGRangeProperty.h"
 #import "GLGStructure.h"
 
@@ -19,7 +20,14 @@
     NSUInteger frameNumber;
     GLGPlanetoid *planet;
     NSMutableArray *structures;
+    id delegate;
+
+    NSPoint touchOrigin;
+    NSPoint currentTouch;
+    CGFloat rotation;
 }
 
-- (id) initWithPlanet:(GLGPlanetoid *) planet;
+- (id) initWithPlanet:(GLGPlanetoid *) planet delegate:(id) _delegate;
+- (void) handleMouseUp;
+- (void) handleMouseDown:(NSPoint) point;
 @end

@@ -15,6 +15,7 @@
 		F72FDCF81793990C00836EA1 /* GLGPlanetActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F72FDCF71793990C00836EA1 /* GLGPlanetActor.m */; };
 		F72FDCFB17939C3000836EA1 /* GLGGalaxyPickerActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F72FDCFA17939C3000836EA1 /* GLGGalaxyPickerActor.m */; };
 		F72FDCFF1794CF8A00836EA1 /* GLGStructure.m in Sources */ = {isa = PBXBuildFile; fileRef = F72FDCFE1794CF8A00836EA1 /* GLGStructure.m */; };
+		F72FDD031795ED8000836EA1 /* GLGActorBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F72FDD021795ED8000836EA1 /* GLGActorBase.m */; };
 		F77DA128176A8E8300518BC3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77DA127176A8E8300518BC3 /* Cocoa.framework */; };
 		F77DA132176A8E8300518BC3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F77DA130176A8E8300518BC3 /* InfoPlist.strings */; };
 		F77DA134176A8E8300518BC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F77DA133176A8E8300518BC3 /* main.m */; };
@@ -71,6 +72,8 @@
 		F72FDCFC1793A45100836EA1 /* GLGActor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLGActor.h; sourceTree = "<group>"; };
 		F72FDCFD1794CF8A00836EA1 /* GLGStructure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGStructure.h; sourceTree = "<group>"; };
 		F72FDCFE1794CF8A00836EA1 /* GLGStructure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGStructure.m; sourceTree = "<group>"; };
+		F72FDD011795ED8000836EA1 /* GLGActorBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGActorBase.h; sourceTree = "<group>"; };
+		F72FDD021795ED8000836EA1 /* GLGActorBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGActorBase.m; sourceTree = "<group>"; };
 		F77DA124176A8E8300518BC3 /* SpaceExampleOpenGL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceExampleOpenGL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F77DA127176A8E8300518BC3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F77DA12A176A8E8300518BC3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -162,6 +165,20 @@
 			name = Properties;
 			sourceTree = "<group>";
 		};
+		F72FDD001795ED6500836EA1 /* Actors */ = {
+			isa = PBXGroup;
+			children = (
+				F72FDCFC1793A45100836EA1 /* GLGActor.h */,
+				F72FDCF61793990C00836EA1 /* GLGPlanetActor.h */,
+				F72FDCF71793990C00836EA1 /* GLGPlanetActor.m */,
+				F72FDCF917939C3000836EA1 /* GLGGalaxyPickerActor.h */,
+				F72FDCFA17939C3000836EA1 /* GLGGalaxyPickerActor.m */,
+				F72FDD011795ED8000836EA1 /* GLGActorBase.h */,
+				F72FDD021795ED8000836EA1 /* GLGActorBase.m */,
+			);
+			name = Actors;
+			sourceTree = "<group>";
+		};
 		F77DA119176A8D3D00518BC3 = {
 			isa = PBXGroup;
 			children = (
@@ -207,11 +224,7 @@
 		F77DA12D176A8E8300518BC3 /* SpaceExampleOpenGL */ = {
 			isa = PBXGroup;
 			children = (
-				F72FDCFC1793A45100836EA1 /* GLGActor.h */,
-				F72FDCF61793990C00836EA1 /* GLGPlanetActor.h */,
-				F72FDCF71793990C00836EA1 /* GLGPlanetActor.m */,
-				F72FDCF917939C3000836EA1 /* GLGGalaxyPickerActor.h */,
-				F72FDCFA17939C3000836EA1 /* GLGGalaxyPickerActor.m */,
+				F72FDD001795ED6500836EA1 /* Actors */,
 				F77DA139176A8E8300518BC3 /* GLGAppDelegate.h */,
 				F77DA13A176A8E8300518BC3 /* GLGAppDelegate.m */,
 				F77DA167176FD3B300518BC3 /* GLGOpenGLController.h */,
@@ -436,6 +449,7 @@
 				F72FDCF81793990C00836EA1 /* GLGPlanetActor.m in Sources */,
 				F72FDCFB17939C3000836EA1 /* GLGGalaxyPickerActor.m in Sources */,
 				F72FDCFF1794CF8A00836EA1 /* GLGStructure.m in Sources */,
+				F72FDD031795ED8000836EA1 /* GLGActorBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

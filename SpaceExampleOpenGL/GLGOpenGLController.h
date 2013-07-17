@@ -45,8 +45,12 @@
 - (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize;
 - (void) keyWasPressed:(NSEvent *)event;
 
+- (GLGOpenGLView *) openGLView;
+
 # pragma mark - actor delegate methods
 - (void) didZoom:(CGFloat) amount;
 - (void) didPanByVector:(CGPoint) vector;
+- (void) handleMouseUp;
+- (void) handleMouseDown:(NSPoint) point;
 @end
 

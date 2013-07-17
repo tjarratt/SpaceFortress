@@ -12,9 +12,11 @@
 
 const CGFloat planetRadius = 500;
 
-- (id) initWithPlanet:(GLGPlanetoid *) _planet {
+- (id) initWithPlanet:(GLGPlanetoid *) _planet delegate:(id)_delegate {
     if (self = [super init]) {
+        rotation = 0.0f;
         planet = _planet;
+        delegate = _delegate;
         structures = [[NSMutableArray alloc] init];
 
         CGFloat circumference = planetRadius * 2 * M_PI;
@@ -69,14 +71,16 @@ const CGFloat planetRadius = 500;
     CGFloat y = view.bounds.size.height * 0.15;
     NSPoint center = NSMakePoint(x, y);
     glColor3f(0.95f, 0.5f, 0.3f);
+
+    [view setRotation: rotation];
     [view drawCircleWithRadius:planetRadius centerX:x centerY:y];
 
-    NSLog(@"enumerating over %lu structures", structures.count);
     [structures enumerateObjectsUsingBlock:^(GLGStructure *structure, NSUInteger index, BOOL *stop) {
-        NSLog(@"drawing a structure");
         glColor3f(structure.color.redComponent, structure.color.greenComponent, structure.color.blueComponent);
         [view drawPolarRectAtPoint:structure.point withLength:structure.length atHeight:structure.heightInStories withCenter:center];
     }];
+
+    [view setRotation: 0];
 }
 
 - (void) updateFramerate {
@@ -96,7 +100,28 @@ const CGFloat planetRadius = 500;
 }
 
 - (void) didPanByVector:(CGPoint) vector {
-    // actually, this should ROTATE
-    // so maybe the correct interface here is mouseMovedToPoint:(CGPoint) point (?)
+    assert( touchOrigin.x >= 0 && touchOrigin.y >= 0 );
+    currentTouch = NSMakePoint(currentTouch.x + vector.x, currentTouch.y + vector.y);
+
+    NSRect frame = [[delegate openGLView] frame];
+    NSPoint center = NSMakePoint(frame.size.width / 2, 0);
+    NSPoint vectorFromCenter = NSMakePoint(fabsf(touchOrigin.x - center.x), fabsf(touchOrigin.y - center.y));
+    NSPoint touchFromCenter = NSMakePoint(fabsf(currentTouch.x - center.x), fabsf(currentTouch.y - center.y));
+
+    CGFloat theta = atan2f(vectorFromCenter.x, vectorFromCenter.y);
+    CGFloat phi = atan2f(touchFromCenter.x, touchFromCenter.y);
+
+    rotation += (theta - phi) * 0.15;
 }
+
+- (void) handleMouseUp {
+    touchOrigin = NSMakePoint(-1, -1);
+    currentTouch = NSMakePoint(-1, -1);
+}
+
+- (void) handleMouseDown:(NSPoint) atPoint {
+    touchOrigin = atPoint;
+    currentTouch = atPoint;
+}
+
 @end

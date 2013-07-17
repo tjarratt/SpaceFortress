@@ -13,6 +13,7 @@
 - (id) initWithFrame:(NSRect)frameRect {
     if (self = [super initWithFrame:frameRect]) {
         [self setAcceptsTouchEvents:YES];
+        rotation = 0.0;
     }
     return self;
 }
@@ -130,11 +131,15 @@
     CGFloat outerRadius = innerRadius + 25;
 
     for (int i = 0; i <= segments; ++i) {
-        glVertex2f(center.x + innerRadius * cos(i * scale + point), center.y + innerRadius * sin(i * scale + point));
-        glVertex2f(center.x + outerRadius * cos(i * scale + point), center.y + outerRadius * sin(i * scale + point));
+        glVertex2f(center.x + innerRadius * cos(i * scale + point + rotation), center.y + innerRadius * sin(i * scale + point + rotation));
+        glVertex2f(center.x + outerRadius * cos(i * scale + point + rotation), center.y + outerRadius * sin(i * scale + point + rotation));
     }
 
     glEnd();
+}
+
+- (void) setRotation:(CGFloat) _rotation {
+    rotation = _rotation;
 }
 
 
@@ -145,9 +150,21 @@
     }
 }
 
-- (void) mouseDragged:(NSEvent *)theEvent {
+- (void) mouseDown:(NSEvent *) theEvent {
+    if (delegate && [delegate respondsToSelector:@selector(handleMouseDown:)]) {
+        [delegate handleMouseDown:[theEvent locationInWindow]];
+    }
+}
+
+- (void) mouseDragged:(NSEvent *) theEvent {
     if (delegate) {
         [delegate didPanByVector:CGPointMake(1.5 * theEvent.deltaX, -1.5f * theEvent.deltaY)];
+    }
+}
+
+- (void) mouseUp:(NSEvent *) theEvent {
+    if (delegate && [delegate respondsToSelector:@selector(handleMouseUp)]) {
+        [delegate handleMouseUp];
     }
 }
 

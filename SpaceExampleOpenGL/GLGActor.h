@@ -19,4 +19,7 @@
 
 - (void) didPanByVector:(CGPoint) vector;
 - (void) didZoom:(CGFloat) amount;
+
+- (void) handleMouseUp;
+- (void) handleMouseDown:(NSPoint) point;
 @end

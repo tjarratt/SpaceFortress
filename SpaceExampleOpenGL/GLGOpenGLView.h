@@ -14,6 +14,7 @@
 
 @interface GLGOpenGLView : NSOpenGLView {
     id<GLGOpenGLViewDelegate> delegate;
+    CGFloat rotation;
 }
 
 - (void) setDelegate: (id) delegate;
@@ -21,6 +22,8 @@
 - (void) drawOrbitForPlanet:(GLGPlanetoid *) planet atScale:(CGFloat) scale atOrigin:(CGPoint) origin;
 - (void) drawTorusAtPoint:(CGPoint) center innerRadius:(CGFloat) innerRadius outerRadius:(CGFloat) outerRadius;
 - (void) drawPolarRectAtPoint:(CGFloat) point withLength:(CGFloat) length atHeight:(CGFloat) height withCenter:(NSPoint) center;
+
+- (void) setRotation:(CGFloat) _rotation;
 
 #pragma mark - scroll delegate events
 - (void) scrollWheel:(NSEvent *) event;
@@ -35,9 +38,9 @@
 - (void) keyWasPressed:(NSEvent *) event;
 - (void) didZoom:(CGFloat) amount;
 - (void) didPanByVector:(CGPoint) vector;
-
-@optional
 - (void) GLGOpenGLView:(GLGOpenGLView *) view drawInRect:(NSRect) rect;
 - (void) GLGOpenGLViewDidReshape:(GLGOpenGLView *) view;
+- (void) handleMouseUp;
+- (void) handleMouseDown:(NSPoint) point;
 
 @end
