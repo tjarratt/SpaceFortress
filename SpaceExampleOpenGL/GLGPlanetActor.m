@@ -12,7 +12,7 @@
 
 const CGFloat planetRadius = 500;
 
-- (id) initWithPlanet:(GLGPlanetoid *) _planet delegate:(id)_delegate {
+- (id) initWithPlanet:(GLGPlanetoid *) _planet delegate:(GLGOpenGLController *)_delegate {
     if (self = [super init]) {
         rotation = 0.0f;
         planet = _planet;

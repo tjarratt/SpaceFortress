@@ -13,21 +13,22 @@
 #import "GLGActorBase.h"
 #import "GLGRangeProperty.h"
 #import "GLGStructure.h"
+#import "GLGOpenGLController.h"
 
-@class GLGOpenGLView;
+@class GLGOpenGLController;
 
 @interface GLGPlanetActor : NSObject <GLGActor> {
     NSUInteger frameNumber;
     GLGPlanetoid *planet;
     NSMutableArray *structures;
-    id delegate;
+    GLGOpenGLController *delegate;
 
     NSPoint touchOrigin;
     NSPoint currentTouch;
     CGFloat rotation;
 }
 
-- (id) initWithPlanet:(GLGPlanetoid *) planet delegate:(id) _delegate;
+- (id) initWithPlanet:(GLGPlanetoid *) planet delegate:(GLGOpenGLController *) _delegate;
 - (void) handleMouseUp;
 - (void) handleMouseDown:(NSPoint) point;
 @end
