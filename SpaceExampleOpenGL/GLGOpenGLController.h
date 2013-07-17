@@ -10,7 +10,8 @@
 #import <Foundation/Foundation.h>
 
 #import "GLGOpenGLView.h"
-#import "GLGSidebarView.h"
+#import "GLGGalaxySidebar.h"
+#import "GLGPlanetSidebar.h"
 
 #import "GLGEasedPoint.h"
 #import "GLGEasedValue.h"

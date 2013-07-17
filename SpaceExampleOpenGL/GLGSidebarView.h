@@ -23,5 +23,8 @@
     NSTextField *framerateLabel;
 }
 
-- (id) initWithFrame:(NSRect) frame andDelegate:(GLGGalaxyPickerActor *) delegate;
+@property BOOL collapsed;
+
+- (void) expandOrCollapse;
+
 @end

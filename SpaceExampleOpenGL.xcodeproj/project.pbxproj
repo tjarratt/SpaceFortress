@@ -44,6 +44,8 @@
 		F7D6D7861788B84A001F2FB0 /* GLGEasedValue.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D7851788B84A001F2FB0 /* GLGEasedValue.m */; };
 		F7D6D7891788CAAA001F2FB0 /* GLGEasedPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D7881788CAAA001F2FB0 /* GLGEasedPoint.m */; };
 		F7D6D7BD178B897B001F2FB0 /* GLGSidebarPlanetDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D6D7BC178B897B001F2FB0 /* GLGSidebarPlanetDetail.m */; };
+		F7D710BA17962BD90071A80D /* GLGGalaxySidebar.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D710B917962BD90071A80D /* GLGGalaxySidebar.m */; };
+		F7D710BD17962CA40071A80D /* GLGPlanetSidebar.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D710BC17962CA40071A80D /* GLGPlanetSidebar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +125,10 @@
 		F7D6D7881788CAAA001F2FB0 /* GLGEasedPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGEasedPoint.m; sourceTree = "<group>"; };
 		F7D6D7BB178B897B001F2FB0 /* GLGSidebarPlanetDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGSidebarPlanetDetail.h; sourceTree = "<group>"; };
 		F7D6D7BC178B897B001F2FB0 /* GLGSidebarPlanetDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGSidebarPlanetDetail.m; sourceTree = "<group>"; };
+		F7D710B817962BD90071A80D /* GLGGalaxySidebar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGGalaxySidebar.h; sourceTree = "<group>"; };
+		F7D710B917962BD90071A80D /* GLGGalaxySidebar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGGalaxySidebar.m; sourceTree = "<group>"; };
+		F7D710BB17962CA40071A80D /* GLGPlanetSidebar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGPlanetSidebar.h; sourceTree = "<group>"; };
+		F7D710BC17962CA40071A80D /* GLGPlanetSidebar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGPlanetSidebar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,12 +300,10 @@
 		F7D39BC6178DED0E00E92434 /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
+				F7D710B717962BA50071A80D /* Planet */,
+				F7D710B617962B9E0071A80D /* Galaxy */,
 				F70C6C04177A89F800AFBFDE /* GLGSidebarView.h */,
 				F70C6C05177A89F800AFBFDE /* GLGSidebarView.m */,
-				F7D6D7771784E3FD001F2FB0 /* GLGSidebarGalaxyView.h */,
-				F7D6D7781784E3FD001F2FB0 /* GLGSidebarGalaxyView.m */,
-				F7D6D7BB178B897B001F2FB0 /* GLGSidebarPlanetDetail.h */,
-				F7D6D7BC178B897B001F2FB0 /* GLGSidebarPlanetDetail.m */,
 			);
 			name = Sidebar;
 			sourceTree = "<group>";
@@ -316,6 +320,28 @@
 				F72F3E6B178DEA1F009D9587 /* GLGFlippedView.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		F7D710B617962B9E0071A80D /* Galaxy */ = {
+			isa = PBXGroup;
+			children = (
+				F7D6D7771784E3FD001F2FB0 /* GLGSidebarGalaxyView.h */,
+				F7D6D7781784E3FD001F2FB0 /* GLGSidebarGalaxyView.m */,
+				F7D6D7BB178B897B001F2FB0 /* GLGSidebarPlanetDetail.h */,
+				F7D6D7BC178B897B001F2FB0 /* GLGSidebarPlanetDetail.m */,
+				F7D710B817962BD90071A80D /* GLGGalaxySidebar.h */,
+				F7D710B917962BD90071A80D /* GLGGalaxySidebar.m */,
+			);
+			name = Galaxy;
+			sourceTree = "<group>";
+		};
+		F7D710B717962BA50071A80D /* Planet */ = {
+			isa = PBXGroup;
+			children = (
+				F7D710BB17962CA40071A80D /* GLGPlanetSidebar.h */,
+				F7D710BC17962CA40071A80D /* GLGPlanetSidebar.m */,
+			);
+			name = Planet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,6 +476,8 @@
 				F72FDCFB17939C3000836EA1 /* GLGGalaxyPickerActor.m in Sources */,
 				F72FDCFF1794CF8A00836EA1 /* GLGStructure.m in Sources */,
 				F72FDD031795ED8000836EA1 /* GLGActorBase.m in Sources */,
+				F7D710BA17962BD90071A80D /* GLGGalaxySidebar.m in Sources */,
+				F7D710BD17962CA40071A80D /* GLGPlanetSidebar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

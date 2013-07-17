@@ -50,7 +50,7 @@
         gameSceneActor = (id)actor;
 
         NSRect sidebarFrame = NSMakeRect(sceneWidth, 0, sidebarWidth, rectHeight);
-        sidebar = [[GLGSidebarView alloc] initWithFrame:sidebarFrame  andDelegate:actor];
+        sidebar = [[GLGGalaxySidebar alloc] initWithFrame:sidebarFrame  andDelegate:actor];
 
         NSRect titleFrame = NSMakeRect(0, sceneHeight, sceneWidth, 50);
         titleView = [[NSView alloc] initWithFrame:titleFrame];        
@@ -109,13 +109,23 @@
     assert( planet != nil );
 
     [actor release];
-    gameSceneActor = [[GLGPlanetActor alloc] initWithPlanet:planet delegate:self];
+    GLGPlanetActor *newActor = [[GLGPlanetActor alloc] initWithPlanet:planet delegate:self];
 
     [title removeFromSuperview];
+    NSRect oldSidebarFrame = [sidebar frame];
     [sidebar removeFromSuperview];
+    [sidebar release];
+
+    NSRect sidebarFrame = NSMakeRect(oldSidebarFrame.origin.x, oldSidebarFrame.origin.y, 0, oldSidebarFrame.size.height);
+
     CGFloat width = window.frame.size.width;
     CGFloat height = window.frame.size.height;
     [[scene animator] setFrame:NSMakeRect(0, 0, width, height)];
+
+    sidebar = [[GLGPlanetSidebar alloc] initWithFrame:sidebarFrame andDelegate:newActor];
+    [[window contentView] addSubview:sidebar];
+
+    gameSceneActor = newActor;
 }
 
 - (void) didSelectSystem:(NSNotification *) notification {
@@ -205,11 +215,27 @@
         case 49:
             [self pause];
             break;
+        case 11:
+            [self expandOrCollapseSidebar];
+            break;
     }
 }
 
 - (void) pause {
     [self setPaused:![self paused]];
+}
+
+- (void) expandOrCollapseSidebar {
+    // nsanimationcontext begin grouping
+
+    [sidebar expandOrCollapse];
+    NSRect frame = [scene frame];
+    if ([sidebar collapsed]) {
+        [[scene animator] setFrame:NSMakeRect(frame.origin.x, frame.origin.y, frame.size.width + 150, frame.size.height)];
+    }
+    else {
+        [[scene animator] setFrame:NSMakeRect(frame.origin.x, frame.origin.y, frame.size.width - 150, frame.size.height)];
+    }
 }
 
 @end
