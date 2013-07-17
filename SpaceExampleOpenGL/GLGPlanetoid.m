@@ -30,7 +30,6 @@
         CGFloat max_body_rotation = seconds_year * 350;
         rotationAroundSolarBodySeconds = [GLGRangeProperty randomValueWithMinimum:min_body_rotation maximum:max_body_rotation];
 
-        // completely random for now -> but this should be ~ delta a standard value for the system, right?
         rotationAngleAroundStar = [GLGRangeProperty randomValueWithMinimum:-0.5 * M_PI_4 maximum:M_PI_4 * 0.5];
         
         CGFloat minimum_distance_from_star = 4.619e10;

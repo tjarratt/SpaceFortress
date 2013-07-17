@@ -70,7 +70,8 @@ const CGFloat planetRadius = 500;
     CGFloat x = view.bounds.size.width / 2.0;
     CGFloat y = view.bounds.size.height * 0.15;
     NSPoint center = NSMakePoint(x, y);
-    glColor3f(0.95f, 0.5f, 0.3f);
+    NSColor *color = [planet color];
+    glColor3f(color.redComponent, color.greenComponent, color.blueComponent);
 
     [view setRotation: rotation];
     [view drawCircleWithRadius:planetRadius centerX:x centerY:y];
