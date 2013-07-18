@@ -226,8 +226,7 @@
 }
 
 - (void) expandOrCollapseSidebar {
-    // nsanimationcontext begin grouping
-
+    [NSAnimationContext beginGrouping];
     [sidebar expandOrCollapse];
     NSRect frame = [scene frame];
     if ([sidebar collapsed]) {
@@ -236,6 +235,8 @@
     else {
         [[scene animator] setFrame:NSMakeRect(frame.origin.x, frame.origin.y, frame.size.width - 150, frame.size.height)];
     }
+
+    [NSAnimationContext endGrouping];
 }
 
 @end
