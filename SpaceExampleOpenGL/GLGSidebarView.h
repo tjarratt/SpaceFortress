@@ -21,6 +21,9 @@
 
     GLGLabel *framerateValue;
     NSTextField *framerateLabel;
+
+    NSRect expandedRect;
+    NSRect collapsedRect;
 }
 
 @property BOOL collapsed;

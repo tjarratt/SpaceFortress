@@ -34,6 +34,9 @@
     NSButton *switchView;
 
     id <GLGActor> gameSceneActor;
+
+    NSRect expandedSceneRect;
+    NSRect collapsedSceneRect;
 }
 
 @property BOOL paused;

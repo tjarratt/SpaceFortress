@@ -34,6 +34,9 @@
         [window setFrame:windowRect display:YES];
         [window setFrameOrigin:point];
 
+        expandedSceneRect = viewRect;
+        collapsedSceneRect = NSMakeRect(viewRect.origin.x, viewRect.origin.y, viewRect.size.width + 150, viewRect.size.height);
+
         scene = [[GLGOpenGLView alloc] initWithFrame: viewRect];
         [scene setWantsBestResolutionOpenGLSurface:YES];
         [scene setDelegate: self];
@@ -144,8 +147,10 @@
 
 #pragma mark - NSWindow delegate methods
 - (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
-    NSRect newFrame = NSMakeRect(0, 0, frameSize.width - 150, frameSize.height);
-    [scene setFrame:newFrame];
+    expandedSceneRect = NSMakeRect(0, 0, frameSize.width - 150, frameSize.height);
+    collapsedSceneRect = NSMakeRect(expandedSceneRect.origin.x, expandedSceneRect.origin.y, expandedSceneRect.size.width + 150, expandedSceneRect.size.height);
+    
+    [scene setFrame:expandedSceneRect];
 
     NSRect newSidebarFrame = NSMakeRect(frameSize.width - 150, 0, 150, frameSize.height);
     [sidebar setFrame:newSidebarFrame];
@@ -228,12 +233,12 @@
 - (void) expandOrCollapseSidebar {
     [NSAnimationContext beginGrouping];
     [sidebar expandOrCollapse];
-    NSRect frame = [scene frame];
+
     if ([sidebar collapsed]) {
-        [[scene animator] setFrame:NSMakeRect(frame.origin.x, frame.origin.y, frame.size.width + 150, frame.size.height)];
+        [[scene animator] setFrame:collapsedSceneRect];
     }
     else {
-        [[scene animator] setFrame:NSMakeRect(frame.origin.x, frame.origin.y, frame.size.width - 150, frame.size.height)];
+        [[scene animator] setFrame:expandedSceneRect];
     }
 
     [NSAnimationContext endGrouping];
