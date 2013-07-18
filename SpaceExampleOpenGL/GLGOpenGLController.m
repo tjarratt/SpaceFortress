@@ -56,7 +56,7 @@
         sidebar = [[GLGGalaxySidebar alloc] initWithFrame:sidebarFrame  andDelegate:actor];
 
         NSRect titleFrame = NSMakeRect(0, sceneHeight, sceneWidth, 50);
-        titleView = [[NSView alloc] initWithFrame:titleFrame];        
+        titleView = [[NSView alloc] initWithFrame:titleFrame];
         NSRect innerFrame = NSMakeRect(5, 0, 600, 25);
         title = [[NSTextField alloc] initWithFrame:innerFrame];
         [title setEditable:NO];
@@ -70,7 +70,7 @@
         [[window contentView] addSubview:sidebar];
         [[window contentView] addSubview:titleView];
         
-        [window setMinSize:NSMakeSize(rectWidth, rectHeight)];
+        [window setMinSize:NSMakeSize(800, 600)];
         [window setAspectRatio:NSMakeSize(rectWidth, rectHeight)];
 
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
@@ -146,16 +146,17 @@
 }
 
 #pragma mark - NSWindow delegate methods
-- (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
-    expandedSceneRect = NSMakeRect(0, 0, frameSize.width - 150, frameSize.height);
+- (void) windowDidResize:(NSWindow *) _window {
+    CGSize frameSize = window.frame.size;
+
+    expandedSceneRect = NSMakeRect(0, 0, frameSize.width - 150, frameSize.height - 50);
     collapsedSceneRect = NSMakeRect(expandedSceneRect.origin.x, expandedSceneRect.origin.y, expandedSceneRect.size.width + 150, expandedSceneRect.size.height);
     
     [scene setFrame:expandedSceneRect];
+    [titleView setFrame:NSMakeRect(0, frameSize.height - 50, frameSize.width - 150, 50)];
 
     NSRect newSidebarFrame = NSMakeRect(frameSize.width - 150, 0, 150, frameSize.height);
     [sidebar setFrame:newSidebarFrame];
-
-    return frameSize;
 }
 
 #pragma mark - openGL update methods

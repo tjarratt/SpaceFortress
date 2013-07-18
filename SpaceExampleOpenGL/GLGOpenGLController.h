@@ -46,7 +46,7 @@
 - (void) prepareOpenGL;
 - (void) GLGOpenGLView:(GLGOpenGLView *)view drawInRect:(NSRect)rect;
 - (void) GLGOpenGLViewDidReshape:(GLGOpenGLView *)view;
-- (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize;
+- (NSSize) windowDidResize:(NSWindow *)sender toSize:(NSSize)frameSize;
 - (void) keyWasPressed:(NSEvent *)event;
 
 - (GLGOpenGLView *) openGLView;
