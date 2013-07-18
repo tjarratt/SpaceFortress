@@ -30,6 +30,18 @@
     return YES;
 }
 
+- (void) setFrame:(NSRect) frame {
+    expandedRect = frame;
+    collapsedRect = NSMakeRect(frame.origin.x + 150, frame.origin.y, frame.size.width, frame.size.height);
+
+    if (collapsed) {
+        [super setFrame:collapsedRect];
+    }
+    else {
+        [super setFrame:expandedRect];
+    }
+}
+
 #pragma mark - ScrollView delegate methods
 - (void) scrollWheel:(NSEvent *)theEvent {
     [super scrollWheel:theEvent];
