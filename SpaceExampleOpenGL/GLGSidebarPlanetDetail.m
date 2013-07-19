@@ -42,11 +42,17 @@
 - (void) openedPlanetDisclosure {
     // logic is backwards because the state is currently changing
     if ([disclosureButton state] == NSOnState) {
+        _selected = false;
         [delegate stopViewingPlanet];
     }
     else {
+        _selected = true;
         [delegate startViewingPlanet: planet];
     }
+}
+
+- (BOOL) isSelected {
+    return _selected;
 }
 
 @end

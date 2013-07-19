@@ -16,11 +16,13 @@
     GLGPlanetoid *planet;
     NSButton *disclosureButton;
     GLGLabel *planetName;
+    BOOL _selected;
     id <GLGSidebarPlanetDelegate> delegate;
 }
 
 - (id) initWithPlanet:(GLGPlanetoid *)planet;
 - (void) setDelegate:(id) _delegate;
+- (BOOL) isSelected;
 
 @end
 
