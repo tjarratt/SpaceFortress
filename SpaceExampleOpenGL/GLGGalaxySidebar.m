@@ -57,7 +57,7 @@ const CGFloat sidebarGalaxyHeight = 25.0f;
         [innerView addSubview:framerateLabel];
         [framerateLabel release];
 
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectObjectAtIndex:) name:@"glg_sidebar_system_selected" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectSidebarObject:) name:@"glg_sidebar_system_selected" object:nil];
     }
     
     return self;
@@ -68,7 +68,7 @@ const CGFloat sidebarGalaxyHeight = 25.0f;
     return heightOfScrollView;
 }
 
-- (void) didSelectObjectAtIndex:(NSNotification *) notification {
+- (void) didSelectSidebarObject:(NSNotification *) notification {
     NSInteger index = ((GLGGalaxyPickerActor *)[notification object]).activeSystemIndex;
 
     CGFloat __block difference = 0;

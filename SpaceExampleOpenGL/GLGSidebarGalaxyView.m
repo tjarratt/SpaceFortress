@@ -126,4 +126,8 @@ const CGFloat heightOfLabels = 25.0f;
     }
 }
 
+- (void) handlePlanetDisclosure {
+    
+}
+
 @end
