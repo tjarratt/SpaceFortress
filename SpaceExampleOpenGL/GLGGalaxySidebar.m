@@ -21,7 +21,7 @@ const CGFloat sidebarGalaxyHeight = 25.0f;
 
         CGFloat padding = 5.0f;
         CGFloat heightOfScrollView = padding + (padding + heightOfGalaxyItem) * [systems count] + 60;
-        CGFloat widthOfScrollView = frame.size.width;
+        CGFloat widthOfScrollView = frame.size.width - 5;
         CGFloat __block height = 49;
 
         [self setHasHorizontalScroller:NO];
@@ -29,12 +29,12 @@ const CGFloat sidebarGalaxyHeight = 25.0f;
         [self setBorderType:NSNoBorder];
         [self setAutoresizingMask:NSViewHeightSizable];
 
-        NSRect innerFrame = NSMakeRect(0, 0, widthOfScrollView, heightOfScrollView);
+        NSRect innerFrame = NSMakeRect(5, 0, widthOfScrollView, heightOfScrollView);
         innerView = [[GLGFlippedView alloc] initWithFrame:innerFrame];
         [self setDocumentView: innerView];
 
         [systems enumerateObjectsUsingBlock:^(GLGSolarSystem *system, NSUInteger index, BOOL *stop) {
-            NSRect rect = NSMakeRect(0, height, frame.size.width, heightOfGalaxyItem);
+            NSRect rect = NSMakeRect(5, height, widthOfScrollView - 5, heightOfGalaxyItem);
             GLGSidebarGalaxyView *view = [[GLGSidebarGalaxyView alloc] initWithFrame:rect delegate: delegate andSystem:system];
             [innerView addSubview:view];
             [subViews addObject:view];
@@ -111,15 +111,15 @@ const CGFloat sidebarGalaxyHeight = 25.0f;
     [subViews enumerateObjectsUsingBlock:^(GLGSidebarGalaxyView *view, NSUInteger index, BOOL *stop) {
         if ([view selected]) {
             pushDownHeight = sidebarGalaxyPadding + (sidebarGalaxyHeight + sidebarGalaxyPadding) * view.galaxy.planetoids.count;
-            NSRect rect = NSMakeRect(0, currentHeight, frame.size.width, heightOfGalaxyItem + pushDownHeight);
+            NSRect rect = NSMakeRect(5, currentHeight, frame.size.width - 10, heightOfGalaxyItem + pushDownHeight);
 
             [view animateToFrame:rect];
             currentHeight += pushDownHeight;
 
         }
         else {
-            NSRect rect = NSMakeRect(0, currentHeight, frame.size.width, heightOfGalaxyItem);
-            NSRect pushedRect = NSMakeRect(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
+            NSRect rect = NSMakeRect(5, currentHeight, frame.size.width - 5, heightOfGalaxyItem);
+            NSRect pushedRect = NSMakeRect(rect.origin.x, rect.origin.y, rect.size.width - 5, rect.size.height);
 
             [view animateToFrame:pushedRect];
         }
