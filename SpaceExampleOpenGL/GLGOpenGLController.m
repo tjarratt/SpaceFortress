@@ -35,7 +35,7 @@
         [window setFrameOrigin:point];
 
         expandedSceneRect = viewRect;
-        collapsedSceneRect = NSMakeRect(viewRect.origin.x, viewRect.origin.y, viewRect.size.width + 150, viewRect.size.height);
+        collapsedSceneRect = NSMakeRect(viewRect.origin.x, viewRect.origin.y, viewRect.size.width + 140, viewRect.size.height);
 
         scene = [[GLGOpenGLView alloc] initWithFrame: viewRect];
         [scene setWantsBestResolutionOpenGLSurface:YES];
@@ -150,7 +150,7 @@
     CGSize frameSize = window.frame.size;
 
     expandedSceneRect = NSMakeRect(0, 0, frameSize.width - 150, frameSize.height - 50);
-    collapsedSceneRect = NSMakeRect(expandedSceneRect.origin.x, expandedSceneRect.origin.y, expandedSceneRect.size.width + 150, expandedSceneRect.size.height);
+    collapsedSceneRect = NSMakeRect(expandedSceneRect.origin.x, expandedSceneRect.origin.y, expandedSceneRect.size.width + 140, expandedSceneRect.size.height);
     
     [scene setFrame:expandedSceneRect];
     [titleView setFrame:NSMakeRect(0, frameSize.height - 50, frameSize.width - 150, 50)];

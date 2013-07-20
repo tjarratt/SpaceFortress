@@ -43,12 +43,12 @@ const CGFloat sidebarGalaxyHeight = 25.0f;
             height += padding + heightOfGalaxyItem;
         }];
 
-        framerateValue = [[GLGLabel alloc] initWithFrame:NSMakeRect(65, height, 60, 20)];
+        framerateValue = [[GLGLabel alloc] initWithFrame:NSMakeRect(80, height, 60, 20)];
         [framerateValue bind:@"value" toObject:delegate withKeyPath:@"framerate" options:nil];
         [innerView addSubview:framerateValue];
         [framerateValue release];
 
-        framerateLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(0, height, 80, 20)];
+        framerateLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(15, height, 80, 20)];
         [framerateLabel setEditable:NO];
         [framerateLabel setStringValue:@"Framerate:"];
         [framerateLabel setBezeled:NO];
@@ -128,8 +128,8 @@ const CGFloat sidebarGalaxyHeight = 25.0f;
         [view setNeedsDisplay:YES];
     }];
 
-    [[framerateValue animator] setFrame:NSMakeRect(65, currentHeight, 60, 20)];
-    [[framerateLabel animator] setFrame:NSMakeRect(0, currentHeight, 80, 20)];
+    [[framerateValue animator] setFrame:NSMakeRect(80, currentHeight, 60, 20)];
+    [[framerateLabel animator] setFrame:NSMakeRect(15, currentHeight, 80, 20)];
 }
 
 @end

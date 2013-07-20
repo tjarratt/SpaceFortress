@@ -15,7 +15,7 @@
     if (self = [super initWithFrame:frameRect]) {
         collapsed = NO;
         expandedRect = frameRect;
-        collapsedRect = NSMakeRect(frameRect.origin.x + 150, frameRect.origin.y, frameRect.size.width, frameRect.size.height);
+        collapsedRect = NSMakeRect(frameRect.origin.x + 140, frameRect.origin.y, frameRect.size.width, frameRect.size.height);
     }
 
     return self;
@@ -32,7 +32,7 @@
 
 - (void) setFrame:(NSRect) frame {
     expandedRect = frame;
-    collapsedRect = NSMakeRect(frame.origin.x + 150, frame.origin.y, frame.size.width, frame.size.height);
+    collapsedRect = NSMakeRect(frame.origin.x + 140, frame.origin.y, frame.size.width, frame.size.height);
 
     if (collapsed) {
         [super setFrame:collapsedRect];
