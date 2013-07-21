@@ -12,6 +12,15 @@ Currently it isn't much more than a semi-intelligent solar system simulation, bu
 using actual ASCII characters for graphics, or having an inconsistent keyboard-only UI, but that is what
 motivated me to start this project.
 
+Features?
+---------
+
+* completely randomized star systems
+* blazingly fast 2D graphics
+* planets to colonize, destroy or terraform as you see fit
+* 30 frames per second at all times
+* dozens of structures to build, research and expand on planets you colonize
+
 Why???
 ------
 
