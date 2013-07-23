@@ -236,7 +236,18 @@
 }
 
 - (NSString *) habitableZoneRange {
-    return @"";
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setMaximumFractionDigits:1];
+    [formatter setRoundingMode:NSNumberFormatterRoundDown];
+    [formatter setNumberStyle:NSNumberFormatterScientificStyle];
+
+    NSString *inner = [formatter stringFromNumber:[NSNumber numberWithFloat:habitableZoneInnerRadius]];
+    NSString *outer = [formatter stringFromNumber:[NSNumber numberWithFloat:habitableZoneOuterRadius]];
+
+    NSString *range = [[inner stringByAppendingString:@"-"] stringByAppendingString:outer];
+    [formatter release];
+
+    return range;
 }
 
 - (CGFloat) metallicity {

@@ -31,7 +31,7 @@ const CGFloat heightOfLabels = 25.0f;
 
         CGFloat height = frame.size.height;
         CGFloat widthOfLabels = frame.size.width - 10;
-        CGFloat numberOfLabels = 10;
+        CGFloat numberOfLabels = 11;
         CGFloat padding = (height - (heightOfLabels * numberOfLabels)) / (numberOfLabels + 1);
         assert( padding > 0 );
 
@@ -99,6 +99,12 @@ const CGFloat heightOfLabels = 25.0f;
         mass = [[GLGLabel alloc] initWithFrame:labelRect];
         [mass setStringValue:massValue];
         [self addSubview:mass];
+        updateBlock();
+
+        NSString *habitableZoneValue = [NSString stringWithFormat:@"Habitable Zone: %@ m", galaxy.star.habitableZoneRange];
+        habitableZone = [[GLGLabel alloc] initWithFrame:labelRect];
+        [habitableZone setStringValue:habitableZoneValue];
+        [self addSubview:habitableZone];
         updateBlock();
 
         numPlanets = [[GLGLabel alloc] initWithFrame:labelRect];
