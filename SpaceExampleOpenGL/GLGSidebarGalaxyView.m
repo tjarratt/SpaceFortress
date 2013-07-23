@@ -31,24 +31,76 @@ const CGFloat heightOfLabels = 25.0f;
 
         CGFloat height = frame.size.height;
         CGFloat widthOfLabels = frame.size.width - 10;
-        CGFloat numberOfLabels = 3.0f;
+        CGFloat numberOfLabels = 10;
         CGFloat padding = (height - (heightOfLabels * numberOfLabels)) / (numberOfLabels + 1);
-        __block CGFloat currentHeight = padding;
+        assert( padding > 0 );
 
-        galaxyName = [[GLGLabel alloc] initWithFrame:NSMakeRect(5, currentHeight, widthOfLabels, heightOfLabels)];
+        __block CGFloat currentHeight = padding;
+        __block NSRect labelRect = NSMakeRect(5, currentHeight, widthOfLabels, heightOfLabels);
+
+        void (^updateBlock)(void) = ^(void) {
+            currentHeight += heightOfLabels + padding;
+            labelRect = NSMakeRect(5, currentHeight, widthOfLabels, heightOfLabels);
+        };
+
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setMaximumFractionDigits:2];
+        [formatter setRoundingMode:NSNumberFormatterRoundDown];
+
+        galaxyName = [[GLGLabel alloc] initWithFrame:labelRect];
         [galaxyName setStringValue:[galaxy name]];
         [self addSubview:galaxyName];
-
-        currentHeight += heightOfLabels + padding;
+        updateBlock();
 
         NSString *starType = [NSString stringWithFormat:@"Class %@ star", [[galaxy star] spectralClassification]];
-        starTypeField = [[GLGLabel alloc] initWithFrame:NSMakeRect(5, currentHeight, widthOfLabels, heightOfLabels)];
+        starTypeField = [[GLGLabel alloc] initWithFrame:labelRect];
         [starTypeField setStringValue:starType];
         [self addSubview:starTypeField];
+        updateBlock();
 
-        currentHeight += heightOfLabels + padding;
+        NSString *metallicityValue = [@"Metallicity: " stringByAppendingString:[formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.metallicity]]];
+        metallicity = [[GLGLabel alloc] initWithFrame:labelRect];
+        [metallicity setStringValue:metallicityValue];
+        [self addSubview:metallicity];
+        updateBlock();
 
-        numPlanets = [[GLGLabel alloc] initWithFrame:NSMakeRect(5, currentHeight, widthOfLabels, heightOfLabels)];
+        NSString *magnitudeValue = [@"Apparent Magnitude: " stringByAppendingString:[formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.apparentMagnitude]]];
+        apparentMagnitude = [[GLGLabel alloc] initWithFrame:labelRect];
+        [apparentMagnitude setStringValue:magnitudeValue];
+        [self addSubview:apparentMagnitude];
+        updateBlock();
+        
+        NSString *luminosityValue = [NSString stringWithFormat:@"Luminosity: %@ lumens", [formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.luminosity]]];
+        luminosity = [[GLGLabel alloc] initWithFrame:labelRect];
+        [luminosity setStringValue:luminosityValue];
+        [self addSubview:luminosity];
+        updateBlock();
+
+        NSString *temperatureValue = [NSString stringWithFormat:@"Surface Temp: %@K", [formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.surfaceTemperature]]];
+        surfaceTemperature = [[GLGLabel alloc] initWithFrame:labelRect];
+        [surfaceTemperature setStringValue:temperatureValue];
+        [self addSubview:surfaceTemperature];
+        updateBlock();
+
+        NSString *rotationValue = [NSString stringWithFormat:@"Rotation period: %@ seconds", [formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.rotationRate]]];
+        rotationRate = [[GLGLabel alloc] initWithFrame:labelRect];
+        [rotationRate setStringValue:rotationValue];
+        [self addSubview:rotationRate];
+        updateBlock();
+
+        NSString *radiusValue = [NSString stringWithFormat:@"Radius: %@ meters", [formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.radius]]];
+        radius = [[GLGLabel alloc] initWithFrame:labelRect];
+        [radius setStringValue:radiusValue];
+        [self addSubview:radius];
+        updateBlock();
+
+        NSString *massValue = [NSString stringWithFormat:@"Mass: %@ kilograms", [formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.mass]]];
+        mass = [[GLGLabel alloc] initWithFrame:labelRect];
+        [mass setStringValue:massValue];
+        [self addSubview:mass];
+        updateBlock();
+
+        numPlanets = [[GLGLabel alloc] initWithFrame:labelRect];
         NSString *planetsString;
         if ([[galaxy planetoids] count] > 1) {
             planetsString = @"planets";
@@ -72,7 +124,9 @@ const CGFloat heightOfLabels = 25.0f;
             [self addSubview:planetView];
 
             currentHeight += heightOfLabels + padding;
-        }];    
+        }];
+
+        [formatter release];
     }
 
     return self;

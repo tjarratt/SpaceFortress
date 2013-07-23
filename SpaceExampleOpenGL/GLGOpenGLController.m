@@ -12,6 +12,8 @@
 
 @synthesize paused;
 
+const CGFloat sidebarWidth = 200;
+
 #pragma Lifecycle methods
 - (id) initWithWindow: (NSWindow *) theWindow {
     if (self = [super init]) {
@@ -24,7 +26,6 @@
         CGFloat height = [[NSScreen mainScreen] frame].size.height;
         CGFloat rectWidth = 1280;
         CGFloat rectHeight = 800;
-        CGFloat sidebarWidth = 150;
         CGFloat sceneWidth = rectWidth - sidebarWidth;
         CGFloat sceneHeight = rectHeight - 50;
 
@@ -35,7 +36,7 @@
         [window setFrameOrigin:point];
 
         expandedSceneRect = viewRect;
-        collapsedSceneRect = NSMakeRect(viewRect.origin.x, viewRect.origin.y, viewRect.size.width + 140, viewRect.size.height);
+        collapsedSceneRect = NSMakeRect(viewRect.origin.x, viewRect.origin.y, viewRect.size.width + sidebarWidth - 10, viewRect.size.height);
 
         scene = [[GLGOpenGLView alloc] initWithFrame: viewRect];
         [scene setWantsBestResolutionOpenGLSurface:YES];
@@ -149,13 +150,13 @@
 - (void) windowDidResize:(NSWindow *) _window {
     CGSize frameSize = window.frame.size;
 
-    expandedSceneRect = NSMakeRect(0, 0, frameSize.width - 150, frameSize.height - 50);
-    collapsedSceneRect = NSMakeRect(expandedSceneRect.origin.x, expandedSceneRect.origin.y, expandedSceneRect.size.width + 140, expandedSceneRect.size.height);
+    expandedSceneRect = NSMakeRect(0, 0, frameSize.width - sidebarWidth, frameSize.height - 50);
+    collapsedSceneRect = NSMakeRect(expandedSceneRect.origin.x, expandedSceneRect.origin.y, expandedSceneRect.size.width + sidebarWidth - 10, expandedSceneRect.size.height);
     
     [scene setFrame:expandedSceneRect];
-    [titleView setFrame:NSMakeRect(0, frameSize.height - 50, frameSize.width - 150, 50)];
+    [titleView setFrame:NSMakeRect(0, frameSize.height - 50, frameSize.width - sidebarWidth, 50)];
 
-    NSRect newSidebarFrame = NSMakeRect(frameSize.width - 150, 0, 150, frameSize.height);
+    NSRect newSidebarFrame = NSMakeRect(frameSize.width - sidebarWidth, 0, sidebarWidth, frameSize.height);
     [sidebar setFrame:newSidebarFrame];
 }
 

@@ -45,4 +45,11 @@ facts:
 - (NSString *) surfaceTemperatureComparison;
 - (NSString *) metallicityComparison;
 
+- (CGFloat) metallicity;
+- (CGFloat) apparentMagnitude;
+- (CGFloat) surfaceTemperature;
+- (CGFloat) rotationRate;
+- (CGFloat) radius;
+- (NSString *) habitableZoneRange;
+
 @end

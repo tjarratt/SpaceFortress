@@ -21,6 +21,14 @@
 
     GLGLabel *galaxyName;
     GLGLabel *starTypeField;
+    GLGLabel *metallicity;
+    GLGLabel *apparentMagnitude;
+    GLGLabel *luminosity;
+    GLGLabel *surfaceTemperature;
+    GLGLabel *rotationRate;
+    GLGLabel *habitableZone;
+    GLGLabel *radius;
+    GLGLabel *mass;
     GLGLabel *numPlanets;
 }
 

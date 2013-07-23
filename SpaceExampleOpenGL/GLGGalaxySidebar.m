@@ -10,9 +10,9 @@
 
 @implementation GLGGalaxySidebar
 
-const CGFloat heightOfGalaxyItem = 100.0f;
+const CGFloat heightOfGalaxyItem = 300.0f;
 const CGFloat sidebarGalaxyPadding = 5.0f;
-const CGFloat sidebarGalaxyHeight = 25.0f;
+const CGFloat sidebarGalaxyHeight = 15.0f;
 
 - (id)initWithFrame:(NSRect)frame andDelegate: (id) delegate {
     if (self = [super initWithFrame:frame]) {

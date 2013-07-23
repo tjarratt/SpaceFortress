@@ -219,4 +219,28 @@
     return [NSString stringWithFormat: @"%f", metallicity];
 }
 
+- (CGFloat) apparentMagnitude {
+    return apparentMagnitude;
+}
+
+- (CGFloat) surfaceTemperature {
+    return surfaceTemperature;
+}
+
+- (CGFloat) rotationRate {
+    return rotationRateSeconds;
+}
+
+- (CGFloat) radius {
+    return radius;
+}
+
+- (NSString *) habitableZoneRange {
+    return @"";
+}
+
+- (CGFloat) metallicity {
+    return metallicity;
+}
+
 @end
