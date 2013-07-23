@@ -46,6 +46,7 @@ const CGFloat heightOfLabels = 25.0f;
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         [formatter setMaximumFractionDigits:2];
         [formatter setRoundingMode:NSNumberFormatterRoundDown];
+        [formatter setNumberStyle:NSNumberFormatterScientificStyle];
 
         galaxyName = [[GLGLabel alloc] initWithFrame:labelRect];
         [galaxyName setStringValue:[galaxy name]];
@@ -82,7 +83,7 @@ const CGFloat heightOfLabels = 25.0f;
         [self addSubview:surfaceTemperature];
         updateBlock();
 
-        NSString *rotationValue = [NSString stringWithFormat:@"Rotation period: %@ seconds", [formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.rotationRate]]];
+        NSString *rotationValue = [NSString stringWithFormat:@"Rotation period: %@ secs", [formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.rotationRate]]];
         rotationRate = [[GLGLabel alloc] initWithFrame:labelRect];
         [rotationRate setStringValue:rotationValue];
         [self addSubview:rotationRate];
