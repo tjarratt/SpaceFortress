@@ -12,21 +12,6 @@
 
 @synthesize age, mass, name, radius, color;
 
-- (id) init {
-    if (self = [super init]) {
-        CGFloat earth_mass = 7.349e22; // kg
-        CGFloat min_mass = earth_mass / 10000;
-        mass = [GLGRangeProperty randomValueWithMinimum:min_mass maximum:maximumMassBeforeNuclearFusion];
-        
-        CGFloat min_radius = 1.5e6;
-        CGFloat max_radius = 75e6;
-        radius = [GLGRangeProperty randomValueWithMinimum:min_radius maximum:max_radius];
-
-    }
-    
-    return self;
-}
-
 - (CGFloat) escapeVelocity {
     return sqrtf(2.0f * mass * universalGravitationConstant / radius);
 }

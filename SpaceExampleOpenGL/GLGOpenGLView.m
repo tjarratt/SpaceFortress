@@ -93,7 +93,7 @@
     CGFloat ox, oy, oxp, oyp;
     CGFloat x = self.bounds.size.width / 2 + origin.x;
     CGFloat y = self.bounds.size.height / 2 + origin.y;
-    CGFloat metersToPixelsScale = 3.543e-11 * scale;
+    CGFloat metersToPixelsScale = 3.543e-9 * scale;
     
     glColor3f(1, 1, 1);
     for (CGFloat i = -2 * M_PI; i < 2 * M_PI; i+= 0.1) {

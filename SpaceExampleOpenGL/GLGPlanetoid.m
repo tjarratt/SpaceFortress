@@ -19,7 +19,15 @@
         star = theStar;
         CGFloat formation_time = [GLGRangeProperty randomValueWithMinimum:150 maximum:350];
         [self setAge:([star age] - formation_time)];
-        
+
+        CGFloat earth_mass = 7.349e22; // kg
+        CGFloat min_mass = earth_mass / 10000;
+        [self setMass:[GLGRangeProperty randomValueWithMinimum:min_mass maximum:maximumMassBeforeNuclearFusion]];
+
+        CGFloat min_radius = 1.5e6;
+        CGFloat max_radius = 75e6;
+        [self setRadius: [GLGRangeProperty randomValueWithMinimum:min_radius maximum:max_radius]];
+
         CGFloat seconds_day = 86400;
         CGFloat min_axis_rotation = seconds_day * 0.1;
         CGFloat max_axis_rotation = seconds_day * 243.02; // venus

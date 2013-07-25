@@ -54,7 +54,6 @@
 }
 
 #pragma mark - expand / collapse
-
 - (void) expandOrCollapse {
     collapsed = !collapsed;
 

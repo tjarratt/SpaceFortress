@@ -89,13 +89,13 @@ const CGFloat heightOfLabels = 25.0f;
         [self addSubview:rotationRate];
         updateBlock();
 
-        NSString *radiusValue = [NSString stringWithFormat:@"Radius: %@ meters", [formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.radius]]];
+        NSString *radiusValue = [NSString stringWithFormat:@"Radius: %@ m", [formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.radius]]];
         radius = [[GLGLabel alloc] initWithFrame:labelRect];
         [radius setStringValue:radiusValue];
         [self addSubview:radius];
         updateBlock();
 
-        NSString *massValue = [NSString stringWithFormat:@"Mass: %@ kilograms", [formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.mass]]];
+        NSString *massValue = [NSString stringWithFormat:@"Mass: %@ grams", [formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.mass]]];
         mass = [[GLGLabel alloc] initWithFrame:labelRect];
         [mass setStringValue:massValue];
         [self addSubview:mass];
