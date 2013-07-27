@@ -116,6 +116,10 @@ const CGFloat sidebarWidth = 200;
     GLGPlanetActor *newActor = [[GLGPlanetActor alloc] initWithPlanet:planet delegate:self];
 
     [title removeFromSuperview];
+    [titleView removeFromSuperview];
+    title = nil;
+    titleView = nil;
+    
     NSRect oldSidebarFrame = [sidebar frame];
     [sidebar removeFromSuperview];
     [sidebar release];
@@ -150,11 +154,19 @@ const CGFloat sidebarWidth = 200;
 - (void) windowDidResize:(NSWindow *) _window {
     CGSize frameSize = window.frame.size;
 
-    expandedSceneRect = NSMakeRect(0, 0, frameSize.width - sidebarWidth, frameSize.height - 50);
-    collapsedSceneRect = NSMakeRect(expandedSceneRect.origin.x, expandedSceneRect.origin.y, expandedSceneRect.size.width + sidebarWidth - 10, expandedSceneRect.size.height);
-    
-    [scene setFrame:expandedSceneRect];
-    [titleView setFrame:NSMakeRect(0, frameSize.height - 50, frameSize.width - sidebarWidth, 50)];
+    if (titleView) {
+        expandedSceneRect = NSMakeRect(0, 0, frameSize.width - sidebarWidth, frameSize.height - 50);
+        collapsedSceneRect = NSMakeRect(expandedSceneRect.origin.x, expandedSceneRect.origin.y, expandedSceneRect.size.width + sidebarWidth - 10, expandedSceneRect.size.height);
+        
+        [scene setFrame:expandedSceneRect];
+        [titleView setFrame:NSMakeRect(0, frameSize.height - 50, frameSize.width - sidebarWidth, 50)];
+    }
+    else {
+        expandedSceneRect = NSMakeRect(0, 0, frameSize.width - sidebarWidth, frameSize.height);
+        collapsedSceneRect = NSMakeRect(expandedSceneRect.origin.x, expandedSceneRect.origin.y, expandedSceneRect.size.width + sidebarWidth - 10, expandedSceneRect.size.height);
+
+        [scene setFrame:expandedSceneRect];
+    }
 
     NSRect newSidebarFrame = NSMakeRect(frameSize.width - sidebarWidth, 0, sidebarWidth, frameSize.height);
     [sidebar setFrame:newSidebarFrame];
