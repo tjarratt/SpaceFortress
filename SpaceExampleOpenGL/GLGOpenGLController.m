@@ -157,14 +157,18 @@ const CGFloat sidebarWidth = 200;
     if (titleView) {
         expandedSceneRect = NSMakeRect(0, 0, frameSize.width - sidebarWidth, frameSize.height - 50);
         collapsedSceneRect = NSMakeRect(expandedSceneRect.origin.x, expandedSceneRect.origin.y, expandedSceneRect.size.width + sidebarWidth - 10, expandedSceneRect.size.height);
-        
-        [scene setFrame:expandedSceneRect];
         [titleView setFrame:NSMakeRect(0, frameSize.height - 50, frameSize.width - sidebarWidth, 50)];
     }
     else {
         expandedSceneRect = NSMakeRect(0, 0, frameSize.width - sidebarWidth, frameSize.height);
         collapsedSceneRect = NSMakeRect(expandedSceneRect.origin.x, expandedSceneRect.origin.y, expandedSceneRect.size.width + sidebarWidth - 10, expandedSceneRect.size.height);
 
+    }
+
+    if ([sidebar collapsed]) {
+        [scene setFrame:collapsedSceneRect];
+    }
+    else {
         [scene setFrame:expandedSceneRect];
     }
 
