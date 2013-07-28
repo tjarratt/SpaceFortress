@@ -95,11 +95,20 @@ const CGFloat heightOfLabels = 25.0f;
         [self addSubview:radius];
         updateBlock();
 
+        NSRange boldRange = NSMakeRange(0, 5);
         NSString *massValue = [NSString stringWithFormat:@"Mass: %@ grams", [formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.mass]]];
+
+        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont boldSystemFontOfSize:12], NSFontAttributeName, nil];
+
+        NSMutableAttributedString *massAttr = [[NSMutableAttributedString alloc] initWithString:massValue];
+        [massAttr addAttributes:attributes range:boldRange];
+
         mass = [[GLGLabel alloc] initWithFrame:labelRect];
-        [mass setStringValue:massValue];
+        [mass setAttributedStringValue:massAttr];
         [self addSubview:mass];
         updateBlock();
+
+        [massAttr release];
 
         NSString *habitableZoneValue = [NSString stringWithFormat:@"Habitable Zone: %@ m", galaxy.star.habitableZoneRange];
         habitableZone = [[GLGLabel alloc] initWithFrame:labelRect];
