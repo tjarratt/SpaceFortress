@@ -11,6 +11,7 @@
 #import "GLGSolarSystem.h"
 #import "GLGSidebarPlanetDetail.h"
 #import "GLGAttributedTextField.h"
+#import "GLGColorAttributedTextField.h"
 
 @protocol GLGSidebarDelegate;
 
@@ -18,17 +19,17 @@
     id <GLGSidebarDelegate> delegate;
     NSMutableArray *planetDetailViews;
 
-    GLGAttributedTextField *galaxyName;
-    GLGAttributedTextField *starTypeField;
-    GLGAttributedTextField *metallicity;
-    GLGAttributedTextField *apparentMagnitude;
-    GLGAttributedTextField *luminosity;
-    GLGAttributedTextField *surfaceTemperature;
-    GLGAttributedTextField *rotationRate;
+    GLGColorAttributedTextField *galaxyName;
+    GLGColorAttributedTextField *starTypeField;
+    GLGColorAttributedTextField *metallicity;
+    GLGColorAttributedTextField *apparentMagnitude;
+    GLGColorAttributedTextField *luminosity;
+    GLGColorAttributedTextField *surfaceTemperature;
+    GLGColorAttributedTextField *rotationRate;
     GLGAttributedTextField *habitableZone;
-    GLGAttributedTextField *radius;
-    GLGAttributedTextField *mass;
-    GLGAttributedTextField *numPlanets;
+    GLGColorAttributedTextField *radius;
+    GLGColorAttributedTextField *mass;
+    GLGColorAttributedTextField *numPlanets;
 }
 
 @property (readonly, retain) GLGSolarSystem* galaxy;

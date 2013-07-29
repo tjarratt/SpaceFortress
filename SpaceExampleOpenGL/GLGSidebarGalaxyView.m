@@ -48,49 +48,44 @@ const CGFloat heightOfLabels = 25.0f;
         [formatter setRoundingMode:NSNumberFormatterRoundDown];
         [formatter setNumberStyle:NSNumberFormatterScientificStyle];
 
-        galaxyName = [[GLGAttributedTextField alloc] initWithFrame:labelRect];
+        galaxyName = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect];
         [galaxyName setStringValue:[galaxy name]];
         [self addSubview:galaxyName];
         updateBlock();
 
         NSString *starType = [NSString stringWithFormat:@"Class %@ star", [[galaxy star] spectralClassification]];
-        starTypeField = [[GLGAttributedTextField alloc] initWithFrame:labelRect];
+        starTypeField = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect];
         [starTypeField setStringValue:starType];
         [self addSubview:starTypeField];
         updateBlock();
 
-        NSString *metallicityValue = [formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.metallicity]];
-        metallicity = [[GLGAttributedTextField alloc] initWithFrame:labelRect label:@"Metallicity:" value:metallicityValue units:@""];
+        GLGSolarStar *sol = [[GLGSolarStar alloc] sol];
+
+        metallicity = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Metallicity:" value:galaxy.star.metallicity targetValue:sol.metallicity units:@"" formatter:formatter];
         [self addSubview:metallicity];
         updateBlock();
 
-        NSString *magnitudeValue = [formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.apparentMagnitude]];
-        apparentMagnitude = [[GLGAttributedTextField alloc] initWithFrame:labelRect label:@"Apparent Magnitude:" value:magnitudeValue units:@""];
+        apparentMagnitude = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Apparent Magnitude:" value:galaxy.star.apparentMagnitude targetValue:sol.apparentMagnitude units:@"" formatter:formatter];
         [self addSubview:apparentMagnitude];
         updateBlock();
-        
-        NSString *luminosityValue = [formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.luminosity]];
-        luminosity = [[GLGAttributedTextField alloc] initWithFrame:labelRect label:@"Luminosity" value:luminosityValue units:@"lumens"];
+
+        luminosity = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Luminosity" value:galaxy.star.luminosity targetValue:sol.luminosity units:@"lumens" formatter:formatter];
         [self addSubview:luminosity];
         updateBlock();
 
-        NSString *temperatureValue = [formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.surfaceTemperature]];
-        surfaceTemperature = [[GLGAttributedTextField alloc] initWithFrame:labelRect label:@"Surface Temp" value:temperatureValue units:@"K"];
+        surfaceTemperature = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Surface Temp" value:galaxy.star.surfaceTemperature targetValue:sol.surfaceTemperature units:@"K" formatter:formatter];
         [self addSubview:surfaceTemperature];
         updateBlock();
 
-        NSString *rotationValue = [formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.rotationRate]];
-        rotationRate = [[GLGAttributedTextField alloc] initWithFrame:labelRect label:@"Rotation period:" value:rotationValue units:@"secs"];
+        rotationRate = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Rotation period:" value:galaxy.star.rotationRate targetValue:sol.rotationRate units:@"secs" formatter:formatter];
         [self addSubview:rotationRate];
         updateBlock();
 
-        NSString *radiusValue = [formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.radius]];
-        radius = [[GLGAttributedTextField alloc] initWithFrame:labelRect label:@"Radius:" value:radiusValue units:@"m"];
+        radius = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Radius:" value:galaxy.star.radius targetValue:sol.radius units:@"m" formatter:formatter];
         [self addSubview:radius];
         updateBlock();
 
-        NSString *massValue = [formatter stringFromNumber:[NSNumber numberWithFloat:galaxy.star.mass]];
-        mass = [[GLGAttributedTextField alloc] initWithFrame:labelRect label:@"Mass:" value:massValue units:@"grams"];
+        mass = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Mass:" value:galaxy.star.mass targetValue:sol.mass units:@"grams" formatter:formatter];
         [self addSubview:mass];
         updateBlock();
 
@@ -98,7 +93,7 @@ const CGFloat heightOfLabels = 25.0f;
         [self addSubview:habitableZone];
         updateBlock();
 
-        numPlanets = [[GLGAttributedTextField alloc] initWithFrame:labelRect];
+        numPlanets = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect];
         NSString *planetsString;
         if ([[galaxy planetoids] count] > 1) {
             planetsString = @"planets";
@@ -125,6 +120,7 @@ const CGFloat heightOfLabels = 25.0f;
         }];
 
         [formatter release];
+        [sol release];
     }
 
     return self;

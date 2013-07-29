@@ -10,5 +10,8 @@
 #import "GLGLabel.h"
 
 @interface GLGAttributedTextField : GLGLabel
-- (id)initWithFrame:(NSRect) frame label:(NSString *) _label value:(NSString *) _value units:(NSString *) units;
+- (id)initWithFrame:(NSRect)              frame
+              label:(NSString *)          label
+              value:(NSString *)             value
+              units:(NSString *)          units;
 @end
