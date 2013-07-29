@@ -15,7 +15,7 @@
     if (self = [super initWithFrame:frameRect]) {
         collapsed = NO;
         expandedRect = frameRect;
-        collapsedRect = NSMakeRect(frameRect.origin.x + 190, frameRect.origin.y, frameRect.size.width, frameRect.size.height);
+        collapsedRect = NSMakeRect(frameRect.origin.x + sidebarCollapsedWidth, frameRect.origin.y, frameRect.size.width, frameRect.size.height);
 
         [self setWantsLayer:YES];
         [[self layer] setBorderWidth:1.0];
@@ -37,7 +37,7 @@
 
 - (void) setFrame:(NSRect) frame {
     expandedRect = frame;
-    collapsedRect = NSMakeRect(frame.origin.x + 190, frame.origin.y, frame.size.width, frame.size.height);
+    collapsedRect = NSMakeRect(frame.origin.x + sidebarCollapsedWidth, frame.origin.y, frame.size.width, frame.size.height);
 
     if (collapsed) {
         [super setFrame:collapsedRect];

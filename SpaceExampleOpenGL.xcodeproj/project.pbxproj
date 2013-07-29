@@ -11,6 +11,8 @@
 		F70C6BFE177A632800AFBFDE /* greek_alphabet.txt in Resources */ = {isa = PBXBuildFile; fileRef = F70C6BFD177A632800AFBFDE /* greek_alphabet.txt */; };
 		F70C6C00177A65AB00AFBFDE /* latin.txt in Resources */ = {isa = PBXBuildFile; fileRef = F70C6BFF177A65AB00AFBFDE /* latin.txt */; };
 		F70C6C06177A89F800AFBFDE /* GLGSidebarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F70C6C05177A89F800AFBFDE /* GLGSidebarView.m */; };
+		F70F12BD17A5FD5200DBB74F /* GLGAttributedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F70F12BC17A5FD5200DBB74F /* GLGAttributedTextField.m */; };
+		F70F12C017A6271E00DBB74F /* GLGSidebarConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F70F12BF17A6271E00DBB74F /* GLGSidebarConstants.m */; };
 		F72F3E6C178DEA1F009D9587 /* GLGFlippedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F72F3E6B178DEA1F009D9587 /* GLGFlippedView.m */; };
 		F72FDCF81793990C00836EA1 /* GLGPlanetActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F72FDCF71793990C00836EA1 /* GLGPlanetActor.m */; };
 		F72FDCFB17939C3000836EA1 /* GLGGalaxyPickerActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F72FDCFA17939C3000836EA1 /* GLGGalaxyPickerActor.m */; };
@@ -65,6 +67,10 @@
 		F70C6BFF177A65AB00AFBFDE /* latin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = latin.txt; sourceTree = "<group>"; };
 		F70C6C04177A89F800AFBFDE /* GLGSidebarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGSidebarView.h; sourceTree = "<group>"; };
 		F70C6C05177A89F800AFBFDE /* GLGSidebarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGSidebarView.m; sourceTree = "<group>"; };
+		F70F12BB17A5FD5200DBB74F /* GLGAttributedTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGAttributedTextField.h; sourceTree = "<group>"; };
+		F70F12BC17A5FD5200DBB74F /* GLGAttributedTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGAttributedTextField.m; sourceTree = "<group>"; };
+		F70F12BE17A6271E00DBB74F /* GLGSidebarConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGSidebarConstants.h; sourceTree = "<group>"; };
+		F70F12BF17A6271E00DBB74F /* GLGSidebarConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGSidebarConstants.m; sourceTree = "<group>"; };
 		F72F3E6A178DEA1F009D9587 /* GLGFlippedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGFlippedView.h; sourceTree = "<group>"; };
 		F72F3E6B178DEA1F009D9587 /* GLGFlippedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGFlippedView.m; sourceTree = "<group>"; };
 		F72FDCF61793990C00836EA1 /* GLGPlanetActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGPlanetActor.h; sourceTree = "<group>"; };
@@ -304,6 +310,8 @@
 				F7D710B617962B9E0071A80D /* Galaxy */,
 				F70C6C04177A89F800AFBFDE /* GLGSidebarView.h */,
 				F70C6C05177A89F800AFBFDE /* GLGSidebarView.m */,
+				F70F12BE17A6271E00DBB74F /* GLGSidebarConstants.h */,
+				F70F12BF17A6271E00DBB74F /* GLGSidebarConstants.m */,
 			);
 			name = Sidebar;
 			sourceTree = "<group>";
@@ -318,6 +326,8 @@
 				F7D6D77B1784EA6F001F2FB0 /* GLGLabel.m */,
 				F72F3E6A178DEA1F009D9587 /* GLGFlippedView.h */,
 				F72F3E6B178DEA1F009D9587 /* GLGFlippedView.m */,
+				F70F12BB17A5FD5200DBB74F /* GLGAttributedTextField.h */,
+				F70F12BC17A5FD5200DBB74F /* GLGAttributedTextField.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -478,6 +488,8 @@
 				F72FDD031795ED8000836EA1 /* GLGActorBase.m in Sources */,
 				F7D710BA17962BD90071A80D /* GLGGalaxySidebar.m in Sources */,
 				F7D710BD17962CA40071A80D /* GLGPlanetSidebar.m in Sources */,
+				F70F12BD17A5FD5200DBB74F /* GLGAttributedTextField.m in Sources */,
+				F70F12C017A6271E00DBB74F /* GLGSidebarConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

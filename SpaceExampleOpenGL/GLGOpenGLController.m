@@ -12,8 +12,6 @@
 
 @synthesize paused;
 
-const CGFloat sidebarWidth = 200;
-
 #pragma Lifecycle methods
 - (id) initWithWindow: (NSWindow *) theWindow {
     if (self = [super init]) {
