@@ -40,18 +40,20 @@ facts:
 // http://en.wikipedia.org/wiki/Spectral_classification
 - (NSString *) spectralClassification;
 - (CGFloat) luminosity;
-
-// UI methods
-- (NSString *) radiusComparison;
-- (NSString *) massComparison;
-- (NSString *) surfaceTemperatureComparison;
-- (NSString *) metallicityComparison;
-
 - (CGFloat) metallicity;
 - (CGFloat) apparentMagnitude;
 - (CGFloat) surfaceTemperature;
 - (CGFloat) rotationRate;
 - (CGFloat) radius;
 - (NSString *) habitableZoneRange;
+
+#pragma mark - class property ranges
++ (NSRange) metallicityRange;
++ (NSRange) radiusRange;
++ (NSRange) massRange;
++ (NSRange) surfaceTemperatureRange;
++ (NSRange) rotationRateRange;
++ (NSRange) ageRange;
++ (NSRange) luminosityRange;
 
 @end

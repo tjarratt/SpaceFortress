@@ -39,17 +39,17 @@
 - (id) init {
     if (self = [super init]) {
         classification = @"";
-        age = [GLGRangeProperty randomValueWithMinimum:1 maximum:11];
-        [self setMass:[GLGRangeProperty randomValueWithMinimum:1.76e29 maximum:(264 * solarMass)] ];
-        radius = [GLGRangeProperty randomValueWithMinimum:(0.13 * solarRadius) maximum:18 * solarRadius];
-        surfaceTemperature = [GLGRangeProperty randomValueWithMinimum:1000 maximum:(50000)];
-        rotationRateSeconds = [GLGRangeProperty randomValueWithMinimum:1e-5 maximum:(150 * solarRotationRate)];
+        age = [GLGRangeProperty randomValueWithMinimum:minimumSolarAge maximum:maximumSolarAge];
+        [self setMass:[GLGRangeProperty randomValueWithMinimum:minimumSolarMass maximum:maximumSolarMass] ];
+        radius = [GLGRangeProperty randomValueWithMinimum:minimumSolarRadius maximum:maximumSolarRadius];
+        surfaceTemperature = [GLGRangeProperty randomValueWithMinimum:minimumSolarSurfaceTemperature maximum:maximumSolarSurfaceTemperature];
+        rotationRateSeconds = [GLGRangeProperty randomValueWithMinimum:minimumSolarRotationRate maximum:maximumSolarRotationRate];
         
         // metallicity: 0.0122 ( or 1.2 %)
         // this represents the actual percentage of non H, He in the sun, but
         // this value is common represented as log10(Fe / H) for the star - log10(Fe / H) for our sun
         // a range of -2, 2 is fairly common for "habitable star systems"
-        metallicity = [GLGRangeProperty randomValueWithMinimum: -2 maximum: 2];
+        metallicity = [GLGRangeProperty randomValueWithMinimum:minimumSolarMetallicity maximum:maximumSolarMetallicity];
         
         // calculate spectral classification and color
         [self calculateSpectralClassification];
@@ -125,7 +125,7 @@
 
     // http://www.astro.wisc.edu/~dolan/constellations/extra/brightest.html
     // http://en.wikipedia.org/wiki/Apparent_magnitude#Calculations
-    apparentMagnitude = [GLGRangeProperty randomValueWithMinimum:-1.5 maximum:1.5];
+    apparentMagnitude = [GLGRangeProperty randomValueWithMinimum:minimumSolarAppMagnitude maximum:maximumSolarAppMagnitude];
     absoluteMagnitude = apparentMagnitude - 5 * (log10f(luminosityDistanceParsecs) - 1);
     
     if (absoluteMagnitude < -7.5) {
@@ -218,28 +218,18 @@
 // units are in Watts (Joules / second)
 - (CGFloat) luminosity {
     const CGFloat boltzman = 5.67e-8;
-    return 4 * M_PI * pow(radius, 2) * pow(surfaceTemperature, 4) * boltzman;
+
+    CGFloat minimum = boltzman * 4 * M_PI * powf(minimumSolarRadius, 2) * powf(minimumSolarSurfaceTemperature, 4);
+    CGFloat maximum = boltzman * 4 * M_PI * powf(maximumSolarRadius, 2) * powf(maximumSolarSurfaceTemperature, 4);
+
+    NSLog(@"minimum luminosity value: %f", minimum);
+    NSLog(@"maximum luminoisty value: %f", maximum);
+
+    return 4 * M_PI * powf(radius, 2) * powf(surfaceTemperature, 4) * boltzman;
 }
 
 - (NSString *) radiusAsMeters {
     return [NSString stringWithFormat:@"%f meters", radius];
-}
-
-#pragma mark - percentage comparison to SOL
-- (NSString *) radiusComparison {
-    return [NSString stringWithFormat: @"%f", radius * 100 / solarRadius];
-}
-
-- (NSString *) massComparison {
-    return [NSString stringWithFormat: @"%f", [self mass] * 100 / solarMass];
-}
-
-- (NSString *) surfaceTemperatureComparison {
-    return [NSString stringWithFormat: @"%f", surfaceTemperature * 100 / solarSurfaceTemperature];
-}
-
-- (NSString *) metallicityComparison {
-    return [NSString stringWithFormat: @"%f", metallicity];
 }
 
 - (CGFloat) apparentMagnitude {
@@ -275,6 +265,35 @@
 
 - (CGFloat) metallicity {
     return metallicity;
+}
+
+#pragma mark - range methods
++ (NSRange) metallicityRange {
+    return NSMakeRange(minimumSolarMetallicity, maximumSolarMetallicity);
+}
+
++ (NSRange) radiusRange {
+    return NSMakeRange(minimumSolarRadius, maximumSolarRadius);
+}
+
++ (NSRange) massRange {
+    return NSMakeRange(minimumSolarMass, maximumSolarMass);
+}
+
++ (NSRange) surfaceTemperatureRange {
+    return NSMakeRange(minimumSolarSurfaceTemperature, maximumSolarSurfaceTemperature);
+}
+
++ (NSRange) rotationRateRange {
+    return NSMakeRange(minimumSolarRotationRate, maximumSolarRotationRate);
+}
+
++ (NSRange) ageRange {
+    return NSMakeRange(minimumSolarAge, maximumSolarAge);
+}
+
++ (NSRange) luminosityRange {
+    return NSMakeRange(minimumSolarLuminosity, maximumSolarLuminosity);
 }
 
 @end
