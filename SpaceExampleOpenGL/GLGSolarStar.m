@@ -13,6 +13,29 @@
 @synthesize age, color, radius;
 @synthesize habitableZoneInnerRadius, habitableZoneOuterRadius;
 
+- (id) sol {
+    if (self = [super init]) {
+        luminosityClass = @"G";
+        
+        classification = @"G2V";
+        age = solarAge;
+        [self setMass:solarMass];
+        radius = solarRadius;
+        surfaceTemperature = solarSurfaceTemperature;
+        rotationRateSeconds = solarRotationRate;
+        metallicity = solarMetallicity;
+
+        [self calculateSpectralClassification];
+        apparentMagnitude = -26.74;
+        absoluteMagnitude = 4.83;
+
+        habitableZoneInnerRadius = astronomicalUnit * 0.97;
+        habitableZoneOuterRadius = astronomicalUnit * 1.688;
+    }
+
+    return self;
+}
+
 - (id) init {
     if (self = [super init]) {
         classification = @"";

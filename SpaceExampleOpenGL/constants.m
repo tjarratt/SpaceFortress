@@ -11,7 +11,7 @@
 const CGFloat chandrasekharLimit = 2.864e30;
 
 // constants for SOL
-const CGFloat solarAge = 4.57e9;
+const CGFloat solarAge = 4.57e9; // billions of years
 const CGFloat solarMass = 1.989e30; //kilograms
 const CGFloat solarRadius = 6.96e8; //meters
 const CGFloat solarSurfaceTemperature = 5887;
