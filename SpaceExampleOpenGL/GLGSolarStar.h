@@ -5,10 +5,12 @@
 //  Created by Tim Jarratt on 6/18/13.
 //
 //
+#import <Foundation/Foundation.h>
+
 #import "GLGBody.h"
 #import "GLGPlanetoid.h"
-#import <Foundation/Foundation.h>
 #import "GLGRangeProperty.h"
+#import "GLGFloatPair.h"
 
 /*
 facts:
@@ -48,12 +50,14 @@ facts:
 - (NSString *) habitableZoneRange;
 
 #pragma mark - class property ranges
-+ (NSRange) metallicityRange;
-+ (NSRange) radiusRange;
-+ (NSRange) massRange;
-+ (NSRange) surfaceTemperatureRange;
-+ (NSRange) rotationRateRange;
-+ (NSRange) ageRange;
-+ (NSRange) luminosityRange;
++ (GLGFloatPair *) metallicityRange;
++ (GLGFloatPair *) radiusRange;
++ (GLGFloatPair *) massRange;
++ (GLGFloatPair *) surfaceTemperatureRange;
++ (GLGFloatPair *) rotationRateRange;
++ (GLGFloatPair *) ageRange;
++ (GLGFloatPair *) luminosityRange;
++ (GLGFloatPair *) apparentMagnitudeRange;
++ (GLGFloatPair *) absoluteMagnitudeRange;
 
 @end

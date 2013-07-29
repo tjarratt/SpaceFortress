@@ -261,32 +261,40 @@
 }
 
 #pragma mark - range methods
-+ (NSRange) metallicityRange {
-    return NSMakeRange(minimumSolarMetallicity, maximumSolarMetallicity);
++ (GLGFloatPair *) metallicityRange {
+    return [[GLGFloatPair alloc] initWithFloat:minimumSolarMetallicity andFloat:maximumSolarMetallicity];
 }
 
-+ (NSRange) radiusRange {
-    return NSMakeRange(minimumSolarRadius, maximumSolarRadius);
++ (GLGFloatPair *) radiusRange {
+    return [[GLGFloatPair alloc] initWithFloat:minimumSolarRadius andFloat:maximumSolarRadius];
 }
 
-+ (NSRange) massRange {
-    return NSMakeRange(minimumSolarMass, maximumSolarMass);
++ (GLGFloatPair *) massRange {
+    return [[GLGFloatPair alloc] initWithFloat:minimumSolarMass andFloat:maximumSolarMass];
 }
 
-+ (NSRange) surfaceTemperatureRange {
-    return NSMakeRange(minimumSolarSurfaceTemperature, maximumSolarSurfaceTemperature);
++ (GLGFloatPair *) surfaceTemperatureRange {
+    return [[GLGFloatPair alloc] initWithFloat:minimumSolarSurfaceTemperature andFloat:maximumSolarSurfaceTemperature];
 }
 
-+ (NSRange) rotationRateRange {
-    return NSMakeRange(minimumSolarRotationRate, maximumSolarRotationRate);
++ (GLGFloatPair *) rotationRateRange {
+    return [[GLGFloatPair alloc] initWithFloat:minimumSolarRotationRate andFloat:maximumSolarRotationRate];
 }
 
-+ (NSRange) ageRange {
-    return NSMakeRange(minimumSolarAge, maximumSolarAge);
++ (GLGFloatPair *) ageRange {
+    return [[GLGFloatPair alloc] initWithFloat:minimumSolarAge andFloat:maximumSolarAge];
 }
 
-+ (NSRange) luminosityRange {
-    return NSMakeRange(minimumSolarLuminosity, maximumSolarLuminosity);
++ (GLGFloatPair *) luminosityRange {
+    return [[GLGFloatPair alloc] initWithFloat:minimumSolarLuminosity andFloat:maximumSolarLuminosity];
+}
+
++ (GLGFloatPair *) apparentMagnitudeRange {
+    return [[GLGFloatPair alloc] initWithFloat:minimumSolarAppMagnitude andFloat:maximumSolarAppMagnitude];
+}
+
++ (GLGFloatPair *) absoluteMagnitudeRange {
+    return [[GLGFloatPair alloc] initWithFloat:minimumSolarAbsMagnitude andFloat:maximumSolarAbsMagnitude];
 }
 
 @end
