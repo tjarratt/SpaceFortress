@@ -218,13 +218,6 @@
 // units are in Watts (Joules / second)
 - (CGFloat) luminosity {
     const CGFloat boltzman = 5.67e-8;
-
-    CGFloat minimum = boltzman * 4 * M_PI * powf(minimumSolarRadius, 2) * powf(minimumSolarSurfaceTemperature, 4);
-    CGFloat maximum = boltzman * 4 * M_PI * powf(maximumSolarRadius, 2) * powf(maximumSolarSurfaceTemperature, 4);
-
-    NSLog(@"minimum luminosity value: %f", minimum);
-    NSLog(@"maximum luminoisty value: %f", maximum);
-
     return 4 * M_PI * powf(radius, 2) * powf(surfaceTemperature, 4) * boltzman;
 }
 
