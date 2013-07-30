@@ -37,8 +37,8 @@ const CGFloat maximumSolarRotationRate = 150 * solarRotationRate;
 const CGFloat minimumSolarAbsMagnitude = -8;
 const CGFloat maximumSolarAbsMagnitude = 16;
 
-const CGFloat minimumSolarAppMagnitude = -1.5;
-const CGFloat maximumSolarAppMagnitude = 1.5;
+const CGFloat minimumSolarAppMagnitude = -38;
+const CGFloat maximumSolarAppMagnitude = 38;
 
 const CGFloat minimumSolarLuminosity = 5.83e22;
 const CGFloat maximumSolarLuminosity = 6.98e33;
