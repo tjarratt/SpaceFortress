@@ -61,31 +61,31 @@ const CGFloat heightOfLabels = 25.0f;
 
         GLGSolarStar *sol = [[GLGSolarStar alloc] sol];
 
-        metallicity = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Metallicity:" value:galaxy.star.metallicity targetValue:sol.metallicity units:@"" formatter:formatter];
+        metallicity = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Metallicity:" value:galaxy.star.metallicity targetValue:sol.metallicity range:GLGSolarStar.metallicityRange units:@"" formatter:formatter];
         [self addSubview:metallicity];
         updateBlock();
 
-        apparentMagnitude = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Apparent Magnitude:" value:galaxy.star.apparentMagnitude targetValue:sol.apparentMagnitude units:@"" formatter:formatter];
+        apparentMagnitude = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Apparent Magnitude:" value:galaxy.star.apparentMagnitude targetValue:sol.apparentMagnitude range:GLGSolarStar.apparentMagnitudeRange units:@"" formatter:formatter];
         [self addSubview:apparentMagnitude];
         updateBlock();
 
-        luminosity = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Luminosity" value:galaxy.star.luminosity targetValue:sol.luminosity units:@"lumens" formatter:formatter];
+        luminosity = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Luminosity" value:galaxy.star.luminosity targetValue:sol.luminosity range:GLGSolarStar.luminosityRange units:@"lumens" formatter:formatter];
         [self addSubview:luminosity];
         updateBlock();
 
-        surfaceTemperature = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Surface Temp" value:galaxy.star.surfaceTemperature targetValue:sol.surfaceTemperature units:@"K" formatter:formatter];
+        surfaceTemperature = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Surface Temp" value:galaxy.star.surfaceTemperature targetValue:sol.surfaceTemperature range:GLGSolarStar.surfaceTemperatureRange units:@"K" formatter:formatter];
         [self addSubview:surfaceTemperature];
         updateBlock();
 
-        rotationRate = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Rotation period:" value:galaxy.star.rotationRate targetValue:sol.rotationRate units:@"secs" formatter:formatter];
+        rotationRate = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Rotation period:" value:galaxy.star.rotationRate targetValue:sol.rotationRate range:GLGSolarStar.rotationRateRange units:@"secs" formatter:formatter];
         [self addSubview:rotationRate];
         updateBlock();
 
-        radius = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Radius:" value:galaxy.star.radius targetValue:sol.radius units:@"m" formatter:formatter];
+        radius = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Radius:" value:galaxy.star.radius targetValue:sol.radius range:GLGSolarStar.radiusRange units:@"m" formatter:formatter];
         [self addSubview:radius];
         updateBlock();
 
-        mass = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Mass:" value:galaxy.star.mass targetValue:sol.mass units:@"grams" formatter:formatter];
+        mass = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Mass:" value:galaxy.star.mass targetValue:sol.mass range:GLGSolarStar.massRange units:@"grams" formatter:formatter];
         [self addSubview:mass];
         updateBlock();
 

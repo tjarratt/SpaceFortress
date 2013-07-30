@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "GLGLabel.h"
+#import "GLGFloatPair.h"
 
 @interface GLGColorAttributedTextField : GLGLabel
 
@@ -15,6 +16,7 @@
               label:(NSString *) label
               value:(CGFloat) value
         targetValue:(CGFloat) target
+              range:(GLGFloatPair *) range
               units:(NSString *) units
           formatter:(NSNumberFormatter *)formatter;
 
