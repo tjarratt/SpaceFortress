@@ -26,7 +26,7 @@
 
         NSString *valueString = [formatter stringFromNumber:[NSNumber numberWithFloat:value]];
 
-        NSColor *color = [NSColor greenColor];
+        NSColor *color;
         CGFloat min = [range first];
         CGFloat max = [range second];
         CGFloat step = fabsf((max - min) / 9.0);
