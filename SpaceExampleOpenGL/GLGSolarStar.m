@@ -262,39 +262,39 @@
 
 #pragma mark - range methods
 + (GLGFloatPair *) metallicityRange {
-    return [[GLGFloatPair alloc] initWithFloat:minimumSolarMetallicity andFloat:maximumSolarMetallicity];
+    return [[[GLGFloatPair alloc] initWithFloat:minimumSolarMetallicity andFloat:maximumSolarMetallicity] autorelease];
 }
 
 + (GLGFloatPair *) radiusRange {
-    return [[GLGFloatPair alloc] initWithFloat:minimumSolarRadius andFloat:maximumSolarRadius];
+    return [[[GLGFloatPair alloc] initWithFloat:minimumSolarRadius andFloat:maximumSolarRadius] autorelease];
 }
 
 + (GLGFloatPair *) massRange {
-    return [[GLGFloatPair alloc] initWithFloat:minimumSolarMass andFloat:maximumSolarMass];
+    return [[[GLGFloatPair alloc] initWithFloat:minimumSolarMass andFloat:maximumSolarMass] autorelease];
 }
 
 + (GLGFloatPair *) surfaceTemperatureRange {
-    return [[GLGFloatPair alloc] initWithFloat:minimumSolarSurfaceTemperature andFloat:maximumSolarSurfaceTemperature];
+    return [[[GLGFloatPair alloc] initWithFloat:minimumSolarSurfaceTemperature andFloat:maximumSolarSurfaceTemperature] autorelease];
 }
 
 + (GLGFloatPair *) rotationRateRange {
-    return [[GLGFloatPair alloc] initWithFloat:minimumSolarRotationRate andFloat:maximumSolarRotationRate];
+    return [[[GLGFloatPair alloc] initWithFloat:minimumSolarRotationRate andFloat:maximumSolarRotationRate] autorelease];
 }
 
 + (GLGFloatPair *) ageRange {
-    return [[GLGFloatPair alloc] initWithFloat:minimumSolarAge andFloat:maximumSolarAge];
+    return [[[GLGFloatPair alloc] initWithFloat:minimumSolarAge andFloat:maximumSolarAge] autorelease];
 }
 
 + (GLGFloatPair *) luminosityRange {
-    return [[GLGFloatPair alloc] initWithFloat:minimumSolarLuminosity andFloat:maximumSolarLuminosity];
+    return [[[GLGFloatPair alloc] initWithFloat:minimumSolarLuminosity andFloat:maximumSolarLuminosity] autorelease];
 }
 
 + (GLGFloatPair *) apparentMagnitudeRange {
-    return [[GLGFloatPair alloc] initWithFloat:minimumSolarAppMagnitude andFloat:maximumSolarAppMagnitude];
+    return [[[GLGFloatPair alloc] initWithFloat:minimumSolarAppMagnitude andFloat:maximumSolarAppMagnitude] autorelease];
 }
 
 + (GLGFloatPair *) absoluteMagnitudeRange {
-    return [[GLGFloatPair alloc] initWithFloat:minimumSolarAbsMagnitude andFloat:maximumSolarAbsMagnitude];
+    return [[[GLGFloatPair alloc] initWithFloat:minimumSolarAbsMagnitude andFloat:maximumSolarAbsMagnitude] autorelease];;
 }
 
 @end
