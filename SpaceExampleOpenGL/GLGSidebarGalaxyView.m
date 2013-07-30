@@ -167,10 +167,12 @@ const CGFloat heightOfLabels = 25.0f;
     if ([self selected]) {
         CGColorRef selectedColor = [[NSColor colorWithDeviceRed:0.3f green:0.8f blue:0.1f alpha:1.0] CGColor];
         [[self layer] setBorderColor:selectedColor];
+        [[self layer] setBorderWidth:3.0];
     }
     else {
         CGColorRef defaultColor = [[NSColor blackColor] CGColor];
         [[self layer] setBorderColor:defaultColor];
+        [[self layer] setBorderWidth:1.0];
     }
 }
 
