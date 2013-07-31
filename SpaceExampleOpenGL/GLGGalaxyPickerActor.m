@@ -133,7 +133,7 @@ const NSUInteger solarSystemCapacity = 3;
     CGFloat __block x, y, px, py, pxp, pyp;
     CGFloat zoomScaleFactor = powf(1.01, [zoomScale currentValue]);
     CGFloat metersToPixelsScale = 3.543e-9 * zoomScaleFactor;
-    CGFloat scale = frameNumber * 2 * M_PI / 2.0e12;
+    CGFloat scale = frameNumber * M_PI / 1.0e12;
 
     NSPoint currentOrigin = [origin currentValue];
     x = view.bounds.size.width / 2 + currentOrigin.x;
@@ -163,7 +163,9 @@ const NSUInteger solarSystemCapacity = 3;
     }];
 
     [[system planetoids] enumerateObjectsUsingBlock:^(GLGPlanetoid *planet, NSUInteger index, BOOL *stop) {
-        CGFloat radius = MAX([planet radius] * metersToPixelsScale * 2500, 1);
+        [self drawTrailersForPlanet:planet onView:view];
+
+        CGFloat radius = MAX([planet radius] * metersToPixelsScale * 10000, 1);
 
         px = x + planet.apogeeMeters * metersToPixelsScale * cos(scale * planet.rotationAroundSolarBodySeconds);
         py = y + planet.perogeeMeters * metersToPixelsScale * sin(scale * planet.rotationAroundSolarBodySeconds);
@@ -174,12 +176,53 @@ const NSUInteger solarSystemCapacity = 3;
         CGFloat translated_x = x * cos(planet.rotationAngleAroundStar) - y * sin(planet.rotationAngleAroundStar);
         CGFloat translated_y = x * sin(planet.rotationAngleAroundStar) + y * cos(planet.rotationAngleAroundStar);
         pxp -= (translated_x - x);
-        pyp -= (translated_y - y) ;
+        pyp -= (translated_y - y);
 
         glColor3f(planet.color.redComponent, planet.color.greenComponent, planet.color.blueComponent);
         [view drawCircleWithRadius:radius centerX:pxp centerY:pyp];
     }];
 
+}
+
+- (void) drawTrailersForPlanet:(GLGPlanetoid *) planet onView:(GLGOpenGLView *) view{
+    // draw each of the trailers
+    // and update their positions
+    // say each of these will be visible for 10 frames
+
+    // behavior is basically to have a trail of trailing frames
+    // every 10 (say) frames, phase out the last one and emit a new one at
+    // the previous position (basically using a ring buffer?)
+    // this means that the alpha should fade out as it gets to the edge (probably logarithmic)
+    // probably means that I should have more than ~10 frames to make this more seemless
+    [planet tick];
+
+    CGFloat __block x, y, px, py, pxp, pyp;
+    NSUInteger count = [[planet trailers] count];
+    CGFloat zoomScaleFactor = powf(1.01, [zoomScale currentValue]);
+    CGFloat metersToPixelsScale = 3.543e-9 * zoomScaleFactor;
+
+    NSPoint currentOrigin = [origin currentValue];
+    x = view.bounds.size.width / 2 + currentOrigin.x;
+    y = view.bounds.size.height / 2 + currentOrigin.y;
+
+    [[planet trailers] enumerateObjectsUsingBlock:^(GLGPsychedeliaTrailer *trail, NSUInteger index, BOOL *stop) {
+        CGFloat scale = (frameNumber - (count - index)) * M_PI / 1.0e12;
+
+        CGFloat radius = MAX([planet radius] * metersToPixelsScale * 10000, 1);
+        px = x + planet.apogeeMeters * metersToPixelsScale * cos(scale * planet.rotationAroundSolarBodySeconds);
+        py = y + planet.perogeeMeters * metersToPixelsScale * sin(scale * planet.rotationAroundSolarBodySeconds);
+
+        pxp = px * cos(planet.rotationAngleAroundStar) - py * sin(planet.rotationAngleAroundStar);
+        pyp = px * sin(planet.rotationAngleAroundStar) + py * cos(planet.rotationAngleAroundStar);
+
+        CGFloat translated_x = x * cos(planet.rotationAngleAroundStar) - y * sin(planet.rotationAngleAroundStar);
+        CGFloat translated_y = x * sin(planet.rotationAngleAroundStar) + y * cos(planet.rotationAngleAroundStar);
+        pxp -= (translated_x - x);
+        pyp -= (translated_y - y);
+
+        glColor4f(trail.color.redComponent, trail.color.greenComponent, trail.color.blueComponent, 0.1f);
+        [view drawCircleWithRadius:radius centerX:pxp centerY:pyp];
+    }];
 }
 
 - (void) systemWasSelected:(GLGSolarSystem *) system {

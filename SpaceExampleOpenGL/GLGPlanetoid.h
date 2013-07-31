@@ -6,12 +6,13 @@
 //
 //
 
+#import <Foundation/Foundation.h>
 #import "constants.h"
 #import "GLGBody.h"
 #import "GLGSolarStar.h"
 #import "GLGNameProperty.h"
 #import "GLGRangeProperty.h"
-#import <Foundation/Foundation.h>
+#import "GLGPsychedeliaTrailer.h"
 
 @class GLGSolarStar;
 
@@ -29,6 +30,10 @@
     CGFloat averageAlbedo;
     CGFloat averageEmissivity;
     CGFloat escapeVelocity;
+
+    NSMutableArray *trailers;
+
+    int tickNumber;
 }
 
 @property CGFloat apogeeMeters;
@@ -45,5 +50,9 @@
 - (CGFloat) earthSimilarityIndex;
 - (NSString *) friendlyMass;
 - (NSString *) ageInBillionsOfYears;
+
+# pragma mark - psychedelia
+- (NSMutableArray *) trailers;
+- (void) tick;
 
 @end

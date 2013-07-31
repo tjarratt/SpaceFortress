@@ -16,6 +16,9 @@
 
 - (id) initWithStar: (GLGSolarStar* ) theStar {
     if (self = [super init]) {
+        tickNumber = 0;
+        trailers = [[NSMutableArray alloc] initWithCapacity:0];
+
         star = theStar;
         CGFloat formation_time = [GLGRangeProperty randomValueWithMinimum:150 maximum:350];
         [self setAge:([star age] - formation_time)];
@@ -36,7 +39,7 @@
         CGFloat seconds_year = seconds_day * 365.25;
         CGFloat min_body_rotation = seconds_year * 0.2;
         CGFloat max_body_rotation = seconds_year * 350;
-        rotationAroundSolarBodySeconds = [GLGRangeProperty randomValueWithMinimum:min_body_rotation maximum:max_body_rotation];
+        rotationAroundSolarBodySeconds = [GLGRangeProperty randomValueWithMinimum:min_body_rotation*20 maximum:max_body_rotation] * 2;
 
         rotationAngleAroundStar = [GLGRangeProperty randomValueWithMinimum:-0.5 * M_PI_4 maximum:M_PI_4 * 0.5];
         
@@ -94,6 +97,71 @@
     CGFloat surfaceTemperatureComponent = powf(1 - (surfaceTemperature - earthSurfaceTemperature) / (surfaceTemperature + earthSurfaceTemperature), 5.58f);
     
     return radiusComponent * densityComponent * escapeVelocityComponent * surfaceTemperatureComponent;
+}
+
+- (NSMutableArray *) trailers {
+    return trailers;
+}
+
+- (void) tick {
+    if (tickNumber < 100) {
+        if (tickNumber % 10 == 0) {
+            int n = (int) ceilf(tickNumber / 10.0);
+
+            GLGPsychedeliaTrailer *t = [[GLGPsychedeliaTrailer alloc] init];
+            NSColor *color;
+
+            switch(n) {
+                case 0:
+                    color = [NSColor colorWithDeviceRed:0.996 green:0.1647 blue:0 alpha:1.0];
+                    break;
+                case 1:
+                    color = [NSColor colorWithDeviceRed:0.8078 green:0.545 blue:0.5176 alpha:1.0];
+                    break;
+                case 2:
+                    color = [NSColor colorWithDeviceRed:0.0274 green:0.8156 blue:0.71372 alpha:1.0];
+                    break;
+                case 3:
+                    color = [NSColor colorWithDeviceRed:0.9921 green:0.6745 blue:0 alpha:1.0];
+                    break;
+                case 4:
+                    color = [NSColor colorWithDeviceRed:0.08235 green:0.96862 blue:0.55294 alpha:1.0];
+                    break;
+                case 5:
+                    color = [NSColor colorWithDeviceRed:0.62745 green:0 blue:0.25098 alpha:1.0];
+                    break;
+                case 6:
+                    color = [NSColor colorWithDeviceRed:0.99607 green:0.341176 blue:0.48627 alpha:1.0];
+                    break;
+                case 7:
+                    color = [NSColor colorWithDeviceRed:0.98431 green:0 blue:0.1294117 alpha:1.0];
+                    break;
+                case 8:
+                    color = [NSColor colorWithDeviceRed:0.039215 green:0.913725 blue:0.709803 alpha:1.0];
+                    break;
+                case 9:
+                    color = [NSColor colorWithDeviceRed:0.992156 green:0 blue:0.52156 alpha:1.0];
+                    break;
+            }
+
+            [t setColor:color];
+            [trailers insertObject:t atIndex:n];
+            [t release];
+        }
+    }
+    else {
+        // handle the case where tick > 100
+        // we probably need to start phasing one out
+        if (tickNumber % 10 == 0) {
+            NSColor *lastColor = [[[trailers objectAtIndex:0] color] copy];
+            for (int i = 0; i < 9; ++i) {
+                [[trailers objectAtIndex:i] setColor:[[trailers objectAtIndex:(i+1)] color]];
+            }
+            [[trailers objectAtIndex:9] setColor:lastColor];
+        }
+    }
+
+    ++tickNumber;
 }
 
 @end
