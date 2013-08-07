@@ -59,7 +59,7 @@ const CGFloat heightOfLabels = 25.0f;
         [self addSubview:starTypeField];
         updateBlock();
 
-        GLGSolarStar *sol = [[GLGSolarStar alloc] sol];
+        GLGSolarStar *sol = [[GLGSolarStar alloc] initAsSol];
 
         metallicity = [[GLGColorAttributedTextField alloc] initWithFrame:labelRect label:@"Metallicity:" value:galaxy.star.metallicity targetValue:sol.metallicity range:GLGSolarStar.metallicityRange units:@"" formatter:formatter];
         [self addSubview:metallicity];

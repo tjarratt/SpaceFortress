@@ -36,7 +36,7 @@ facts:
 @property CGFloat habitableZoneInnerRadius;
 @property CGFloat habitableZoneOuterRadius;
 
-- (id) sol;
+- (id) initAsSol;
 
 // classification (O B A B G K M)
 // http://en.wikipedia.org/wiki/Spectral_classification

@@ -13,7 +13,7 @@
 @synthesize age, color, radius;
 @synthesize habitableZoneInnerRadius, habitableZoneOuterRadius;
 
-- (id) sol {
+- (id) initAsSol {
     if (self = [super init]) {
         luminosityClass = @"G";
         
