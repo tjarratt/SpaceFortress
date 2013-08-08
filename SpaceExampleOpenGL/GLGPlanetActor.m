@@ -12,12 +12,34 @@
 
 const CGFloat planetRadius = 500;
 
+- (id) initWithWindow:(NSWindow *) _window andDelegate:(GLGOpenGLController *)_delegate {
+    if (self = [super init]) {
+       window = _window;
+       delegate = _delegate;
+    }
+
+    return self;
+}
+
+- (void) setPlanet:(GLGPlanetoid *) _planet {
+
+}
+
 - (id) initWithPlanet:(GLGPlanetoid *) _planet delegate:(GLGOpenGLController *)_delegate {
     if (self = [super init]) {
         rotation = 0.0f;
         planet = _planet;
         delegate = _delegate;
         structures = [[NSMutableArray alloc] init];
+
+        // TODO: make this dynamic
+        CGFloat rectWidth = 1280;
+        CGFloat rectHeight = 800;
+        CGFloat sceneWidth = rectWidth - sidebarWidth;
+        NSRect sidebarFrame = NSMakeRect(sceneWidth, 0, sidebarWidth, rectHeight);
+
+        sidebar = [[GLGPlanetSidebar alloc] initWithFrame:sidebarFrame andDelegate:self];
+        [[window contentView] addSubview:sidebar];
 
         CGFloat circumference = planetRadius * 2 * M_PI;
         CGFloat length = circumference / 10.0;
@@ -64,6 +86,23 @@ const CGFloat planetRadius = 500;
     }
 
     return self;
+}
+
+- (void) resizeWithWindow:(NSWindow *) _window {
+    CGSize frameSize = _window.frame.size;
+    
+    expandedSceneRect = NSMakeRect(0, 0, frameSize.width - sidebarWidth, frameSize.height);
+    collapsedSceneRect = NSMakeRect(expandedSceneRect.origin.x, expandedSceneRect.origin.y, expandedSceneRect.size.width + sidebarWidth - 10, expandedSceneRect.size.height);
+
+    if ([sidebar collapsed]) {
+        [scene setFrame:collapsedSceneRect];
+    }
+    else {
+        [scene setFrame:expandedSceneRect];
+    }
+
+    NSRect newSidebarFrame = NSMakeRect(frameSize.width - sidebarWidth, 0, sidebarWidth, frameSize.height);
+    [sidebar setFrame:newSidebarFrame];
 }
 
 - (void) updateWithView:(GLGOpenGLView *)view {

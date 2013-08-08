@@ -11,7 +11,8 @@
 @class GLGOpenGLView;
 
 @protocol GLGActor
-- (void) updateWithView:(GLGOpenGLView *)view;
+- (void) resizeWithWindow:(NSWindow *) window;
+- (void) updateWithView:(GLGOpenGLView *) view;
 
 - (void) incrementFrameNumber;
 - (NSUInteger) frameNumber;
@@ -22,4 +23,6 @@
 
 - (void) handleMouseUp;
 - (void) handleMouseDown:(NSPoint) point;
+
+- (void) keyWasPressed:(unsigned short) key;
 @end

@@ -15,6 +15,7 @@
         [self setAcceptsTouchEvents:YES];
         rotation = 0.0;
     }
+
     return self;
 }
 
@@ -28,8 +29,7 @@
     }
 }
 
-- (void) drawRect:(NSRect)dirtyRect
-{
+- (void) drawRect:(NSRect) dirtyRect {
     glDisable(GL_DEPTH_TEST);
     glClearColor(0, 0, 0, 0);
     glClear(GL_COLOR_BUFFER_BIT);

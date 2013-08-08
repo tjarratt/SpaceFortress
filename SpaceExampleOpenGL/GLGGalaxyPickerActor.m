@@ -16,8 +16,9 @@
 
 const NSUInteger solarSystemCapacity = 3;
 
-- (id) init {
+- (id) initWithWindow:(NSWindow *) _window {
     if (self = [super init]) {
+        window = _window;
         zoomScale = [[GLGEasedValue alloc] initWithValue: -500.0f];
         [zoomScale setMinimum:-100000.0f];
         [zoomScale setMaximum:100000.0];
@@ -31,10 +32,74 @@ const NSUInteger solarSystemCapacity = 3;
         activeSystemIndex = -1;
         [self initializeSolarSystems];
 
+        CGFloat rectWidth = 1280;
+        CGFloat rectHeight = 800;
+        CGFloat sceneWidth = rectWidth - sidebarWidth;
+        CGFloat sceneHeight = rectHeight - 50;
+
+        NSRect sidebarFrame = NSMakeRect(sceneWidth, 0, sidebarWidth, rectHeight);
+        sidebar = [[GLGGalaxySidebar alloc] initWithFrame:sidebarFrame];
+        [sidebar setDelegate:self];
+
+        NSRect titleFrame = NSMakeRect(0, sceneHeight, sceneWidth, 50);
+        titleView = [[NSView alloc] initWithFrame:titleFrame];
+        NSRect innerFrame = NSMakeRect(5, 0, 600, 25);
+        title = [[NSTextField alloc] initWithFrame:innerFrame];
+        [title setEditable:NO];
+        [title setBezeled:NO];
+        [title setSelectable:NO];
+        [title setBackgroundColor:[NSColor clearColor]];
+        [title setStringValue:@"Choose a galaxy to colonize > "];
+        [titleView addSubview:title];
+        
+        [[window contentView] addSubview:sidebar];
+        [[window contentView] addSubview:titleView];
+
+        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+        [center addObserver:self selector:@selector(didSelectPlanet:) name:@"glg_did_select_planet" object:nil];
+        [center addObserver:self selector:@selector(didResignPlanet) name:@"glg_did_resign_planet" object:nil];
+        [center addObserver:self selector:@selector(didSelectSystem:) name:@"glg_did_select_system" object:nil];
+        [center addObserver:self selector:@selector(didResignSystem) name:@"glg_did_resign_system" object:nil];
+
         lastTimestamp = CFAbsoluteTimeGetCurrent();
     }
 
     return self;
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObject:self];
+
+    [title removeFromSuperview];
+    [titleView removeFromSuperview];
+    title = nil;
+    titleView = nil;
+
+//    NSRect oldSidebarFrame = [sidebar frame];
+//    NSRect sidebarFrame = NSMakeRect(oldSidebarFrame.origin.x, oldSidebarFrame.origin.y, 0, oldSidebarFrame.size.height);
+
+    [sidebar removeFromSuperview];
+    [sidebar release];
+
+    [super dealloc];
+}
+
+- (void) resizeWithWindow:(NSWindow *) _window {
+    CGSize frameSize = _window.frame.size;
+
+    expandedSceneRect = NSMakeRect(0, 0, frameSize.width - sidebarWidth, frameSize.height - 50);
+    collapsedSceneRect = NSMakeRect(expandedSceneRect.origin.x, expandedSceneRect.origin.y, expandedSceneRect.size.width + sidebarWidth - 10, expandedSceneRect.size.height);
+    [titleView setFrame:NSMakeRect(0, frameSize.height - 50, frameSize.width - sidebarWidth, 50)];
+
+    if ([sidebar collapsed]) {
+        [scene setFrame:collapsedSceneRect];
+    }
+    else {
+        [scene setFrame:expandedSceneRect];
+    }
+
+    NSRect newSidebarFrame = NSMakeRect(frameSize.width - sidebarWidth, 0, sidebarWidth, frameSize.height);
+    [sidebar setFrame:newSidebarFrame];
 }
 
 # pragma mark - frameRate methods
@@ -54,6 +119,8 @@ const NSUInteger solarSystemCapacity = 3;
 }
 
 - (void) incrementFrameNumber {
+    if ([self paused]) { return; }
+    
     frameNumber += 1;
 }
 
@@ -211,6 +278,59 @@ const NSUInteger solarSystemCapacity = 3;
     [affectedPaths release];
     
     return keyPaths;
+}
+
+#pragma mark - view actor NSNotificationCenter methods
+- (void) didSelectPlanet:(NSNotification *) notification {
+    NSRect buttonRect = NSMakeRect(605, 0, 80, 25);
+    switchView = [[NSButton alloc] initWithFrame:buttonRect];
+    [switchView setTitle:@"Embark!"];
+    [switchView setTarget:self];
+    [switchView setAction:@selector(switchToPlanetView)];
+    [titleView addSubview:switchView];
+}
+
+- (void) didResignPlanet {
+    if (switchView) {
+        [switchView removeFromSuperview];
+        [switchView release];
+        switchView = nil;
+    }
+}
+
+- (void) didSelectSystem:(NSNotification *) notification {
+    GLGSolarSystem *system = (GLGSolarSystem *)[notification object];
+    NSString *newTitle = [NSString stringWithFormat:@"Choose a galaxy to colonize > Pick a planet in %@ >", [system name]];
+    [title setStringValue:newTitle];
+}
+
+- (void) didResignSystem {
+    [title setStringValue:@"Choose a galaxy to colonize >"];
+}
+
+- (void) keyWasPressed:(unsigned short) key {
+    switch (key) {
+        case 49:
+            [self pause];
+            break;
+        case 11:
+            [self expandOrCollapseSidebar];
+            break;
+    }
+}
+
+- (void) expandOrCollapseSidebar {
+    [NSAnimationContext beginGrouping];
+    [sidebar expandOrCollapse];
+
+    if ([sidebar collapsed]) {
+        [[scene animator] setFrame:collapsedSceneRect];
+    }
+    else {
+        [[scene animator] setFrame:expandedSceneRect];
+    }
+
+    [NSAnimationContext endGrouping];
 }
 
 @end

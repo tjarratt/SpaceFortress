@@ -22,24 +22,16 @@
 #import "GLGActor.h"
 #import "GLGPlanetActor.h"
 #import "GLGGalaxyPickerActor.h"
+#import "GLGMainMenuActor.h"
 
 @class GLGSidebarView;
 
 @interface GLGOpenGLController : NSViewController <GLGOpenGLViewDelegate, NSWindowDelegate> {
     NSWindow *window;
     GLGOpenGLView *scene;
-    GLGSidebarView *sidebar;
-    NSView *titleView;
-    NSTextField *title;
-    NSButton *switchView;
 
     id <GLGActor> gameSceneActor;
-
-    NSRect expandedSceneRect;
-    NSRect collapsedSceneRect;
 }
-
-@property BOOL paused;
 
 - (id) initWithWindow: (NSWindow *) window;
 - (void) update;

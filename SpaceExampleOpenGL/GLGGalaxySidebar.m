@@ -14,53 +14,57 @@ const CGFloat heightOfGalaxyItem = 300.0f;
 const CGFloat sidebarGalaxyPadding = 5.0f;
 const CGFloat sidebarGalaxyHeight = 15.0f;
 
-- (id)initWithFrame:(NSRect)frame andDelegate: (id) delegate {
+- (id)initWithFrame:(NSRect)frame {
     if (self = [super initWithFrame:frame]) {
-        systems = [delegate solarSystems];
-        subViews = [[NSMutableArray alloc] initWithCapacity:[systems count]];
-
-        CGFloat padding = 5.0f;
-        CGFloat heightOfScrollView = padding + (padding + heightOfGalaxyItem) * [systems count] + 60;
-        CGFloat widthOfScrollView = frame.size.width - 5;
-        CGFloat __block height = 49;
-
-        [self setHasHorizontalScroller:NO];
-        [self setHasVerticalScroller:YES];
-        [self setBorderType:NSNoBorder];
-        [self setAutoresizingMask:NSViewHeightSizable];
-
-        NSRect innerFrame = NSMakeRect(5, 0, widthOfScrollView, heightOfScrollView);
-        innerView = [[GLGFlippedView alloc] initWithFrame:innerFrame];
-        [self setDocumentView: innerView];
-
-        [systems enumerateObjectsUsingBlock:^(GLGSolarSystem *system, NSUInteger index, BOOL *stop) {
-            NSRect rect = NSMakeRect(5, height, widthOfScrollView - 5, heightOfGalaxyItem);
-            GLGSidebarGalaxyView *view = [[GLGSidebarGalaxyView alloc] initWithFrame:rect delegate: delegate andSystem:system];
-            [innerView addSubview:view];
-            [subViews addObject:view];
-            [view release];
-
-            height += padding + heightOfGalaxyItem;
-        }];
-
-        framerateValue = [[GLGLabel alloc] initWithFrame:NSMakeRect(80, height, 60, 20)];
-        [framerateValue bind:@"value" toObject:delegate withKeyPath:@"framerate" options:nil];
-        [innerView addSubview:framerateValue];
-        [framerateValue release];
-
-        framerateLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(15, height, 80, 20)];
-        [framerateLabel setEditable:NO];
-        [framerateLabel setStringValue:@"Framerate:"];
-        [framerateLabel setBezeled:NO];
-        [framerateLabel setSelectable:NO];
-        [framerateLabel setBackgroundColor:[NSColor clearColor]];
-        [innerView addSubview:framerateLabel];
-        [framerateLabel release];
-
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectSidebarObject:) name:@"glg_sidebar_system_selected" object:nil];
     }
     
     return self;
+}
+
+- (void) setDelegate:(id) _delegate {
+    NSRect frame = [self frame];
+    delegate = _delegate;
+    systems = [delegate solarSystems];
+    subViews = [[NSMutableArray alloc] initWithCapacity:[systems count]];
+
+    CGFloat padding = 5.0f;
+    CGFloat heightOfScrollView = padding + (padding + heightOfGalaxyItem) * [systems count] + 60;
+    CGFloat widthOfScrollView = frame.size.width - 5;
+    CGFloat __block height = 49;
+
+    [self setHasHorizontalScroller:NO];
+    [self setHasVerticalScroller:YES];
+    [self setBorderType:NSNoBorder];
+    [self setAutoresizingMask:NSViewHeightSizable];
+
+    NSRect innerFrame = NSMakeRect(5, 0, widthOfScrollView, heightOfScrollView);
+    innerView = [[GLGFlippedView alloc] initWithFrame:innerFrame];
+    [self setDocumentView: innerView];
+
+    [systems enumerateObjectsUsingBlock:^(GLGSolarSystem *system, NSUInteger index, BOOL *stop) {
+        NSRect rect = NSMakeRect(5, height, widthOfScrollView - 5, heightOfGalaxyItem);
+        GLGSidebarGalaxyView *view = [[GLGSidebarGalaxyView alloc] initWithFrame:rect delegate: delegate andSystem:system];
+        [innerView addSubview:view];
+        [subViews addObject:view];
+        [view release];
+
+        height += padding + heightOfGalaxyItem;
+    }];
+
+    framerateValue = [[GLGLabel alloc] initWithFrame:NSMakeRect(80, height, 60, 20)];
+    [framerateValue bind:@"value" toObject:delegate withKeyPath:@"framerate" options:nil];
+    [innerView addSubview:framerateValue];
+    [framerateValue release];
+
+    framerateLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(15, height, 80, 20)];
+    [framerateLabel setEditable:NO];
+    [framerateLabel setStringValue:@"Framerate:"];
+    [framerateLabel setBezeled:NO];
+    [framerateLabel setSelectable:NO];
+    [framerateLabel setBackgroundColor:[NSColor clearColor]];
+    [innerView addSubview:framerateLabel];
+    [framerateLabel release];
 }
 
 - (CGFloat) baseHeightForInnerView {
@@ -69,7 +73,7 @@ const CGFloat sidebarGalaxyHeight = 15.0f;
 }
 
 - (void) didSelectSidebarObject:(NSNotification *) notification {
-    NSInteger index = ((GLGGalaxyPickerActor *)[notification object]).activeSystemIndex;
+    NSInteger index = [delegate activeSystemIndex];
 
     CGFloat __block difference = 0;
     [subViews enumerateObjectsUsingBlock:^(GLGSidebarGalaxyView *view, NSUInteger idx, BOOL *stop) {

@@ -8,8 +8,22 @@
 
 #import "GLGSidebarView.h"
 
-@interface GLGGalaxySidebar : GLGSidebarView
+@class GLGGalaxyPickerActor;
+@protocol GLGGalaxySidebarDelegate;
 
-- (id) initWithFrame:(NSRect) frame andDelegate:(GLGGalaxyPickerActor *) delegate;
+@interface GLGGalaxySidebar : GLGSidebarView {
+    id <GLGGalaxySidebarDelegate> delegate;
+}
+
+- (id) initWithFrame:(NSRect) frame;
+- (void) setDelegate:(id) _delegate;
+
+@end
+
+#pragma mark - delegate procol
+@protocol GLGGalaxySidebarDelegate <NSObject>
+@required
+- (id) solarSystems;
+- (NSUInteger) activeSystemIndex;
 
 @end

@@ -16,16 +16,24 @@
 #import "GLGOpenGLController.h"
 
 @class GLGOpenGLController;
+@class GLGPlanetSidebar;
 
-@interface GLGPlanetActor : NSObject <GLGActor> {
+@interface GLGPlanetActor : GLGActorBase <GLGActor> {
+    NSWindow *window;
+
     NSUInteger frameNumber;
     GLGPlanetoid *planet;
     NSMutableArray *structures;
     GLGOpenGLController *delegate;
 
+    GLGPlanetSidebar *sidebar;
+
     NSPoint touchOrigin;
     NSPoint currentTouch;
     CGFloat rotation;
+
+    NSRect expandedSceneRect;
+    NSRect collapsedSceneRect;
 }
 
 - (id) initWithPlanet:(GLGPlanetoid *) planet delegate:(GLGOpenGLController *) _delegate;

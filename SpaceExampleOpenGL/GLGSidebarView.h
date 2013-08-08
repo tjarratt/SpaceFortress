@@ -10,7 +10,6 @@
 #import "GLGSolarSystem.h"
 #import "GLGFlippedView.h"
 #import "GLGSidebarGalaxyView.h"
-#import "GLGGalaxyPickerActor.h"
 #import "GLGSidebarConstants.h"
 
 @class GLGSolarSystem;

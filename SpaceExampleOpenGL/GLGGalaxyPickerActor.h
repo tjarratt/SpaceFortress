@@ -14,9 +14,11 @@
 #import "GLGPlanetoid.h"
 #import "GLGSolarSystem.h"
 #import "GLGOpenGLView.h"
+#import "GLGGalaxySidebar.h"
 #import "GLGSidebarGalaxyView.h"
 
 @interface GLGGalaxyPickerActor : GLGActorBase <GLGActor, GLGSidebarDelegate> {
+    NSWindow *window;
     GLGEasedValue *zoomScale;
     GLGEasedPoint *origin;
 
@@ -26,11 +28,21 @@
     double lastTimestamp;
 
     NSUInteger frameNumber;
+
+    GLGGalaxySidebar *sidebar;
+    NSView *titleView;
+    NSTextField *title;
+    NSButton *switchView;
+
+    NSRect expandedSceneRect;
+    NSRect collapsedSceneRect;
 }
 
 @property (retain) GLGPlanetoid *selectedPlanet;
 @property NSInteger activeSystemIndex;
 @property CGFloat framerate;
+
+- (id) initWithWindow:(NSWindow *) _window;
 
 - (void) systemWasSelected:(GLGSolarSystem *) system;
 - (GLGSolarSystem *) activeSystem;
