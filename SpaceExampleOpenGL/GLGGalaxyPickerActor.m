@@ -149,11 +149,11 @@ const NSUInteger solarSystemCapacity = 3;
     GLGSolarSystem *system = [self activeSystem];
     GLGSolarStar *star = [system star];
     NSColor *solarColor = [star color];
-    glColor3f(solarColor.redComponent, solarColor.greenComponent, solarColor.blueComponent);
+    glColor4f(solarColor.redComponent, solarColor.greenComponent, solarColor.blueComponent, 1.0f);
     CGFloat solarRadius = MAX(5, [star radius] * metersToPixelsScale);
     [view drawCircleWithRadius:solarRadius centerX:x centerY:y];
 
-    glColor4f(0.1f, 0.65f, 0.1f, 0.1f);
+    glColor4f(0.1f, 0.65f, 0.1f, 1.0f);
     CGFloat innerRadius = star.habitableZoneInnerRadius * metersToPixelsScale;
     CGFloat outerRadius = star.habitableZoneOuterRadius * metersToPixelsScale;
     [view drawTorusAtPoint:NSMakePoint(x, y) innerRadius:innerRadius outerRadius:outerRadius];
