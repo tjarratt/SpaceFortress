@@ -220,7 +220,8 @@ const NSUInteger solarSystemCapacity = 3;
         pxp -= (translated_x - x);
         pyp -= (translated_y - y);
 
-        glColor4f(trail.color.redComponent, trail.color.greenComponent, trail.color.blueComponent, 1.0f);
+        CGFloat alpha = 0 + (0.09 * index);
+        glColor4f(trail.color.redComponent, trail.color.greenComponent, trail.color.blueComponent, alpha);
         [view drawCircleWithRadius:radius centerX:pxp centerY:pyp];
     }];
 }
