@@ -41,6 +41,7 @@
 @property (retain) GLGPlanetoid *selectedPlanet;
 @property NSInteger activeSystemIndex;
 @property CGFloat framerate;
+@property BOOL wantsPsychedelia;
 
 - (id) initWithWindow:(NSWindow *) _window;
 

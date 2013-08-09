@@ -13,11 +13,13 @@
 @synthesize framerate;
 @synthesize selectedPlanet;
 @synthesize activeSystemIndex;
+@synthesize wantsPsychedelia;
 
 const NSUInteger solarSystemCapacity = 3;
 
 - (id) initWithWindow:(NSWindow *) _window {
     if (self = [super init]) {
+        [self setWantsPsychedelia:NO];
         window = _window;
         zoomScale = [[GLGEasedValue alloc] initWithValue: -500.0f];
         [zoomScale setMinimum:-100000.0f];
@@ -163,7 +165,9 @@ const NSUInteger solarSystemCapacity = 3;
     }];
 
     [[system planetoids] enumerateObjectsUsingBlock:^(GLGPlanetoid *planet, NSUInteger index, BOOL *stop) {
-        [self drawTrailersForPlanet:planet onView:view];
+        if ([self wantsPsychedelia]) {
+            [self drawTrailersForPlanet:planet onView:view];
+        }
 
         CGFloat radius = MAX([planet radius] * metersToPixelsScale * 10000, 1);
 
