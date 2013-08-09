@@ -109,7 +109,7 @@
             int n = (int) ceilf(tickNumber / 10.0);
 
             GLGPsychedeliaTrailer *t = [[GLGPsychedeliaTrailer alloc] init];
-            NSColor *color;
+            NSColor *color = [NSColor clearColor];
 
             switch(n) {
                 case 0:
