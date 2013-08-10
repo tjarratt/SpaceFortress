@@ -77,9 +77,6 @@ const NSUInteger solarSystemCapacity = 3;
     title = nil;
     titleView = nil;
 
-//    NSRect oldSidebarFrame = [sidebar frame];
-//    NSRect sidebarFrame = NSMakeRect(oldSidebarFrame.origin.x, oldSidebarFrame.origin.y, 0, oldSidebarFrame.size.height);
-
     [sidebar removeFromSuperview];
     [sidebar release];
 
