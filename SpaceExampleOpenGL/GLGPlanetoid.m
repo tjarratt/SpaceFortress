@@ -75,6 +75,7 @@
 
 - (id) initAsMercury {
     if (self = [super init]) {
+        [self setName:@"Mercury"];
         [self setRotationAngleAroundStar:[GLGRangeProperty randomValueWithMinimum:-0.5 * M_PI_4 maximum:0.5 * M_PI_4]];
         [self setColor:[NSColor colorWithDeviceRed:0.83 green:0.2 blue:0.1 alpha:1.0]];
         [self setRadius:2439.7e3];
@@ -88,6 +89,7 @@
 
 - (id) initAsVenus {
     if (self = [super init]) {
+        [self setName:@"Venus"];
         [self setRotationAngleAroundStar:[GLGRangeProperty randomValueWithMinimum:-0.5 * M_PI_4 maximum:0.5 * M_PI_4]];
         [self setColor:[NSColor colorWithDeviceRed:0.596078 green:0.588235 blue:0.505822 alpha:1.0]];
         [self setRadius:6051.8e3];
@@ -102,6 +104,7 @@
 
 - (id) initAsEarth{
     if (self = [super init]) {
+        [self setName:@"Earth"];
         [self setRotationAngleAroundStar:[GLGRangeProperty randomValueWithMinimum:-0.5 * M_PI_4 maximum:0.5 * M_PI_4]];
         [self setColor:[NSColor colorWithDeviceRed:0.1 green:0.3 blue:0.7 alpha:1]];
         [self setRadius:6.371e3];
@@ -116,6 +119,7 @@
 
 - (id) initAsMars {
     if (self = [super init]) {
+        [self setName:@"Mars"];
         [self setRotationAngleAroundStar:[GLGRangeProperty randomValueWithMinimum:-0.5 * M_PI_4 maximum:0.5 * M_PI_4]];
         [self setColor:[NSColor colorWithDeviceRed:0.7 green:0.18 blue:0.1 alpha:1.0]];
         [self setRadius:3386.2e3];
@@ -130,6 +134,7 @@
 
 - (id) initAsUranus {
     if (self = [super init]) {
+        [self setName:@"Uranus"];
         [self setColor:[NSColor colorWithDeviceRed:0.78039 green:0.964705 blue:0.9686274 alpha:1.0]];
         [self setRadius:25252e3];
         perogeeMeters = 2748938461e3;
@@ -143,6 +148,7 @@
 
 - (id) initAsSaturn {
     if (self = [super init]) {
+        [self setName:@"Saturn"];
         [self setRotationAngleAroundStar:[GLGRangeProperty randomValueWithMinimum:-0.5 * M_PI_4 maximum:0.5 * M_PI_4]];
         [self setColor:[NSColor colorWithDeviceRed:203.0 / 255.0 green:162.0 / 255.0 blue:124.0 / 255.0 alpha:1.0]];
         [self setRadius:58250e3];
@@ -157,6 +163,7 @@
 
 - (id) initAsNeptune {
     if (self = [super init]) {
+        [self setName:@"Neptune"];
         [self setRotationAngleAroundStar:[GLGRangeProperty randomValueWithMinimum:-0.5 * M_PI_4 maximum:0.5 * M_PI_4]];
         [self setColor:[NSColor colorWithDeviceRed:97.0 / 255.0 green:140.0 / 255.0 blue:253.0 / 255.0 alpha:1.0]];
         [self setRadius:24500e3];
@@ -171,6 +178,7 @@
 
 - (id) initAsJupiter {
     if (self = [super init]) {
+        [self setName:@"Jupiter"];
         [self setRotationAngleAroundStar:[GLGRangeProperty randomValueWithMinimum:-0.5 * M_PI_4 maximum:0.5 * M_PI_4]];
         [self setColor:[NSColor colorWithDeviceRed:119.0 / 255.0 green:109.0 / 255.0 blue:99.0 / 255.0 alpha:1.0]];
         [self setRadius:69911e3];
