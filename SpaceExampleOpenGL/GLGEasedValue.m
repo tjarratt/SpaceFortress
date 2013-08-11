@@ -52,8 +52,9 @@
 -(void) setCurrentValue:(CGFloat) value animate:(BOOL) shouldAnimate{
     if (shouldAnimate) {
         startValue = currentValue;
-        endValue = value;
-        
+        endValue = MIN(value, maximum);
+        endValue = MAX(value, minimum);
+
         [animation stopAnimation];
         [animation startAnimation];
     }
