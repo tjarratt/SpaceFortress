@@ -153,7 +153,7 @@ const NSUInteger solarSystemCapacity = 3;
     GLGSolarStar *star = [system star];
     NSColor *solarColor = [star color];
     glColor4f(solarColor.redComponent, solarColor.greenComponent, solarColor.blueComponent, 1.0f);
-    CGFloat solarRadius = MAX(5, [star radius] * metersToPixelsScale);
+    CGFloat solarRadius = MAX(1, [star radius] * metersToPixelsScale);
     [view drawCircleWithRadius:solarRadius centerX:x centerY:y];
 
     glColor4f(0.1f, 0.65f, 0.1f, 1.0f);
