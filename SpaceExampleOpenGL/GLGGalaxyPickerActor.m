@@ -267,7 +267,7 @@ const NSUInteger solarSystemCapacity = 3;
 
     [zoomScale setCurrentValue:-400 animate:YES];
     CGFloat animationTime = 0.75; // less hardcoded please
-    NSInteger framesToComplete = floor(animationTime * 30.0);
+    NSInteger framesToComplete = floor(animationTime * 60.0);
     NSInteger animationCompleteFrame = frameNumber + framesToComplete;
 
     CGFloat zoomScaleFactor = powf(1.01, -400);

@@ -23,11 +23,10 @@
     [super dealloc];
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     controller = [[GLGOpenGLController alloc] initWithWindow: [self window]];
     
-    NSTimer *mainTimer = [NSTimer timerWithTimeInterval: (1.0 / 30.0)
+    NSTimer *mainTimer = [NSTimer timerWithTimeInterval: (1.0 / 60.0)
                                              target: controller
                                              selector: @selector(update)
                                              userInfo: nil
