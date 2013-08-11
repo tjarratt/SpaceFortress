@@ -46,10 +46,20 @@
 @property CGFloat rotationAroundSolarBodySeconds;
 
 - (id) initWithStar: (GLGSolarStar *) star;
+
+// initialize as planets from "home solarsystem"
+- (id) initAsMercury;
+- (id) initAsVenus;
+- (id) initAsEarth;
+- (id) initAsMars;
+- (id) initAsUranus;
+- (id) initAsSaturn;
+- (id) initAsNeptune;
+- (id) initAsJupiter;
+
+
 - (CGFloat) wattsSolarEnergyPerSquareMeter;
 - (CGFloat) earthSimilarityIndex;
-- (NSString *) friendlyMass;
-- (NSString *) ageInBillionsOfYears;
 
 # pragma mark - psychedelia
 - (NSMutableArray *) trailers;

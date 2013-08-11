@@ -54,6 +54,52 @@
     return self;
 }
 
+- (id) initAsSol {
+    if (self = [self init]) {
+        [star initAsSol];
+        [self setName:@"Home System"];
+
+        [planetoids release];
+        planetoids = [[NSMutableArray alloc] initWithCapacity:8];
+
+        GLGPlanetoid *mercury = [[GLGPlanetoid alloc] initAsMercury];
+        [planetoids addObject:mercury];
+        [mercury release];
+
+        GLGPlanetoid *venus = [[GLGPlanetoid alloc] initAsVenus];
+        [planetoids addObject:venus];
+        [venus release];
+
+        GLGPlanetoid *mars = [[GLGPlanetoid alloc] initAsMars];
+        [planetoids addObject:mars];
+        [mars release];
+
+        GLGPlanetoid *earth = [[GLGPlanetoid alloc] initAsEarth];
+        [planetoids addObject:earth];
+        [earth release];
+
+        GLGPlanetoid *uranus = [[GLGPlanetoid alloc] initAsUranus];
+        [planetoids addObject:uranus];
+        [uranus release];
+
+        GLGPlanetoid *saturn = [[GLGPlanetoid alloc] initAsSaturn];
+        [planetoids addObject:saturn];
+        [saturn release];
+
+        GLGPlanetoid *neptune = [[GLGPlanetoid alloc] initAsNeptune];
+        [planetoids addObject:neptune];
+        [neptune release];
+
+        GLGPlanetoid *jupiter = [[GLGPlanetoid alloc] initAsJupiter];
+        [planetoids addObject:jupiter];
+        [jupiter release];
+        
+        // TODO: asteroid belt
+    }
+
+    return self;
+}
+
 - (void) dealloc {
     [planetoids release];
     [star release];

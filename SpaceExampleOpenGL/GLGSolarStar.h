@@ -15,6 +15,7 @@
 /*
 facts:
   85% of all stars are red dwarfs
+   => this should probably effect the distribution of stars
 */
 
 @interface GLGSolarStar : GLGBody {

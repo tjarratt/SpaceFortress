@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "GLGActor.h"
-#import "GLGActorBase.h"
+#import "GLGGalaxyActor.h"
+#import "GLGSolarSystem.h"
 
-@interface GLGMainMenuActor : GLGActorBase <GLGActor> {
+@interface GLGMainMenuActor : GLGGalaxyActor {
     __weak id delegate;
     __weak NSWindow *window;
 

@@ -73,16 +73,114 @@
     return self;
 }
 
-- (NSString *)friendlyMass {
-    return [[NSString stringWithFormat:@"%e kilograms", [self mass]] stringByReplacingOccurrencesOfString:@"e+" withString:@" * 10^"];
+- (id) initAsMercury {
+    if (self = [super init]) {
+        [self setRotationAngleAroundStar:[GLGRangeProperty randomValueWithMinimum:-0.5 * M_PI_4 maximum:0.5 * M_PI_4]];
+        [self setColor:[NSColor colorWithDeviceRed:0.83 green:0.2 blue:0.1 alpha:1.0]];
+        [self setRadius:2439.7e3];
+        perogeeMeters = 4.6e10;
+        apogeeMeters = 6.9816e10;
+        rotationAroundSolarBodySeconds = 7600521.6;
+    }
+
+    return self;
 }
 
-- (NSString *)ageInBillionsOfYears {
-    return [[NSString stringWithFormat:@"%e billions of years old", [self age]] stringByReplacingOccurrencesOfString:@"e+" withString:@" * 10^"];
+- (id) initAsVenus {
+    if (self = [super init]) {
+        [self setRotationAngleAroundStar:[GLGRangeProperty randomValueWithMinimum:-0.5 * M_PI_4 maximum:0.5 * M_PI_4]];
+        [self setColor:[NSColor colorWithDeviceRed:0.596078 green:0.588235 blue:0.505822 alpha:1.0]];
+        [self setRadius:6051.8e3];
+        perogeeMeters = 1.08208e11;
+        apogeeMeters = 1.07477e11;
+        rotationAroundSolarBodySeconds = 19413907.2;
+    }
+
+    return self;
+
 }
 
-- (NSString *)friendlyRadius {
-    return [[NSString stringWithFormat:@"%e meters", [self radius]] stringByReplacingOccurrencesOfString:@"e+" withString:@" * 10^"];
+- (id) initAsEarth{
+    if (self = [super init]) {
+        [self setRotationAngleAroundStar:[GLGRangeProperty randomValueWithMinimum:-0.5 * M_PI_4 maximum:0.5 * M_PI_4]];
+        [self setColor:[NSColor colorWithDeviceRed:0.1 green:0.3 blue:0.7 alpha:1]];
+        [self setRadius:6.371e3];
+        perogeeMeters = 147098290e3;
+        apogeeMeters = 152098232e3;
+        rotationAroundSolarBodySeconds = 31558149.7635456;
+    }
+
+    return self;
+
+}
+
+- (id) initAsMars {
+    if (self = [super init]) {
+        [self setRotationAngleAroundStar:[GLGRangeProperty randomValueWithMinimum:-0.5 * M_PI_4 maximum:0.5 * M_PI_4]];
+        [self setColor:[NSColor colorWithDeviceRed:0.9 green:0.18 blue:0.9 alpha:1.0]];
+        [self setRadius:3386.2e3];
+        perogeeMeters = 206669000e3;
+        apogeeMeters = 249209300e3;
+        rotationAroundSolarBodySeconds = 59354294.4;
+    }
+
+    return self;
+
+}
+
+- (id) initAsUranus {
+    if (self = [super init]) {
+        [self setColor:[NSColor colorWithDeviceRed:0.78039 green:0.964705 blue:0.9686274 alpha:1.0]];
+        [self setRadius:25252e3];
+        perogeeMeters = 2748938461e3;
+        apogeeMeters = 3004419704e3;
+        rotationAroundSolarBodySeconds = 2661041808;
+    }
+
+    return self;
+
+}
+
+- (id) initAsSaturn {
+    if (self = [super init]) {
+        [self setRotationAngleAroundStar:[GLGRangeProperty randomValueWithMinimum:-0.5 * M_PI_4 maximum:0.5 * M_PI_4]];
+        [self setColor:[NSColor colorWithDeviceRed:203.0 / 255.0 green:162.0 / 255.0 blue:124.0 / 255.0 alpha:1.0]];
+        [self setRadius:58250e3];
+        perogeeMeters = 1353572956e3;
+        apogeeMeters = 1513325783e3;
+        rotationAroundSolarBodySeconds = 929596608;
+    }
+
+    return self;
+
+}
+
+- (id) initAsNeptune {
+    if (self = [super init]) {
+        [self setRotationAngleAroundStar:[GLGRangeProperty randomValueWithMinimum:-0.5 * M_PI_4 maximum:0.5 * M_PI_4]];
+        [self setColor:[NSColor colorWithDeviceRed:97.0 / 255.0 green:140.0 / 255.0 blue:253.0 / 255.0 alpha:1.0]];
+        [self setRadius:24500e3];
+        perogeeMeters = 4452940833e3;
+        apogeeMeters = 4553946490e3;
+        rotationAroundSolarBodySeconds = 5200418592;
+    }
+
+    return self;
+
+}
+
+- (id) initAsJupiter {
+    if (self = [super init]) {
+        [self setRotationAngleAroundStar:[GLGRangeProperty randomValueWithMinimum:-0.5 * M_PI_4 maximum:0.5 * M_PI_4]];
+        [self setColor:[NSColor colorWithDeviceRed:119.0 / 255.0 green:109.0 / 255.0 blue:99.0 / 255.0 alpha:1.0]];
+        [self setRadius:69911e3];
+        perogeeMeters = 740573600e3;
+        apogeeMeters = 816520800e3;
+        rotationAroundSolarBodySeconds = 374335776;
+    }
+
+    return self;
+
 }
 
 - (CGFloat) wattsSolarEnergyPerSquareMeter {

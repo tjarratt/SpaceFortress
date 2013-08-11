@@ -16,6 +16,8 @@
     GLGSolarStar *star;
 }
 
+- (id) initAsSol;
+
 @property (retain) NSString *name;
 @property (readonly) NSMutableArray *planetoids;
 @property (readonly) GLGSolarStar *star;

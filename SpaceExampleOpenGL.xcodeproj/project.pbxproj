@@ -15,8 +15,9 @@
 		F70F12C017A6271E00DBB74F /* GLGSidebarConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F70F12BF17A6271E00DBB74F /* GLGSidebarConstants.m */; };
 		F70F12C317A710D500DBB74F /* GLGColorAttributedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F70F12C217A710D500DBB74F /* GLGColorAttributedTextField.m */; };
 		F70F12C617A734F300DBB74F /* GLGFloatPair.m in Sources */ = {isa = PBXBuildFile; fileRef = F70F12C517A734F300DBB74F /* GLGFloatPair.m */; };
-		F71B087617B2C3940063F794 /* GLGMainMenuActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F71B087517B2C3940063F794 /* GLGMainMenuActor.m */; };
 		F70F12C917A88B7E00DBB74F /* GLGPsychedeliaTrailer.m in Sources */ = {isa = PBXBuildFile; fileRef = F70F12C817A88B7E00DBB74F /* GLGPsychedeliaTrailer.m */; };
+		F71B087617B2C3940063F794 /* GLGMainMenuActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F71B087517B2C3940063F794 /* GLGMainMenuActor.m */; };
+		F71B087917B723140063F794 /* GLGGalaxyActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F71B087817B723140063F794 /* GLGGalaxyActor.m */; };
 		F72F3E6C178DEA1F009D9587 /* GLGFlippedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F72F3E6B178DEA1F009D9587 /* GLGFlippedView.m */; };
 		F72FDCF81793990C00836EA1 /* GLGPlanetActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F72FDCF71793990C00836EA1 /* GLGPlanetActor.m */; };
 		F72FDCFB17939C3000836EA1 /* GLGGalaxyPickerActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F72FDCFA17939C3000836EA1 /* GLGGalaxyPickerActor.m */; };
@@ -79,10 +80,12 @@
 		F70F12C217A710D500DBB74F /* GLGColorAttributedTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGColorAttributedTextField.m; sourceTree = "<group>"; };
 		F70F12C417A734F300DBB74F /* GLGFloatPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGFloatPair.h; sourceTree = "<group>"; };
 		F70F12C517A734F300DBB74F /* GLGFloatPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGFloatPair.m; sourceTree = "<group>"; };
-		F71B087417B2C3940063F794 /* GLGMainMenuActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGMainMenuActor.h; sourceTree = "<group>"; };
-		F71B087517B2C3940063F794 /* GLGMainMenuActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGMainMenuActor.m; sourceTree = "<group>"; };
 		F70F12C717A88B7E00DBB74F /* GLGPsychedeliaTrailer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGPsychedeliaTrailer.h; sourceTree = "<group>"; };
 		F70F12C817A88B7E00DBB74F /* GLGPsychedeliaTrailer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGPsychedeliaTrailer.m; sourceTree = "<group>"; };
+		F71B087417B2C3940063F794 /* GLGMainMenuActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGMainMenuActor.h; sourceTree = "<group>"; };
+		F71B087517B2C3940063F794 /* GLGMainMenuActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGMainMenuActor.m; sourceTree = "<group>"; };
+		F71B087717B723130063F794 /* GLGGalaxyActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGGalaxyActor.h; sourceTree = "<group>"; };
+		F71B087817B723140063F794 /* GLGGalaxyActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGGalaxyActor.m; sourceTree = "<group>"; };
 		F72F3E6A178DEA1F009D9587 /* GLGFlippedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGFlippedView.h; sourceTree = "<group>"; };
 		F72F3E6B178DEA1F009D9587 /* GLGFlippedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLGFlippedView.m; sourceTree = "<group>"; };
 		F72FDCF61793990C00836EA1 /* GLGPlanetActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLGPlanetActor.h; sourceTree = "<group>"; };
@@ -203,6 +206,8 @@
 				F72FDD021795ED8000836EA1 /* GLGActorBase.m */,
 				F71B087417B2C3940063F794 /* GLGMainMenuActor.h */,
 				F71B087517B2C3940063F794 /* GLGMainMenuActor.m */,
+				F71B087717B723130063F794 /* GLGGalaxyActor.h */,
+				F71B087817B723140063F794 /* GLGGalaxyActor.m */,
 			);
 			name = Actors;
 			sourceTree = "<group>";
@@ -514,6 +519,7 @@
 				F70F12C617A734F300DBB74F /* GLGFloatPair.m in Sources */,
 				F71B087617B2C3940063F794 /* GLGMainMenuActor.m in Sources */,
 				F70F12C917A88B7E00DBB74F /* GLGPsychedeliaTrailer.m in Sources */,
+				F71B087917B723140063F794 /* GLGGalaxyActor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

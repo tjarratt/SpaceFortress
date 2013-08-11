@@ -15,6 +15,14 @@
         window = _window;
         delegate = _delegate;
 
+        GLGEasedValue *zoom = [[GLGEasedValue alloc] initWithValue:-150];
+        GLGEasedPoint *origin = [[GLGEasedPoint alloc] initWithPoint:NSMakePoint(0, -200)];
+        [self setZoomScale:zoom];
+        [self setOrigin:origin];
+
+        [zoom release];
+        [origin release];
+
         NSRect frame = [[window contentView] frame];
         NSPoint center = NSMakePoint(frame.size.width / 2, frame.size.height / 2);
         CGFloat buttonWidth = 200;
@@ -34,6 +42,8 @@
         [quit setTitle:@"Quit"];
         [quit setTarget:self];
         [quit setAction:@selector(quit)];
+
+        _system = [[GLGSolarSystem alloc] initAsSol];
     }
 
     return self;
@@ -62,29 +72,8 @@
 
 #pragma mark - actor protocol view methods
 - (void) updateWithView:(GLGOpenGLView *) view {
-    // draw a starfield
-}
-
-#pragma mark - actor protocol framerate methods
-- (NSUInteger) frameNumber {
-    return 0;
-}
-
-- (void) updateFramerate {
-
-}
-
-- (void) incrementFrameNumber {
-
-}
-
-#pragma mark - actor protocol field of view methods
-- (void) didPanByVector:(CGPoint) vector {
-
-}
-
-- (void) didZoom:(CGFloat) amount {
-
+    // TODO: draw a starfield
+    [super updateWithView:view];
 }
 
 #pragma mark - mouse protocol methods
