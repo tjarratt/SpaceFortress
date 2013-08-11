@@ -117,7 +117,7 @@
 - (id) initAsMars {
     if (self = [super init]) {
         [self setRotationAngleAroundStar:[GLGRangeProperty randomValueWithMinimum:-0.5 * M_PI_4 maximum:0.5 * M_PI_4]];
-        [self setColor:[NSColor colorWithDeviceRed:0.9 green:0.18 blue:0.9 alpha:1.0]];
+        [self setColor:[NSColor colorWithDeviceRed:0.7 green:0.18 blue:0.1 alpha:1.0]];
         [self setRadius:3386.2e3];
         perogeeMeters = 206669000e3;
         apogeeMeters = 249209300e3;
