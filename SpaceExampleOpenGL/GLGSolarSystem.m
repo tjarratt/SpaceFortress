@@ -25,7 +25,8 @@
         [self setName:systemName];
         
         for (i = 0; i < num_planetoids; ++i) {
-            GLGPlanetoid *planet = [[GLGPlanetoid alloc] initWithStar: star];
+            GLGPlanetoid *planet = [[GLGPlanetoid alloc] init];
+            [planet setStar:star];
             switch (i) {
                 case 0:
                     [planet setColor:[NSColor colorWithDeviceRed:0.9 green:0.35 blue:0.35 alpha:1.0]];

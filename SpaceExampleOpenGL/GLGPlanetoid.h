@@ -17,7 +17,7 @@
 @class GLGSolarStar;
 
 @interface GLGPlanetoid : GLGBody {
-    GLGSolarStar *star;
+    __weak GLGSolarStar *star;
     CGFloat surfaceTemperature;
     
     BOOL hasWater;
@@ -45,9 +45,6 @@
 @property CGFloat rotationAroundAxisSeconds;
 @property CGFloat rotationAroundSolarBodySeconds;
 
-- (id) initWithStar: (GLGSolarStar *) star;
-
-// initialize as planets from "home solarsystem"
 - (id) initAsMercury;
 - (id) initAsVenus;
 - (id) initAsEarth;
@@ -57,6 +54,7 @@
 - (id) initAsNeptune;
 - (id) initAsJupiter;
 
+- (void) setStar:(GLGSolarStar *) _star;
 
 - (CGFloat) wattsSolarEnergyPerSquareMeter;
 - (CGFloat) earthSimilarityIndex;
