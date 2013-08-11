@@ -120,7 +120,7 @@ const NSUInteger solarSystemCapacity = 3;
 - (void) incrementFrameNumber {
     if ([self paused]) { return; }
     
-    frameNumber += 1;
+    ++frameNumber;
 }
 
 - (NSUInteger) frameNumber {
@@ -128,7 +128,7 @@ const NSUInteger solarSystemCapacity = 3;
 }
 
 # pragma mark - view methods
-- (void) updateWithView:(GLGOpenGLView *)view {
+- (void) updateWithView:(GLGOpenGLView *) view {
     CGFloat __block x, y, px, py, pxp, pyp;
     CGFloat zoomScaleFactor = powf(1.01, [zoomScale currentValue]);
     CGFloat metersToPixelsScale = 3.543e-9 * zoomScaleFactor;
@@ -182,10 +182,9 @@ const NSUInteger solarSystemCapacity = 3;
         glColor3f(planet.color.redComponent, planet.color.greenComponent, planet.color.blueComponent);
         [view drawCircleWithRadius:radius centerX:pxp centerY:pyp];
     }];
-
 }
 
-- (void) drawTrailersForPlanet:(GLGPlanetoid *) planet onView:(GLGOpenGLView *) view{
+- (void) drawTrailersForPlanet:(GLGPlanetoid *) planet onView:(GLGOpenGLView *) view {
     // draw each of the trailers
     // and update their positions
     // say each of these will be visible for 10 frames
@@ -304,13 +303,13 @@ const NSUInteger solarSystemCapacity = 3;
 }
 
 #pragma mark - UI Observer binding methods
-- (GLGSolarSystem *)activeSystem {
+- (GLGSolarSystem *) activeSystem {
     if (activeSystemIndex < 0) { return nil; }
 
     return [solarSystems objectAtIndex:activeSystemIndex];
 }
 
-+ (NSSet *) keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet *) keyPathsForValuesAffectingValueForKey:(NSString *) key {
     NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 
     NSSet *affectedPaths = [[NSSet alloc] initWithArray:@[@"activeSystem"]];
