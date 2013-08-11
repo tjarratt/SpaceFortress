@@ -28,6 +28,10 @@ const NSUInteger solarSystemCapacity = 3;
         [origin setMinimum:NSMakePoint(-1200, -1200)];
         [origin setMaximum:NSMakePoint(1200, 1200)];
 
+        speedOfTime = [[GLGEasedValue alloc] initWithValue:1.0];
+        [speedOfTime setMinimum:0.1];
+        [speedOfTime setMaximum:2.0];
+
         frameNumber = 0;
         framerate = 0.0f;
 
@@ -120,7 +124,7 @@ const NSUInteger solarSystemCapacity = 3;
 - (void) incrementFrameNumber {
     if ([self paused]) { return; }
     
-    ++frameNumber;
+    frameNumber += 1 * [speedOfTime currentValue];
 }
 
 - (NSUInteger) frameNumber {
@@ -167,7 +171,6 @@ const NSUInteger solarSystemCapacity = 3;
         }
 
         CGFloat radius = MAX([planet radius] * metersToPixelsScale * 10000, 1);
-
         px = x + planet.apogeeMeters * metersToPixelsScale * cos(scale * planet.rotationAroundSolarBodySeconds);
         py = y + planet.perogeeMeters * metersToPixelsScale * sin(scale * planet.rotationAroundSolarBodySeconds);
 
@@ -359,6 +362,18 @@ const NSUInteger solarSystemCapacity = 3;
             break;
         case 11:
             [self expandOrCollapseSidebar];
+            break;
+        case 24:
+        {
+            CGFloat newSpeed = [speedOfTime currentValue] + 0.2;
+            [speedOfTime setCurrentValue:newSpeed animate:YES];
+        }
+            break;
+        case 27:
+        {
+            CGFloat newSpeed = [speedOfTime currentValue] - 0.2;
+            [speedOfTime setCurrentValue:newSpeed animate:YES];
+        }
             break;
     }
 }

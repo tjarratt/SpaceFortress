@@ -27,7 +27,7 @@
     NSUInteger lastFrame;
     double lastTimestamp;
 
-    NSUInteger frameNumber;
+    CGFloat frameNumber;
 
     GLGGalaxySidebar *sidebar;
     NSView *titleView;
@@ -36,6 +36,8 @@
 
     NSRect expandedSceneRect;
     NSRect collapsedSceneRect;
+
+    GLGEasedValue *speedOfTime;
 }
 
 @property (retain) GLGPlanetoid *selectedPlanet;
