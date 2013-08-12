@@ -19,6 +19,7 @@
         GLGEasedPoint *origin = [[GLGEasedPoint alloc] initWithPoint:NSMakePoint(0, -200)];
         [self setZoomScale:zoom];
         [self setOrigin:origin];
+        [self setWantsPsychedelia:YES];
 
         [zoom release];
         [origin release];
@@ -68,21 +69,6 @@
 
 - (void) quit {
     [window close];
-}
-
-#pragma mark - actor protocol view methods
-- (void) updateWithView:(GLGOpenGLView *) view {
-    // TODO: draw a starfield
-    [super updateWithView:view];
-}
-
-#pragma mark - mouse protocol methods
-- (void) handleMouseDown:(NSPoint) point {
-
-}
-
-- (void) handleMouseUp {
-    
 }
 
 @end
