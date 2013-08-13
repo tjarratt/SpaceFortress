@@ -58,10 +58,11 @@
 
 #pragma mark - Scene Transition methods
 - (void) switchToMainMenuView {
-    id actor = (NSObject *) gameSceneActor;
+    id actor = (GLGGalaxyPickerActor *) gameSceneActor;
     [actor release];
 
     GLGMainMenuActor *newActor = [[GLGMainMenuActor alloc] initWithWindow:window andDelegate:self];
+    [newActor positionSubviewsRelativeToView:scene];
     gameSceneActor = newActor;
 }
 
@@ -70,6 +71,7 @@
     [actor release];
 
     GLGGalaxyPickerActor *newActor = [[GLGGalaxyPickerActor alloc] initWithWindow:window];
+    [newActor setDelegate:self];
     gameSceneActor = newActor;
 }
 

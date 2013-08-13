@@ -22,6 +22,8 @@
     GLGEasedValue *zoomScale;
     GLGEasedPoint *origin;
 
+    __weak id delegate;
+
     NSMutableArray *solarSystems;
 
     NSUInteger lastFrame;
@@ -38,6 +40,8 @@
     NSRect collapsedSceneRect;
 
     GLGEasedValue *speedOfTime;
+
+    NSButton *quitButton;
 }
 
 @property (retain) GLGPlanetoid *selectedPlanet;
@@ -46,6 +50,7 @@
 @property BOOL wantsPsychedelia;
 
 - (id) initWithWindow:(NSWindow *) _window;
+- (void) setDelegate:(id) _delegate;
 
 - (void) systemWasSelected:(GLGSolarSystem *) system;
 - (GLGSolarSystem *) activeSystem;

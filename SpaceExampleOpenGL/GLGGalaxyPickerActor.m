@@ -73,8 +73,11 @@ const NSUInteger solarSystemCapacity = 3;
     return self;
 }
 
-- (void) dealloc {
-    [[NSNotificationCenter defaultCenter] removeObject:self];
+- (void) removeSubviews {
+    if (quitButton) {
+        [quitButton removeFromSuperview];
+        [quitButton release];
+    }
 
     [title removeFromSuperview];
     [titleView removeFromSuperview];
@@ -84,7 +87,16 @@ const NSUInteger solarSystemCapacity = 3;
     [sidebar removeFromSuperview];
     [sidebar release];
 
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObject:self];
+    [self removeSubviews];
     [super dealloc];
+}
+
+- (void) setDelegate:(id) _delegate {
+    delegate = _delegate;
 }
 
 - (void) resizeWithWindow:(NSWindow *) _window {
@@ -356,6 +368,7 @@ const NSUInteger solarSystemCapacity = 3;
 }
 
 - (void) keyWasPressed:(unsigned short) key {
+    NSLog(@"key: %hu", key);
     switch (key) {
         case 49:
             [self pause];
@@ -375,7 +388,29 @@ const NSUInteger solarSystemCapacity = 3;
             [speedOfTime setCurrentValue:newSpeed animate:YES];
         }
             break;
+        case 53:
+            [self pause]; // don't leak memory if you unpause while in this state
+            if ([self paused]) {
+                NSSize frameSize = [[window contentView] frame].size;
+                NSPoint center = NSMakePoint(frameSize.width / 2, frameSize.height / 2);
+                CGFloat width = 200;
+                CGFloat height = 50;
+                quitButton = [[NSButton alloc] initWithFrame:NSMakeRect(center.x - width / 2, center.y - height / 2, width, height)];
+                [quitButton setTitle:@"Quit"];
+                [quitButton setTarget:self];
+                [quitButton setAction:@selector(quit)];
+                [[window contentView] addSubview:quitButton];
+            }
+            else {
+                [quitButton removeFromSuperview];
+                [quitButton release];
+            }
     }
+}
+
+- (void) quit {
+    [self removeSubviews];
+    [delegate switchToMainMenuView];
 }
 
 - (void) expandOrCollapseSidebar {
