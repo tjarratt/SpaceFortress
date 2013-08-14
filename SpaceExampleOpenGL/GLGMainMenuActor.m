@@ -11,7 +11,7 @@
 @implementation GLGMainMenuActor
 
 - (id) initWithWindow:(NSWindow *) _window andDelegate:(id) _delegate {
-    if (self = [super init]) {
+    if (self = [self init]) {
         window = _window;
         delegate = _delegate;
 

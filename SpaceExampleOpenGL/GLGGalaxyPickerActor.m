@@ -18,7 +18,7 @@
 const NSUInteger solarSystemCapacity = 3;
 
 - (id) initWithWindow:(NSWindow *) _window {
-    if (self = [super init]) {
+    if (self = [self init]) {
         [self setWantsPsychedelia:NO];
         window = _window;
         zoomScale = [[GLGEasedValue alloc] initWithValue: -500.0f];

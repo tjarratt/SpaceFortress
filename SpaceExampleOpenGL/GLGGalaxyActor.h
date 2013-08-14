@@ -15,6 +15,7 @@
 @interface GLGGalaxyActor : GLGActorBase <GLGActor> {
     GLGSolarSystem *_system;
     NSUInteger frameNumber;
+    NSMutableArray *starField;
 }
 
 @property (retain) GLGEasedPoint *origin;

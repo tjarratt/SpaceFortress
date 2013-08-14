@@ -14,6 +14,23 @@
 @synthesize wantsPsychedelia;
 @synthesize zoomScale, origin;
 
+- (id) init {
+    if (self = [super init]) {
+        int capacity = 200;
+        CGFloat maximum = 3000;
+
+        starField = [[NSMutableArray alloc] initWithCapacity:capacity];
+        for (int i = 0; i < capacity; ++i) {
+            CGFloat x = (CGFloat) arc4random() / 0x100000000 * maximum;
+            CGFloat y = (CGFloat) arc4random() / 0x100000000 * maximum;
+            NSPoint point = NSMakePoint(x, y);
+            [starField insertObject:[NSValue valueWithPoint:point] atIndex:i];
+        }
+    }
+
+    return self;
+}
+
 - (void) updateWithView:(GLGOpenGLView *) view {
     CGFloat __block x, y, px, py, pxp, pyp;
     CGFloat zoomScaleFactor = powf(1.01, [zoomScale currentValue]);
@@ -30,6 +47,8 @@
 
         [origin setPoint:NSMakePoint(planetX, planetY)];
     }
+
+    [self drawStarFieldInView:view];
 
     GLGSolarSystem *system = [self activeSystem];
     GLGSolarStar *star = [system star];
@@ -68,6 +87,14 @@
         glColor3f(planet.color.redComponent, planet.color.greenComponent, planet.color.blueComponent);
         [view drawCircleWithRadius:radius centerX:pxp centerY:pyp];
     }];
+}
+
+- (void) drawStarFieldInView:(GLGOpenGLView *) view {
+    glColor3f(1.0, 1.0, 1.0);
+    [starField enumerateObjectsUsingBlock:^(NSValue *value, NSUInteger index, BOOL *stop) {
+        NSPoint p = [value pointValue];
+        [view drawCircleWithRadius:1 centerX:p.x centerY:p.y];
+    }]; 
 }
 
 - (void) drawTrailersForPlanet:(GLGPlanetoid *) planet onView:(GLGOpenGLView *) view {
