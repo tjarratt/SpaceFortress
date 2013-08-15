@@ -13,14 +13,13 @@
 #import "GLGEasedPoint.h"
 #import "GLGPlanetoid.h"
 #import "GLGSolarSystem.h"
+#import "GLGGalaxyActor.h"
 #import "GLGOpenGLView.h"
 #import "GLGGalaxySidebar.h"
 #import "GLGSidebarGalaxyView.h"
 
-@interface GLGGalaxyPickerActor : GLGActorBase <GLGActor, GLGSidebarDelegate> {
+@interface GLGGalaxyPickerActor : GLGGalaxyActor <GLGActor, GLGSidebarDelegate> {
     NSWindow *window;
-    GLGEasedValue *zoomScale;
-    GLGEasedPoint *origin;
 
     __weak id delegate;
 
@@ -28,8 +27,6 @@
 
     NSUInteger lastFrame;
     double lastTimestamp;
-
-    CGFloat frameNumber;
 
     GLGGalaxySidebar *sidebar;
     NSView *titleView;
@@ -39,12 +36,9 @@
     NSRect expandedSceneRect;
     NSRect collapsedSceneRect;
 
-    GLGEasedValue *speedOfTime;
-
     NSButton *quitButton;
 }
 
-@property (retain) GLGPlanetoid *selectedPlanet;
 @property NSInteger activeSystemIndex;
 @property CGFloat framerate;
 @property BOOL wantsPsychedelia;

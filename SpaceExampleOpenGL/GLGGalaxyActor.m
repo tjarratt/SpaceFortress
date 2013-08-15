@@ -26,6 +26,8 @@
             NSPoint point = NSMakePoint(x, y);
             [starField insertObject:[NSValue valueWithPoint:point] atIndex:i];
         }
+
+        planetSizeWeight = 1000;
     }
 
     return self;
@@ -35,7 +37,7 @@
     CGFloat __block x, y, px, py, pxp, pyp;
     CGFloat zoomScaleFactor = powf(1.01, [zoomScale currentValue]);
     CGFloat metersToPixelsScale = 3.543e-9 * zoomScaleFactor;
-    CGFloat scale = frameNumber * M_PI / 1.0e11;
+    CGFloat scale = frameNumber * M_PI / 1.0e12;
 
     NSPoint currentOrigin = [origin currentValue];
     x = view.bounds.size.width / 2 + currentOrigin.x;
@@ -71,7 +73,7 @@
             [self drawTrailersForPlanet:planet onView:view];
         }
 
-        CGFloat radius = MAX([planet radius] * metersToPixelsScale * 1000, 1);
+        CGFloat radius = MAX([planet radius] * metersToPixelsScale * planetSizeWeight, 1);
 
         px = x + planet.apogeeMeters * metersToPixelsScale * cos(scale * planet.rotationAroundSolarBodySeconds);
         py = y + planet.perogeeMeters * metersToPixelsScale * sin(scale * planet.rotationAroundSolarBodySeconds);
@@ -119,7 +121,7 @@
     y = view.bounds.size.height / 2 + currentOrigin.y;
 
     [[planet trailers] enumerateObjectsUsingBlock:^(GLGPsychedeliaTrailer *trail, NSUInteger index, BOOL *stop) {
-        CGFloat scale = (frameNumber - (count - index)) * M_PI / 1.0e11;
+        CGFloat scale = (frameNumber - 10 * (count - index)) * M_PI / 1.0e12;
 
         CGFloat radius = MAX([planet radius] * metersToPixelsScale * 1000, 1);
         px = x + planet.apogeeMeters * metersToPixelsScale * cos(scale * planet.rotationAroundSolarBodySeconds);
@@ -152,7 +154,7 @@
 }
 
 - (void) incrementFrameNumber {
-    ++frameNumber;
+    frameNumber += 1 * [speedOfTime currentValue];
 }
 
 - (void) didPanByVector:(CGPoint) vector {

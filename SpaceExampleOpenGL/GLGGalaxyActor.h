@@ -14,8 +14,12 @@
 
 @interface GLGGalaxyActor : GLGActorBase <GLGActor> {
     GLGSolarSystem *_system;
-    NSUInteger frameNumber;
+    CGFloat frameNumber;
     NSMutableArray *starField;
+
+    GLGEasedValue *speedOfTime;
+
+    CGFloat planetSizeWeight;
 }
 
 @property (retain) GLGEasedPoint *origin;

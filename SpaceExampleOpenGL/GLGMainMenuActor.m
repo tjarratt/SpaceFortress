@@ -24,6 +24,8 @@
         [zoom release];
         [origin release];
 
+        speedOfTime = [[GLGEasedValue alloc] initWithValue:10.0];
+        
         NSRect frame = [[window contentView] frame];
         NSPoint center = NSMakePoint(frame.size.width / 2, frame.size.height / 2);
         CGFloat buttonWidth = 200;
