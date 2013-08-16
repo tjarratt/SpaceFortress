@@ -95,8 +95,8 @@
 }
 
 #pragma mark - NSWindow delegate methods
-- (void) windowDidResize:(NSWindow *) _window {
-    [gameSceneActor resizeWithWindow:_window];
+- (void) windowDidResize:(NSNotification *) notification {
+    [gameSceneActor resizeWithWindow:[notification object]];
 }
 
 #pragma mark - openGL update methods
