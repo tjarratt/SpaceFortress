@@ -13,10 +13,8 @@
 #import "GLGSolarSystem.h"
 
 @interface GLGGalaxyActor : GLGActorBase <GLGActor> {
-    GLGSolarSystem *_system;
     CGFloat frameNumber;
-    NSMutableArray *starField;
-
+    GLGSolarSystem *_system;
     GLGEasedValue *speedOfTime;
 
     CGFloat planetSizeWeight;

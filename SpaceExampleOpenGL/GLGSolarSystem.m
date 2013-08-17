@@ -19,7 +19,17 @@
         int num_planetoids = arc4random() % 4 + 1;
         planetoids = [[NSMutableArray alloc] initWithCapacity:num_planetoids];
         star = [[GLGSolarStar alloc] init];
-        
+
+        int capacity = 200;
+        CGFloat maximum = 3000;
+        starField = [[NSMutableArray alloc] initWithCapacity:capacity];
+        for (int i = 0; i < capacity; ++i) {
+            CGFloat x = (CGFloat) arc4random() / 0x100000000 * maximum;
+            CGFloat y = (CGFloat) arc4random() / 0x100000000 * maximum;
+            NSPoint point = NSMakePoint(x, y);
+            [starField insertObject:[NSValue valueWithPoint:point] atIndex:i];
+        }
+
         NSString *systemName = [GLGNameProperty randomName];
         [star setName:systemName];
         [self setName:systemName];
@@ -105,6 +115,10 @@
     [planetoids release];
     [star release];
     return [super dealloc];
+}
+
+- (NSMutableArray *) starField {
+    return starField;
 }
 
 @end
