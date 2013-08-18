@@ -47,6 +47,7 @@
         [[window contentView] setWantsLayer:YES];
         GLGMainMenuActor *actor = [[GLGMainMenuActor alloc] initWithWindow:window andDelegate:self];
         [actor positionSubviewsRelativeToView:scene];
+        [actor setScene:scene];
         gameSceneActor = (id)actor;
 
         [window setMinSize:NSMakeSize(800, 600)];
@@ -63,6 +64,7 @@
 
     GLGMainMenuActor *newActor = [[GLGMainMenuActor alloc] initWithWindow:window andDelegate:self];
     [newActor positionSubviewsRelativeToView:scene];
+    [newActor setScene:scene];
     gameSceneActor = newActor;
 }
 
@@ -72,6 +74,8 @@
 
     GLGGalaxyPickerActor *newActor = [[GLGGalaxyPickerActor alloc] initWithWindow:window];
     [newActor setDelegate:self];
+    [newActor setScene:scene];
+
     gameSceneActor = newActor;
 }
 
@@ -82,6 +86,7 @@
 
     [actor release];
     GLGPlanetActor *newActor = [[GLGPlanetActor alloc] initWithPlanet:planet delegate:self];
+    [newActor setScene:scene];
 
     CGFloat width = window.frame.size.width;
     CGFloat height = window.frame.size.height;

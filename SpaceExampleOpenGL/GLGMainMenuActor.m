@@ -25,31 +25,44 @@
         [origin release];
 
         speedOfTime = [[GLGEasedValue alloc] initWithValue:10.0];
-        
-        NSRect frame = [[window contentView] frame];
-        NSPoint center = NSMakePoint(frame.size.width / 2, frame.size.height / 2);
-        CGFloat buttonWidth = 200;
-        CGFloat buttonHeight = 50;
-        CGFloat padding = 15;
-        CGFloat originX = center.x - buttonWidth / 2;
-        CGFloat originY = center.y - (2 * buttonHeight + padding) / 2;
-
-        NSRect quitRect = NSMakeRect(originX, originY, 200, 50);
-        NSRect startRect = NSMakeRect(originX, originY + padding + buttonHeight, 200, 50);
-        start = [[NSButton alloc] initWithFrame:startRect];
+        start = [[NSButton alloc] init];
         [start setTitle:@"Start New Game"];
         [start setTarget:self];
         [start setAction:@selector(startNewGame)];
 
-        quit = [[NSButton alloc] initWithFrame:quitRect];
+        quit = [[NSButton alloc] init];
         [quit setTitle:@"Quit"];
         [quit setTarget:self];
         [quit setAction:@selector(quit)];
 
         _system = [[GLGSolarSystem alloc] initAsSol];
+
+        [self placeButtonsAtFrameCenter];
     }
 
     return self;
+}
+
+- (void) resizeWithWindow:(NSWindow *) _window {
+    NSRect frame = _window.frame;
+    [scene setFrame: NSMakeRect(0, 0, frame.size.width, frame.size.height)];
+    [self placeButtonsAtFrameCenter];
+}
+
+- (void) placeButtonsAtFrameCenter {
+    NSRect frame = [[window contentView] frame];
+    NSPoint center = NSMakePoint(frame.size.width / 2, frame.size.height / 2);
+    CGFloat buttonWidth = 200;
+    CGFloat buttonHeight = 50;
+    CGFloat padding = 15;
+    CGFloat originX = center.x - buttonWidth / 2;
+    CGFloat originY = center.y - (2 * buttonHeight + padding) / 2;
+
+    NSRect quitRect = NSMakeRect(originX, originY, 200, 50);
+    NSRect startRect = NSMakeRect(originX, originY + padding + buttonHeight, 200, 50);
+
+    [start setFrame:startRect];
+    [quit setFrame:quitRect];
 }
 
 - (void) positionSubviewsRelativeToView:(NSView *) view {
