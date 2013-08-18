@@ -216,10 +216,14 @@ const NSUInteger solarSystemCapacity = 3;
 }
 
 - (void) didZoom:(CGFloat) amount {
+    if ([self paused]) { return; }
+
     [self.zoomScale incrementBy:amount];
 }
 
 - (void) didPanByVector:(CGPoint) vector {
+    if ([self paused]) { return; }
+
     if ([self selectedPlanet] == nil) {
         [self.origin addVector:vector];
     }
@@ -321,6 +325,10 @@ const NSUInteger solarSystemCapacity = 3;
 }
 
 - (void) expandOrCollapseSidebar {
+    if ([self paused]) {
+        return;
+    }
+
     [NSAnimationContext beginGrouping];
     [sidebar expandOrCollapse];
 
