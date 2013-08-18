@@ -72,6 +72,8 @@
     id actor = (NSObject *) gameSceneActor;
     [actor release];
 
+    NSRect frame = [scene frame];
+    [scene setFrame:NSMakeRect(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height - 50)];
     GLGGalaxyPickerActor *newActor = [[GLGGalaxyPickerActor alloc] initWithWindow:window];
     [newActor setDelegate:self];
     [newActor setScene:scene];
