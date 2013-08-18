@@ -35,13 +35,17 @@ const NSUInteger solarSystemCapacity = 3;
         frameNumber = 0;
         framerate = 0.0f;
 
+        NSSize frameSize = _window.frame.size;
+        expandedSceneRect = NSMakeRect(0, 0, frameSize.width - sidebarWidth, frameSize.height - 50);
+        collapsedSceneRect = NSMakeRect(expandedSceneRect.origin.x, expandedSceneRect.origin.y, expandedSceneRect.size.width + sidebarWidth - 10, expandedSceneRect.size.height);
+
         planetSizeWeight = 10000;
 
         activeSystemIndex = -1;
         [self initializeSolarSystems];
 
-        CGFloat rectWidth = 1280;
-        CGFloat rectHeight = 800;
+        CGFloat rectWidth = _window.frame.size.width;
+        CGFloat rectHeight = _window.frame.size.height;
         CGFloat sceneWidth = rectWidth - sidebarWidth;
         CGFloat sceneHeight = rectHeight - 50;
 
