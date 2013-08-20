@@ -47,7 +47,7 @@
     }
 }
 
--(void) drawCircleWithRadius: (CGFloat)radius centerX:(CGFloat)cx centerY:(CGFloat)cy {
+- (void) drawCircleWithRadius: (CGFloat)radius centerX:(CGFloat)cx centerY:(CGFloat)cy {
     glBegin(GL_TRIANGLE_FAN);
 
     int segments = 100;
