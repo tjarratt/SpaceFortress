@@ -43,6 +43,40 @@
     return self;
 }
 
+- (void) updateWithView:(GLGOpenGLView *) view {
+    [super updateWithView:view];
+
+    glColor3f(1, 1, 1);
+    glEnable(GL_LINE_SMOOTH);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
+    glLineWidth(2.0);
+
+    glBegin(GL_LINES);
+    glVertex2d(95, 100);
+    glVertex2d(100, 86);
+
+    glEnd();
+
+    glBegin(GL_LINES);
+    glVertex2d(95, 100);
+    glVertex2d(88, 87);
+
+    glEnd();
+
+    // draw particles
+    glColor3f(0.99, 0.3, 0.2);
+    NSPoint centerOfExhaust = NSMakePoint(98, 88);
+    CGFloat max_size = 0.5;
+    for(int i = 0; i < 10; ++i) {
+        CGFloat x_random = (arc4random() / 0x10000000) * max_size;
+        CGFloat y_random = (arc4random() / 0x10000000) * max_size * 2;
+
+        [view drawCircleWithRadius:2 centerX:centerOfExhaust.x - x_random centerY:centerOfExhaust.y - y_random];
+    }
+}
+
 - (void) resizeWithWindow:(NSWindow *) _window {
     NSRect frame = _window.frame;
     [scene setFrame: NSMakeRect(0, 0, frame.size.width, frame.size.height)];
