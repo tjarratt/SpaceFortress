@@ -62,6 +62,8 @@
     id actor = (GLGGalaxyPickerActor *) gameSceneActor;
     [actor release];
 
+    [scene setFrame: [[window contentView] frame]];
+
     GLGMainMenuActor *newActor = [[GLGMainMenuActor alloc] initWithWindow:window andDelegate:self];
     [newActor positionSubviewsRelativeToView:scene];
     [newActor setScene:scene];
@@ -72,8 +74,8 @@
     id actor = (NSObject *) gameSceneActor;
     [actor release];
 
-    NSRect frame = [scene frame];
-    [scene setFrame:NSMakeRect(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height - 50)];
+    NSRect frame = [[window contentView] frame];
+    [scene setFrame:NSMakeRect(frame.origin.x, frame.origin.y, frame.size.width - sidebarWidth, frame.size.height - 25)];
     GLGGalaxyPickerActor *newActor = [[GLGGalaxyPickerActor alloc] initWithWindow:window];
     [newActor setDelegate:self];
     [newActor setScene:scene];

@@ -17,6 +17,7 @@
 #import "GLGOpenGLView.h"
 #import "GLGGalaxySidebar.h"
 #import "GLGSidebarGalaxyView.h"
+#import "GLGSidebarConstants.h"
 
 @interface GLGGalaxyPickerActor : GLGGalaxyActor <GLGActor, GLGSidebarDelegate> {
     NSWindow *window;
