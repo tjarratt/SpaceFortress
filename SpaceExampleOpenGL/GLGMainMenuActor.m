@@ -26,12 +26,12 @@
 
         speedOfTime = [[GLGEasedValue alloc] initWithValue:10.0];
         start = [[NSButton alloc] init];
-        [start setTitle:@"Start New Game"];
+        [start setTitle:NSLocalizedString(@"Start New Game", @"startNewGameLabel")];
         [start setTarget:self];
         [start setAction:@selector(startNewGame)];
 
         quit = [[NSButton alloc] init];
-        [quit setTitle:@"Quit"];
+        [quit setTitle:NSLocalizedString(@"Quit", @"quitAppLabel")];
         [quit setTarget:self];
         [quit setAction:@selector(quit)];
 
