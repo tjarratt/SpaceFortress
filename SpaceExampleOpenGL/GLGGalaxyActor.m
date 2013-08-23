@@ -113,7 +113,7 @@
     [[planet trailers] enumerateObjectsUsingBlock:^(GLGPsychedeliaTrailer *trail, NSUInteger index, BOOL *stop) {
         CGFloat scale = (frameNumber - 10 * (count - index)) * M_PI / 1.0e12;
 
-        CGFloat radius = MAX([planet radius] * metersToPixelsScale * 1000, 1);
+        CGFloat radius = MAX([planet radius] * metersToPixelsScale * planetSizeWeight, 1);
         px = x + planet.apogeeMeters * metersToPixelsScale * cos(scale * planet.rotationAroundSolarBodySeconds);
         py = y + planet.perogeeMeters * metersToPixelsScale * sin(scale * planet.rotationAroundSolarBodySeconds);
 
