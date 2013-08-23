@@ -36,6 +36,7 @@
     NSRect expandedSceneRect;
     NSRect collapsedSceneRect;
 
+    NSUInteger frameCount;
     NSButton *quitButton;
 }
 

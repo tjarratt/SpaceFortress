@@ -34,6 +34,7 @@ const NSUInteger solarSystemCapacity = 3;
 
         frameNumber = 0;
         framerate = 0.0f;
+        frameCount = 0;
 
         NSSize frameSize = _window.frame.size;
         expandedSceneRect = NSMakeRect(0, 0, frameSize.width - sidebarWidth, frameSize.height - 50);
@@ -125,23 +126,24 @@ const NSUInteger solarSystemCapacity = 3;
 
 # pragma mark - frameRate methods
 - (void) updateFramerate {
-    if (frameNumber == lastFrame) {
+    if (frameCount == lastFrame) {
         return;
     }
 
     double currentTime = CFAbsoluteTimeGetCurrent();
     double diff = currentTime - lastTimestamp;
-    double rate = (frameNumber - lastFrame) / diff;
+    double rate = (frameCount - lastFrame) / diff;
     [self setFramerate: round(rate * 100) / 100.0f];
 
-    lastFrame = frameNumber;
+    lastFrame = frameCount;
     lastTimestamp = currentTime;
 
 }
 
 - (void) incrementFrameNumber {
     if ([self paused]) { return; }
-    
+
+    frameCount += 1;
     frameNumber += 1 * [speedOfTime currentValue];
 }
 
