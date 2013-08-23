@@ -15,7 +15,7 @@
         window = _window;
         delegate = _delegate;
 
-        GLGEasedValue *zoom = [[GLGEasedValue alloc] initWithValue:-150];
+        GLGEasedValue *zoom = [[GLGEasedValue alloc] initWithValue:-250];
         GLGEasedPoint *origin = [[GLGEasedPoint alloc] initWithPoint:NSMakePoint(0, -200)];
         [self setZoomScale:zoom];
         [self setOrigin:origin];
