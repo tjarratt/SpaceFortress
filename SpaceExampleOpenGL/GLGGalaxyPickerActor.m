@@ -257,7 +257,7 @@ const NSUInteger solarSystemCapacity = 3;
 - (void) didSelectPlanet:(NSNotification *) notification {
     NSRect buttonRect = NSMakeRect(605, 0, 80, 25);
     switchView = [[NSButton alloc] initWithFrame:buttonRect];
-    [switchView setTitle:@"Embark!"];
+    [switchView setTitle:NSLocalizedString(@"Embark!", @"embarkOnPlanetLabel")];
     [switchView setTarget:self];
     [switchView setAction:@selector(switchToPlanetView)];
     [titleView addSubview:switchView];
@@ -273,12 +273,12 @@ const NSUInteger solarSystemCapacity = 3;
 
 - (void) didSelectSystem:(NSNotification *) notification {
     GLGSolarSystem *system = (GLGSolarSystem *)[notification object];
-    NSString *newTitle = [NSString stringWithFormat:@"Choose a galaxy to colonize > Pick a planet in %@ >", [system name]];
+    NSString *newTitle = [NSString stringWithFormat:NSLocalizedString(@"Choose a galaxy to colonize > Pick a planet in %@ >", @"chooseAGalaxyFormatLabel"), [system name]];
     [title setStringValue:newTitle];
 }
 
 - (void) didResignSystem {
-    [title setStringValue:@"Choose a galaxy to colonize >"];
+    [title setStringValue:NSLocalizedString(@"Choose a galaxy to colonize >", @"initialGalaxyPickerLabel")];
 }
 
 - (void) keyWasPressed:(unsigned short) key {
@@ -309,7 +309,7 @@ const NSUInteger solarSystemCapacity = 3;
                 CGFloat width = 200;
                 CGFloat height = 50;
                 quitButton = [[NSButton alloc] initWithFrame:NSMakeRect(center.x - width / 2, center.y - height / 2, width, height)];
-                [quitButton setTitle:@"Quit"];
+                [quitButton setTitle:NSLocalizedString(@"Quit", @"quitLabel")];
                 [quitButton setTarget:self];
                 [quitButton setAction:@selector(quit)];
                 [[window contentView] addSubview:quitButton];
